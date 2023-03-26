@@ -49,6 +49,7 @@
             变量 AUG=简单找图 AUG 0.85 4*4 2-4
             变量 M762=简单找图 M762 0.85 4*4 2-4
             变量 P90=简单找图 P90 0.85 4*4 2-4
+            变量 VECTOR=简单找图 VECTOR 0.85 4*4 2-4
 
             如果 M4
             {
@@ -94,6 +95,13 @@
                 如果 P90
                 {
                     //=include src/gun/p90.tgs
+                }
+            }
+            否则
+            {
+                如果 VECTOR
+                {
+                    //=include src/gun/vector.tgs
                 }
             }
             否则
@@ -112,6 +120,7 @@
             变量 AUG=简单找图 AUG 0.85 4*4 3-4
             变量 M762=简单找图 M762 0.85 4*4 3-4
             变量 P90=简单找图 P90 0.85 4*4 3-4
+            变量 VECTOR=简单找图 VECTOR 0.85 4*4 3-4
 
             如果 M4
             {
@@ -157,6 +166,13 @@
                 如果 P90
                 {
                     //=include src/gun/p90.tgs
+                }
+            }
+            否则
+            {
+                如果 VECTOR
+                {
+                    //=include src/gun/vector.tgs
                 }
             }
             否则
