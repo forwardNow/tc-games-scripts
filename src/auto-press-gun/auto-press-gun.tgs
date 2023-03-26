@@ -51,6 +51,7 @@
             变量 P90=简单找图 P90 0.85 4*4 2-4
             变量 VECTOR=简单找图 VECTOR 0.85 4*4 2-4
             变量 UMP45=简单找图 UMP45 0.85 4*4 2-4
+            变量 UZI=简单找图 UZI 0.85 4*4 2-4
 
             如果 M4
             {
@@ -110,6 +111,13 @@
                 如果 UMP45
                 {
                     //=include src/gun/ump45.tgs
+                }
+            }
+            否则
+            {
+                如果 UZI
+                {
+                    //=include src/gun/uzi.tgs
                 }
             }
             否则
@@ -130,6 +138,7 @@
             变量 P90=简单找图 P90 0.85 4*4 3-4
             变量 VECTOR=简单找图 VECTOR 0.85 4*4 3-4
             变量 UMP45=简单找图 UMP45 0.85 4*4 3-4
+            变量 UZI=简单找图 UZI 0.85 4*4 3-4
 
             如果 M4
             {
@@ -189,6 +198,13 @@
                 如果 UMP45
                 {
                     //=include src/gun/ump45.tgs
+                }
+            }
+            否则
+            {
+                如果 UZI
+                {
+                    //=include src/gun/uzi.tgs
                 }
             }
             否则
