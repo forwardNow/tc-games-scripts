@@ -60,6 +60,7 @@
             {
                 如果 AKM
                 {
+                    //=require src/gun/akm.tgs
                 }
             }
         }
@@ -85,6 +86,7 @@
             {
                 如果 AKM
                 {
+                    //=require src/gun/akm.tgs
                 }
             }
         }
