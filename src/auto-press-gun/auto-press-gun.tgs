@@ -28,7 +28,6 @@
 
     如果 开镜
     {
-        提示 开镜 1
         变量 当前准镜全息=简单找图 当前准镜全息 0.65 4*4 4-2
         变量 当前准镜红点=简单找图 当前准镜红点 0.65 4*4 4-2
         变量 当前准镜2倍=简单找图 当前准镜2倍 0.70 4*4 4-2
@@ -41,26 +40,28 @@
 
         如果 持左枪
         {
+            提示 持左枪 1
+
             变量 M4=简单找图 M4 0.85 4*4 2-4
             变量 SCARL=简单找图 SCARL 0.85 4*4 2-4
             变量 AKM=简单找图 AKM 0.85 4*4 2-4
 
             如果 M4
             {
-                //=require src/gun/m4.tgs
+                //=include src/gun/m4.tgs
             }
             否则
             {
                 如果 SCARL
                 {
-                    //=require src/gun/scarl.tgs
+                    //=include src/gun/scarl.tgs
                 }
             }
             否则
             {
                 如果 AKM
                 {
-                    //=require src/gun/akm.tgs
+                    //=include src/gun/akm.tgs
                 }
             }
         }
@@ -73,20 +74,20 @@
 
             如果 M4
             {
-                //=require src/gun/m4.tgs
+                //=include src/gun/m4.tgs
             }
             否则
             {
                 如果 SCARL
                 {
-                    //=require src/gun/scarl.tgs
+                    //=include src/gun/scarl.tgs
                 }
             }
             否则
             {
                 如果 AKM
                 {
-                    //=require src/gun/akm.tgs
+                    //=include src/gun/akm.tgs
                 }
             }
         }
