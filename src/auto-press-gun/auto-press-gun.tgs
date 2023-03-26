@@ -46,6 +46,7 @@
             变量 SCARL=简单找图 SCARL 0.85 4*4 2-4
             变量 AKM=简单找图 AKM 0.85 4*4 2-4
             变量 GROZA=简单找图 GROZA 0.85 4*4 2-4
+            变量 AUG=简单找图 AUG 0.85 4*4 2-4
 
             如果 M4
             {
@@ -70,6 +71,13 @@
                 如果 GROZA
                 {
                     //=include src/gun/groza.tgs
+                }
+            }
+            否则
+            {
+                如果 AUG
+                {
+                    //=include src/gun/aug.tgs
                 }
             }
             否则
@@ -85,6 +93,7 @@
             变量 SCARL=简单找图 SCARL 0.85 4*4 3-4
             变量 AKM=简单找图 AKM 0.85 4*4 3-4
             变量 GROZA=简单找图 GROZA  0.85 4*4 3-4
+            变量 AUG=简单找图 AUG 0.85 4*4 3-4
 
             如果 M4
             {
@@ -109,6 +118,13 @@
                 如果 GROZA
                 {
                     //=include src/gun/groza.tgs
+                }
+            }
+            否则
+            {
+                如果 AUG
+                {
+                    //=include src/gun/aug.tgs
                 }
             }
             否则
