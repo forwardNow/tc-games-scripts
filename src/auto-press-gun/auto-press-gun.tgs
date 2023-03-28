@@ -1,6 +1,6 @@
 托管鼠标左键
 // 开火的坐标
-按住 2027 809
+按住 1927 809
 获取准心动态参数
 
 //#region gun-position.tgs
@@ -52,6 +52,7 @@
             变量 VECTOR=简单找图 VECTOR 0.85 4*4 2-4
             变量 UMP45=简单找图 UMP45 0.85 4*4 2-4
             变量 UZI=简单找图 UZI 0.85 4*4 2-4
+            变量 YENIU=简单找图 YENIU 0.85 4*4 2-4
             变量 MG3=简单找图 MG3 0.85 4*4 2-4
             变量 M249=简单找图 M249 0.85 4*4 2-4
             变量 DP28=简单找图 DP28 0.85 4*4 2-4
@@ -125,6 +126,13 @@
             }
             否则
             {
+                如果 YENIU
+                {
+                    //=include src/gun/yeniu.tgs
+                }
+            }
+            否则
+            {
                 如果 MG3
                 {
                     //=include src/gun/mg3.tgs
@@ -163,6 +171,7 @@
             变量 VECTOR=简单找图 VECTOR 0.85 4*4 3-4
             变量 UMP45=简单找图 UMP45 0.85 4*4 3-4
             变量 UZI=简单找图 UZI 0.85 4*4 3-4
+            变量 YENIU=简单找图 YENIU 0.85 4*4 3-4
             变量 MG3=简单找图 MG3 0.85 4*4 3-4
             变量 M249=简单找图 M249 0.85 4*4 3-4
             变量 DP28=简单找图 DP28 0.85 4*4 3-4
@@ -232,6 +241,13 @@
                 如果 UZI
                 {
                     //=include src/gun/uzi.tgs
+                }
+            }
+            否则
+            {
+                如果 YENIU
+                {
+                    //=include src/gun/yeniu.tgs
                 }
             }
             否则
