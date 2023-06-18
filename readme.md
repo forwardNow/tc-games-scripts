@@ -28,6 +28,10 @@ JS 模块文件中导入模块不能使用相对路径：
 import { POSTURE } from 'constant';
 ```
 
+按键宏日志：
+
+* `C:\Users\abc\AppData\Roaming\Sigma-RT\TC Games\log\macro_javascript.log`
+
 ### 宏按键使用模块
 
 目录：
