@@ -22,6 +22,11 @@ export function getGunPosition() {
   return null;
 }
 
+/**
+ * 获取当前枪械的名称
+ *
+ * @return {string | null}
+ */
 export function getCurrentGunName() {
   const gunPosition = getGunPosition();
 
