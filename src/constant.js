@@ -8,6 +8,11 @@ export const POSTURE = {
   prostration: 'prostration'
 };
 
+export const GUN_POSITION = {
+  left: 'left',
+  right: 'right',
+}
+
 /** 准镜状态 */
 export const MIRROR_STATUS = {
   /** 开镜 */
