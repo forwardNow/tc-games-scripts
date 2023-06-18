@@ -1,0 +1,27 @@
+{
+  "name": "tc-games-scripts",
+  "version": "1.0.0",
+  "description": "全局对象 mapi",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forwardNow/tc-games-scripts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/forwardNow/tc-games-scripts/issues"
+  },
+  "homepage": "https://github.com/forwardNow/tc-games-scripts#readme",
+  "dependencies": {
+    "gulp": "^4.0.2"
+  }
+}
