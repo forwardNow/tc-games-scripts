@@ -14,6 +14,20 @@
 }());
 ```
 
+JS 模块文件中导入模块不能使用相对路径：
+
+```javascript
+/*
+目录：
+  main.js
+  contant.js
+ */
+
+
+// main.js
+import { POSTURE } from 'constant';
+```
+
 ### 宏按键使用模块
 
 目录：
