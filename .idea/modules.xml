@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$USER_HOME$/AppData/Roaming/Sigma-RT/TC Games/resource/Scripts/.idea/Scripts.iml" filepath="$USER_HOME$/AppData/Roaming/Sigma-RT/TC Games/resource/Scripts/.idea/Scripts.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/tc-games-scripts.iml" filepath="$PROJECT_DIR$/.idea/tc-games-scripts.iml" />
     </modules>
   </component>
