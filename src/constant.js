@@ -56,7 +56,10 @@ export const MIRROR_STATUS = {
   close: 'close',
 }
 
-/** 准镜类型 */
-export const MIRROR_CATEGORIES = {
-
+/** 准镜图片名称 */
+export const MIRROR_IMAGE_NAMES = {
+  x2: '2倍压枪',
+  x3: '3倍压枪',
+  x4: '4倍压枪',
+  x6: '6倍压枪',
 }
