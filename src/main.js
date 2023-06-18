@@ -1,2 +1,3 @@
-
-mapi.tip();
+export function sayHello() {
+  mapi.tip('hello');
+}

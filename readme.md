@@ -2,6 +2,46 @@
 
 全局对象 mapi
 
+## 模块
+
+### 说明
+
+按键宏里的 JS 代码必须用**立即执行的函数**包裹起来：
+
+```javascript
+(function() {
+  // 你的代码
+}());
+```
+
+### 宏按键使用模块
+
+目录：
+
+```text
+C:\Users\abc\AppData\Roaming\Sigma-RT\TC Games\resource\Scripts
+  main.js
+```
+
+main.js:
+
+```javascript
+export function sayHello() {
+  mapi.tip('hello');
+}
+```
+
+按键宏：
+
+```javascript
+(function() {
+  import('main')
+    .then((module) =>{
+      module.sayHello();
+    });
+}());
+```
+
 ## 点击
 
 ## 全局 map

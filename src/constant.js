@@ -17,6 +17,6 @@ export const MIRROR_STATUS = {
 }
 
 /** 准镜类型 */
-export const mirror_categories = {
+export const MIRROR_CATEGORIES = {
 
 }
