@@ -1,6 +1,29 @@
 # TC Games JS 脚本
 
-## 1. mapi
+## 1. 环境
+
+手机：
+
+| 类别     | 描述                  |
+|--------|---------------------|
+| 品牌     | 华为 nova9 (NAM-AL00) |
+| 分辨率    | 1080 × 2430         |
+| 刷新率    | 智能（最高 120 Hz）       |
+| 屏幕顶部显示 | 自动匹配                |
+
+电脑：
+
+| 类别  | 描述                   |
+|-----|----------------------|
+| 品牌  | iMac                 |
+| 系统  | win10                |
+| 分辨率 | 4096 × 2304, 缩放 200% |
+
+TC Games:
+
+* 版本 3.0(Update 3412370)
+
+## 2. mapi
 
 说明：
 
@@ -8,9 +31,9 @@
 * 类型说明文件：[types/mapi.d.ts](./types/mapi.d.ts)
 * 官方文档：[http://www.sigma-rt.com/tcgames/help/?u=15](http://www.sigma-rt.com/tcgames/help/?u=15)
 
-## 2. 模块
+## 3. 模块
 
-### 2.1. 说明
+### 3.1. 说明
 
 按键宏里的 JS 代码必须用**立即执行的函数**包裹起来：
 
@@ -38,7 +61,7 @@ import { POSTURE } from 'constant';
 
 * `C:\Users\abc\AppData\Roaming\Sigma-RT\TC Games\log\macro_javascript.log`
 
-### 2.2. 宏按键使用模块
+### 3.2. 宏按键使用模块
 
 目录：
 
@@ -66,9 +89,9 @@ export function sayHello() {
 }());
 ```
 
-## 3. 点击
+## 4. 点击
 
-## 4. 全局 map
+## 5. 全局 map
 
 说明：
 
@@ -81,7 +104,7 @@ API：
 
 示例：
 
-## 5. 鼠标宏
+## 6. 鼠标宏
 
 说明：
 
