@@ -219,3 +219,7 @@ API:
     mapi.customaimpar(true);
   }());
   ```
+
+## 4. 参考
+
+* [和平精英手游物资及事件场景中英文对照（持续更新，务必收藏！）](https://zhuanlan.zhihu.com/p/359768662)
