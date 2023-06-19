@@ -54,7 +54,7 @@ TC Games:
 * 目录：
 
   ```text
-  .../TC Games/resourceScripts/
+  .../TC Games/resource/Scripts/
     main.js
     gun.js
   ```
@@ -169,8 +169,8 @@ API:
 
 * F1 键宏：
 
- ```javascript
- (function() {
+  ```javascript
+  (function() {
    // 开始
    mapi.customaimpar(false);
        
@@ -181,8 +181,8 @@ API:
    const mode = false 
        
    mapi.changesectionaimpar(name, totalTime, par, offsetPixel, mode);
- }());
- ```
+  }());
+  ```
 
 * F2 键宏：
 
