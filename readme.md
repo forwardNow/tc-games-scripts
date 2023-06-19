@@ -124,7 +124,9 @@ JS 宏日志：
 * 作用：JS 代码报错都会记录在日志文件
 * 位置：`C:\Users\abc\AppData\Roaming\Sigma-RT\TC Games\log\macro_javascript.log`
 
-## 3. mapi
+## 3. JS API
+
+### 3.1. mapi
 
 全局对象，JSAPI 接口
 
@@ -132,7 +134,7 @@ JS 宏日志：
 
 官方文档：[http://www.sigma-rt.com/tcgames/help/?u=15](http://www.sigma-rt.com/tcgames/help/?u=15)
 
-### 3.1. 多点找色
+### 3.2. 多点找色
 
 说明：
 
@@ -141,7 +143,7 @@ JS 宏日志：
 
 API：
 
-* `findcolor`
+* `mapi.findcolor`
 
 示例：
 
@@ -153,7 +155,7 @@ if (point.X !== 0 || point.Y !== 0) {
 }
 ```
 
-### 3.2. 全局 map
+### 3.3. 全局 map
 
 说明：
 
@@ -161,12 +163,12 @@ if (point.X !== 0 || point.Y !== 0) {
 
 API：
 
-* `setglobalmap`: 写
-* `getglobalmap`: 读
+* `mapi.setglobalmap`: 写
+* `mapi.getglobalmap`: 读
 
 示例：
 
-### 3.3. 鼠标宏
+### 3.4. 鼠标宏
 
 说明：
 
@@ -174,9 +176,9 @@ API：
 
 API:
 
-* `startsectionaimpar`: 启动
-* `changesectionaimpar`: 设置参数
-* `customaimpar`: 开始/暂停
+* `mapi.startsectionaimpar`: 启动
+* `mapi.changesectionaimpar`: 设置参数
+* `mapi.customaimpar`: 开始/暂停
 
 示例：
 
@@ -184,7 +186,6 @@ API:
 
   ```javascript
   (function() {
-    mapi.tip('xx', 1);
     const fire_icon_position = { x: 2032, y: 806 };
     
     mapi.holdpress(fire_icon_position.x, fire_icon_position.y);
@@ -219,6 +220,24 @@ API:
     mapi.customaimpar(true);
   }());
   ```
+
+### 3.5. 日志
+
+说明：
+
+* 日志输出路径：%appdata%\Sigma-RT\TC Games\Log\macro_javascript.log
+
+API：
+
+* `logdebug`
+* `loginfo`
+* `logwarning`
+* `logerror`
+* `logfatal`
+
+注意：
+
+* API 是全局方法，不需要 mapi
 
 ## 4. 调整
 

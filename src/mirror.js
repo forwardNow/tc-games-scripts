@@ -60,7 +60,7 @@ const CURRENT_MIRROR_IMAGE_AREA = {
 /**
  * 获取当前准镜名称
  *
- * @return { string | null }
+ * @return { string }
  */
 export function getCurrentMirrorName() {
   const {
@@ -97,5 +97,5 @@ export function getCurrentMirrorName() {
     return MIRROR_CATEGORIES.X2_SIGHT;
   }
 
-  return null;
+  return '';
 }
