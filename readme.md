@@ -124,7 +124,26 @@ JS 宏日志：
 
 官方文档：[http://www.sigma-rt.com/tcgames/help/?u=15](http://www.sigma-rt.com/tcgames/help/?u=15)
 
-### 3.1. 点击
+### 3.1. 多点找色
+
+说明：
+
+* 那个点 是否 是那个色
+* 配合
+
+API：
+
+* `findcolor`
+
+示例：
+
+```javascript
+const point = mapi.findimage('255:254:247:142', '1475:648+1477:648+1475:650+1477:650');
+
+if (point.X !== 0 || point.Y !== 0) {
+  // 找到了
+}
+```
 
 ### 3.2. 全局 map
 
