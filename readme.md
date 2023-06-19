@@ -1,10 +1,16 @@
 # TC Games JS 脚本
 
-全局对象 mapi
+## 1. mapi
 
-## 模块
+说明：
 
-### 说明
+* 全局对象，JSAPI 接口
+* 类型说明文件：[types/mapi.d.ts](./types/mapi.d.ts)
+* 官方文档：[http://www.sigma-rt.com/tcgames/help/?u=15](http://www.sigma-rt.com/tcgames/help/?u=15)
+
+## 2. 模块
+
+### 2.1. 说明
 
 按键宏里的 JS 代码必须用**立即执行的函数**包裹起来：
 
@@ -32,7 +38,7 @@ import { POSTURE } from 'constant';
 
 * `C:\Users\abc\AppData\Roaming\Sigma-RT\TC Games\log\macro_javascript.log`
 
-### 宏按键使用模块
+### 2.2. 宏按键使用模块
 
 目录：
 
@@ -60,9 +66,9 @@ export function sayHello() {
 }());
 ```
 
-## 点击
+## 3. 点击
 
-## 全局 map
+## 4. 全局 map
 
 说明：
 
@@ -75,7 +81,7 @@ API：
 
 示例：
 
-## 鼠标宏
+## 5. 鼠标宏
 
 说明：
 
