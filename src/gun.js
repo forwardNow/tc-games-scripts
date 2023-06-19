@@ -3,9 +3,9 @@ import { isPointNotEmpty } from 'utils';
 /** 持枪位置 */
 export const GUN_POSITION = {
   /** 左边枪 */
-  left: 'left',
+  LEFT: 'LEFT',
   /** 右边枪 */
-  right: 'right',
+  RIGHT: 'right',
 }
 
 /** 枪的类型 */
@@ -45,13 +45,13 @@ export function getGunPosition() {
   const leftPoint = mapi.findcolor('255:255:221:0', '613:613');
 
   if (isPointNotEmpty(leftPoint)) {
-    return GUN_POSITION.left;
+    return GUN_POSITION.LEFT;
   }
 
   const rightPoint = mapi.findcolor('255:254:220:1', '786:614');
 
   if (isPointNotEmpty(rightPoint)) {
-    return GUN_POSITION.right;
+    return GUN_POSITION.RIGHT;
   }
 
   return null;
@@ -69,7 +69,7 @@ export function getCurrentGunName() {
   const sim = 0.85;
   const setCol = 4;
   const setRow = 4;
-  const selectCol = gunPosition === GUN_POSITION.left ? 2 : 3;
+  const selectCol = gunPosition === GUN_POSITION.LEFT ? 2 : 3;
   const selectRow = 4;
 
   let currentGunName = null;
