@@ -6,7 +6,7 @@
     .then((module) =>{
       const gunPosition = module.getGunPosition();
 
-      mapi.tip(gunPosition, 1);
+      mapi.tip(`gunPosition: ${gunPosition}`, 1);
     });
 }());
 
@@ -19,6 +19,6 @@
     .then((module) =>{
       const currentGunName = module.getCurrentGunName();
 
-      mapi.tip(currentGunName, 1);
+      mapi.tip(`currentGunName: ${currentGunName}`, 1);
     });
 }());

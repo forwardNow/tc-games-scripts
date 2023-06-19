@@ -1,4 +1,4 @@
-import { isPointNotEmpty } from 'utils';
+import { isPointExist } from 'utils';
 
 /** 姿势类别 */
 export const POSTURE_CATEGORIES = {
@@ -24,13 +24,13 @@ const COLOR_POINT = {
 export function getPosture() {
   const squatPoint = mapi.findcolor(...COLOR_POINT[POSTURE_CATEGORIES.SQUAT]);
 
-  if (isPointNotEmpty(squatPoint)) {
+  if (isPointExist(squatPoint)) {
     return POSTURE_CATEGORIES.SQUAT;
   }
 
   const prostrationPoint = mapi.findcolor(...COLOR_POINT[POSTURE_CATEGORIES.PROSTRATE]);
 
-  if (isPointNotEmpty(prostrationPoint)) {
+  if (isPointExist(prostrationPoint)) {
     return POSTURE_CATEGORIES.PROSTRATE;
   }
 
