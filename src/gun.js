@@ -1,5 +1,13 @@
-import { GUN_CATEGORIES, GUN_POSITION, POSTURE } from 'constant';
+import { GUN_CATEGORIES } from 'constant';
 import { isPointNotEmpty } from 'utils';
+
+/** 持枪位置 */
+export const GUN_POSITION = {
+  /** 左边枪 */
+  left: 'left',
+  /** 右边枪 */
+  right: 'right',
+}
 
 /**
  * 获取当前持枪的位置
