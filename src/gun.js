@@ -5,7 +5,7 @@ export const GUN_POSITION = {
   /** 左边枪 */
   LEFT: 'LEFT',
   /** 右边枪 */
-  RIGHT: 'right',
+  RIGHT: 'RIGHT',
 }
 
 
