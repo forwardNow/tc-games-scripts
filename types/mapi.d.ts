@@ -11,10 +11,28 @@ declare namespace mapi {
    */
   function tip(info: string, closeTime?: number): void;
 
+  /**
+   * 多点找色，返回当前颜色的坐标点。
+   *
+   * @param color
+   * @param poslist
+   */
   function findcolor(color: string, poslist: string): point;
 
   /**
+   * 单点找色，返回当前颜色的坐标
+   *
+   * 主要解决部分图标按下后会变色的场景，
+   * 如要要区分按钮变色状态可以通过此接口处理
+   *
+   * @param color
+   * @param point
+   */
+  function findcolor(color: string, point: point): point;
+
+  /**
    * 简单找图，返回当前图标在屏幕的坐标点
+   *
    * @param imgName 图片的名称
    * @param sim 相似度
    * @param setCol 屏幕分几列
