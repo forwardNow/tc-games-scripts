@@ -1,5 +1,14 @@
-import { POSTURE } from 'constant';
 import { isPointNotEmpty } from 'utils';
+
+/** 姿势 */
+export const POSTURE = {
+  /** 站 */
+  stand: 'stand',
+  /** 蹲 */
+  squat: 'squat',
+  /** 趴 */
+  prostration: 'prostration'
+};
 
 /**
  * 获取姿势
