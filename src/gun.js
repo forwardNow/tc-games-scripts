@@ -8,6 +8,25 @@ export const GUN_POSITION = {
   RIGHT: 'right',
 }
 
+
+/** 持枪位置-图片区域 */
+const GUN_POSITION_IMAGE_AREA = {
+  [GUN_POSITION.LEFT]: {
+    SIMILARITY: 0.85,
+    TOTAL_COLUMNS: 4,
+    TOTAL_ROWS: 4,
+    COLUMN_INDEX: 2, // 第 2 列
+    ROW_INDEX: 4,
+  },
+  [GUN_POSITION.RIGHT]: {
+    SIMILARITY: 0.85,
+    TOTAL_COLUMNS: 4,
+    TOTAL_ROWS: 4,
+    COLUMN_INDEX: 3, // 第 3 列
+    ROW_INDEX: 4,
+  },
+}
+
 /* 持枪位置-颜色点 */
 const GUN_POSITION_COLOR_POINT = {
   [GUN_POSITION.LEFT]: ['255:255:221:0', '613:613'],
@@ -63,23 +82,6 @@ export function getGunPosition() {
   return null;
 }
 
-/* 持枪位置-图片区域 */
-const GUN_POSITION_IMAGE_AREA = {
-  [GUN_POSITION.LEFT]: {
-    SIMILARITY: 0.85,
-    TOTAL_COLUMNS: 4,
-    TOTAL_ROWS: 4,
-    COLUMN_INDEX: 2, // 第 2 列
-    ROW_INDEX: 4,
-  },
-  [GUN_POSITION.RIGHT]: {
-    SIMILARITY: 0.85,
-    TOTAL_COLUMNS: 4,
-    TOTAL_ROWS: 4,
-    COLUMN_INDEX: 3, // 第 3 列
-    ROW_INDEX: 4,
-  },
-}
 
 /**
  * 获取当前枪械的名称
