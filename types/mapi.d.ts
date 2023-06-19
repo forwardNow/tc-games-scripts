@@ -8,6 +8,7 @@ declare namespace mapi {
     X: number,
     Y: number,
   }
+
   /**
    * 弹出消息框
    *
