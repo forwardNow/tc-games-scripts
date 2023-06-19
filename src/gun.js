@@ -1,4 +1,3 @@
-import { GUN_CATEGORIES } from 'constant';
 import { isPointNotEmpty } from 'utils';
 
 /** 持枪位置 */
@@ -8,6 +7,34 @@ export const GUN_POSITION = {
   /** 右边枪 */
   right: 'right',
 }
+
+/** 枪的类型 */
+export const GUN_CATEGORIES = {
+  M4: 'M4',
+  SCARL: 'SCARL',
+  DP28: 'DP28',
+
+  UMP45: 'UMP45',
+  YENIU: 'YENIU',
+  UZI: 'UZI',
+  VECTOR: 'VECTOR',
+  TANGMUXUN: 'TANGMUXUN', // 汤姆逊枪
+
+  AKM: 'AKM',
+
+  ACVAL: 'ACVAL',
+
+  M249: 'M249',
+
+  M762: 'M762',
+
+  AUG: 'AUG',
+  GROZA: 'GROZA',
+  MG3: 'MG3',
+  P90: 'P90',
+
+  MIGUAN: 'MIGUAN', // 蜜罐
+};
 
 /**
  * 获取当前持枪的位置
@@ -29,6 +56,7 @@ export function getGunPosition() {
 
   return null;
 }
+
 
 /**
  * 获取当前枪械的名称
