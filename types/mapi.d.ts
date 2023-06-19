@@ -1,4 +1,9 @@
 declare namespace mapi {
+  /**
+   * 多点找色、简单找图等返回的 point，
+   *
+   * 通过 ( point.X !== 0 || point.Y !== 0 ) 判断是否合法
+   */
   interface point {
     X: number,
     Y: number,
