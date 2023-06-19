@@ -14,6 +14,8 @@ declare namespace mapi {
   /**
    * 多点找色，返回当前颜色的坐标点。
    *
+   * 配合 TCG界面里的“取色工具” 一起使用
+   *
    * @param color
    * @param poslist
    */
