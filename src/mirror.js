@@ -1,15 +1,15 @@
 /** 准镜状态 */
 export const MIRROR_STATUS = {
   /** 开镜 */
-  open: 'open',
+  OPEN: 'OPEN',
   /** 未开镜 */
-  close: 'close',
+  CLOSE: 'CLOSE',
 }
 
 /** 准镜图片名称 */
 export const MIRROR_IMAGE_NAMES = {
-  x2: '2倍压枪',
-  x3: '3倍压枪',
-  x4: '4倍压枪',
-  x6: '6倍压枪',
+  X2: '2倍压枪',
+  X3: '3倍压枪',
+  X4: '4倍压枪',
+  X6: '6倍压枪',
 }
