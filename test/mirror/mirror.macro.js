@@ -5,7 +5,7 @@
 (function test_isMirrorOpen() {
   import('main')
     .then((main) =>{
-      main.pressGunControl.start();
+      main.pressGunControl.fire();
     });
 }());
 
