@@ -17,15 +17,6 @@ declare namespace mapi {
    */
   function tip(info: string, closeTime?: number): void;
 
-  /**
-   * 多点找色，返回当前颜色的坐标点。
-   *
-   * 配合 TCG界面里的“取色工具” 一起使用
-   *
-   * @param color
-   * @param poslist
-   */
-  function findcolor(color: string, poslist: string): point;
 
   /**
    * 单点找色，返回当前颜色的坐标
@@ -37,6 +28,16 @@ declare namespace mapi {
    * @param point
    */
   function findcolor(color: string, point: point): point;
+
+  /**
+   * 多点找色，返回当前颜色的坐标点。
+   *
+   * 配合 TCG界面里的“取色工具” 一起使用
+   *
+   * @param color
+   * @param poslist
+   */
+  function findcolor(color: string, poslist: string): point;
 
   /**
    * 简单找图，返回当前图标在屏幕的坐标点

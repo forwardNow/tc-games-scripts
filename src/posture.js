@@ -10,7 +10,9 @@ export const POSTURE_CATEGORIES = {
   PROSTRATE: 'PROSTRATE'
 };
 
-/** 姿势类别-颜色点 */
+/**
+ * 姿势类别-颜色点
+ */
 const COLOR_POINT = {
   [POSTURE_CATEGORIES.SQUAT]: ['255:255:241:119', '1305:653+1307:658+1307:665+1312:672+1313:681+1313:684'],
   [POSTURE_CATEGORIES.PROSTRATE]: ['255:253:237:119', '1421:639+1426:644+1437:649+1445:652'],
@@ -36,4 +38,3 @@ export function getPosture() {
 
   return POSTURE_CATEGORIES.STAND;
 }
-

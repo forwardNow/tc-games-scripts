@@ -1,5 +1,9 @@
-// 压枪数据配置
-export const gunConfig = {
+/**
+ * 压枪参数
+ *
+ * changecustomaimpar(x: number, y: number, delay: number)
+ */
+export const gunPressArgs = {
   'M4': {
     'M4蹲6倍6': [0, 1, 5],
     'M4蹲6倍3': [0, 1, 10],

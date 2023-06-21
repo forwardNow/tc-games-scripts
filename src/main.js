@@ -2,7 +2,7 @@ import { getCurrentGunName } from 'gun';
 import { getPosture, POSTURE_CATEGORIES } from 'posture';
 import { getCurrentMirrorName, isMirrorOpen, MIRROR_CATEGORIES } from 'mirror';
 import { showTip } from 'utils';
-import { gunConfig } from 'gunConfig';
+import { gunPressArgs } from 'config';
 
 const FIRE_ICON_POINT = { x: 2032, y: 806 };
 
@@ -57,17 +57,15 @@ export const gunPressControl = {
    */
   getConfig() {
     const { gun, posture, mirror } = this.getStatus();
-    const fmtPosture = MAPPING[posture];
-    const fmtMirror = MAPPING[mirror] || '';
 
-    const argsMap = gunConfig[gun];
+    const argsMap = gunPressArgs[gun];
 
     if (!argsMap) {
       showTip(`${gun}: 没有对应的配置`, 1);
       return null;
     }
 
-    const key = gun + fmtPosture + fmtMirror;
+    const key = gun + posture + mirror;
 
     const [x, y, delay] = argsMap[key];
 
@@ -81,7 +79,10 @@ export const gunPressControl = {
     const posture = getPosture();
     const mirror = getCurrentMirrorName();
 
-    return { gun, posture, mirror };
+    const fmtPosture = MAPPING[posture];
+    const fmtMirror = MAPPING[mirror] || '';
+
+    return { gun, posture: fmtPosture, mirror: fmtMirror };
   },
 
 };
