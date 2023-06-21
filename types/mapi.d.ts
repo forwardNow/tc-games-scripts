@@ -82,6 +82,26 @@ declare namespace mapi {
   ): void;
 
   /**
+   * 启动自定义鼠标宏，
+   *
+   * 在代码起始位置，写一次就好，
+   *
+   * 参数调节需要使用 changecustomaimpar，
+   *
+   * 启停需要配合使用 customaimpar。
+   */
+  function startcustomaimpar();
+
+  /**
+   * 动态调整自定义的鼠标宏参数
+   *
+   * @param x 水平方向，每次移动 x 像素
+   * @param y 垂直方向，每次移动 y 像素
+   * @param delay 每隔多少毫秒移动一次
+   */
+  function changecustomaimpar(x: number, y: number, delay: number);
+
+  /**
    * 控制鼠标宏的启停
    *
    * @param isPause true 是停止；false 是开始
