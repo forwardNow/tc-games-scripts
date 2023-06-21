@@ -1,6 +1,7 @@
 import { getCurrentGunName } from 'gun';
 import { getPosture, POSTURE_CATEGORIES } from 'posture';
 import { getCurrentMirrorName, isMirrorOpen, MIRROR_CATEGORIES } from 'mirror';
+import { showTip } from 'utils';
 import { gunConfig } from 'gunConfig';
 
 const FIRE_ICON_POINT = { x: 2032, y: 806 };
@@ -59,7 +60,7 @@ export const pressGunControl = {
     const argsMap = gunConfig[gun];
 
     if (!argsMap) {
-      mapi.tip(`${gun}: 没有对应的配置`, 1);
+      showTip(`${gun}: 没有对应的配置`, 1);
       return;
     }
 
@@ -67,7 +68,7 @@ export const pressGunControl = {
 
     const [x, y, delay] = argsMap[key];
 
-    mapi.tip(`${ key } - ${ String([x, y, delay]) }`);
+    showTip(`${ key } - ${ String([x, y, delay]) }`);
 
     mapi.changecustomaimpar(x, y, delay);
   },

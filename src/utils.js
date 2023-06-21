@@ -17,3 +17,13 @@ export function isPointExist(point) {
 export function isPointNotExist(point) {
   return point.X === 0 || point.Y === 0;
 }
+
+/**
+ * 包装 mapi.tip(content)
+ *
+ * @param content {string} 显式的内容
+ * @param duration {number} 存在时间，单位 秒，默认 1 秒
+ */
+export function showTip(content, duration = 1) {
+  mapi.tip(content, duration);
+}
