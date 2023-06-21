@@ -1,7 +1,7 @@
 import { getCurrentGunName } from 'gun';
 import { getPosture, POSTURE_CATEGORIES } from 'posture';
 import { getCurrentMirrorName, isMirrorOpen, MIRROR_CATEGORIES } from 'mirror';
-import { gunConfig, pixConfig } from 'gunConfig';
+import { gunConfig } from 'gunConfig';
 
 const FIRE_ICON_POINT = { x: 2032, y: 806 };
 
@@ -38,7 +38,7 @@ export const pressGunControl = {
   start() {
     mapi.holdpress(FIRE_ICON_POINT.x, FIRE_ICON_POINT.y);
 
-    mapi.startsectionaimpar();
+    mapi.startcustomaimpar();
 
     this.run();
   },
@@ -63,18 +63,13 @@ export const pressGunControl = {
       return;
     }
 
-    const parKey = gun + fmtPosture + fmtMirror;
-    const totalTimeKey = gun + '无弹夹';
+    const key = gun + fmtPosture + fmtMirror;
 
-    const par = String(argsMap[parKey]); // [1, 2] -> '1,2'
-    const totalTime = Number(argsMap[totalTimeKey] || [3000]); // [10] => 10
+    const [x, y, delay] = argsMap[key];
 
-    const pixKey = fmtMirror + '像素';
-    const offsetPixel = pixConfig[pixKey];
+    mapi.tip(`${ key } - ${ String([x, y, delay]) }`);
 
-    mapi.tip(`${ parKey }-${ par }`);
-
-    mapi.changesectionaimpar(parKey, totalTime, par, offsetPixel, false);
+    mapi.changecustomaimpar(x, y, delay);
   },
 
   getStatus() {
