@@ -70,12 +70,11 @@ export const pressGunControl = {
     const totalTime = Number(argsMap[totalTimeKey] || [3000]); // [10] => 10
 
     const pixKey = fmtMirror + '像素';
-    const pix = pixConfig[pixKey];
+    const offsetPixel = pixConfig[pixKey];
 
-    // mapi.changesectionaimpar('测试', 3000, list2.toString(), 5, false);
-    const name = parKey;
+    mapi.tip(`${ parKey }-${ par }`);
 
-    mapi.changesectionaimpar(name, totalTime, par, pix, false);
+    mapi.changesectionaimpar(parKey, totalTime, par, offsetPixel, false);
   },
 
   getStatus() {
