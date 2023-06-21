@@ -1,23 +1,11 @@
 /**
- * 在小键盘 num4 上绑定
+ * 在小键盘 鼠标左键 上绑定
  */
-(function test_isMirrorOpen() {
-  import('mirror')
-    .then((mirror) =>{
-      const isMirrorOpen = mirror.isMirrorOpen();
 
-      mapi.tip(`isMirrorOpen: ${isMirrorOpen}`, 1);
+(function test_isMirrorOpen() {
+  import('main')
+    .then((main) =>{
+      main.pressGunControl.start();
     });
 }());
 
-/**
- * 在小键盘 num5 上绑定
- */
-(function test_isMirrorOpen() {
-  import('mirror')
-    .then((mirror) =>{
-      const currentMirrorName = mirror.getCurrentMirrorName();
-
-      mapi.tip(`currentMirrorName: ${currentMirrorName}`, 1);
-    });
-}());
