@@ -1,4 +1,5 @@
-import { isPointExist } from 'utils';
+import { isPointExist, showTip } from 'utils';
+import { gunPressArgs } from 'config';
 
 /** 持枪位置 */
 export const GUN_POSITION = {
@@ -116,3 +117,22 @@ export function getCurrentGunName() {
   return currentGunName;
 }
 
+export function getGunPressArgs(gunName, posture, mirror) {
+  const argsMap = gunPressArgs[gunName];
+
+  if (!argsMap) {
+    return null;
+  }
+
+  const key = gunName + posture + mirror;
+
+  const args = argsMap[key];
+
+  if (!args) {
+    return null;
+  }
+
+  const [x, y, delay] = args;
+
+  return { x, y, delay };
+}
