@@ -16,13 +16,7 @@ const MAPPING = {
   // [MIRROR_CATEGORIES.X6_SIGHT]: '6倍',
 };
 
-export const pressGunControl = {
-  status: {
-    gun: null,      // GUN_CATEGORIES
-    posture: null,  // POSTURE_CATEGORIES
-    mirror: null,   // MIRROR_CATEGORIES
-  },
-
+export const gunPressControl = {
   /** 此方法用在开火键（鼠标左键）上 */
   fire() {
     mapi.holdpress(FIRE_ICON_POINT.x, FIRE_ICON_POINT.y);
