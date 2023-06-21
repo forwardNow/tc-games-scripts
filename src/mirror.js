@@ -22,6 +22,10 @@ export const MIRROR_CATEGORIES = {
   X4_SIGHT: 'X4_SIGHT',
   /** 6倍镜 */
   X6_SIGHT: 'X6_SIGHT',
+  /** 6倍镜 转 3倍镜 */
+  X6_TO_X3_SIGHT: 'X6_TO_X3_SIGHT',
+  /** 6倍镜 转 6倍镜 */
+  X6_TO_X6_SIGHT: 'X6_TO_X6_SIGHT',
 }
 
 /** 图片名称 */
@@ -34,6 +38,7 @@ const IMAGE_NAMES = {
   CURRENT_3X_SIGHT: '3倍压枪',
   CURRENT_4X_SIGHT: '4倍压枪',
   CURRENT_6X_SIGHT: '6倍压枪',
+  CURRENT_6X_3X_SIGHT: '6倍转3倍压枪', // 新增图片
 };
 
 /**
