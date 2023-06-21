@@ -23,25 +23,31 @@ export const pressGunControl = {
     mirror: null,   // MIRROR_CATEGORIES
   },
 
-  run() {
-    const isSightOpen = isMirrorOpen();
+  /** 此方法用在开火键（鼠标左键）上 */
+  fire() {
+    mapi.holdpress(FIRE_ICON_POINT.x, FIRE_ICON_POINT.y);
 
-    if (!isSightOpen) {
+    this.run();
+  },
+
+  run() {
+    if (!isMirrorOpen()) {
       this.pause();
       return;
     }
 
-    this.play();
-    this.setConfig();
-  },
+    const args = this.getConfig();
 
-  /** 此方法用在开火键（鼠标左键）上 */
-  start() {
-    mapi.holdpress(FIRE_ICON_POINT.x, FIRE_ICON_POINT.y);
+    if (!args) {
+      this.pause();
+      return;
+    }
 
     mapi.startcustomaimpar();
 
-    this.run();
+    this.play();
+
+    mapi.changecustomaimpar(...args);
   },
 
   play() {
@@ -52,7 +58,10 @@ export const pressGunControl = {
     mapi.customaimpar(true);
   },
 
-  setConfig() {
+  /**
+   * @return {[number, number, string]}
+   */
+  getConfig() {
     const { gun, posture, mirror } = this.getStatus();
     const fmtPosture = MAPPING[posture];
     const fmtMirror = MAPPING[mirror] || '';
@@ -61,7 +70,7 @@ export const pressGunControl = {
 
     if (!argsMap) {
       showTip(`${gun}: 没有对应的配置`, 1);
-      return;
+      return null;
     }
 
     const key = gun + fmtPosture + fmtMirror;
@@ -70,7 +79,7 @@ export const pressGunControl = {
 
     showTip(`${ key } - ${ String([x, y, delay]) }`);
 
-    mapi.changecustomaimpar(x, y, delay);
+    return [x, y, delay];
   },
 
   getStatus() {
