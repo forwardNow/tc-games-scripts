@@ -1,6 +1,6 @@
-import { getCurrentGunName, getGunPressArgs } from 'gun';
+import { getCurrentGunName, getGunPressArgs, GUN_CATEGORIES } from 'gun';
 import { getPosture, POSTURE_CATEGORIES } from 'posture';
-import { getCurrentMirrorName, isMirrorOpen, MIRROR_CATEGORIES } from 'mirror';
+import { getCurrentMirrorName, isMirrorOpen, isX6Sight, MIRROR_CATEGORIES } from 'mirror';
 import { showTip } from 'utils';
 
 const FIRE_ICON_POINT = { x: 2032, y: 806 };
@@ -12,12 +12,21 @@ const MAPPING = {
   [MIRROR_CATEGORIES.X2_SIGHT]: '2倍',
   [MIRROR_CATEGORIES.X3_SIGHT]: '3倍',
   [MIRROR_CATEGORIES.X4_SIGHT]: '4倍',
-  [MIRROR_CATEGORIES.X6_SIGHT]: '6倍3',
+  [MIRROR_CATEGORIES.X6_SIGHT]: '6倍6',
   [MIRROR_CATEGORIES.X6_TO_X3_SIGHT]: '6倍3',
   [MIRROR_CATEGORIES.X6_TO_X6_SIGHT]: '6倍6',
 };
 
+export const GUN_X6_SIGHTS = {
+  [GUN_CATEGORIES.M4]: MIRROR_CATEGORIES.X6_TO_X3_SIGHT,
+  [GUN_CATEGORIES.SCARL]: MIRROR_CATEGORIES.X6_TO_X3_SIGHT,
+}
+
 export const gunPressControl = {
+  gun: '',
+  posture: '',
+  mirror: '',
+
   /** 此方法用在开火键（鼠标左键）上 */
   fire() {
     mapi.holdpress(FIRE_ICON_POINT.x, FIRE_ICON_POINT.y);
@@ -27,7 +36,40 @@ export const gunPressControl = {
 
   /** 此方法用在鼠标 滚轮滚上，调整 6 倍镜，并记录每个枪支的 6 倍镜倍率 */
   adjustX6Sight() {
+    // 是否 开镜
+    if (!isMirrorOpen()) {
+      return;
+    }
 
+    // 是否 6 倍镜
+    if (isX6Sight()) {
+      return;
+    }
+
+    // 当前枪
+    const { gun, mirror } = this;
+
+    // 当前倍率
+    let currSight = 6;
+
+    if (mirror === MIRROR_CATEGORIES.X6_TO_X3_SIGHT) {
+      currSight = 3;
+    }
+
+    let currMirror = null;
+
+    // 如果是 6 倍率，则调整为 3 倍率
+    if (currSight === 6) {
+      // TODO 6倍 调整为 3 倍
+      currMirror = MIRROR_CATEGORIES.X6_TO_X3_SIGHT;
+    } else {
+      // 如果是 3 倍率，则调整为 6 倍率
+      // TODO 3倍 调整为 6 倍
+      currMirror = MIRROR_CATEGORIES.X6_TO_X6_SIGHT;
+    }
+
+    // 存起来
+    GUN_X6_SIGHTS[gun] =currMirror
   },
 
   run() {
@@ -83,7 +125,16 @@ export const gunPressControl = {
   getStatus() {
     const gun = getCurrentGunName();
     const posture = getPosture();
-    const mirror = getCurrentMirrorName();
+    let mirror = getCurrentMirrorName();
+
+    // 6倍镜，从 MIRROR_CATEGORIES 取调整过的倍率
+    if (mirror === MIRROR_CATEGORIES.X6_SIGHT) {
+      mirror = GUN_X6_SIGHTS[gun] || MIRROR_CATEGORIES.X6_SIGHT;
+    }
+
+    this.gun = gun;
+    this.posture = posture;
+    this.mirror = mirror;
 
     const fmtPosture = MAPPING[posture];
     const fmtMirror = MAPPING[mirror] || '';
