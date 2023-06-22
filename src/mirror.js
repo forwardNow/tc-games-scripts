@@ -62,45 +62,57 @@ const CURRENT_MIRROR_IMAGE_AREA = {
   ROW_INDEX: 2,
 };
 
+const MIRROR_IMAGE_ARGS = [
+  CURRENT_MIRROR_IMAGE_AREA.SIMILARITY,
+  CURRENT_MIRROR_IMAGE_AREA.TOTAL_COLUMNS,
+  CURRENT_MIRROR_IMAGE_AREA.TOTAL_ROWS,
+  CURRENT_MIRROR_IMAGE_AREA.COLUMN_INDEX,
+  CURRENT_MIRROR_IMAGE_AREA.ROW_INDEX,
+];
+
+
 /**
  * 获取当前准镜名称
  *
  * @return { string }
  */
 export function getCurrentMirrorName() {
-  const {
-    SIMILARITY,
-    TOTAL_COLUMNS,
-    TOTAL_ROWS,
-    COLUMN_INDEX,
-    ROW_INDEX,
-  } = CURRENT_MIRROR_IMAGE_AREA;
-
-  const args = [TOTAL_COLUMNS, TOTAL_ROWS, COLUMN_INDEX, ROW_INDEX];
-
-  const curr6XPoint = mapi.findimage(IMAGE_NAMES.CURRENT_6X_SIGHT, SIMILARITY, ...args);
-
-  if (isPointExist(curr6XPoint)) {
+  if (isX6Sight()) {
     return MIRROR_CATEGORIES.X6_SIGHT;
   }
 
-  const curr4XPoint = mapi.findimage(IMAGE_NAMES.CURRENT_4X_SIGHT, SIMILARITY, ...args);
-
-  if (isPointExist(curr4XPoint)) {
+  if (isX4Sight()) {
     return MIRROR_CATEGORIES.X4_SIGHT;
   }
 
-  const curr3XPoint = mapi.findimage(IMAGE_NAMES.CURRENT_3X_SIGHT, SIMILARITY - 0.08, ...args);
-
-  if (isPointExist(curr3XPoint)) {
+  if (isX3Sight()) {
     return MIRROR_CATEGORIES.X3_SIGHT;
   }
 
-  const curr2XPoint = mapi.findimage(IMAGE_NAMES.CURRENT_2X_SIGHT, SIMILARITY, ...args);
-
-  if (isPointExist(curr2XPoint)) {
+  if (isX2Sight()) {
     return MIRROR_CATEGORIES.X2_SIGHT;
   }
 
   return '';
+}
+
+export function isX6Sight() {
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_6X_SIGHT, ...MIRROR_IMAGE_ARGS);
+  return isPointExist(point);
+}
+
+export function isX4Sight() {
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_4X_SIGHT, ...MIRROR_IMAGE_ARGS);
+  return isPointExist(point);
+}
+
+export function isX3Sight() {
+  const similarity = CURRENT_MIRROR_IMAGE_AREA - 0.08;
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_3X_SIGHT, similarity, ...MIRROR_IMAGE_ARGS.slice(1));
+  return isPointExist(point);
+}
+
+export function isX2Sight() {
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_2X_SIGHT, ...MIRROR_IMAGE_ARGS);
+  return isPointExist(point);
 }
