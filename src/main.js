@@ -20,13 +20,12 @@ const MAPPING = {
   [MIRROR_CATEGORIES.X3_SIGHT]: '3倍',
   [MIRROR_CATEGORIES.X4_SIGHT]: '4倍',
   [MIRROR_CATEGORIES.X6_SIGHT]: '6倍6',
-  [MIRROR_CATEGORIES.X6_TO_X3_SIGHT]: '6倍3',
-  [MIRROR_CATEGORIES.X6_TO_X6_SIGHT]: '6倍6',
+  [MIRROR_CATEGORIES.X6_X3_SIGHT]: '6倍3',
 };
 
 export const GUN_X6_SIGHTS = {
-  // [GUN_CATEGORIES.M4]: MIRROR_CATEGORIES.X6_TO_X3_SIGHT,
-  // [GUN_CATEGORIES.SCARL]: MIRROR_CATEGORIES.X6_TO_X3_SIGHT,
+  // [GUN_CATEGORIES.M4]: MIRROR_CATEGORIES.X6_X3_SIGHT,
+  // [GUN_CATEGORIES.SCARL]: MIRROR_CATEGORIES.X6_X3_SIGHT,
 }
 
 export const gunPressControl = {
@@ -43,12 +42,10 @@ export const gunPressControl = {
 
   /** 此方法用在鼠标 滚轮滚上，调整 6 倍镜，并记录每个枪支的 6 倍镜倍率 */
   adjustX6Sight() {
-    // 是否 开镜
     if (!isMirrorOpen()) {
       return;
     }
 
-    // 是否 6 倍镜
     if (isX6Sight()) {
       return;
     }
@@ -58,13 +55,12 @@ export const gunPressControl = {
 
     let adjustedMirror = null;
 
-    if (mirror === MIRROR_CATEGORIES.X6_TO_X3_SIGHT) { // 如果是 3 倍率，则调整为 6 倍率
+    if (mirror === MIRROR_CATEGORIES.X6_X3_SIGHT) {
       adjustedMirror = adjustX6ToX3();
-    } else { // 如果是 6 倍率，则调整为 3 倍率
+    } else {
       adjustedMirror = adjustX3ToX6();
     }
 
-    // 存起来
     GUN_X6_SIGHTS[gun] = adjustedMirror;
   },
 
@@ -121,12 +117,7 @@ export const gunPressControl = {
   getStatus() {
     const gun = getCurrentGunName();
     const posture = getPosture();
-    let mirror = getCurrentMirrorName();
-
-    // 6倍镜，从 MIRROR_CATEGORIES 取调整过的倍率
-    if (mirror === MIRROR_CATEGORIES.X6_SIGHT) {
-      mirror = GUN_X6_SIGHTS[gun] || MIRROR_CATEGORIES.X6_SIGHT;
-    }
+    const mirror = this.getMirror(gun);
 
     this.gun = gun;
     this.posture = posture;
@@ -135,7 +126,18 @@ export const gunPressControl = {
     const fmtPosture = MAPPING[posture];
     const fmtMirror = MAPPING[mirror] || '';
 
-    return {gun, posture: fmtPosture, mirror: fmtMirror};
+    return { gun, posture: fmtPosture, mirror: fmtMirror };
+  },
+
+  getMirror(gun) {
+    let mirror = getCurrentMirrorName();
+
+    // 如果是 6 倍镜，则尝试取调整过 6 倍镜倍率
+    if (mirror === MIRROR_CATEGORIES.X6_SIGHT) {
+      mirror = GUN_X6_SIGHTS[gun] || MIRROR_CATEGORIES.X6_SIGHT;
+    }
+
+    return mirror;
   },
 
 };
