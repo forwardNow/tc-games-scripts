@@ -6,6 +6,6 @@
     .then((module) =>{
       const postureCategory = module.getPosture();
 
-      mapi.tip(postureCategory, 1);
+      mapi.tip(`postureCategory: ${postureCategory}`, 1);
     });
 }());

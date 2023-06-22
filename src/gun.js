@@ -1,4 +1,5 @@
-import { isPointNotEmpty } from 'utils';
+import { isPointExist, showTip } from 'utils';
+import { gunPressArgs } from 'config';
 
 /** 持枪位置 */
 export const GUN_POSITION = {
@@ -69,13 +70,13 @@ export const GUN_CATEGORIES = {
 export function getGunPosition() {
   const leftPoint = mapi.findcolor(...GUN_POSITION_COLOR_POINT[GUN_POSITION.LEFT]);
 
-  if (isPointNotEmpty(leftPoint)) {
+  if (isPointExist(leftPoint)) {
     return GUN_POSITION.LEFT;
   }
 
   const rightPoint = mapi.findcolor(...GUN_POSITION_COLOR_POINT[GUN_POSITION.RIGHT]);
 
-  if (isPointNotEmpty(rightPoint)) {
+  if (isPointExist(rightPoint)) {
     return GUN_POSITION.RIGHT;
   }
 
@@ -104,7 +105,7 @@ export function getCurrentGunName() {
   Object.keys(GUN_CATEGORIES).some((gunName) => {
     const point = mapi.findimage(gunName, SIMILARITY, TOTAL_COLUMNS, TOTAL_ROWS, COLUMN_INDEX, ROW_INDEX);
 
-    const isExist = isPointNotEmpty(point);
+    const isExist = isPointExist(point);
 
     if (isExist) {
       currentGunName = gunName;
@@ -114,4 +115,24 @@ export function getCurrentGunName() {
   })
 
   return currentGunName;
+}
+
+export function getGunPressArgs(gunName, posture, mirror) {
+  const argsMap = gunPressArgs[gunName];
+
+  if (!argsMap) {
+    return null;
+  }
+
+  const key = gunName + posture + mirror;
+
+  const args = argsMap[key];
+
+  if (!args) {
+    return null;
+  }
+
+  const [x, y, delay] = args;
+
+  return { x, y, delay };
 }
