@@ -95,24 +95,56 @@ export function getCurrentMirrorName() {
 
   return '';
 }
-
+/**
+ * 当前是否为 6 倍镜
+ * @return {boolean}
+ */
 export function isX6Sight() {
   const point = mapi.findimage(IMAGE_NAMES.CURRENT_6X_SIGHT, ...MIRROR_IMAGE_ARGS);
   return isPointExist(point);
 }
 
+/**
+ * 当前是否为 4 倍镜
+ * @return {boolean}
+ */
 export function isX4Sight() {
   const point = mapi.findimage(IMAGE_NAMES.CURRENT_4X_SIGHT, ...MIRROR_IMAGE_ARGS);
   return isPointExist(point);
 }
 
+/**
+ * 当前是否为 3 倍镜
+ * @return {boolean}
+ */
 export function isX3Sight() {
   const similarity = CURRENT_MIRROR_IMAGE_AREA - 0.08;
   const point = mapi.findimage(IMAGE_NAMES.CURRENT_3X_SIGHT, similarity, ...MIRROR_IMAGE_ARGS.slice(1));
   return isPointExist(point);
 }
 
+/**
+ * 当前是否为 2 倍镜
+ * @return {boolean}
+ */
 export function isX2Sight() {
   const point = mapi.findimage(IMAGE_NAMES.CURRENT_2X_SIGHT, ...MIRROR_IMAGE_ARGS);
   return isPointExist(point);
+}
+
+
+/**
+ * 调整六倍镜，6倍率 -> 3倍率
+ * @return {string} MIRROR_CATEGORIES.X6_TO_X3_SIGHT
+ */
+export function adjustX6ToX3() {
+  return MIRROR_CATEGORIES.X6_TO_X3_SIGHT;
+}
+
+/**
+ * 调整六倍镜，3倍率 -> 6倍率
+ * @return {string} MIRROR_CATEGORIES.X6_TO_X6_SIGHT
+ */
+export function adjustX3ToX6() {
+  return MIRROR_CATEGORIES.X6_TO_X6_SIGHT;
 }
