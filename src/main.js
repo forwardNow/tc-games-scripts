@@ -1,9 +1,16 @@
 import { getCurrentGunName, getGunPressArgs, GUN_CATEGORIES } from 'gun';
 import { getPosture, POSTURE_CATEGORIES } from 'posture';
-import { getCurrentMirrorName, isMirrorOpen, isX6Sight, MIRROR_CATEGORIES } from 'mirror';
+import {
+  adjustX3ToX6,
+  adjustX6ToX3,
+  getCurrentMirrorName,
+  isMirrorOpen,
+  isX6Sight,
+  MIRROR_CATEGORIES
+} from 'mirror';
 import { showTip } from 'utils';
 
-const FIRE_ICON_POINT = { x: 2032, y: 806 };
+const FIRE_ICON_POINT = {x: 2032, y: 806};
 
 const MAPPING = {
   [POSTURE_CATEGORIES.STAND]: '站',
@@ -18,8 +25,8 @@ const MAPPING = {
 };
 
 export const GUN_X6_SIGHTS = {
-  [GUN_CATEGORIES.M4]: MIRROR_CATEGORIES.X6_TO_X3_SIGHT,
-  [GUN_CATEGORIES.SCARL]: MIRROR_CATEGORIES.X6_TO_X3_SIGHT,
+  // [GUN_CATEGORIES.M4]: MIRROR_CATEGORIES.X6_TO_X3_SIGHT,
+  // [GUN_CATEGORIES.SCARL]: MIRROR_CATEGORIES.X6_TO_X3_SIGHT,
 }
 
 export const gunPressControl = {
@@ -46,30 +53,19 @@ export const gunPressControl = {
       return;
     }
 
-    // 当前枪
-    const { gun, mirror } = this;
+    // 当前枪、倍率
+    const { gun, mirror} = this;
 
-    // 当前倍率
-    let currSight = 6;
+    let adjustedMirror = null;
 
-    if (mirror === MIRROR_CATEGORIES.X6_TO_X3_SIGHT) {
-      currSight = 3;
-    }
-
-    let currMirror = null;
-
-    // 如果是 6 倍率，则调整为 3 倍率
-    if (currSight === 6) {
-      // TODO 6倍 调整为 3 倍
-      currMirror = MIRROR_CATEGORIES.X6_TO_X3_SIGHT;
-    } else {
-      // 如果是 3 倍率，则调整为 6 倍率
-      // TODO 3倍 调整为 6 倍
-      currMirror = MIRROR_CATEGORIES.X6_TO_X6_SIGHT;
+    if (mirror === MIRROR_CATEGORIES.X6_TO_X3_SIGHT) { // 如果是 3 倍率，则调整为 6 倍率
+      adjustedMirror = adjustX6ToX3();
+    } else { // 如果是 6 倍率，则调整为 3 倍率
+      adjustedMirror = adjustX3ToX6();
     }
 
     // 存起来
-    GUN_X6_SIGHTS[gun] = currMirror;
+    GUN_X6_SIGHTS[gun] = adjustedMirror;
   },
 
   run() {
@@ -104,7 +100,7 @@ export const gunPressControl = {
    * @return {[number, number, string]}
    */
   getArgsOfCustomAimPar() {
-    const { gun, posture, mirror } = this.getStatus();
+    const {gun, posture, mirror} = this.getStatus();
 
     const args = getGunPressArgs(gun, posture, mirror);
 
@@ -117,7 +113,7 @@ export const gunPressControl = {
 
     showTip(`${ statusStr }`)
 
-    const { x, y, delay } = args;
+    const {x, y, delay} = args;
 
     return [x, y, delay];
   },
@@ -139,7 +135,7 @@ export const gunPressControl = {
     const fmtPosture = MAPPING[posture];
     const fmtMirror = MAPPING[mirror] || '';
 
-    return { gun, posture: fmtPosture, mirror: fmtMirror };
+    return {gun, posture: fmtPosture, mirror: fmtMirror};
   },
 
 };
