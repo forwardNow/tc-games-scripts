@@ -136,6 +136,7 @@ export function isX2Sight() {
  * @return {string} MIRROR_CATEGORIES.X6_X3_SIGHT
  */
 export function adjustX6ToX3() {
+  // TODO 调整六倍镜，6倍率 -> 3倍率
   return MIRROR_CATEGORIES.X6_X3_SIGHT;
 }
 
@@ -144,5 +145,6 @@ export function adjustX6ToX3() {
  * @return {string} MIRROR_CATEGORIES.X6_TO_X6_SIGHT
  */
 export function adjustX3ToX6() {
+  // TODO 调整六倍镜，3倍率 -> 6倍率
   return MIRROR_CATEGORIES.X6_SIGHT;
 }
