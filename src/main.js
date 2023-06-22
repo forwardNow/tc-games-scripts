@@ -69,7 +69,7 @@ export const gunPressControl = {
     }
 
     // 存起来
-    GUN_X6_SIGHTS[gun] =currMirror
+    GUN_X6_SIGHTS[gun] = currMirror;
   },
 
   run() {
