@@ -20,12 +20,10 @@ export const MIRROR_CATEGORIES = {
   X3_SIGHT: 'X3_SIGHT',
   /** 4倍镜 */
   X4_SIGHT: 'X4_SIGHT',
-  /** 6倍镜 */
+  /** 6倍镜，未调整过的 */
   X6_SIGHT: 'X6_SIGHT',
-  /** 6倍镜 转 3倍镜 */
-  X6_TO_X3_SIGHT: 'X6_TO_X3_SIGHT',
-  /** 6倍镜 转 6倍镜 */
-  X6_TO_X6_SIGHT: 'X6_TO_X6_SIGHT',
+  /** 6倍镜，3倍率 */
+  X6_X3_SIGHT: 'X6_X3_SIGHT',
 }
 
 /** 图片名称 */
@@ -135,10 +133,10 @@ export function isX2Sight() {
 
 /**
  * 调整六倍镜，6倍率 -> 3倍率
- * @return {string} MIRROR_CATEGORIES.X6_TO_X3_SIGHT
+ * @return {string} MIRROR_CATEGORIES.X6_X3_SIGHT
  */
 export function adjustX6ToX3() {
-  return MIRROR_CATEGORIES.X6_TO_X3_SIGHT;
+  return MIRROR_CATEGORIES.X6_X3_SIGHT;
 }
 
 /**
@@ -146,5 +144,5 @@ export function adjustX6ToX3() {
  * @return {string} MIRROR_CATEGORIES.X6_TO_X6_SIGHT
  */
 export function adjustX3ToX6() {
-  return MIRROR_CATEGORIES.X6_TO_X6_SIGHT;
+  return MIRROR_CATEGORIES.X6_SIGHT;
 }
