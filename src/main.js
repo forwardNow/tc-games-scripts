@@ -4,8 +4,7 @@ import {
   adjustX3ToX6,
   adjustX6ToX3,
   getCurrentMirrorName,
-  isMirrorOpen,
-  isX6Sight,
+  isMirrorOpen, isX6Sight,
   MIRROR_CATEGORIES
 } from 'mirror';
 import { showTip } from 'utils';
@@ -30,9 +29,9 @@ export const GUN_X6_SIGHTS = {
 }
 
 export const gunPressControl = {
-  gun: '',
-  posture: '',
-  mirror: '',
+  currGun: '',
+  currPosture: '',
+  currMirror: '',
 
   /** 此方法用在开火键（鼠标左键）上 */
   fire() {
@@ -42,7 +41,7 @@ export const gunPressControl = {
   },
 
   /** 此方法用在鼠标 滚轮滚上，调整 6 倍镜，并记录每个枪支的 6 倍镜倍率 */
-  adjustX6Sight() {
+  toggleX6Sight() {
     if (!isMirrorOpen()) {
       return;
     }
@@ -51,18 +50,17 @@ export const gunPressControl = {
       return;
     }
 
-    // 当前枪、倍率
-    const { gun, mirror} = this;
+    const {currMirror, currGun} = this;
 
     let adjustedMirror = null;
 
-    if (mirror === MIRROR_CATEGORIES.X6_X3_SIGHT) {
+    if (currMirror === MIRROR_CATEGORIES.X6_X3_SIGHT) {
       adjustedMirror = adjustX6ToX3();
     } else {
       adjustedMirror = adjustX3ToX6();
     }
 
-    GUN_X6_SIGHTS[gun] = adjustedMirror;
+    GUN_X6_SIGHTS[currGun] = adjustedMirror;
   },
 
   run() {
@@ -78,11 +76,13 @@ export const gunPressControl = {
       return;
     }
 
-    mapi.startcustomaimpar();
-
+    this.start();
     this.play();
+    this.changePressArgs(args);
+  },
 
-    mapi.changecustomaimpar(...args);
+  start() {
+    mapi.startcustomaimpar();
   },
 
   play() {
@@ -91,6 +91,10 @@ export const gunPressControl = {
 
   pause() {
     mapi.customaimpar(true);
+  },
+
+  changePressArgs(x, y, delay) {
+    mapi.changecustomaimpar(x, y, delay);
   },
 
   /**
@@ -120,9 +124,9 @@ export const gunPressControl = {
     const posture = getPosture();
     const mirror = this.getMirror(gun);
 
-    this.gun = gun;
-    this.posture = posture;
-    this.mirror = mirror;
+    this.currGun = gun;
+    this.currPosture = posture;
+    this.currMirror = mirror;
 
     const fmtPosture = MAPPING[posture];
     const fmtMirror = MAPPING[mirror] || '';
