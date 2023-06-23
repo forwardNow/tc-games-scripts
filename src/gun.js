@@ -1,8 +1,7 @@
-import { isPointExist, showTip } from 'utils';
-import { gunPressArgs } from 'config';
+import Utils from 'utils';
 
 /** 持枪位置 */
-export const GUN_POSITION = {
+const GUN_POSITION = {
   /** 左边枪 */
   LEFT: 'LEFT',
   /** 右边枪 */
@@ -35,7 +34,7 @@ const GUN_POSITION_COLOR_POINT = {
 };
 
 /** 枪的类型 */
-export const GUN_CATEGORIES = {
+const CATEGORIES = {
   M4: 'M4',
   SCARL: 'SCARL',
   DP28: 'DP28',
@@ -70,13 +69,13 @@ export const GUN_CATEGORIES = {
 export function getGunPosition() {
   const leftPoint = mapi.findcolor(...GUN_POSITION_COLOR_POINT[GUN_POSITION.LEFT]);
 
-  if (isPointExist(leftPoint)) {
+  if (Utils.isPointExist(leftPoint)) {
     return GUN_POSITION.LEFT;
   }
 
   const rightPoint = mapi.findcolor(...GUN_POSITION_COLOR_POINT[GUN_POSITION.RIGHT]);
 
-  if (isPointExist(rightPoint)) {
+  if (Utils.isPointExist(rightPoint)) {
     return GUN_POSITION.RIGHT;
   }
 
@@ -89,7 +88,7 @@ export function getGunPosition() {
  *
  * @return {string | null}
  */
-export function getCurrentGunName() {
+function getCurrentGun() {
   const gunPosition = getGunPosition();
 
   const {
@@ -102,10 +101,10 @@ export function getCurrentGunName() {
 
   let currentGunName = null;
 
-  Object.keys(GUN_CATEGORIES).some((gunName) => {
+  Object.keys(CATEGORIES).some((gunName) => {
     const point = mapi.findimage(gunName, SIMILARITY, TOTAL_COLUMNS, TOTAL_ROWS, COLUMN_INDEX, ROW_INDEX);
 
-    const isExist = isPointExist(point);
+    const isExist = Utils.isPointExist(point);
 
     if (isExist) {
       currentGunName = gunName;
@@ -115,4 +114,9 @@ export function getCurrentGunName() {
   })
 
   return currentGunName;
+}
+
+export default {
+  CATEGORIES,
+  getCurrentGun,
 }

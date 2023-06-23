@@ -1,32 +1,26 @@
-import { getCurrentGunName, GUN_CATEGORIES } from 'gun';
-import { getPosture, POSTURE_CATEGORIES } from 'posture';
-import {
-  adjustX3ToX6,
-  adjustX6ToX3,
-  getCurrentMirrorName,
-  isMirrorOpen, isX6Sight,
-  MIRROR_CATEGORIES
-} from 'mirror';
-import { showTip } from 'utils';
-import { getGunPressArgs } from 'config';
+import Gun from 'gun';
+import Posture from 'posture';
+import Mirror from 'mirror';
+import Utils from 'utils';
+import Config from 'config';
 
 const FIRE_ICON_POINT = { x: 2032, y: 806 };
 
 const MAPPING = {
-  [POSTURE_CATEGORIES.STAND]: '站',
-  [POSTURE_CATEGORIES.SQUAT]: '蹲',
-  [POSTURE_CATEGORIES.PROSTRATE]: '趴',
+  [Posture.CATEGORIES.STAND]: '站',
+  [Posture.CATEGORIES.SQUAT]: '蹲',
+  [Posture.CATEGORIES.PROSTRATE]: '趴',
 
-  [MIRROR_CATEGORIES.X2_SIGHT]: '2倍',
-  [MIRROR_CATEGORIES.X3_SIGHT]: '3倍',
-  [MIRROR_CATEGORIES.X4_SIGHT]: '4倍',
-  [MIRROR_CATEGORIES.X6_SIGHT]: '6倍6',
-  [MIRROR_CATEGORIES.X6_X3_SIGHT]: '6倍3',
+  [Mirror.CATEGORIES.X2_SIGHT]: '2倍',
+  [Mirror.CATEGORIES.X3_SIGHT]: '3倍',
+  [Mirror.CATEGORIES.X4_SIGHT]: '4倍',
+  [Mirror.CATEGORIES.X6_SIGHT]: '6倍6',
+  [Mirror.CATEGORIES.X6_X3_SIGHT]: '6倍3',
 };
 
 export const GUN_X6_SIGHTS = {
-  // [GUN_CATEGORIES.M4]: MIRROR_CATEGORIES.X6_X3_SIGHT,
-  // [GUN_CATEGORIES.SCARL]: MIRROR_CATEGORIES.X6_X3_SIGHT,
+  // [Gun.CATEGORIES.M4]: Mirror.CATEGORIES.X6_X3_SIGHT,
+  // [Gun.CATEGORIES.SCARL]: Mirror.CATEGORIES.X6_X3_SIGHT,
 }
 
 export const gunPressControl = {
@@ -43,29 +37,29 @@ export const gunPressControl = {
 
   /** 此方法用在鼠标 滚轮滚上，调整 6 倍镜，并记录每个枪支的 6 倍镜倍率 */
   toggleX6Sight() {
-    if (!isMirrorOpen()) {
+    if (!Mirror.isOpen()) {
       return;
     }
 
-    if (isX6Sight()) {
+    if (Mirror.isX6Sight()) {
       return;
     }
 
-    const {currMirror, currGun} = this;
+    const { currMirror, currGun} = this;
 
     let adjustedMirror = null;
 
-    if (currMirror === MIRROR_CATEGORIES.X6_X3_SIGHT) {
-      adjustedMirror = adjustX6ToX3();
+    if (currMirror === Mirror.CATEGORIES.X6_X3_SIGHT) {
+      adjustedMirror = Mirror.adjustX6ToX3();
     } else {
-      adjustedMirror = adjustX3ToX6();
+      adjustedMirror = Mirror.adjustX3ToX6();
     }
 
     GUN_X6_SIGHTS[currGun] = adjustedMirror;
   },
 
   run() {
-    if (!isMirrorOpen()) {
+    if (!Mirror.isOpen()) {
       this.pause();
       return;
     }
@@ -104,16 +98,16 @@ export const gunPressControl = {
   getArgsOfCustomAimPar() {
     const { gun, posture, mirror } = this.getStatus();
 
-    const args = getGunPressArgs(gun, posture, mirror);
+    const args = Config.getGunPressArgs(gun, posture, mirror);
 
     const statusStr = `${ gun }${ posture }${ mirror }`;
 
     if (!args) {
-      showTip(`${ statusStr } 没有对应的配置！`);
+      Utils.showTip(`${ statusStr } 没有对应的配置！`);
       return null;
     }
 
-    showTip(`${ statusStr }`)
+    Utils.showTip(`${ statusStr }`)
 
     const {x, y, delay} = args;
 
@@ -121,8 +115,8 @@ export const gunPressControl = {
   },
 
   getStatus() {
-    const gun = getCurrentGunName();
-    const posture = getPosture();
+    const gun = Gun.getCurrentGun();
+    const posture = Posture.getCurrentPosture();
     const mirror = this.getMirror(gun);
 
     this.currGun = gun;
@@ -136,11 +130,11 @@ export const gunPressControl = {
   },
 
   getMirror(gun) {
-    let mirror = getCurrentMirrorName();
+    let mirror = Mirror.getCurrentMirror();
 
     // 如果是 6 倍镜，则尝试取调整过 6 倍镜倍率
-    if (mirror === MIRROR_CATEGORIES.X6_SIGHT) {
-      mirror = GUN_X6_SIGHTS[gun] || MIRROR_CATEGORIES.X6_SIGHT;
+    if (mirror === Mirror.CATEGORIES.X6_SIGHT) {
+      mirror = GUN_X6_SIGHTS[gun] || Mirror.CATEGORIES.X6_SIGHT;
     }
 
     return mirror;

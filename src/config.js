@@ -1,4 +1,4 @@
-export function getGunPressArgs(gunName, posture, mirror) {
+ function getGunPressArgs(gunName, posture, mirror) {
   const argsMap = gunPressArgs[gunName];
 
   if (!argsMap) {
@@ -22,7 +22,7 @@ export function getGunPressArgs(gunName, posture, mirror) {
  *
  * changecustomaimpar(x: number, y: number, delay: number)
  */
-export const gunPressArgs = {
+ const gunPressArgs = {
   'M4': {
     'M4蹲6倍6': [0, 1, 5],
     'M4蹲6倍3': [0, 1, 10],
@@ -425,3 +425,7 @@ export const gunPressArgs = {
   },
 }
 
+export default {
+  getGunPressArgs,
+  gunPressArgs,
+}

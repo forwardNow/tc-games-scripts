@@ -1,15 +1,7 @@
-import { isPointExist } from 'utils';
-
-/** 准镜状态 */
-export const MIRROR_STATUS = {
-  /** 开镜 */
-  OPEN: 'OPEN',
-  /** 未开镜 */
-  CLOSE: 'CLOSE',
-}
+import Utils from 'utils';
 
 /** 准镜类型 */
-export const MIRROR_CATEGORIES = {
+const CATEGORIES = {
   /** 红点 */
   RED_DOT_SIGHT: 'RED_DOT_SIGHT',
   /** 全息 */
@@ -44,10 +36,10 @@ const IMAGE_NAMES = {
  *
  * @return {boolean}
  */
-export function isMirrorOpen() {
+function isOpen() {
   // 第一（三）人称图标 如果存在 则说明未开镜
   const point = mapi.findimage(IMAGE_NAMES.FIRST_PERSON_ICON, 0.75, 4, 4, 1, 4);
-  const isExist = isPointExist(point)
+  const isExist = Utils.isPointExist(point)
 
   return !isExist;
 }
@@ -74,21 +66,21 @@ const MIRROR_IMAGE_ARGS = [
  *
  * @return { string }
  */
-export function getCurrentMirrorName() {
+function getCurrentMirror() {
   if (isX6Sight()) {
-    return MIRROR_CATEGORIES.X6_SIGHT;
+    return CATEGORIES.X6_SIGHT;
   }
 
   if (isX4Sight()) {
-    return MIRROR_CATEGORIES.X4_SIGHT;
+    return CATEGORIES.X4_SIGHT;
   }
 
   if (isX3Sight()) {
-    return MIRROR_CATEGORIES.X3_SIGHT;
+    return CATEGORIES.X3_SIGHT;
   }
 
   if (isX2Sight()) {
-    return MIRROR_CATEGORIES.X2_SIGHT;
+    return CATEGORIES.X2_SIGHT;
   }
 
   return '';
@@ -97,53 +89,65 @@ export function getCurrentMirrorName() {
  * 当前是否为 6 倍镜
  * @return {boolean}
  */
-export function isX6Sight() {
+function isX6Sight() {
   const point = mapi.findimage(IMAGE_NAMES.CURRENT_6X_SIGHT, ...MIRROR_IMAGE_ARGS);
-  return isPointExist(point);
+  return Utils.isPointExist(point);
 }
 
 /**
  * 当前是否为 4 倍镜
  * @return {boolean}
  */
-export function isX4Sight() {
+function isX4Sight() {
   const point = mapi.findimage(IMAGE_NAMES.CURRENT_4X_SIGHT, ...MIRROR_IMAGE_ARGS);
-  return isPointExist(point);
+  return Utils.isPointExist(point);
 }
 
 /**
  * 当前是否为 3 倍镜
  * @return {boolean}
  */
-export function isX3Sight() {
+function isX3Sight() {
   const similarity = CURRENT_MIRROR_IMAGE_AREA - 0.08;
   const point = mapi.findimage(IMAGE_NAMES.CURRENT_3X_SIGHT, similarity, ...MIRROR_IMAGE_ARGS.slice(1));
-  return isPointExist(point);
+  return Utils.isPointExist(point);
 }
 
 /**
  * 当前是否为 2 倍镜
  * @return {boolean}
  */
-export function isX2Sight() {
+function isX2Sight() {
   const point = mapi.findimage(IMAGE_NAMES.CURRENT_2X_SIGHT, ...MIRROR_IMAGE_ARGS);
-  return isPointExist(point);
+  return Utils.isPointExist(point);
 }
 
 /**
  * 调整六倍镜，6倍率 -> 3倍率
- * @return {string} MIRROR_CATEGORIES.X6_X3_SIGHT
+ * @return {string} CATEGORIES.X6_X3_SIGHT
  */
-export function adjustX6ToX3() {
+function adjustX6ToX3() {
   // TODO 调整六倍镜，6倍率 -> 3倍率
-  return MIRROR_CATEGORIES.X6_X3_SIGHT;
+  return CATEGORIES.X6_X3_SIGHT;
 }
 
 /**
  * 调整六倍镜，3倍率 -> 6倍率
- * @return {string} MIRROR_CATEGORIES.X6_TO_X6_SIGHT
+ * @return {string} CATEGORIES.X6_TO_X6_SIGHT
  */
-export function adjustX3ToX6() {
+function adjustX3ToX6() {
   // TODO 调整六倍镜，3倍率 -> 6倍率
-  return MIRROR_CATEGORIES.X6_SIGHT;
+  return CATEGORIES.X6_SIGHT;
+}
+
+export default {
+  CATEGORIES,
+  isOpen,
+  getCurrentMirror,
+  isX6Sight,
+  isX4Sight,
+  isX3Sight,
+  isX2Sight,
+  adjustX6ToX3,
+  adjustX3ToX6,
 }

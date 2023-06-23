@@ -4,7 +4,7 @@
  * @param point { mapi.point }
  * @returns {boolean}
  */
-export function isPointExist(point) {
+function isPointExist(point) {
   return point.X !== 0 || point.Y !== 0;
 }
 
@@ -14,7 +14,7 @@ export function isPointExist(point) {
  * @param point { mapi.point }
  * @returns {boolean}
  */
-export function isPointNotExist(point) {
+function isPointNotExist(point) {
   return point.X === 0 || point.Y === 0;
 }
 
@@ -24,6 +24,12 @@ export function isPointNotExist(point) {
  * @param content {string} 显式的内容
  * @param duration {number} 存在时间，单位 秒，默认 1 秒
  */
-export function showTip(content, duration = 1) {
+function showTip(content, duration = 1) {
   mapi.tip(content, duration);
+}
+
+export default {
+  isPointExist,
+  isPointNotExist,
+  showTip,
 }
