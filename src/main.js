@@ -10,12 +10,13 @@ import {
 } from 'mirror';
 import { showTip } from 'utils';
 
-const FIRE_ICON_POINT = {x: 2032, y: 806};
+const FIRE_ICON_POINT = { x: 2032, y: 806 };
 
 const MAPPING = {
   [POSTURE_CATEGORIES.STAND]: '站',
   [POSTURE_CATEGORIES.SQUAT]: '蹲',
   [POSTURE_CATEGORIES.PROSTRATE]: '趴',
+
   [MIRROR_CATEGORIES.X2_SIGHT]: '2倍',
   [MIRROR_CATEGORIES.X3_SIGHT]: '3倍',
   [MIRROR_CATEGORIES.X4_SIGHT]: '4倍',
@@ -96,7 +97,7 @@ export const gunPressControl = {
    * @return {[number, number, string]}
    */
   getArgsOfCustomAimPar() {
-    const {gun, posture, mirror} = this.getStatus();
+    const { gun, posture, mirror } = this.getStatus();
 
     const args = getGunPressArgs(gun, posture, mirror);
 
