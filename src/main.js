@@ -42,7 +42,7 @@ const gunPressControl = {
       return;
     }
 
-    const { currMirror, currGun} = this;
+    const { currMirror, currGun } = this;
 
     let adjustedMirror = null;
 
@@ -115,9 +115,9 @@ const gunPressControl = {
 
     Utils.showTip(`${ statusStr }`)
 
-    const {x, y, delay} = args;
+    const { x, y, delay } = args;
 
-    return [x, y, delay];
+    return [ x, y, delay ];
   },
 
   getStatus() {
