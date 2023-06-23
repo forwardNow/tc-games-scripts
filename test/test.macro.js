@@ -22,3 +22,11 @@
     mapi.tip(`Mirror.isOpen(): ${ isOpen }。Mirror.getCurrentMirror(): ${ getCurrentMirror }。`);
   });
 } ());
+
+
+// mouse-left
+(function test_main_fire() {
+  import('main').then(({ default: gunPressControl }) => {
+    gunPressControl.fire();
+  });
+} ());
