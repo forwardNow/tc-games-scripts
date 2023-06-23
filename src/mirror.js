@@ -2,6 +2,8 @@ import Utils from 'utils';
 
 /** 准镜类型 */
 const CATEGORIES = {
+  /** 机瞄 */
+  MACHINE_SIGHT: 'MACHINE_SIGHT',
   /** 红点 */
   RED_DOT_SIGHT: 'RED_DOT_SIGHT',
   /** 全息 */
@@ -94,6 +96,7 @@ function getCurrentMirror() {
 
   return '';
 }
+
 /**
  * 当前是否为 6 倍镜
  * @return {boolean}
@@ -131,6 +134,8 @@ function isX2Sight() {
   const point = mapi.findimage(IMAGE_NAMES.CURRENT_2X_SIGHT, ...MIRROR_IMAGE_ARGS);
   return Utils.isPointExist(point);
 }
+
+
 
 /**
  * 调整六倍镜，6倍率 -> 3倍率
