@@ -49,7 +49,7 @@ const gunPressControl = {
       adjustedMirror = Mirror.adjustX6ToX3();
     }
 
-    Variable.setX6SightOfAdjustedGun(currGun, adjustedMirror)
+    Variable.setMirrorOfAdjustedGun(currGun, adjustedMirror)
   },
 
   /**
@@ -138,7 +138,7 @@ const gunPressControl = {
     let mirror = Mirror.getCurrentMirror();
 
     if (mirror === Mirror.CATEGORIES.X6_SIGHT) {
-      mirror = Variable.getX6SightOfAdjustedGun(gun) || Mirror.CATEGORIES.X6_SIGHT;
+      mirror = Variable.getMirrorOfAdjustedGun(gun) || Mirror.CATEGORIES.X6_SIGHT;
     }
 
     return mirror;
