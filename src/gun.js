@@ -1,5 +1,33 @@
 import Utils from 'utils';
 
+/** 枪的类型 */
+const CATEGORIES = {
+  M4: 'M4',
+  SCARL: 'SCARL',
+  DP28: 'DP28',
+
+  UMP45: 'UMP45',
+  YENIU: 'YENIU',
+  UZI: 'UZI',
+  VECTOR: 'VECTOR',
+  TANGMUXUN: 'TANGMUXUN', // 汤姆逊枪
+
+  AKM: 'AKM',
+
+  ACVAL: 'ACVAL',
+
+  M249: 'M249',
+
+  M762: 'M762',
+
+  AUG: 'AUG',
+  GROZA: 'GROZA',
+  MG3: 'MG3',
+  P90: 'P90',
+
+  MIGUAN: 'MIGUAN', // 蜜罐
+};
+
 /** 持枪位置 */
 const GUN_POSITION = {
   /** 左边枪 */
@@ -33,33 +61,6 @@ const GUN_POSITION_COLOR_POINT = {
   [GUN_POSITION.RIGHT]: ['255:254:220:1', '786:614'],
 };
 
-/** 枪的类型 */
-const CATEGORIES = {
-  M4: 'M4',
-  SCARL: 'SCARL',
-  DP28: 'DP28',
-
-  UMP45: 'UMP45',
-  YENIU: 'YENIU',
-  UZI: 'UZI',
-  VECTOR: 'VECTOR',
-  TANGMUXUN: 'TANGMUXUN', // 汤姆逊枪
-
-  AKM: 'AKM',
-
-  ACVAL: 'ACVAL',
-
-  M249: 'M249',
-
-  M762: 'M762',
-
-  AUG: 'AUG',
-  GROZA: 'GROZA',
-  MG3: 'MG3',
-  P90: 'P90',
-
-  MIGUAN: 'MIGUAN', // 蜜罐
-};
 
 /**
  * 获取当前持枪的位置
