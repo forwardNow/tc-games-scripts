@@ -8,10 +8,18 @@ const KEYS = {
 
 
 export default {
+  /**
+   * 获取 是否开启 tip
+   * @return { boolean } 是否开启 tip，true - 启用，false - 禁用
+   */
   get isTipEnabled() {
     return mapi.getglobalmap(KEYS.IS_TIP_ENABLED);
   },
 
+  /**
+   * 设置 是否开启 tip
+   * @param isTipEnabled { boolean } 是否开启 tip，true - 启用，false - 禁用
+   */
   set isTipEnabled(isTipEnabled) {
     mapi.setglobalmap(KEYS.IS_TIP_ENABLED, isTipEnabled);
   },
