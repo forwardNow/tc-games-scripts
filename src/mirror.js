@@ -108,7 +108,7 @@ function isX4Sight() {
  * @return {boolean}
  */
 function isX3Sight() {
-  const similarity = CURRENT_MIRROR_IMAGE_AREA - 0.08;
+  const similarity = CURRENT_MIRROR_IMAGE_AREA.SIMILARITY - 0.08;
   const point = mapi.findimage(IMAGE_NAMES.CURRENT_3X_SIGHT, similarity, ...MIRROR_IMAGE_ARGS.slice(1));
   return Utils.isPointExist(point);
 }
