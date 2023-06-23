@@ -115,13 +115,33 @@ declare namespace mapi {
   function holdpress(x: number, y: number);
 }
 
+/**
+ * 日志，类别 debug
+ * @param content {string} 内容
+ */
 declare function logdebug(content: string): void;
 
+/**
+ * 日志，类别 info
+ * @param content {string} 内容
+ */
 declare function loginfo(content: string): void;
 
+/**
+ * 日志，类别 warning
+ * @param content {string} 内容
+ */
 declare function logwarning(content: string): void;
 
+/**
+ * 日志，类别 error
+ * @param content {string} 内容
+ */
 declare function logerror(content: string): void;
 
+/**
+ * 日志，类别 fatal
+ * @param content {string} 内容
+ */
 declare function logfatal(content: string): void;
 
