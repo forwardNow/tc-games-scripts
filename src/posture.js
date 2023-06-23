@@ -1,13 +1,20 @@
 import Utils from 'utils';
 
 /** 姿势类别 */
-export const CATEGORIES = {
+const CATEGORIES = {
   /** 站 */
   STAND: 'STAND',
   /** 蹲 */
   SQUAT: 'SQUAT',
   /** 趴 */
   PROSTRATE: 'PROSTRATE'
+};
+
+/** 姿势映射，对应官方名称 */
+const MAPPING = {
+  [CATEGORIES.STAND]: '站',
+  [CATEGORIES.SQUAT]: '蹲',
+  [CATEGORIES.PROSTRATE]: '趴',
 };
 
 /**
@@ -41,5 +48,6 @@ function getCurrentPosture() {
 
 export default {
   CATEGORIES,
+  MAPPING,
   getCurrentPosture,
 }

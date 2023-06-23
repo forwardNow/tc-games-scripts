@@ -6,36 +6,32 @@ import Config from 'config';
 
 const FIRE_ICON_POINT = { x: 2032, y: 806 };
 
-const MAPPING = {
-  [Posture.CATEGORIES.STAND]: '站',
-  [Posture.CATEGORIES.SQUAT]: '蹲',
-  [Posture.CATEGORIES.PROSTRATE]: '趴',
-
-  [Mirror.CATEGORIES.X2_SIGHT]: '2倍',
-  [Mirror.CATEGORIES.X3_SIGHT]: '3倍',
-  [Mirror.CATEGORIES.X4_SIGHT]: '4倍',
-  [Mirror.CATEGORIES.X6_SIGHT]: '6倍6',
-  [Mirror.CATEGORIES.X6_X3_SIGHT]: '6倍3',
-};
-
 export const GUN_X6_SIGHTS = {
   // [Gun.CATEGORIES.M4]: Mirror.CATEGORIES.X6_X3_SIGHT,
   // [Gun.CATEGORIES.SCARL]: Mirror.CATEGORIES.X6_X3_SIGHT,
 }
 
-export const gunPressControl = {
+const gunPressControl = {
   currGun: '',
   currPosture: '',
   currMirror: '',
 
-  /** 此方法用在开火键（鼠标左键）上 */
+  /**
+   * 开火
+   *
+   * 键位绑定：鼠标左键
+   */
   fire() {
     mapi.holdpress(FIRE_ICON_POINT.x, FIRE_ICON_POINT.y);
 
     this.run();
   },
 
-  /** 此方法用在鼠标 滚轮滚上，调整 6 倍镜，并记录每个枪支的 6 倍镜倍率 */
+  /**
+   * 调整 6 倍镜，并记录调整过 6 倍镜倍率的枪及倍率
+   *
+   * 键位绑定：鼠标滚轮-滚上
+   */
   toggleX6Sight() {
     if (!Mirror.isOpen()) {
       return;
@@ -56,6 +52,15 @@ export const gunPressControl = {
     }
 
     GUN_X6_SIGHTS[currGun] = adjustedMirror;
+  },
+
+  /**
+   * 启用/禁用 mapi.tip()
+   *
+   * 绑定键位：F12
+   */
+  toggleEnableOfTip() {
+    Utils.toggleEnableOfTip();
   },
 
   run() {
@@ -117,19 +122,19 @@ export const gunPressControl = {
   getStatus() {
     const gun = Gun.getCurrentGun();
     const posture = Posture.getCurrentPosture();
-    const mirror = this.getMirror(gun);
+    const mirror = this.getCurrentMirrorByGun(gun);
 
     this.currGun = gun;
     this.currPosture = posture;
     this.currMirror = mirror;
 
-    const fmtPosture = MAPPING[posture];
-    const fmtMirror = MAPPING[mirror] || '';
+    const officialPostureName = Posture.MAPPING[posture];
+    const officialMirrorName = Mirror.MAPPING[mirror] || '';
 
-    return { gun, posture: fmtPosture, mirror: fmtMirror };
+    return { gun, posture: officialPostureName, mirror: officialMirrorName };
   },
 
-  getMirror(gun) {
+  getCurrentMirrorByGun(gun) {
     let mirror = Mirror.getCurrentMirror();
 
     // 如果是 6 倍镜，则尝试取调整过 6 倍镜倍率
@@ -141,3 +146,5 @@ export const gunPressControl = {
   },
 
 };
+
+export default gunPressControl;

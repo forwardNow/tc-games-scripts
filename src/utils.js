@@ -1,4 +1,10 @@
 /**
+ * mapi.tip() 是否 启用
+ * @type {boolean}
+ */
+let IS_TIP_ENABLED = true;
+
+/**
  * mapi.point 是否 存在
  *
  * @param point { mapi.point }
@@ -25,11 +31,20 @@ function isPointNotExist(point) {
  * @param duration {number} 存在时间，单位 秒，默认 1 秒
  */
 function showTip(content, duration = 1) {
+  if (!IS_TIP_ENABLED) {
+    return;
+  }
   mapi.tip(content, duration);
+}
+
+function toggleEnableOfTip() {
+  IS_TIP_ENABLED = !IS_TIP_ENABLED;
 }
 
 export default {
   isPointExist,
   isPointNotExist,
+
   showTip,
+  toggleEnableOfTip,
 }

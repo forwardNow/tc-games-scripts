@@ -18,6 +18,15 @@ const CATEGORIES = {
   X6_X3_SIGHT: 'X6_X3_SIGHT',
 }
 
+/** 准镜映射，对应官方名称 */
+const MAPPING = {
+  [CATEGORIES.X2_SIGHT]: '2倍',
+  [CATEGORIES.X3_SIGHT]: '3倍',
+  [CATEGORIES.X4_SIGHT]: '4倍',
+  [CATEGORIES.X6_SIGHT]: '6倍6',
+  [CATEGORIES.X6_X3_SIGHT]: '6倍3',
+};
+
 /** 图片名称 */
 const IMAGE_NAMES = {
   /** 第一（三）人称图标 */
@@ -142,6 +151,7 @@ function adjustX3ToX6() {
 
 export default {
   CATEGORIES,
+  MAPPING,
   isOpen,
   getCurrentMirror,
   isX6Sight,
