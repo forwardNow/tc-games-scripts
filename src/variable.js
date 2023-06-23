@@ -24,14 +24,22 @@ export default {
     mapi.setglobalmap(KEYS.IS_TIP_ENABLED, isTipEnabled);
   },
 
-  // 获取调整过 6 倍镜倍率的枪的准镜
+  /**
+   * 获取调整过 6 倍镜倍率的枪的准镜
+   * @param gun {string} Gun.CATEGORIES 的值
+   * @return {string} Mirror.CATEGORIES 的值
+   */
   getMirrorOfAdjustedGun(gun) {
     const adjustedX6SightsGuns = mapi.getglobalmap(KEYS.ADJUSTED_GUNS_OF_6X_SIGHT) || {};
 
     return adjustedX6SightsGuns[gun];
   },
 
-  // 设置调整过 6 倍镜倍率的枪及准镜
+  /**
+   * 设置调整过 6 倍镜倍率的枪及准镜
+   * @param gun {string} Gun.CATEGORIES 的值
+   * @param mirror {string} Mirror.CATEGORIES 的值
+   */
   setMirrorOfAdjustedGun(gun, mirror) {
     const adjustedX6SightsGuns = mapi.getglobalmap(KEYS.ADJUSTED_GUNS_OF_6X_SIGHT) || {};
 
