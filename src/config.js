@@ -1,3 +1,22 @@
+export function getGunPressArgs(gunName, posture, mirror) {
+  const argsMap = gunPressArgs[gunName];
+
+  if (!argsMap) {
+    return null;
+  }
+
+  const key = gunName + posture + mirror;
+
+  const args = argsMap[key];
+
+  if (!args) {
+    return null;
+  }
+
+  const [x, y, delay] = args;
+
+  return { x, y, delay };
+}
 /**
  * 压枪参数
  *

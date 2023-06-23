@@ -1,4 +1,4 @@
-import { getCurrentGunName, getGunPressArgs, GUN_CATEGORIES } from 'gun';
+import { getCurrentGunName, GUN_CATEGORIES } from 'gun';
 import { getPosture, POSTURE_CATEGORIES } from 'posture';
 import {
   adjustX3ToX6,
@@ -8,6 +8,7 @@ import {
   MIRROR_CATEGORIES
 } from 'mirror';
 import { showTip } from 'utils';
+import { getGunPressArgs } from 'config';
 
 const FIRE_ICON_POINT = { x: 2032, y: 806 };
 
