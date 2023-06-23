@@ -3,7 +3,7 @@ const KEYS = {
   IS_TIP_ENABLED: 'IS_TIP_ENABLED',
 
   // 调整过 6 倍镜倍率 的 枪及倍率
-  ADJUSTED_X6_SIGHTS_GUNS: 'ADJUSTED_X6_SIGHTS_GUNS',
+  ADJUSTED_GUNS_OF_6X_SIGHT: 'ADJUSTED_GUNS_OF_6X_SIGHT',
 };
 
 
@@ -18,17 +18,17 @@ export default {
 
   // 获取调整过 6 倍镜倍率的枪的准镜
   getMirrorOfAdjustedGun(gun) {
-    const adjustedX6SightsGuns = mapi.getglobalmap(KEYS.ADJUSTED_X6_SIGHTS_GUNS) || {};
+    const adjustedX6SightsGuns = mapi.getglobalmap(KEYS.ADJUSTED_GUNS_OF_6X_SIGHT) || {};
 
     return adjustedX6SightsGuns[gun];
   },
 
   // 设置调整过 6 倍镜倍率的枪及准镜
   setMirrorOfAdjustedGun(gun, mirror) {
-    const adjustedX6SightsGuns = mapi.getglobalmap(KEYS.ADJUSTED_X6_SIGHTS_GUNS) || {};
+    const adjustedX6SightsGuns = mapi.getglobalmap(KEYS.ADJUSTED_GUNS_OF_6X_SIGHT) || {};
 
     adjustedX6SightsGuns[gun] = mirror;
 
-    mapi.setglobalmap(KEYS.ADJUSTED_X6_SIGHTS_GUNS, adjustedX6SightsGuns);
+    mapi.setglobalmap(KEYS.ADJUSTED_GUNS_OF_6X_SIGHT, adjustedX6SightsGuns);
   },
 }
