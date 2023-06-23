@@ -9,7 +9,6 @@ const FIRE_ICON_POINT = { x: 2032, y: 806 };
 /** 调整过 6 倍镜倍率 的 枪及倍率 */
 export const X6_SIGHTS_OF_ADJUSTED_GUN = {
   // [Gun.CATEGORIES.M4]: Mirror.CATEGORIES.X6_X3_SIGHT,
-  // [Gun.CATEGORIES.SCARL]: Mirror.CATEGORIES.X6_X3_SIGHT,
 }
 
 const gunPressControl = {
@@ -99,7 +98,7 @@ const gunPressControl = {
   },
 
   /**
-   * @return {{ x: number, y: number, delay: number}}
+   * @return {{ x: number, y: number, delay: number} | null}
    */
   getArgsOfCustomAimPar() {
     const { gun, posture, mirror } = this.getStatus();
@@ -111,10 +110,21 @@ const gunPressControl = {
     return args;
   },
 
+  /**
+   * 此方法在开镜后执行，
+   *
+   * 如未获取到 gun、posture、mirror，则会使用上次识别到的值
+   */
   getStatus() {
-    const gun = Gun.getCurrentGun();
-    const posture = Posture.getCurrentPosture();
-    const mirror = this.getCurrentMirrorByGun(gun);
+    const {
+      currGun: lastGun,
+      currPosture: lastPosture,
+      currMirror: lastMirror
+    } = this;
+
+    const gun = Gun.getCurrentGun()  || lastGun;
+    const posture = Posture.getCurrentPosture()  || lastPosture;
+    const mirror = this.getCurrentMirrorByGun(gun)  || lastMirror;
 
     this.currGun = gun;
     this.currPosture = posture;
