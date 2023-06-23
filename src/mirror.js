@@ -130,7 +130,6 @@ export function isX2Sight() {
   return isPointExist(point);
 }
 
-
 /**
  * 调整六倍镜，6倍率 -> 3倍率
  * @return {string} MIRROR_CATEGORIES.X6_X3_SIGHT
