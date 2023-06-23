@@ -122,28 +122,35 @@ TC Games:
 模块实例问题：
 
 ```javascript
-/*
-  绑定 num1,
- */
+// test.js
+export default {
+  count: 1,
+  add() {
+    this.count += 1;
+  }
+};
+
+// 绑定 num1
 (function() {
-  import('gun').then((gun) =>{
-    // ...
+  import('test').then(({ default: test }) => {
+    const prev = test.count;
+    test.add();
+    const curr = test.count;
+    
+    mapi.tip(`prev = ${prev}; curr = ${curr}`); // 显示累加的结果
   });
 }());
 
-/*
-  绑定 num2，
- */
+// 绑定 num2
 (function() {
-  import('gun').then((gun) =>{
-    // ...
+  import('test').then(({ default: test }) => {
+    mapi.tip(`count = ${test.count}`); // 一直显示初始值
   });
 }());
 
 
-// num1 宏，产生一个 gun 模块对象 A，单实例
-// num2 宏，产生一个 gun 模块对象 B
-// 按键宏多次执行，不会产生多个相同类型的 模块对象
+// num1 宏，产生一个 test 模块对象 A；num1 宏，多次执行，`import()` 都返回模块对象 A
+// num2 宏，产生一个 test 模块对象 B
 ```
 
 JS 宏日志：
