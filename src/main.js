@@ -99,7 +99,7 @@ const gunPressControl = {
   },
 
   /**
-   * @return {[number, number, string]}
+   * @return {[number, number, string]} [ x, y, delay ]
    */
   getArgsOfCustomAimPar() {
     const { gun, posture, mirror } = this.getStatus();
