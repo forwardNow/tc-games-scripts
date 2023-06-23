@@ -39,7 +39,12 @@ const IMAGE_NAMES = {
   CURRENT_3X_SIGHT: '3倍压枪',
   CURRENT_4X_SIGHT: '4倍压枪',
   CURRENT_6X_SIGHT: '6倍压枪',
-  CURRENT_6X_3X_SIGHT: '6倍转3倍压枪', // 新增图片
+  CURRENT_6X_3X_SIGHT: '6倍转3倍压枪', // TODO: 新增图片
+
+  /** 打开 6 倍镜缩放条 的按钮 */
+  BUTTON_OF_X6_SIGHT_ZOOM_BAR: '倍镜缩放展开',
+  /** 6 倍镜缩放条 */
+  X6_SIGHT_ZOOM_BAR: '倍镜缩放',
 };
 
 /**
@@ -136,22 +141,57 @@ function isX2Sight() {
 }
 
 
+const X6_SIGHT_ZOOM_BAR_POINT = { x: 678, y: 222 };
+const X6_TO_X3_POINT = { x: 678, y: 597 };
+const X6_TO_X6_POINT = { x: 678, y: 346 };
 
 /**
- * 调整六倍镜，6倍率 -> 3倍率
+ * 打开 6 倍瞄准镜的缩放栏
+ */
+function openZoomBarOf6XSight() {
+  const zoomBarPoint = mapi.findimage(IMAGE_NAMES.X6_SIGHT_ZOOM_BAR, 0.92, 4, 1, 2, 1);
+
+  if (Utils.isPointExist(zoomBarPoint)) {
+    return;
+  }
+
+  const buttonPoint = mapi.findimage(IMAGE_NAMES.BUTTON_OF_X6_SIGHT_ZOOM_BAR, 0.8, 4, 1, 2, 1);
+
+  if (!Utils.isPointExist(buttonPoint)) {
+    logerror('未找到打开 6 倍镜缩放条 的按钮');
+    return;
+  }
+
+  mapi.click(X6_SIGHT_ZOOM_BAR_POINT.x, X6_SIGHT_ZOOM_BAR_POINT.y);
+
+  return true;
+}
+
+/**
+ * 调整六倍镜，设置为 3 倍率
  * @return {string} CATEGORIES.X6_X3_SIGHT
  */
 function adjustX6ToX3() {
-  // TODO 调整六倍镜，6倍率 -> 3倍率
+  if(openZoomBarOf6XSight()) {
+    mapi.delay(100);
+  }
+
+  mapi.click(X6_TO_X3_POINT.x, X6_TO_X3_POINT.y);
+
   return CATEGORIES.X6_X3_SIGHT;
 }
 
 /**
- * 调整六倍镜，3倍率 -> 6倍率
+ * 调整六倍镜，设置为 6 倍率
  * @return {string} CATEGORIES.X6_TO_X6_SIGHT
  */
-function adjustX3ToX6() {
-  // TODO 调整六倍镜，3倍率 -> 6倍率
+function adjustX6ToX6() {
+  if(openZoomBarOf6XSight()) {
+    mapi.delay(100);
+  }
+
+  mapi.click(X6_TO_X6_POINT.x, X6_TO_X6_POINT.y);
+
   return CATEGORIES.X6_SIGHT;
 }
 
@@ -165,5 +205,5 @@ export default {
   isX3Sight,
   isX2Sight,
   adjustX6ToX3,
-  adjustX3ToX6,
+  adjustX6ToX6,
 }

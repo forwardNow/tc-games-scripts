@@ -37,18 +37,20 @@ const gunPressControl = {
       return;
     }
 
-    if (Mirror.isX6Sight()) {
+    if (!Mirror.isX6Sight()) {
       return;
     }
 
-    const { currMirror, currGun } = this;
+    const currGun = Gun.getCurrentGun();
+
+    const currMirror = this.getCurrentMirrorByGun(currGun);
 
     let adjustedMirror = null;
 
     if (currMirror === Mirror.CATEGORIES.X6_X3_SIGHT) {
-      adjustedMirror = Mirror.adjustX6ToX3();
+      adjustedMirror = Mirror.adjustX6ToX6();
     } else {
-      adjustedMirror = Mirror.adjustX3ToX6();
+      adjustedMirror = Mirror.adjustX6ToX3();
     }
 
     X6_SIGHTS_OF_ADJUSTED_GUN[currGun] = adjustedMirror;

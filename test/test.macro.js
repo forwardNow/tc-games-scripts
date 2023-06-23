@@ -31,9 +31,17 @@
   });
 } ());
 
-// F12
+// num4
 (function test_main_toggleEnableOfTip() {
   import('main').then(({ default: gunPressControl }) => {
     gunPressControl.toggleEnableOfTip();
   });
 } ());
+
+// num5
+(function test_main_toggleX6Sight() {
+  import('main').then(({ default: gunPressControl }) => {
+    gunPressControl.toggleX6Sight();
+  });
+} ());
+

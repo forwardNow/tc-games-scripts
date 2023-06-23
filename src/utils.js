@@ -1,9 +1,4 @@
-/**
- * 全局缓存 map key
- *
- * 控制 mapi.tip() 是否 启用
- */
-const IS_TIP_ENABLED = 'IS_TIP_ENABLED';
+import variable from 'variable';
 
 /**
  * mapi.point 是否 存在
@@ -32,7 +27,7 @@ function isPointNotExist(point) {
  * @param duration {number} 存在时间，单位 秒，默认 1 秒
  */
 function showTip(content, duration = 1) {
-  if (!mapi.getglobalmap(IS_TIP_ENABLED)) {
+  if (!variable.isTipEnabled) {
     return;
   }
   mapi.tip(content, duration);
@@ -42,9 +37,7 @@ function showTip(content, duration = 1) {
  * 切换 mapi.tip() 的启用和禁止
  */
 function toggleEnableOfTip() {
-  const isTipEnabled = mapi.getglobalmap(IS_TIP_ENABLED);
-
-  mapi.setglobalmap(IS_TIP_ENABLED, !isTipEnabled);
+  variable.isTipEnabled = !variable.isTipEnabled;
 }
 
 export default {
