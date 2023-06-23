@@ -94,30 +94,21 @@ const gunPressControl = {
     mapi.customaimpar(true);
   },
 
-  changePressArgs(x, y, delay) {
+  changePressArgs({ x, y, delay }) {
     mapi.changecustomaimpar(x, y, delay);
   },
 
   /**
-   * @return {[number, number, string]} [ x, y, delay ]
+   * @return {{ x: number, y: number, delay: number}}
    */
   getArgsOfCustomAimPar() {
     const { gun, posture, mirror } = this.getStatus();
 
     const args = Config.getGunPressArgs(gun, posture, mirror);
 
-    const statusStr = `${ gun }${ posture }${ mirror }`;
+    Utils.showTip(`${ gun }${ posture }${ mirror }: ${ JSON.stringify(args) }`)
 
-    if (!args) {
-      Utils.showTip(`${ statusStr } 没有对应的配置！`);
-      return null;
-    }
-
-    Utils.showTip(`${ statusStr }`)
-
-    const { x, y, delay } = args;
-
-    return [ x, y, delay ];
+    return args;
   },
 
   getStatus() {
