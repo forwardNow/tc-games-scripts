@@ -1,4 +1,12 @@
- function getGunPressArgs(gunName, posture, mirror) {
+/**
+ * 获取压强配置
+ *
+ * @param gunName
+ * @param posture
+ * @param mirror
+ * @return {{ x: number, y: number, delay: number}|null}
+ */
+function getGunPressArgs(gunName, posture, mirror) {
   const argsMap = gunPressArgs[gunName];
 
   if (!argsMap) {
@@ -13,7 +21,7 @@
     return null;
   }
 
-  const [x, y, delay] = args;
+  const [ x, y, delay ] = args;
 
   return { x, y, delay };
 }
