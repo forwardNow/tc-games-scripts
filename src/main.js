@@ -6,7 +6,8 @@ import Config from 'config';
 
 const FIRE_ICON_POINT = { x: 2032, y: 806 };
 
-export const GUN_X6_SIGHTS = {
+/** 调整过 6 倍镜倍率 的 枪及倍率 */
+export const X6_SIGHTS_OF_ADJUSTED_GUN = {
   // [Gun.CATEGORIES.M4]: Mirror.CATEGORIES.X6_X3_SIGHT,
   // [Gun.CATEGORIES.SCARL]: Mirror.CATEGORIES.X6_X3_SIGHT,
 }
@@ -51,7 +52,7 @@ const gunPressControl = {
       adjustedMirror = Mirror.adjustX3ToX6();
     }
 
-    GUN_X6_SIGHTS[currGun] = adjustedMirror;
+    X6_SIGHTS_OF_ADJUSTED_GUN[currGun] = adjustedMirror;
   },
 
   /**
@@ -137,9 +138,8 @@ const gunPressControl = {
   getCurrentMirrorByGun(gun) {
     let mirror = Mirror.getCurrentMirror();
 
-    // 如果是 6 倍镜，则尝试取调整过 6 倍镜倍率
     if (mirror === Mirror.CATEGORIES.X6_SIGHT) {
-      mirror = GUN_X6_SIGHTS[gun] || Mirror.CATEGORIES.X6_SIGHT;
+      mirror = X6_SIGHTS_OF_ADJUSTED_GUN[gun] || Mirror.CATEGORIES.X6_SIGHT;
     }
 
     return mirror;
