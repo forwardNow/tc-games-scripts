@@ -24,9 +24,16 @@
 } ());
 
 
-// mouse-left
+// 鼠标左键
 (function test_main_fire() {
   import('main').then(({ default: gunPressControl }) => {
     gunPressControl.fire();
+  });
+} ());
+
+// F12
+(function test_main_toggleEnableOfTip() {
+  import('main').then(({ default: gunPressControl }) => {
+    gunPressControl.toggleEnableOfTip();
   });
 } ());

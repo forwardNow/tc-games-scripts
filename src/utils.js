@@ -31,6 +31,8 @@ function isPointNotExist(point) {
  * @param duration {number} 存在时间，单位 秒，默认 1 秒
  */
 function showTip(content, duration = 1) {
+  loginfo(`showTip()， IS_TIP_ENABLED = ${IS_TIP_ENABLED}`)
+
   if (!IS_TIP_ENABLED) {
     return;
   }
@@ -39,6 +41,7 @@ function showTip(content, duration = 1) {
 
 function toggleEnableOfTip() {
   IS_TIP_ENABLED = !IS_TIP_ENABLED;
+  loginfo(`toggleEnableOfTip()， IS_TIP_ENABLED = ${IS_TIP_ENABLED}`)
 }
 
 export default {
