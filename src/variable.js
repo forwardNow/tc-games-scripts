@@ -30,5 +30,5 @@ export default {
     adjustedX6SightsGuns[gun] = mirror;
 
     mapi.setglobalmap(KEYS.ADJUSTED_X6_SIGHTS_GUNS, adjustedX6SightsGuns);
-  }
+  },
 }
