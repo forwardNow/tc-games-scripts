@@ -1,8 +1,9 @@
 /**
- * mapi.tip() 是否 启用
- * @type {boolean}
+ * 全局缓存 map key
+ *
+ * 控制 mapi.tip() 是否 启用
  */
-let IS_TIP_ENABLED = true;
+const IS_TIP_ENABLED = 'IS_TIP_ENABLED';
 
 /**
  * mapi.point 是否 存在
@@ -31,17 +32,19 @@ function isPointNotExist(point) {
  * @param duration {number} 存在时间，单位 秒，默认 1 秒
  */
 function showTip(content, duration = 1) {
-  loginfo(`showTip()， IS_TIP_ENABLED = ${IS_TIP_ENABLED}`)
-
-  if (!IS_TIP_ENABLED) {
+  if (!mapi.getglobalmap(IS_TIP_ENABLED)) {
     return;
   }
   mapi.tip(content, duration);
 }
 
+/**
+ * 切换 mapi.tip() 的启用和禁止
+ */
 function toggleEnableOfTip() {
-  IS_TIP_ENABLED = !IS_TIP_ENABLED;
-  loginfo(`toggleEnableOfTip()， IS_TIP_ENABLED = ${IS_TIP_ENABLED}`)
+  const isTipEnabled = mapi.getglobalmap(IS_TIP_ENABLED);
+
+  mapi.setglobalmap(IS_TIP_ENABLED, !isTipEnabled);
 }
 
 export default {

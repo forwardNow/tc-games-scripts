@@ -113,7 +113,21 @@ declare namespace mapi {
    * 按住操作，按键松开后才会释放此接
    */
   function holdpress(x: number, y: number);
+
+  /**
+   * 设置全局缓存 map 的键值对
+   * @param key
+   * @param value
+   */
+  function setglobalmap(key: string, value: any);
+
+  /**
+   * 获取全局缓存 map 指定 key 的值
+   * @param key
+   */
+  function getglobalmap(key: string): any;
 }
+
 
 /**
  * 日志，类别 debug

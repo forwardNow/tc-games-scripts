@@ -297,3 +297,4 @@ API：
 ## 6. 参考
 
 * [和平精英手游物资及事件场景中英文对照（持续更新，务必收藏！）](https://zhuanlan.zhihu.com/p/359768662)
+* [官方文档](https://www.sigma-rt.com/tcgames/help/?u=15)
