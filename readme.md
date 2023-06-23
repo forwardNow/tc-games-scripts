@@ -149,8 +149,9 @@ export default {
 }());
 
 
-// num1 宏，产生一个 test 模块对象 A；num1 宏，多次执行，`import()` 都返回模块对象 A
-// num2 宏，产生一个 test 模块对象 B
+// num1 宏，多次执行只产生一个 test 模块对象 A
+// num2 宏，多次执行只产生一个 test 模块对象 B
+// A !== B
 ```
 
 JS 宏日志：
