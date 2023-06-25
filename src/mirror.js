@@ -22,6 +22,9 @@ const CATEGORIES = {
 
 /** 准镜映射，对应官方名称 */
 const MAPPING = {
+  [CATEGORIES.MACHINE_SIGHT]: '',
+  [CATEGORIES.RED_DOT_SIGHT]: '',
+  [CATEGORIES.HOLOGRAPHIC_SIGHT]: '',
   [CATEGORIES.X2_SIGHT]: '2倍',
   [CATEGORIES.X3_SIGHT]: '3倍',
   [CATEGORIES.X4_SIGHT]: '4倍',
@@ -33,8 +36,11 @@ const MAPPING = {
 const IMAGE_NAMES = {
   /** 第一（三）人称图标 */
   FIRST_PERSON_ICON: '没有开镜',
-  RED_DOT_SIGHT: '全息压枪',
-  HOLOGRAPHIC_SIGHT: '红点压枪',
+
+  CURRENT_MACHINE_SIGHT: '机瞄压枪',
+  CURRENT_HOLOGRAPHIC_SIGHT: '红点压枪',
+  CURRENT_RED_DOT_SIGHT: '全息压枪',
+
   CURRENT_2X_SIGHT: '2倍压枪',
   CURRENT_3X_SIGHT: '3倍压枪',
   CURRENT_4X_SIGHT: '4倍压枪',
@@ -99,6 +105,16 @@ function getCurrentMirror() {
     return CATEGORIES.X2_SIGHT;
   }
 
+  if (isMachineSight()) {
+    return CATEGORIES.MACHINE_SIGHT;
+  }
+  if (isHolographicSight()) {
+    return CATEGORIES.HOLOGRAPHIC_SIGHT;
+  }
+  if (isRedDotSight()) {
+    return CATEGORIES.RED_DOT_SIGHT;
+  }
+
   return '';
 }
 
@@ -137,6 +153,18 @@ function isX3Sight() {
  */
 function isX2Sight() {
   const point = mapi.findimage(IMAGE_NAMES.CURRENT_2X_SIGHT, ...MIRROR_IMAGE_ARGS);
+  return Utils.isPointExist(point);
+}
+function isMachineSight() {
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_MACHINE_SIGHT, 0.65, ...MIRROR_IMAGE_ARGS.slice(1));
+  return Utils.isPointExist(point);
+}
+function isHolographicSight() {
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_HOLOGRAPHIC_SIGHT, 0.65, ...MIRROR_IMAGE_ARGS.slice(1));
+  return Utils.isPointExist(point);
+}
+function isRedDotSight() {
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_RED_DOT_SIGHT, 0.65, ...MIRROR_IMAGE_ARGS.slice(1));
   return Utils.isPointExist(point);
 }
 
