@@ -128,12 +128,12 @@ declare namespace mapi {
   function getglobalmap(key: string): any;
 
   /**
-   * 可以通过此开关控制鼠标的隐藏或显示
+   * 设置是否为射击模式。射击模式没有鼠标
    * 
-   * @param isMouseVisible { boolean } 是否显示鼠标
-   * @example 按 Tab 键，默认会显式鼠标箭头，可用通过 mapi.shotmode(false) 隐藏鼠标
+   * @param isShotMode { boolean } 是否为射击模式
+   * @example 按 Tab 键，默认会退出，可用通过 mapi.shotmode(true) 进入射击模式
    */
-  function shotmode(isMouseVisible: boolean);
+  function shotmode(isShotMode: boolean);
 
   /**
    * 点击操作
