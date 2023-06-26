@@ -61,6 +61,12 @@ const GUN_POSITION_COLOR_POINT = {
   [GUN_POSITION.RIGHT]: ['255:254:220:1', '786:614'],
 };
 
+/* 持枪位置-中心点 */
+const GUN_POSITION_POINT = {
+  [GUN_POSITION.LEFT]: [1036, 946],
+  [GUN_POSITION.RIGHT]: [1263, 961],
+}
+
 
 /**
  * 获取当前持枪的位置
@@ -117,7 +123,48 @@ function getCurrentGun() {
   return currentGunName;
 }
 
+/**
+ * 收枪
+ */
+function hideGun() {
+  const gunPosition = getGunPosition();
+
+  if (!gunPosition) {
+    return;
+  }
+
+  if (gunPosition === GUN_POSITION.LEFT) {
+    mapi.click(...GUN_POSITION_POINT.LEFT);
+  }
+
+  if (gunPosition === GUN_POSITION.RIGHT) {
+    mapi.click(...GUN_POSITION_POINT.RIGHT);
+  }
+}
+
+/**
+ * 切枪
+ */
+function switchGun() {
+  const gunPosition = getGunPosition();
+
+  if (!gunPosition) {
+    mapi.click(...GUN_POSITION_POINT.LEFT);
+    return;
+  }
+
+  if (gunPosition === GUN_POSITION.LEFT) {
+    mapi.click(...GUN_POSITION_POINT.RIGHT);
+  }
+  
+  if (gunPosition === GUN_POSITION.RIGHT) {
+    mapi.click(...GUN_POSITION_POINT.LEFT);
+  }
+}
+
 export default {
   CATEGORIES,
   getCurrentGun,
+  hideGun,
+  switchGun,
 }
