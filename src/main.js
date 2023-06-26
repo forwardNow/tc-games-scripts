@@ -76,7 +76,7 @@ const gunPressControl = {
    * 绑定键位：Tab
    */
   hideGun() {
-    mapi.shotmode(false);
+    mapi.shotmode(true);
     Gun.hideGun();
   },
 
