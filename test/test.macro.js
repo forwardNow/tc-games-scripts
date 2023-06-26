@@ -45,3 +45,19 @@
   });
 } ());
 
+// 切枪
+(function() {
+  import('main').then(({ default: main }) => {
+    main.switchGun();
+  });
+} ());
+
+// 收枪
+(function() {
+  import('main').then(({ default: main }) => {
+    main.hideGun();
+  });
+} ());
+
+
+
