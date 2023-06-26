@@ -126,6 +126,22 @@ declare namespace mapi {
    * @param key
    */
   function getglobalmap(key: string): any;
+
+  /**
+   * 可以通过此开关控制鼠标的隐藏或显示
+   * 
+   * @param isMouseVisible { boolean } 是否显示鼠标
+   * @example 按 Tab 键，默认会显式鼠标箭头，可用通过 mapi.shotmode(false) 隐藏鼠标
+   */
+  function shotmode(isMouseVisible: boolean);
+
+  /**
+   * 点击操作
+   * 
+   * @param x {number} 
+   * @param y {number} 
+   */
+  function click(x: number, y: number);
 }
 
 
