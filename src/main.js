@@ -61,6 +61,25 @@ const gunPressControl = {
     Utils.toggleEnableOfTip();
   },
 
+  /**
+   * 切枪
+   * 
+   * 绑定键位：Q
+   */
+  switchGun() {
+    Gun.switchGun();
+  },
+
+  /**
+   * 收枪
+   * 
+   * 绑定键位：Tab
+   */
+  hideGun() {
+    mapi.shotmode(false);
+    Gun.hideGun();
+  },
+
   run() {
     if (!Mirror.isOpen()) {
       this.pause();
