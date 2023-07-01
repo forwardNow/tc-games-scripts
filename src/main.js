@@ -5,7 +5,7 @@ import Utils from 'utils';
 import Config from 'config';
 import Variable from 'variable';
 
-const FIRE_ICON_POINT = { x: 2032, y: 806 };
+const FIRE_ICON_POINT = { x: 1936, y: 836 };
 
 const gunPressControl = {
   currGun: '',
