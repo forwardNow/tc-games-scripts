@@ -15,9 +15,17 @@ const NOVA_9 = {
   X6_TO_X3_POINT: { x: 678, y: 597 },
   X6_TO_X6_POINT: { x: 678, y: 346 },
 
-  BUTTON_OF_X6_SIGHT_ZOOM_BAR: '',
-
   GUN_PRESS_RATE: 1,
+
+  CURRENT_MIRROR_SIM: {
+    X6_SIGHT: 0.60,
+    X4_SIGHT: 0.68,
+    X3_SIGHT: 0.56,
+    X2_SIGHT: 0.68,
+    MACHINE_SIGHT: 0.65,
+    HOLOGRAPHIC_SIGHT: 0.65,
+    RED_DOT_SIGHT: 0.65,
+  },
 };
 
 
@@ -38,9 +46,17 @@ const MATE_PAD_11 = {
   X6_TO_X3_POINT: { x: 746, y: 882 },
   X6_TO_X6_POINT: { x: 748, y: 538 },
 
-  BUTTON_OF_X6_SIGHT_ZOOM_BAR: '倍镜缩放展开pad',
-
   GUN_PRESS_RATE: 1.4,
+
+  CURRENT_MIRROR_SIM: {
+    X6_SIGHT: 0.85,
+    X4_SIGHT: 0.75,
+    X3_SIGHT: 0.75,
+    X2_SIGHT: 0.75,
+    MACHINE_SIGHT: 0.75,
+    HOLOGRAPHIC_SIGHT: 0.75,
+    RED_DOT_SIGHT: 0.75,
+  },
 };
 
 export default MATE_PAD_11;

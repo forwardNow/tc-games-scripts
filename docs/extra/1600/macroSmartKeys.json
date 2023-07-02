@@ -1,0 +1,54 @@
+{
+    "smartWheellList": [
+        {
+            "imageName": "pitch",
+            "performActions": "click",
+            "setUpGridSize": "2*2",
+            "selectedGridLoction": "1*1",
+            "sim": "0.85",
+            "offsetPoint": "0*0",
+            "rollerDirectionFlip": "true",
+            "wheelSpeed": "15"
+        },
+        {
+            "imageName": "nearby",
+            "performActions": "slidever",
+            "setUpGridSize": "1*3",
+            "selectedGridLoction": "1*2",
+            "sim": "0.85",
+            "offsetPoint": "0*0",
+            "rollerDirectionFlip": "false",
+            "wheelSpeed": "15"
+        },
+        {
+            "imageName": "zoompitch",
+            "performActions": "slidever",
+            "setUpGridSize": "4*1",
+            "selectedGridLoction": "2*1",
+            "sim": "0.85",
+            "offsetPoint": "0*0",
+            "rollerDirectionFlip": "true",
+            "wheelSpeed": "20"
+        },
+        {
+            "imageName": "zoommap",
+            "performActions": "slidever",
+            "setUpGridSize": "4*1",
+            "selectedGridLoction": "4*1",
+            "sim": "0.85",
+            "offsetPoint": "0*0",
+            "rollerDirectionFlip": "true",
+            "wheelSpeed": "15"
+        },
+        {
+            "imageName": "box6",
+            "performActions": "slidever",
+            "setUpGridSize": "1*3",
+            "selectedGridLoction": "1*2",
+            "sim": "0.8",
+            "offsetPoint": "-10*150",
+            "rollerDirectionFlip": "false",
+            "wheelSpeed": "15"
+        }
+    ]
+}

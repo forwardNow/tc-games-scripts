@@ -43,8 +43,8 @@ const IMAGE_NAMES = {
   FIRST_PERSON_ICON: '没有开镜',
 
   CURRENT_MACHINE_SIGHT: '机瞄压枪',
-  CURRENT_HOLOGRAPHIC_SIGHT: '红点压枪',
-  CURRENT_RED_DOT_SIGHT: '全息压枪',
+  CURRENT_HOLOGRAPHIC_SIGHT: '全息压枪',
+  CURRENT_RED_DOT_SIGHT: '红点压枪',
 
   CURRENT_2X_SIGHT: '2倍压枪',
   CURRENT_3X_SIGHT: '3倍压枪',
@@ -53,7 +53,7 @@ const IMAGE_NAMES = {
   CURRENT_6X_3X_SIGHT: '6倍转3倍压枪', // TODO: 新增图片
 
   /** 打开 6 倍镜缩放条 的按钮 */
-  BUTTON_OF_X6_SIGHT_ZOOM_BAR: Constant.BUTTON_OF_X6_SIGHT_ZOOM_BAR || '倍镜缩放展开',
+  BUTTON_OF_X6_SIGHT_ZOOM_BAR: '倍镜缩放展开',
   /** 6 倍镜缩放条 */
   X6_SIGHT_ZOOM_BAR: '倍镜缩放',
 };
@@ -126,7 +126,7 @@ function getCurrentMirror() {
  * @return {boolean}
  */
 function isX6Sight() {
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_6X_SIGHT, 0.60, ...MIRROR_IMAGE_ARGS.slice(1));
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_6X_SIGHT, Constant.CURRENT_MIRROR_SIM.X6_SIGHT, ...MIRROR_IMAGE_ARGS);
   return Utils.isPointExist(point);
 }
 
@@ -135,7 +135,7 @@ function isX6Sight() {
  * @return {boolean}
  */
 function isX4Sight() {
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_4X_SIGHT, 0.68, ...MIRROR_IMAGE_ARGS);
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_4X_SIGHT, Constant.CURRENT_MIRROR_SIM.X4_SIGHT, ...MIRROR_IMAGE_ARGS);
   return Utils.isPointExist(point);
 }
 
@@ -144,7 +144,7 @@ function isX4Sight() {
  * @return {boolean}
  */
 function isX3Sight() {
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_3X_SIGHT, 0.56, ...MIRROR_IMAGE_ARGS.slice(1));
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_3X_SIGHT, Constant.CURRENT_MIRROR_SIM.X3_SIGHT, ...MIRROR_IMAGE_ARGS);
   return Utils.isPointExist(point);
 }
 
@@ -153,19 +153,19 @@ function isX3Sight() {
  * @return {boolean}
  */
 function isX2Sight() {
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_2X_SIGHT, 0.68, ...MIRROR_IMAGE_ARGS);
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_2X_SIGHT, Constant.CURRENT_MIRROR_SIM.X2_SIGHT, ...MIRROR_IMAGE_ARGS);
   return Utils.isPointExist(point);
 }
 function isMachineSight() {
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_MACHINE_SIGHT, 0.65, ...MIRROR_IMAGE_ARGS.slice(1));
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_MACHINE_SIGHT, Constant.CURRENT_MIRROR_SIM.MACHINE_SIGHT, ...MIRROR_IMAGE_ARGS);
   return Utils.isPointExist(point);
 }
 function isHolographicSight() {
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_HOLOGRAPHIC_SIGHT, 0.65, ...MIRROR_IMAGE_ARGS.slice(1));
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_HOLOGRAPHIC_SIGHT, Constant.CURRENT_MIRROR_SIM.HOLOGRAPHIC_SIGHT, ...MIRROR_IMAGE_ARGS);
   return Utils.isPointExist(point);
 }
 function isRedDotSight() {
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_RED_DOT_SIGHT, 0.65, ...MIRROR_IMAGE_ARGS.slice(1));
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_RED_DOT_SIGHT, Constant.CURRENT_MIRROR_SIM.RED_DOT_SIGHT, ...MIRROR_IMAGE_ARGS);
   return Utils.isPointExist(point);
 }
 
