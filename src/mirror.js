@@ -72,7 +72,6 @@ function isOpen() {
 }
 
 const CURRENT_MIRROR_IMAGE_AREA = {
-  SIMILARITY: 0.75 - 0.07, // 0.68,
   TOTAL_COLUMNS: 4,
   TOTAL_ROWS: 4,
   COLUMN_INDEX: 4,
@@ -80,7 +79,6 @@ const CURRENT_MIRROR_IMAGE_AREA = {
 };
 
 const MIRROR_IMAGE_ARGS = [
-  CURRENT_MIRROR_IMAGE_AREA.SIMILARITY,
   CURRENT_MIRROR_IMAGE_AREA.TOTAL_COLUMNS,
   CURRENT_MIRROR_IMAGE_AREA.TOTAL_ROWS,
   CURRENT_MIRROR_IMAGE_AREA.COLUMN_INDEX,
@@ -128,8 +126,7 @@ function getCurrentMirror() {
  * @return {boolean}
  */
 function isX6Sight() {
-  const similarity = CURRENT_MIRROR_IMAGE_AREA.SIMILARITY - 0.08;
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_6X_SIGHT, similarity, ...MIRROR_IMAGE_ARGS.slice(1));
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_6X_SIGHT, 0.60, ...MIRROR_IMAGE_ARGS.slice(1));
   return Utils.isPointExist(point);
 }
 
@@ -138,7 +135,7 @@ function isX6Sight() {
  * @return {boolean}
  */
 function isX4Sight() {
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_4X_SIGHT, ...MIRROR_IMAGE_ARGS);
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_4X_SIGHT, 0.68, ...MIRROR_IMAGE_ARGS);
   return Utils.isPointExist(point);
 }
 
@@ -147,8 +144,7 @@ function isX4Sight() {
  * @return {boolean}
  */
 function isX3Sight() {
-  const similarity = CURRENT_MIRROR_IMAGE_AREA.SIMILARITY - 0.12;
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_3X_SIGHT, similarity, ...MIRROR_IMAGE_ARGS.slice(1));
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_3X_SIGHT, 0.56, ...MIRROR_IMAGE_ARGS.slice(1));
   return Utils.isPointExist(point);
 }
 
@@ -157,7 +153,7 @@ function isX3Sight() {
  * @return {boolean}
  */
 function isX2Sight() {
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_2X_SIGHT, ...MIRROR_IMAGE_ARGS);
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_2X_SIGHT, 0.68, ...MIRROR_IMAGE_ARGS);
   return Utils.isPointExist(point);
 }
 function isMachineSight() {
