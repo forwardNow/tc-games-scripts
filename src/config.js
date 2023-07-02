@@ -1,3 +1,4 @@
+import Constant from 'constant';
 /**
  * 获取压强配置
  *
@@ -23,7 +24,9 @@ function getGunPressArgs(gunName, posture, mirror) {
 
   const [ x, y, delay ] = args;
 
-  return { x, y, delay };
+  const fmtDelay = delay / Constant.GUN_PRESS_RATE;
+
+  return { x, y, delay: fmtDelay };
 }
 /**
  * 压枪参数

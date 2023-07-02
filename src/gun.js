@@ -1,4 +1,5 @@
 import Utils from 'utils';
+import Constant from 'constant';
 
 /** 枪的类型 */
 const CATEGORIES = {
@@ -57,14 +58,14 @@ const GUN_POSITION_IMAGE_AREA = {
 
 /* 持枪位置-颜色点 */
 const GUN_POSITION_COLOR_POINT = {
-  [GUN_POSITION.LEFT]: ['255:255:221:0', '613:613'],
-  [GUN_POSITION.RIGHT]: ['255:254:220:1', '786:614'],
+  [GUN_POSITION.LEFT]: Constant.GUN_POSITION_LEFT_COLOR_POINT,
+  [GUN_POSITION.RIGHT]: Constant.GUN_POSITION_RIGHT_COLOR_POINT,
 };
 
 /* 持枪位置-中心点 */
 const GUN_POSITION_POINT = {
-  [GUN_POSITION.LEFT]: [1036, 946],
-  [GUN_POSITION.RIGHT]: [1263, 961],
+  [GUN_POSITION.LEFT]: Constant.GUN_POSITION_LEFT_POINT,
+  [GUN_POSITION.RIGHT]: Constant.GUN_POSITION_RIGHT_POINT,
 }
 
 
@@ -156,7 +157,7 @@ function switchGun() {
   if (gunPosition === GUN_POSITION.LEFT) {
     mapi.click(...GUN_POSITION_POINT.RIGHT);
   }
-  
+
   if (gunPosition === GUN_POSITION.RIGHT) {
     mapi.click(...GUN_POSITION_POINT.LEFT);
   }

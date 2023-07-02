@@ -1,4 +1,5 @@
 import Utils from 'utils';
+import Constant from 'constant'
 
 /** 姿势类别 */
 const CATEGORIES = {
@@ -21,8 +22,8 @@ const MAPPING = {
  * 姿势类别-颜色点
  */
 const COLOR_POINT = {
-  [CATEGORIES.SQUAT]: ['255:255:241:119', '1305:653+1307:658+1307:665+1312:672+1313:681+1313:684'],
-  [CATEGORIES.PROSTRATE]: ['255:253:237:119', '1421:639+1426:644+1437:649+1445:652'],
+  [CATEGORIES.SQUAT]: Constant.SQUAT_COLOR_POINT,
+  [CATEGORIES.PROSTRATE]: Constant.PROSTRATE_COLOR_POINT,
 }
 
 /**

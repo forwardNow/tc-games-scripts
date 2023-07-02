@@ -1,4 +1,9 @@
 import Utils from 'utils';
+import Constant from 'constant';
+
+const X6_SIGHT_ZOOM_BAR_POINT = Constant.X6_SIGHT_ZOOM_BAR_POINT;
+const X6_TO_X3_POINT = Constant.X6_TO_X3_POINT;
+const X6_TO_X6_POINT = Constant.X6_TO_X6_POINT;
 
 /** 准镜类型 */
 const CATEGORIES = {
@@ -48,7 +53,7 @@ const IMAGE_NAMES = {
   CURRENT_6X_3X_SIGHT: '6倍转3倍压枪', // TODO: 新增图片
 
   /** 打开 6 倍镜缩放条 的按钮 */
-  BUTTON_OF_X6_SIGHT_ZOOM_BAR: '倍镜缩放展开',
+  BUTTON_OF_X6_SIGHT_ZOOM_BAR: Constant.BUTTON_OF_X6_SIGHT_ZOOM_BAR || '倍镜缩放展开',
   /** 6 倍镜缩放条 */
   X6_SIGHT_ZOOM_BAR: '倍镜缩放',
 };
@@ -168,10 +173,6 @@ function isRedDotSight() {
   return Utils.isPointExist(point);
 }
 
-
-const X6_SIGHT_ZOOM_BAR_POINT = { x: 678, y: 222 };
-const X6_TO_X3_POINT = { x: 678, y: 597 };
-const X6_TO_X6_POINT = { x: 678, y: 346 };
 
 /**
  * 打开 6 倍瞄准镜的缩放栏

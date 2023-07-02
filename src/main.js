@@ -4,8 +4,9 @@ import Mirror from 'mirror';
 import Utils from 'utils';
 import Config from 'config';
 import Variable from 'variable';
+import Constant from 'constant';
 
-const FIRE_ICON_POINT = { x: 1936, y: 836 };
+const FIRE_ICON_POINT = Constant.FIRE_ICON_POINT; // { x: 1936, y: 836 };
 
 const gunPressControl = {
   currGun: '',
