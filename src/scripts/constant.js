@@ -29,7 +29,7 @@ const NOVA_9 = {
 };
 
 
-// 华为 MatePad 11， 2560 ×`` 1600
+// 华为 MatePad 11， 2560 × 1600
 const MATE_PAD_11 = {
   FIRE_ICON_POINT: { x: 2212, y: 1251 },
 
