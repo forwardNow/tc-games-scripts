@@ -13,33 +13,33 @@
 3. 使用 windows 搜索 “cmd”，打开 “命令提示符”
 4. 执行如下命令：（`#` 打头的不用执行）
 
-  ```text
-  # 切换盘符
-  C:\Users\abc> W:
-  
-  # 切换到项目根目录
-  W:\> cd W:\dev\tc-games-scripts
-  
-  # 安装 gulp-cli
-  W:\dev\tc-games-scripts> npm i -g gulp-cli
-  
-  # 安装 gulp
-  W:\dev\tc-games-scripts> npm i gulp
-  
-  # 安装项目依赖
-  W:\dev\tc-games-scripts> npm i
-  
-  # 构建图片：
-  #    1. 删除 "TC Games\resource\game\smartkey\com.tencent.tmgp.pubgmhd" 目录
-  #    2. 将 "src/images/" 下的图片拷贝过去
-  W:\dev\tc-games-scripts> npm run build:image
-  
-  # 构建 nova9 可以使用的脚本（根据自己的设备选择，执行一个即可）
-  W:\dev\tc-games-scripts> npm run build:script:nova9
-  
-  # 构建 matepad11 可以使用的脚本（根据自己的设备选择，执行一个即可）
-  W:\dev\tc-games-scripts> npm run build:script:matepad11
-  ```
+    ```text
+    # 切换盘符
+    C:\Users\abc> W:
+    
+    # 切换到项目根目录
+    W:\> cd W:\dev\tc-games-scripts
+    
+    # 安装 gulp-cli
+    W:\dev\tc-games-scripts> npm i -g gulp-cli
+    
+    # 安装 gulp
+    W:\dev\tc-games-scripts> npm i gulp
+    
+    # 安装项目依赖
+    W:\dev\tc-games-scripts> npm i
+    
+    # 构建图片：
+    #    1. 删除 "TC Games\resource\game\smartkey\com.tencent.tmgp.pubgmhd" 目录
+    #    2. 将 "src/images/" 下的图片拷贝过去
+    W:\dev\tc-games-scripts> npm run build:image
+    
+    # 构建 nova9 可以使用的脚本（根据自己的设备选择，执行一个即可）
+    W:\dev\tc-games-scripts> npm run build:script:nova9
+    
+    # 构建 matepad11 可以使用的脚本（根据自己的设备选择，执行一个即可）
+    W:\dev\tc-games-scripts> npm run build:script:matepad11
+    ```
 
 键位：
 
