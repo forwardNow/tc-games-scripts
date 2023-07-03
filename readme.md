@@ -2,25 +2,52 @@
 
 ## 1. 介绍
 
-目录：
+说明：
 
-```text
-tc-games-scripts/
+* 此项目使用 node.js 编写， gulp 构建
 
-  src/        # 源代码，此目录所有 JS 文件可以拷贝到 “脚本目录” 直接使用
+安装：
+
+1. 下载此项目并解压，建议解压到桌面
+2. 下载并安装 [node.js v16.20.1](https://nodejs.org/download/release/v16.20.1/node-v16.20.1-x64.msi)
+3. 使用 windows 搜索 “cmd”，打开 “命令提示符”
+4. 执行如下命令：（`#` 打头的不用执行）
+
+  ```text
+  # 切换盘符
+  C:\Users\abc> W:
   
-  types/    
-    mapi.d.ts # 宏按键 JS 接口类型说明文件
-    
-  docs/       # 文档
-    官方资料/     # 官方提供的压枪相关资料
-    
-  test/       # 测试
-    test_20230623.properties # 测试按键配置
-    test.macro.js            # 测试按键宏
-```
+  # 切换到项目根目录
+  W:\> cd W:\dev\tc-games-scripts
+  
+  # 安装 gulp-cli
+  W:\dev\tc-games-scripts> npm i -g gulp-cli
+  
+  # 安装 gulp
+  W:\dev\tc-games-scripts> npm i gulp
+  
+  # 安装项目依赖
+  W:\dev\tc-games-scripts> npm i
+  
+  # 构建图片：
+  #    1. 删除 "TC Games\resource\game\smartkey\com.tencent.tmgp.pubgmhd" 目录
+  #    2. 将 "src/images/" 下的图片拷贝过去
+  W:\dev\tc-games-scripts> npm run build:image
+  
+  # 构建 nova9 可以使用的脚本（根据自己的设备选择，执行一个即可）
+  W:\dev\tc-games-scripts> npm run build:script:nova9
+  
+  # 构建 matepad11 可以使用的脚本（根据自己的设备选择，执行一个即可）
+  W:\dev\tc-games-scripts> npm run build:script:matepad11
+  ```
+
+键位：
+
+* 位置：[./docs/键位配置/TG_Keys_2023_07_02.zip](./docs/键位配置/TG_Keys_2023_07_02.zip)
 
 ## 2. 环境
+
+### 2.1. 移动设备
 
 手机：
 
@@ -31,27 +58,42 @@ tc-games-scripts/
 | 刷新率    | 智能（最高 120 Hz）       |
 | 屏幕顶部显示 | 自动匹配                |
 
-电脑：
+平板：
 
-| 类别    | 描述                                |
-|-------|-----------------------------------|
-| iMac  | 2017年款，win10，4096 × 2304, 缩放 200% |
-| 联想笔记本 | 拯救者 R7000 2021，win10，2560 × 1440  |
+| 类别  | 描述            |
+|-----|---------------|
+| 品牌  | 华为 MatePad 11 |
+| 分辨率 | 2560 × 1600   |
 
-TC Games:
+### 2.2. 电脑
 
-| 类别   | 描述                                                                                                  |
-|------|-----------------------------------------------------------------------------------------------------|
-| 版本   | 3.0(Update 3412370)                                                                                 |
-| 分辨率  | 1080 × 2430                                                                                         |
-| 图片模板 | [TCG多段，时间间隔压枪配置（推荐设置较简单）](./docs/官方资料/TCG多段，时间间隔压枪配置（推荐设置较简单）.zip)/1-和平图像模板.zip                     |
-| 图片位置 | C:\Users\abc\AppData\Roaming\Sigma-RT\TC Games\resource\game\smartkey\com.tencent.tmgp.pubgmhd\1080 |
+笔记本：
 
-## 3. 基本使用
+| 类别  | 描述                   |
+|-----|----------------------|
+| 品牌  | 联想笔记本，拯救者 R7000 2021 |
+| 系统  | win10                |
+| 分辨率 | 2560 × 1600          |
 
-### 3.1. JS 文件
+一体机：
 
-#### 3.1.1. 存放位置
+| 类别  | 描述                   |
+|-----|----------------------|
+| 品牌  | iMac，2017年款          |
+| 系统  | win10                |
+| 分辨率 | 4096 × 2304, 缩放 200% |
+
+
+### 2.3. TC Games
+
+| 类别 | 描述                  |
+|----|---------------------|
+| 版本 | 3.0(Update 3412370) |
+
+
+## 3. JS 文件
+
+### 3.1. 存放位置
 
 位置：
 
@@ -62,7 +104,7 @@ TC Games:
 
 * 在 “脚本目录” 中存放的 JS 文件都会被加载
 
-#### 3.1.2. 刷新
+### 3.2. 刷新
 
 输入设置 中 快捷键：
 
@@ -70,7 +112,7 @@ TC Games:
 
 修改了 “脚本目录” 中的 JS 文件后，按 `Ctrl + F5` 后就生效了
 
-#### 3.1.3. 模块化语法
+### 3.3. 模块化语法
 
 说明:
 
@@ -107,7 +149,7 @@ TC Games:
   mapi.tip(gunName, 2);
   ```
 
-### 3.2. 宏按键
+## 4. 宏按键
 
 什么是宏按键：
 
@@ -179,9 +221,33 @@ JS 宏日志：
 * 作用：JS 代码报错都会记录在日志文件
 * 位置：`C:\Users\abc\AppData\Roaming\Sigma-RT\TC Games\log\macro_javascript.log`
 
-## 4. JS API
+## 5. 图片
 
-### 4.1. mapi
+说明：
+
+* “简单找图” 用到的图片，`mapi.findimage(图片名称, ....)`
+
+位置：
+
+* `C:\Users\abc\AppData\Roaming\Sigma-RT\TC Games\resource\game\smartkey\com.tencent.tmgp.pubgmhd`
+
+目录：
+
+```text
+com.tencent.tmgp.pubgmhd/
+  1080/   # 存放分辨率高度为 1080 设备的图片
+  1600/   # 存放分辨率高度为 1600 设备的图片
+```
+
+查找图片的规则：
+
+* `mapi.findimage('AKM', ....)`
+* 如果当前设备是 1080 的手机，则优先去 `1080` 目录找，找不到则去 `1600` 目录找
+* 所以可以使用 1600 的平板，然后降低相似度就可以在 1080 的设备上用了
+
+## 6. JS API
+
+### 6.1. mapi
 
 全局对象，JSAPI 接口
 
@@ -189,7 +255,7 @@ JS 宏日志：
 
 官方文档：[http://www.sigma-rt.com/tcgames/help/?u=15](http://www.sigma-rt.com/tcgames/help/?u=15)
 
-### 4.2. 多点找色
+### 6.2. 多点找色
 
 说明：
 
@@ -210,7 +276,7 @@ if (point.X !== 0 || point.Y !== 0) {
 }
 ```
 
-### 4.3. 全局 map
+### 6.3. 全局 map
 
 说明：
 
@@ -223,60 +289,7 @@ API：
 
 示例：
 
-### 4.4. 鼠标宏
-
-说明：
-
-* 用于压枪
-
-API:
-
-* `mapi.startsectionaimpar`: 启动
-* `mapi.changesectionaimpar`: 设置参数
-* `mapi.customaimpar`: 开始/暂停
-
-示例：
-
-* 鼠标左键宏：
-
-  ```javascript
-  (function() {
-    const fire_icon_position = { x: 2032, y: 806 };
-    
-    mapi.holdpress(fire_icon_position.x, fire_icon_position.y);
-    
-    // 启动
-    mapi.startsectionaimpar();
-  }());
-  ```
-
-* F1 键宏：
-
-  ```javascript
-  (function() {
-   // 开始
-   mapi.customaimpar(false);
-       
-   const name = 'M4站';
-   const totalTime = 3800;
-   const par = [19].toString();
-   const offsetPixel = 1;
-   const mode = false 
-       
-   mapi.changesectionaimpar(name, totalTime, par, offsetPixel, mode);
-  }());
-  ```
-
-* F2 键宏：
-
-  ```javascript
-  (function() {
-    // 停止
-    mapi.customaimpar(true);
-  }());
-  ```
-
-### 4.5. 日志
+### 6.4. 日志
 
 说明：
 
@@ -294,35 +307,16 @@ API：
 
 * API 是全局方法，不需要 mapi
 
-## 5. 调整
 
-### 5.1. 相似度
+## 7. bug
 
-| 图片名称 | 官方值  | 调整后的值    |
-|------|------|----------|
-| 2倍压枪 | 0.75 | 0.68     |
-| 3倍压枪 | 0.75 | **0.56** |
-| 4倍压枪 | 0.75 | 0.68     |
-| 6倍压枪 | 0.75 | **0.60** |
-
-### 5.2. 新增图片
-
-| 图片名称     | 位置                         | 说明 |
-|----------|----------------------------|----|
-| 全息压枪 | ![./docs/extra/全息压枪.png](./docs/extra/全息压枪.png) |    |
-| 机瞄压枪 | ![./docs/extra/机瞄压枪.png](./docs/extra/机瞄压枪.png) |    |
-| 红点压枪 | ![./docs/extra/红点压枪.png](./docs/extra/红点压枪.png) |    |
-
-
-## 6. bug
-
-### 6.1. 分段压枪，自动开枪
+### 7.1. 分段压枪，自动开枪
 
 描述：
 
 * 分段压枪，切换 蹲/站 时，点一下开火键会自动打二三十发子弹
 
-## 7. 参考
+## 8. 参考
 
 * [和平精英手游物资及事件场景中英文对照（持续更新，务必收藏！）](https://zhuanlan.zhihu.com/p/359768662)
 * [官方文档](https://www.sigma-rt.com/tcgames/help/?u=15)
