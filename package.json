@@ -8,9 +8,9 @@
     "test": "test"
   },
   "scripts": {
-    "build": "gulp",
-    "build:script": "gulp buildScripts",
-    "build:image": "gulp buildImages"
+    "build:image": "gulp buildImages",
+    "build:script:nova9": "cross-env DEVICE=NOVA_9 gulp buildScripts",
+    "build:script:matepad11": "cross-env DEVICE=MATE_PAD_11 gulp buildScripts"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,10 @@
   "dependencies": {
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
-    "gulp-rename": "^2.0.0"
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.1.4"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
