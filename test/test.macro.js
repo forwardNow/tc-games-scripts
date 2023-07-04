@@ -44,7 +44,7 @@
     gunPressControl.toggleX6Sight();
   });
 } ());
-
+``
 // 切枪
 (function() {
   import('main').then(({ default: main }) => {
