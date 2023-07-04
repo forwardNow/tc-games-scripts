@@ -106,7 +106,10 @@ const gunPressControl = {
    * 绑定键位：F11
    */
   logErrorPressArgs() {
-    logerror(`${this.currGun} - ${this.currPosture} - ${this.currMirror}`);
+    const { gun, posture, mirror } = this.getStatus();
+    const args = Config.getGunPressArgs(gun, posture, mirror);
+
+    logerror(`${ gun }${ posture }${ mirror }: ${ JSON.stringify(args) }`)
   },
 
   run() {
