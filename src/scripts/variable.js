@@ -4,6 +4,9 @@ const KEYS = {
 
   // 调整过 6 倍镜倍率 的 枪及倍率
   ADJUSTED_GUNS_OF_6X_SIGHT: 'ADJUSTED_GUNS_OF_6X_SIGHT',
+
+  // 动态调整压枪参数，存储差值
+  DELTA_DELAY: 'DELTA_DELAY',
 };
 
 
@@ -47,4 +50,12 @@ export default {
 
     mapi.setglobalmap(KEYS.ADJUSTED_GUNS_OF_6X_SIGHT, adjustedX6SightsGuns);
   },
+
+  get deltaDelay() {
+    return mapi.getglobalmap(KEYS.IS_TIP_ENABLED);
+  },
+
+  set deltaDelay(delta) {
+    mapi.setglobalmap(KEYS.IS_TIP_ENABLED, this.deltaDelay + delta);
+  }
 }

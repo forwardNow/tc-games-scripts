@@ -59,5 +59,19 @@
   });
 } ());
 
+// 上箭头
+(function() {
+  import('main').then(({ default: main }) => {
+    main.addDelay();
+  });
+} ());
+
+// 下箭头
+(function() {
+  import('main').then(({ default: main }) => {
+    main.subtractDelay();
+  });
+} ());
+
 
 

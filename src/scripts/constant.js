@@ -15,8 +15,6 @@ const NOVA_9 = {
   X6_TO_X3_POINT: { x: 678, y: 597 },
   X6_TO_X6_POINT: { x: 678, y: 346 },
 
-  GUN_PRESS_RATE: 1,
-
   CURRENT_MIRROR_SIM: {
     X6_SIGHT: 0.60,
     X4_SIGHT: 0.68,
@@ -45,8 +43,6 @@ const MATE_PAD_11 = {
   X6_SIGHT_ZOOM_BAR_POINT: { x: 738, y: 388 },
   X6_TO_X3_POINT: { x: 746, y: 882 },
   X6_TO_X6_POINT: { x: 748, y: 538 },
-
-  GUN_PRESS_RATE: 1.4,
 
   CURRENT_MIRROR_SIM: {
     X6_SIGHT: 0.85,

@@ -28,7 +28,7 @@ function isPointNotExist(point) {
  */
 function showTip(content, duration = 1) {
   if (!Variable.isTipEnabled) {
-    return;
+    // return;
   }
   mapi.tip(content, duration);
 }

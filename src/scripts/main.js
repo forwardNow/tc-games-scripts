@@ -5,6 +5,7 @@ import Utils from 'utils';
 import Config from 'config';
 import Variable from 'variable';
 import Constant from 'constant';
+import variable from 'variable';
 
 const FIRE_ICON_POINT = Constant.FIRE_ICON_POINT; // { x: 1936, y: 836 };
 
@@ -64,7 +65,7 @@ const gunPressControl = {
 
   /**
    * 切枪
-   * 
+   *
    * 绑定键位：Q
    */
   switchGun() {
@@ -73,12 +74,30 @@ const gunPressControl = {
 
   /**
    * 收枪
-   * 
+   *
    * 绑定键位：Tab
    */
   hideGun() {
     mapi.shotmode(true);
     Gun.hideGun();
+  },
+
+  /**
+   * 动态调整压枪参数，+1
+   *
+   * 绑定键位：上箭头
+   */
+  addDelay() {
+    Variable.deltaDelay = +1;
+  },
+
+  /**
+   * 动态调整压枪参数，-1
+   *
+   * 绑定键位：下箭头
+   */
+  subtractDelay() {
+    Variable.deltaDelay = -1;
   },
 
   run() {
@@ -95,8 +114,8 @@ const gunPressControl = {
     }
 
     this.start();
-    this.play();
     this.changePressArgs(args);
+    this.play();
   },
 
   start() {
@@ -122,6 +141,8 @@ const gunPressControl = {
     const { gun, posture, mirror } = this.getStatus();
 
     const args = Config.getGunPressArgs(gun, posture, mirror);
+
+    args.delay += Variable.deltaDelay;
 
     Utils.showTip(`${ gun }${ posture }${ mirror }: ${ JSON.stringify(args) }`)
 
