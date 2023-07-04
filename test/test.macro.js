@@ -73,5 +73,12 @@
   });
 } ());
 
+// F11
+(function() {
+  import('main').then(({ default: main }) => {
+    main.logErrorPressArgs();
+  });
+} ());
+
 
 

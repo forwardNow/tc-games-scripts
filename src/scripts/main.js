@@ -100,6 +100,15 @@ const gunPressControl = {
     Variable.deltaDelay = -1;
   },
 
+  /**
+   * 记录不准确的压枪参数
+   *
+   * 绑定键位：F11
+   */
+  logErrorPressArgs() {
+    logerror(`${this.currGun} - ${this.currPosture} - ${this.currMirror}`);
+  },
+
   run() {
     if (!Mirror.isOpen()) {
       this.pause();
