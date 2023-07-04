@@ -53,7 +53,7 @@ const IMAGE_NAMES = {
   CURRENT_6X_3X_SIGHT: '6倍转3倍压枪', // TODO: 新增图片
 
   /** 打开 6 倍镜缩放条 的按钮 */
-  BUTTON_OF_X6_SIGHT_ZOOM_BAR: '倍镜缩放展开',
+  BUTTON_OF_X6_SIGHT_ZOOM_BAR: '6倍镜调距按钮',
   /** 6 倍镜缩放条 */
   X6_SIGHT_ZOOM_BAR: '倍镜缩放',
 };
