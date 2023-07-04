@@ -177,7 +177,6 @@ function openZoomBarOf6XSight() {
   const zoomBarPoint = mapi.findimage(IMAGE_NAMES.X6_SIGHT_ZOOM_BAR, 0.75, 4, 1, 2, 1);
 
   if (Utils.isPointExist(zoomBarPoint)) {
-    logerror('未找到图片：' + IMAGE_NAMES.X6_SIGHT_ZOOM_BAR);
     return;
   }
 
@@ -185,7 +184,7 @@ function openZoomBarOf6XSight() {
   const buttonPoint = mapi.findimage(IMAGE_NAMES.BUTTON_OF_X6_SIGHT_ZOOM_BAR, 0.75, 4, 3, 2, 1);
 
   if (!Utils.isPointExist(buttonPoint)) {
-    logerror('未找到图片：' + IMAGE_NAMES.BUTTON_OF_X6_SIGHT_ZOOM_BAR);
+    loginfo('未找到图片：' + IMAGE_NAMES.BUTTON_OF_X6_SIGHT_ZOOM_BAR);
     return;
   }
 
