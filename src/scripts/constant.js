@@ -53,7 +53,7 @@ const MATE_PAD_11 = {
     X4_SIGHT: 0.75,
     X3_SIGHT: 0.75,
     X2_SIGHT: 0.75,
-    MACHINE_SIGHT: 0.75,
+    MACHINE_SIGHT: 0.65,
     HOLOGRAPHIC_SIGHT: 0.75,
     RED_DOT_SIGHT: 0.75,
   },

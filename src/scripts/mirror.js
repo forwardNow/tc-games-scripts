@@ -50,12 +50,12 @@ const IMAGE_NAMES = {
   CURRENT_3X_SIGHT: '3倍压枪',
   CURRENT_4X_SIGHT: '4倍压枪',
   CURRENT_6X_SIGHT: '6倍压枪',
-  CURRENT_6X_3X_SIGHT: '6倍转3倍压枪', // TODO: 新增图片
+  CURRENT_6X_3X_SIGHT: '6倍转3倍压枪',
 
   /** 打开 6 倍镜缩放条 的按钮 */
   BUTTON_OF_X6_SIGHT_ZOOM_BAR: '6倍镜调距按钮',
   /** 6 倍镜缩放条 */
-  X6_SIGHT_ZOOM_BAR: '倍镜缩放',
+  X6_SIGHT_ZOOM_BAR: '6倍镜调距条',
 };
 
 /**
@@ -65,7 +65,7 @@ const IMAGE_NAMES = {
  */
 function isOpen() {
   // 第一（三）人称图标 如果存在 则说明未开镜
-  const point = mapi.findimage(IMAGE_NAMES.FIRST_PERSON_ICON, 0.75, 4, 4, 1, 4);
+  const point = mapi.findimage(IMAGE_NAMES.FIRST_PERSON_ICON, 0.65, 4, 4, 1, 4);
   const isExist = Utils.isPointExist(point)
 
   return !isExist;
@@ -174,16 +174,18 @@ function isRedDotSight() {
  * 打开 6 倍瞄准镜的缩放栏
  */
 function openZoomBarOf6XSight() {
-  const zoomBarPoint = mapi.findimage(IMAGE_NAMES.X6_SIGHT_ZOOM_BAR, 0.92, 4, 1, 2, 1);
+  const zoomBarPoint = mapi.findimage(IMAGE_NAMES.X6_SIGHT_ZOOM_BAR, 0.75, 4, 1, 2, 1);
 
   if (Utils.isPointExist(zoomBarPoint)) {
+    logerror('未找到图片：' + IMAGE_NAMES.X6_SIGHT_ZOOM_BAR);
     return;
   }
 
-  const buttonPoint = mapi.findimage(IMAGE_NAMES.BUTTON_OF_X6_SIGHT_ZOOM_BAR, 0.8, 4, 1, 2, 1);
+  // TODO 平板，图片寻找区域调整，手机可能也需要调整
+  const buttonPoint = mapi.findimage(IMAGE_NAMES.BUTTON_OF_X6_SIGHT_ZOOM_BAR, 0.75, 4, 3, 2, 1);
 
   if (!Utils.isPointExist(buttonPoint)) {
-    logerror('未找到打开 6 倍镜缩放条 的按钮');
+    logerror('未找到图片：' + IMAGE_NAMES.BUTTON_OF_X6_SIGHT_ZOOM_BAR);
     return;
   }
 
