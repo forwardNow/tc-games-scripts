@@ -40,7 +40,7 @@ const MAPPING = {
 /** 图片名称 */
 const IMAGE_NAMES = {
   /** 第一（三）人称图标 */
-  FIRST_PERSON_ICON: '没有开镜',
+  FIRST_PERSON_ICON: '第一人称切换按钮',
 
   CURRENT_MACHINE_SIGHT: '机瞄压枪',
   CURRENT_HOLOGRAPHIC_SIGHT: '全息压枪',
