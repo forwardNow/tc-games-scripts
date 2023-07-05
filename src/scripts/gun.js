@@ -20,6 +20,9 @@ const CATEGORIES = {
   ACVAL: 'ACVAL',
 
   PMK: 'PKM',
+
+  VSS: 'VSS',
+
   M249: 'M249',
 
   M762: 'M762',
