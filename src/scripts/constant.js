@@ -16,6 +16,7 @@ const NOVA_9 = {
   X6_TO_X6_POINT: { x: 678, y: 346 },
 
   CURRENT_MIRROR_SIM: {
+    X8_SIGHT: 0.65,
     X6_SIGHT: 0.60,
     X4_SIGHT: 0.68,
     X3_SIGHT: 0.56,
@@ -45,6 +46,7 @@ const MATE_PAD_11 = {
   X6_TO_X6_POINT: { x: 748, y: 538 },
 
   CURRENT_MIRROR_SIM: {
+    X8_SIGHT: 0.75,
     X6_SIGHT: 0.85,
     X4_SIGHT: 0.75,
     X3_SIGHT: 0.75,
