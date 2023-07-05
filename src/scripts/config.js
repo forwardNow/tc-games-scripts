@@ -542,24 +542,9 @@ const MATE_PAD_11 = {
   },
 
   'TANGMUXUN': {
-    'TANGMUXUN蹲6倍6': [0, 1, 4],
-    'TANGMUXUN蹲6倍3': [0, 1, 20],
-    'TANGMUXUN蹲4倍': [0, 1, 15],
-    'TANGMUXUN蹲3倍': [0, 1, 20],
-    'TANGMUXUN蹲2倍': [0, 1, 25],
-    'TANGMUXUN蹲': [0, 1, 21],
-    'TANGMUXUN趴6倍6': [0, 1, 4],
-    'TANGMUXUN趴6倍3': [0, 1, 20],
-    'TANGMUXUN趴4倍': [0, 1, 15],
-    'TANGMUXUN趴3倍': [0, 1, 20],
-    'TANGMUXUN趴2倍': [0, 1, 25],
-    'TANGMUXUN趴': [0, 1, 24],
-    'TANGMUXUN站6倍6': [0, 1, 4],
-    'TANGMUXUN站6倍3': [0, 1, 20],
-    'TANGMUXUN站4倍': [0, 1, 15],
-    'TANGMUXUN站3倍': [0, 1, 20],
-    'TANGMUXUN站2倍': [0, 1, 25],
-    'TANGMUXUN站': [0, 1, 16],
+    'TANGMUXUN蹲': [0, 1, 15],
+    'TANGMUXUN趴': [0, 1, 18],
+    'TANGMUXUN站': [0, 1, 12],
   },
 
   'M249': {
