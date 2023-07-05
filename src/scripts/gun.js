@@ -23,6 +23,7 @@ const CATEGORIES = {
 
   VSS: 'VSS',
   MK20H: 'MK20H',
+  M417: 'M417',
 
   M249: 'M249',
 
