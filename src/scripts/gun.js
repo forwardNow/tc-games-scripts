@@ -22,6 +22,7 @@ const CATEGORIES = {
   PMK: 'PKM',
 
   VSS: 'VSS',
+  MK20H: 'MK20H',
 
   M249: 'M249',
 
