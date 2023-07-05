@@ -126,8 +126,8 @@ const gunPressControl = {
     }
 
     this.start();
-    this.changePressArgs(args);
     this.play();
+    this.changePressArgs(args);
   },
 
   start() {
