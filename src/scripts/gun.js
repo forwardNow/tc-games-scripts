@@ -13,10 +13,13 @@ const CATEGORIES = {
   VECTOR: 'VECTOR',
   TANGMUXUN: 'TANGMUXUN', // 汤姆逊枪
 
+  PKM: 'PKM',
+
   AKM: 'AKM',
 
   ACVAL: 'ACVAL',
 
+  PMK: 'PKM',
   M249: 'M249',
 
   M762: 'M762',
