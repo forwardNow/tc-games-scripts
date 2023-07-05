@@ -5,7 +5,7 @@ import Constant from 'constant';
 const CATEGORIES = {
   M4: 'M4',
   SCARL: 'SCARL',
-  DP28: 'DP28', // TODO
+  DP28: 'DP28',
 
   UMP45: 'UMP45',
   YENIU: 'YENIU',
@@ -17,7 +17,7 @@ const CATEGORIES = {
 
   ACVAL: 'ACVAL',
 
-  M249: 'M249', // TODO
+  M249: 'M249',
 
   M762: 'M762',
 
