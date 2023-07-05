@@ -23,6 +23,8 @@ const CATEGORIES = {
   X6_SIGHT: 'X6_SIGHT',
   /** 6倍镜，3倍率 */
   X6_X3_SIGHT: 'X6_X3_SIGHT',
+
+  X8_SIGHT: 'X8_SIGHT',
 }
 
 /** 准镜映射，对应官方名称 */
@@ -35,6 +37,7 @@ const MAPPING = {
   [CATEGORIES.X4_SIGHT]: '4倍',
   [CATEGORIES.X6_SIGHT]: '6倍6',
   [CATEGORIES.X6_X3_SIGHT]: '6倍3',
+  [CATEGORIES.X8_SIGHT]: '8倍',
 };
 
 /** 图片名称 */
@@ -51,6 +54,7 @@ const IMAGE_NAMES = {
   CURRENT_4X_SIGHT: '4倍压枪',
   CURRENT_6X_SIGHT: '6倍压枪',
   CURRENT_6X_3X_SIGHT: '6倍转3倍压枪',
+  CURRENT_8X_SIGHT: '8倍压枪',
 
   /** 打开 6 倍镜缩放条 的按钮 */
   BUTTON_OF_X6_SIGHT_ZOOM_BAR: '6倍镜调距按钮',
@@ -92,6 +96,10 @@ const MIRROR_IMAGE_ARGS = [
  * @return { string }
  */
 function getCurrentMirror() {
+  if (isX8Sight()) {
+    return CATEGORIES.X8_SIGHT;
+  }
+
   if (isX6Sight()) {
     return CATEGORIES.X6_SIGHT;
   }
@@ -166,6 +174,11 @@ function isHolographicSight() {
 }
 function isRedDotSight() {
   const point = mapi.findimage(IMAGE_NAMES.CURRENT_RED_DOT_SIGHT, Constant.CURRENT_MIRROR_SIM.RED_DOT_SIGHT, ...MIRROR_IMAGE_ARGS);
+  return Utils.isPointExist(point);
+}
+
+function isX8Sight() {
+  const point = mapi.findimage(IMAGE_NAMES.CURRENT_8X_SIGHT, Constant.CURRENT_MIRROR_SIM.X8_SIGHT, ...MIRROR_IMAGE_ARGS);
   return Utils.isPointExist(point);
 }
 
