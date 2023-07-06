@@ -110,9 +110,19 @@ declare namespace mapi {
   function customaimpar(isPause: boolean): void;
 
   /**
-   * 按住操作，按键松开后才会释放此接
+   * 按住当前宏按键所指的手机位置
+   */
+  function holdpress();
+
+  /**
+   * 按住操作，按键松开后才会释放此接口
    */
   function holdpress(x: number, y: number);
+
+  /**
+   * 按住操作，按键松开后才会释放此接口
+   */
+  function holdpress(point: point);
 
   /**
    * 设置全局缓存 map 的键值对
@@ -129,7 +139,7 @@ declare namespace mapi {
 
   /**
    * 设置是否为射击模式。射击模式没有鼠标
-   * 
+   *
    * @param isShotMode { boolean } 是否为射击模式
    * @example 按 Tab 键，默认会退出，可用通过 mapi.shotmode(true) 进入射击模式
    */
@@ -137,11 +147,16 @@ declare namespace mapi {
 
   /**
    * 点击操作
-   * 
-   * @param x {number} 
-   * @param y {number} 
+   *
+   * @param x {number}
+   * @param y {number}
    */
   function click(x: number, y: number);
+
+  /**
+   * 获取当前宏按键所指手机屏幕上的坐标
+   */
+  function getkeypos(): point;
 }
 
 
