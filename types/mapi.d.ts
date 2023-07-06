@@ -16,6 +16,17 @@ declare namespace mapi {
   function delay(milliseconds: number);
 
   /**
+   * 长按当前宏按键所指的手机位置
+   * @param milliseconds
+   */
+  function longpress(milliseconds: number);
+
+  /**
+   * 长按指定坐标的位置
+   */
+  function longpress(x: number, y: number, milliseconds: number);
+
+  /**
    * 弹出消息框
    *
    * @param info 内容
