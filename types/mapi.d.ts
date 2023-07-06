@@ -10,6 +10,12 @@ declare namespace mapi {
   }
 
   /**
+   * 延时操作，milliseconds为整型，单位毫秒
+   * @param milliseconds
+   */
+  function delay(milliseconds: number);
+
+  /**
    * 弹出消息框
    *
    * @param info 内容
@@ -144,6 +150,11 @@ declare namespace mapi {
    * @example 按 Tab 键，默认会退出，可用通过 mapi.shotmode(true) 进入射击模式
    */
   function shotmode(isShotMode: boolean);
+
+  /**
+   * 点击当前宏按键所指的手机位置
+   */
+  function click();
 
   /**
    * 点击操作
