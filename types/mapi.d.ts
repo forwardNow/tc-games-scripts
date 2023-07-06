@@ -127,7 +127,7 @@ declare namespace mapi {
   function customaimpar(isPause: boolean): void;
 
   /**
-   * 按住当前宏按键所指的手机位置
+   * 按住操作，按住当前宏按键所指的手机位置
    */
   function holdpress();
 
@@ -140,6 +140,23 @@ declare namespace mapi {
    * 按住操作，按键松开后才会释放此接口
    */
   function holdpress(point: point);
+
+  /**
+   * 执行其他按键的操作，
+   * 当前按键松开 才会释放 其他按键
+   *
+   * @param keyName { string } 如 "W"
+   */
+  function key(keyName: string);
+
+  /**
+   * 执行其他按键的操作
+   * releaseTime 毫秒后，释放 其他按键
+   *
+   * @param keyName { string } 如 "W"
+   * @param releaseTime {number} 毫秒数
+   */
+  function key(keyName: string, releaseTime: number);
 
   /**
    * 设置全局缓存 map 的键值对
@@ -192,6 +209,19 @@ declare namespace mapi {
    * 主要解决某些游戏因为点击其他位置导致视角失灵的情况
    */
   function aimreset();
+
+  /**
+   * WASD方向键重置
+   *
+   * 200 毫秒后 重新按WASD
+   */
+  function directionreset();
+  /**
+   * WASD方向键重置
+   * 
+   * delay 毫秒后 重新按WASD
+   */
+  function directionreset(delay: number);
 }
 
 
