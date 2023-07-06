@@ -15,9 +15,9 @@ const gunPressControl = {
   currMirror: '',
 
   /**
-   * 开火
+   * @description 开火
    *
-   * 键位绑定：鼠标左键
+   * @bind 鼠标左键
    */
   fire() {
     mapi.holdpress(FIRE_ICON_POINT.x, FIRE_ICON_POINT.y);
@@ -26,9 +26,9 @@ const gunPressControl = {
   },
 
   /**
-   * 调整 6 倍镜，并记录调整过 6 倍镜倍率的枪及倍率
+   * @description 调整 6 倍镜，并记录调整过 6 倍镜倍率的枪及倍率
    *
-   * 键位绑定：鼠标滚轮-滚上
+   * @bind 鼠标滚轮-滚上
    */
   toggleX6Sight() {
     if (!Mirror.isOpen()) {
@@ -55,27 +55,27 @@ const gunPressControl = {
   },
 
   /**
-   * 启用/禁用 mapi.tip()
+   * @description 启用/禁用 mapi.tip()
    *
-   * 绑定键位：F12
+   * @bind F12
    */
   toggleEnableOfTip() {
     Utils.toggleEnableOfTip();
   },
 
   /**
-   * 切枪
+   * @description 切枪
    *
-   * 绑定键位：Q
+   * @bind Q
    */
   switchGun() {
     Gun.switchGun();
   },
 
   /**
-   * 收枪
+   * @description 收枪
    *
-   * 绑定键位：Tab
+   * @bind Tab
    */
   hideGun() {
     mapi.shotmode(true);
@@ -83,27 +83,27 @@ const gunPressControl = {
   },
 
   /**
-   * 动态调整压枪参数，+1
+   * @description 动态调整压枪参数，+1
    *
-   * 绑定键位：上箭头
+   * @bind 上箭头
    */
   addDelay() {
     Variable.deltaDelay = +1;
   },
 
   /**
-   * 动态调整压枪参数，-1
+   * @description 动态调整压枪参数，-1
    *
-   * 绑定键位：下箭头
+   * @bind 下箭头
    */
   subtractDelay() {
     Variable.deltaDelay = -1;
   },
 
   /**
-   * 记录不准确的压枪参数
+   * @description 记录不准确的压枪参数
    *
-   * 绑定键位：F11
+   * @bind F11
    */
   logErrorPressArgs() {
     const { gun, posture, mirror } = this.getStatus();
