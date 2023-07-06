@@ -242,6 +242,10 @@ JS 宏日志：
 
 * “简单找图” 用到的图片，`mapi.findimage(图片名称, ....)`
 
+注意：
+
+* 纯文字找图，相似度要调低
+
 位置：
 
 * `C:\Users\abc\AppData\Roaming\Sigma-RT\TC Games\resource\game\smartkey\com.tencent.tmgp.pubgmhd`
