@@ -3,11 +3,8 @@ import Posture from 'posture';
 import Mirror from 'mirror';
 import Utils from 'utils';
 import Config from 'config';
+import Missile from 'missile';
 import Variable from 'variable';
-import Constant from 'constant';
-import variable from 'variable';
-
-const FIRE_ICON_POINT = Constant.FIRE_ICON_POINT; // { x: 1936, y: 836 };
 
 const gunPressControl = {
   currGun: '',
@@ -20,7 +17,7 @@ const gunPressControl = {
    * @bind 鼠标左键
    */
   fire() {
-    mapi.holdpress(FIRE_ICON_POINT.x, FIRE_ICON_POINT.y);
+    mapi.holdpress();
 
     this.run();
   },
@@ -98,6 +95,16 @@ const gunPressControl = {
    */
   subtractDelay() {
     Variable.deltaDelay = -1;
+  },
+
+  /**
+   * @description 取消投掷
+   *
+   * @bind 鼠标右键
+   */
+  cancelThrow() {
+    // 3, 4, 1, 1
+    Missile.cancelThrow();
   },
 
   /**
