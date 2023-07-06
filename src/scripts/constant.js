@@ -23,6 +23,8 @@ const NOVA_9 = {
     HOLOGRAPHIC_SIGHT: 0.65,
     RED_DOT_SIGHT: 0.65,
   },
+
+  BAG_DUSTBIN_X: 2350,
 };
 
 
@@ -51,6 +53,8 @@ const MATE_PAD_11 = {
     HOLOGRAPHIC_SIGHT: 0.75,
     RED_DOT_SIGHT: 0.75,
   },
+
+  BAG_DUSTBIN_X: 2500,
 };
 
 export default /* replace start */ MATE_PAD_11 /* replace end */;

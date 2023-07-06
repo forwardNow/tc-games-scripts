@@ -83,7 +83,7 @@
 // 鼠标右键
 (function() {
   import('main').then(({ default: main }) => {
-    main.cancelThrow();
+    main.handleMouseRight();
   });
 } ());
 

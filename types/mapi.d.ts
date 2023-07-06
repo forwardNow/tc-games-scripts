@@ -204,11 +204,29 @@ declare namespace mapi {
   function getkeypos(): point;
 
   /**
+   * 获取当前鼠标所指手机屏幕上的坐标
+   */
+  function getmousepos(): point;
+
+  /**
    * 准心重置操作，
    * 在隐藏鼠标控制视角时，使用此接口会释放视角然后立即在准心位置重新按下，
    * 主要解决某些游戏因为点击其他位置导致视角失灵的情况
    */
   function aimreset();
+
+  /**
+   * 从 (startX, startY) 滑动到 (endX, endY)，
+   * 这段距离总共有 pointNum 个点，
+   * 两点间所需时间为 interval
+   * @param startX
+   * @param startY
+   * @param endX
+   * @param endY
+   * @param interval
+   * @param pointNum
+   */
+  function slide(startX, startY, endX, endY, interval, pointNum);
 
   /**
    * WASD方向键重置
@@ -218,7 +236,7 @@ declare namespace mapi {
   function directionreset();
   /**
    * WASD方向键重置
-   * 
+   *
    * delay 毫秒后 重新按WASD
    */
   function directionreset(delay: number);

@@ -5,6 +5,7 @@ import Utils from 'utils';
 import Config from 'config';
 import Missile from 'missile';
 import Variable from 'variable';
+import Bag from 'bag';
 
 const gunPressControl = {
   currGun: '',
@@ -98,16 +99,23 @@ const gunPressControl = {
   },
 
   /**
-   * @description 取消投掷
+   * @description 1. 取消投掷；2. 丢弃背包中光标所指位置的配件
    *
    * @bind 鼠标右键
    */
-  cancelThrow() {
+  handleMouseRight() {
+    const isDiscardMaterials = Bag.discardMaterialsUnderCursor();
+
+    if (isDiscardMaterials) {
+      return;
+    }
+
     const isCancelThrow = Missile.cancelThrow();
 
     if (isCancelThrow) {
       return;
     }
+
     const currKeyPoint = mapi.getkeypos();
 
     mapi.click(currKeyPoint);
