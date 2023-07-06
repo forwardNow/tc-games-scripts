@@ -154,9 +154,22 @@ declare namespace mapi {
   function click(x: number, y: number);
 
   /**
+   * 点击操作
+   * @param point
+   */
+  function click(point: point);
+
+  /**
    * 获取当前宏按键所指手机屏幕上的坐标
    */
   function getkeypos(): point;
+
+  /**
+   * 准心重置操作，
+   * 在隐藏鼠标控制视角时，使用此接口会释放视角然后立即在准心位置重新按下，
+   * 主要解决某些游戏因为点击其他位置导致视角失灵的情况
+   */
+  function aimreset();
 }
 
 
