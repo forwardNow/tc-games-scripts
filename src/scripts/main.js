@@ -103,8 +103,14 @@ const gunPressControl = {
    * @bind 鼠标右键
    */
   cancelThrow() {
-    // 3, 4, 1, 1
-    Missile.cancelThrow();
+    const isCancelThrow = Missile.cancelThrow();
+
+    if (isCancelThrow) {
+      return;
+    }
+    const currKeyPoint = mapi.getkeypos();
+
+    mapi.click(currKeyPoint);
   },
 
   /**
