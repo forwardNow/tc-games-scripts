@@ -50,17 +50,17 @@
 
 <!--keymap-start-->
 
-| 按键 | 说明 |
-| --- | --- |
-| F11 | 记录不准确的压枪参数 |
-| F12 | 启用/禁用 mapi.tip() |
-| Q | 切枪 |
-| Tab | 收枪 |
-| 上箭头 | 动态调整压枪参数，+1 |
-| 下箭头 | 动态调整压枪参数，-1 |
-| 鼠标右键 | 1. 取消投掷；<br>2. 丢弃背包中光标所指位置的配件；<br>3. 点击当前按键位置并设置压枪参数 |
-| 鼠标左键 | 开火 |
-| 鼠标滚轮-滚上 | 调整 6 倍镜，并记录调整过 6 倍镜倍率的枪及倍率 |
+| 按键 | 说明 | 宏 |
+| --- | --- | --- |
+| F11 | 记录不准确的压枪参数 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.logErrorPressArgs();`<br>`   });`<br>`} ());` |
+| F12 | 启用/禁用 mapi.tip() | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.toggleEnableOfTip();`<br>`   });`<br>`} ());` |
+| Q | 切枪 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.switchGun();`<br>`   });`<br>`} ());` |
+| Tab | 收枪 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.hideGun();`<br>`   });`<br>`} ());` |
+| 上箭头 | 动态调整压枪参数, +1 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.addDelay();`<br>`   });`<br>`} ());` |
+| 下箭头 | 动态调整压枪参数, -1 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.subtractDelay();`<br>`   });`<br>`} ());` |
+| 鼠标右键 | 1. 取消投掷；<br>2. 丢弃背包中光标所指位置的配件；<br>3. 点击当前按键位置并设置压枪参数 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.handleMouseRight();`<br>`   });`<br>`} ());` |
+| 鼠标左键 | 开火 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.fire();`<br>`   });`<br>`} ());` |
+| 鼠标滚轮-滚上 | 调整 6 倍镜，并记录调整过 6 倍镜倍率的枪及倍率 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.toggleX6Sight();`<br>`   });`<br>`} ());` |
 
 <!--keymap-end-->
 
