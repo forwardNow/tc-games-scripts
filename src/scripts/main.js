@@ -99,7 +99,7 @@ const gunPressControl = {
   },
 
   /**
-   * @description 1. 取消投掷；2. 丢弃背包中光标所指位置的配件
+   * @description 1. 取消投掷；2. 丢弃背包中光标所指位置的配件；3. 点击当前按键位置并设置压枪参数
    *
    * @bind 鼠标右键
    */
@@ -120,7 +120,7 @@ const gunPressControl = {
 
     mapi.click(currKeyPoint);
 
-    this.changePressArgs();
+    this.updatePressArgs();
   },
 
   /**
@@ -143,7 +143,7 @@ const gunPressControl = {
 
     this.start();
 
-    const success = this.changePressArgs();
+    const success = this.updatePressArgs();
 
     if (!success) {
       this.pause();
@@ -165,7 +165,7 @@ const gunPressControl = {
     mapi.customaimpar(true);
   },
 
-  changePressArgs() {
+  updatePressArgs() {
     const args = this.getArgsOfCustomAimPar();
 
     if (!args) {
