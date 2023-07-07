@@ -16,7 +16,7 @@ const KEYMAP_START_TEXT = '<!--keymap-start-->';
 
 const KEYMAP_END_TEXT = '<!--keymap-end-->';
 
-function genKeyMap() {
+function insertKeymap() {
   const comments = getComments();
   writeToReadme(comments);
 }
@@ -33,6 +33,14 @@ function getComments() {
 
     // console.log(description, bind);
     return { description, bind };
+  });
+
+  comments.sort((prev, curr) => {
+    if (prev.bind < curr.bind) {
+      return -1;
+    } else {
+      return 1;
+    }
   });
 
   return comments;
@@ -53,10 +61,10 @@ function writeToReadme(comments) {
 
   const table = tableHeader + tableRows;
 
-  const replacement = `${KEYMAP_START_TEXT}\n\n${table}\n\n${KEYMAP_END_TEXT}`;
+  const replacement = `\n${table}\n`;
 
-  const startIndex = content.indexOf(KEYMAP_START_TEXT);
-  const endIndex = content.indexOf(KEYMAP_END_TEXT) + KEYMAP_END_TEXT.length + 1;
+  const startIndex = content.indexOf(KEYMAP_START_TEXT) + KEYMAP_START_TEXT.length + 1;
+  const endIndex = content.indexOf(KEYMAP_END_TEXT);
 
   const newContent = content.substring(0, startIndex) + replacement + content.substring(endIndex)
 
@@ -64,9 +72,7 @@ function writeToReadme(comments) {
 }
 
 module.exports = function (next) {
-  genKeyMap()
+  insertKeymap()
 
   next();
 }
-
-genKeyMap();
