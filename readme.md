@@ -44,11 +44,12 @@
 
 键位：
 
-* 位置：[./docs/键位配置/TG_Keys_2023_07_02.zip](./docs/键位配置/TG_Keys_2023_07_02.zip)
+* 位置：[./docs/键位配置/TG_Keys.zip](./docs/键位配置/TG_Keys_2023_07_06.zip)
 
 宏按键绑定：
 
-* 查看 [./src/scripts/main.js](./src/scripts/main.js) 文件中的注释
+<!--keymap-start-->
+<!--keymap-end-->
 
 ## 2. 环境
 
@@ -77,11 +78,11 @@
 
 游戏画面设置：
 
-* ![04-game-settings-matepad11.jpg](./docs/04-game-settings-matepad11.jpg)
+* ![./docs/images/04-game-settings-matepad11.jpg](./docs/images/04-game-settings-matepad11.jpg)
 
 TC Games 设置：
 
-* ![03-tcg-settings-matepad11.png](./docs/03-tcg-settings-matepad11.png)
+* ![./docs/images/03-tcg-settings-matepad11.png](./docs/images/03-tcg-settings-matepad11.png)
 
 ### 2.2. 电脑
 
