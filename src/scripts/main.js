@@ -81,7 +81,7 @@ const gunPressControl = {
   },
 
   /**
-   * @description 动态调整压枪参数，+1
+   * @description 动态调整压枪参数, +1
    *
    * @bind 上箭头
    */
@@ -90,7 +90,7 @@ const gunPressControl = {
   },
 
   /**
-   * @description 动态调整压枪参数，-1
+   * @description 动态调整压枪参数, -1
    *
    * @bind 下箭头
    */
