@@ -6,11 +6,13 @@ const MAIN_SCRIPT_FILE_PATH = resolve(CTX_PATH, './src/scripts/main.js');
 
 const README_FILE_PATH = resolve(CTX_PATH, './readme.md');
 
-const DOC_COMMENTS_REGEX = /(\/\*\*\s*[\s\S]+?\*\/)/gm;
+const DOC_COMMENTS_REGEX = /(\/\*\*\s*[\s\S]+?\*\/\s*\w+\(\)\s*{)/gm;
 
 const DESCRIPTION_REGEX = /@description\s([\s\S]*?)\s*\*/m;
 
 const BIND_REGEX = /@bind\s([\s\S]*?)\s*\*/m;
+
+const METHOD_REGEX = /^\s*(\w*\(\))\s*{/m;
 
 const KEYMAP_START_TEXT = '<!--keymap-start-->';
 
@@ -28,11 +30,14 @@ function getComments() {
     .filter((item) => item.includes('@description') && item.includes('@bind'));
 
   const comments = commentStrList.map((commentStr) => {
+
+    console.log(commentStr);
+
     const [ , description ] = commentStr.match(DESCRIPTION_REGEX);
     const [ , bind ] = commentStr.match(BIND_REGEX);
+    const [ , method ] = commentStr.match(METHOD_REGEX);
 
-    // console.log(description, bind);
-    return { description, bind };
+    return { description, bind, method };
   });
 
   comments.sort((prev, curr) => {
@@ -50,13 +55,30 @@ function writeToReadme(comments) {
   const content = readFileSync(README_FILE_PATH, { encoding: 'utf-8' });
 
   const tableHeader = ''
-  + '| 按键 | 说明 |\n'
-  + '| --- | --- |\n'
+  + '| 按键 | 说明 | 宏 |\n'
+  + '| --- | --- | --- |\n'
 
   let tableRows = '';
 
-  comments.forEach(({ description, bind }) => {
-    tableRows += `| ${bind} | ${description} |\n`
+  comments.forEach(({ description, bind, method }) => {
+
+    /*
+    (function() {
+      import('main').then(({ default: main }) => {
+        main.handleMouseRight();
+      });
+    } ());
+     */
+
+    const macro = ``
+      + '`' + `(function() {` + '`<br>'
+      + '`' + `  import('main')` + '`<br>'
+      + '`' + `    .then(({ default: main }) => {` + '`<br>'
+      + '`' + `       main.${method};` + '`<br>'
+      + '`' + `   });` + '`<br>'
+      + '`'+ `} ());` + '`'
+;
+    tableRows += `| ${bind} | ${description} | ${macro} |\n`
   });
 
   const table = tableHeader + tableRows;
