@@ -119,6 +119,8 @@ const gunPressControl = {
     const currKeyPoint = mapi.getkeypos();
 
     mapi.click(currKeyPoint);
+
+    this.changePressArgs();
   },
 
   /**
@@ -139,16 +141,16 @@ const gunPressControl = {
       return;
     }
 
-    const args = this.getArgsOfCustomAimPar();
+    this.start();
 
-    if (!args) {
+    const success = this.changePressArgs();
+
+    if (!success) {
       this.pause();
       return;
     }
 
-    this.start();
     this.play();
-    this.changePressArgs(args);
   },
 
   start() {
@@ -163,8 +165,18 @@ const gunPressControl = {
     mapi.customaimpar(true);
   },
 
-  changePressArgs({ x, y, delay }) {
+  changePressArgs() {
+    const args = this.getArgsOfCustomAimPar();
+
+    if (!args) {
+      return false;
+    }
+
+    const { x, y, delay } = args;
+
     mapi.changecustomaimpar(x, y, delay);
+
+    return true;
   },
 
   /**
