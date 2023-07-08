@@ -38,10 +38,10 @@ const IMAGE_NAMES = {
   [CATEGORIES.MEDICAL_FIRST_AID_KIT]: '医疗急救箱',
 
   // 药品列表-展开按钮
-  EXPAND_MEDICINE_BUTTON: '药品列表展开按钮',
+  EXPAND_LIST_BUTTON: '药品列表展开按钮',
 
   // 药品列表-折叠按钮
-  COLLAPSE_MEDICINE_BUTTON: '药品列表折叠按钮',
+  COLLAPSE_LIST_BUTTON: '药品列表折叠按钮',
 
   // 取消吃药按钮
   CANCEL_TAKE_MEDICINE_BUTTON: '取消吃药按钮',
@@ -64,7 +64,7 @@ function cancelTakeMedicine() {
 
 // 吃药
 function takeMedicine(category) {
-  expandMedicineList();
+  expandList();
 
   mapi.delay(100);
 
@@ -72,33 +72,19 @@ function takeMedicine(category) {
 
   if (Utils.isPointNotExist(point)) {
     Utils.showTip('未找到药品：' + IMAGE_NAMES[category]);
-    collapseMedicineList();
+    collapseList();
     return;
   }
 
   mapi.click(point);
 }
 
-function expandMedicineList() {
-  const point = mapi.findimage(IMAGE_NAMES.EXPAND_MEDICINE_BUTTON, 0.75, 4, 4, 4, 4);
-
-  if (Utils.isPointNotExist(point)) {
-    Utils.showTip('未找到图片：' + IMAGE_NAMES.EXPAND_MEDICINE_BUTTON);
-    return;
-  }
-
-  mapi.click(point);
+function expandList() {
+  Utils.clickImagePosition(IMAGE_NAMES.EXPAND_LIST_BUTTON, 0.75, 4, 4, 4, 4);
 }
 
-function collapseMedicineList() {
-  const point = mapi.findimage(IMAGE_NAMES.COLLAPSE_MEDICINE_BUTTON, 0.75, 4, 4, 4, 4);
-
-  if (Utils.isPointNotExist(point)) {
-    Utils.showTip('未找到图片：' + IMAGE_NAMES.COLLAPSE_MEDICINE_BUTTON);
-    return;
-  }
-
-  mapi.click(point);
+function collapseList() {
+  Utils.clickImagePosition(IMAGE_NAMES.COLLAPSE_LIST_BUTTON, 0.75, 4, 4, 4, 4);
 }
 
 // 吃 能量饮料
