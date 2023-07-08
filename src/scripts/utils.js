@@ -52,6 +52,11 @@ function clickImagePosition(imgName, sim, setCol, setRow, selectCol, selectRow) 
   mapi.click(point);
 }
 
+function reset() {
+  mapi.aimreset();
+  mapi.directionreset();
+}
+
 export default {
   isPointExist,
   isPointNotExist,
@@ -60,4 +65,6 @@ export default {
   toggleEnableOfTip,
 
   clickImagePosition,
+
+  reset,
 }
