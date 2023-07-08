@@ -40,10 +40,24 @@ function toggleEnableOfTip() {
   Variable.isTipEnabled = !Variable.isTipEnabled;
 }
 
+
+function clickImagePosition(imgName, sim, setCol, setRow, selectCol, selectRow) {
+  const point = mapi.findimage(imgName, sim, setCol, setRow, selectCol, selectRow);
+
+  if (isPointNotExist(point)) {
+    showTip('未找到图片：' + imgName);
+    return;
+  }
+
+  mapi.click(point);
+}
+
 export default {
   isPointExist,
   isPointNotExist,
 
   showTip,
   toggleEnableOfTip,
+
+  clickImagePosition,
 }
