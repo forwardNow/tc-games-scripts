@@ -30,9 +30,6 @@ function getComments() {
     .filter((item) => item.includes('@description') && item.includes('@bind'));
 
   const comments = commentStrList.map((commentStr) => {
-
-    console.log(commentStr);
-
     const [ , description ] = commentStr.match(DESCRIPTION_REGEX);
     const [ , bind ] = commentStr.match(BIND_REGEX);
     const [ , method ] = commentStr.match(METHOD_REGEX);
