@@ -37,13 +37,13 @@ const IMAGE_NAMES = {
   // 医疗急救箱
   [CATEGORIES.MEDICAL_FIRST_AID_KIT]: '医疗急救箱',
 
-  // 药品展开按钮
-  EXPAND_MEDICINE_BUTTON: '药品展开按钮',
+  // 药品列表-展开按钮
+  EXPAND_MEDICINE_BUTTON: '药品列表展开按钮',
 
-  // 药品折叠按钮
-  COLLAPSE_MEDICINE_BUTTON: '药品折叠按钮',
+  // 药品列表-折叠按钮
+  COLLAPSE_MEDICINE_BUTTON: '药品列表折叠按钮',
 
-  // 药品折叠按钮
+  // 取消吃药按钮
   CANCEL_TAKE_MEDICINE_BUTTON: '取消吃药按钮',
 };
 
