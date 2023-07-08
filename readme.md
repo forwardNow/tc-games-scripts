@@ -70,7 +70,7 @@
 | 下箭头 | 动态调整压枪参数, -1 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.subtractDelay();`<br>`   });`<br>`} ());` |
 | 鼠标右键 | 1. 取消投掷；<br>2. 丢弃背包中光标所指位置的配件；<br>3. 点击当前按键位置并设置压枪参数 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.handleMouseRight();`<br>`   });`<br>`} ());` |
 | 鼠标左键 | 开火 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.fire();`<br>`   });`<br>`} ());` |
-| 鼠标滚轮-滚上 | 调整 6 倍镜，并记录调整过 6 倍镜倍率的枪及倍率 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleX6Sight();`<br>`   });`<br>`} ());` |
+| 鼠标滚轮-滚上 | 调整 6 倍镜 <br>并存储调整过 6 倍镜倍率的枪及倍率 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleX6Sight();`<br>`   });`<br>`} ());` |
 
 <!--keymap-end-->
 
