@@ -2,7 +2,7 @@ const { CTX_PATH } = require('./utils');
 const { readFileSync, writeFileSync } = require('fs');
 const { resolve } = require('path')
 
-const MAIN_SCRIPT_FILE_PATH = resolve(CTX_PATH, './src/scripts/main.js');
+const KEYMAP_SCRIPT_FILE_PATH = resolve(CTX_PATH, './src/scripts/keymap.js');
 
 const README_FILE_PATH = resolve(CTX_PATH, './readme.md');
 
@@ -24,7 +24,7 @@ function insertKeymap() {
 }
 
 function getComments() {
-  const content = readFileSync(MAIN_SCRIPT_FILE_PATH, { encoding: 'utf-8' });
+  const content = readFileSync(KEYMAP_SCRIPT_FILE_PATH, { encoding: 'utf-8' });
 
   const commentStrList = content.match(DOC_COMMENTS_REGEX)
     .filter((item) => item.includes('@description') && item.includes('@bind'));
