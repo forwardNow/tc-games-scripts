@@ -15,13 +15,22 @@ const CATEGORIES = {
 };
 
 const IMAGE_NAMES = {
+  // 破片手榴弹
+  [CATEGORIES.FRAGMENT_BOMB]: '破片手榴弹',
+
+  // 烟雾弹
+  [CATEGORIES.SMOKE_BOMB]: '烟雾弹',
+
+  // 燃烧瓶
+  [CATEGORIES.MOLOTOV_COCKTAIL]: '燃烧瓶',
+
   CANCEL_THROW_BUTTON: '取消投掷按钮',
 
   // 投掷物列表-展开按钮
-  EXPAND_MISSILE_BUTTON: '药品列表展开按钮',
+  EXPAND_LIST_BUTTON: '药品列表展开按钮',
 
   // 投掷物列表-折叠按钮
-  COLLAPSE_MISSILE_BUTTON: '药品列表折叠按钮',
+  COLLAPSE_LIST_BUTTON: '药品列表折叠按钮',
 
 };
 
@@ -42,6 +51,48 @@ function cancelThrow() {
   return true;
 }
 
+function switchMissile(category) {
+  expandList();
+
+  mapi.delay(100);
+
+  const point = mapi.findimage(IMAGE_NAMES[category], 0.75, 4, 4, 4, 4);
+
+  if (Utils.isPointNotExist(point)) {
+    Utils.showTip('未找到投掷物：' + IMAGE_NAMES[category]);
+    collapseList();
+    return;
+  }
+
+  mapi.click(point);
+}
+
+function expandList() {
+  Utils.clickImagePosition(IMAGE_NAMES.EXPAND_LIST_BUTTON, 0.75, 4, 4, 4, 4);
+}
+
+function collapseList() {
+  Utils.clickImagePosition(IMAGE_NAMES.COLLAPSE_LIST_BUTTON, 0.75, 4, 4, 4, 4);
+}
+
+// 破片手榴弹
+function switchFragmentBomb() {
+  switchMissile(CATEGORIES.FRAGMENT_BOMB);
+}
+
+// 烟雾弹
+function switchSmokeBomb() {
+  switchMissile(CATEGORIES.SMOKE_BOMB);
+}
+
+// 燃烧瓶
+function switchMolotovCocktail() {
+  switchMissile(CATEGORIES.MOLOTOV_COCKTAIL);
+}
+
 export default {
   cancelThrow,
+  switchFragmentBomb,
+  switchSmokeBomb,
+  switchMolotovCocktail,
 };
