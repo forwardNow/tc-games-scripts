@@ -69,9 +69,9 @@ function writeToReadme(comments) {
 
     const macro = ``
       + '`' + `(function() {` + '`<br>'
-      + '`' + `  import('main')` + '`<br>'
-      + '`' + `    .then(({ default: main }) => {` + '`<br>'
-      + '`' + `       main.${method};` + '`<br>'
+      + '`' + `  import('keymap')` + '`<br>'
+      + '`' + `    .then(({ default: keymap }) => {` + '`<br>'
+      + '`' + `       keymap.${method};` + '`<br>'
       + '`' + `   });` + '`<br>'
       + '`'+ `} ());` + '`'
 ;
