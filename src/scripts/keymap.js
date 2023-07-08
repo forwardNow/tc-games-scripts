@@ -23,7 +23,7 @@ export default {
   },
 
   /**
-   * @description 调整 6 倍镜，并记录调整过 6 倍镜倍率的枪及倍率
+   * @description 调整 6 倍镜 <br>并存储调整过 6 倍镜倍率的枪及倍率
    * @bind 鼠标滚轮-滚上
    */
   toggleX6Sight() {
