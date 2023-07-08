@@ -75,23 +75,24 @@ function collapseList() {
   Utils.clickImagePosition(IMAGE_NAMES.COLLAPSE_LIST_BUTTON, 0.75, 4, 4, 4, 4);
 }
 
-// 破片手榴弹
+// 切换 破片手榴弹
 function switchFragmentBomb() {
   switchMissile(CATEGORIES.FRAGMENT_BOMB);
 }
 
-// 烟雾弹
+// 切换 烟雾弹
 function switchSmokeBomb() {
   switchMissile(CATEGORIES.SMOKE_BOMB);
 }
 
-// 燃烧瓶
+// 切换 燃烧瓶
 function switchMolotovCocktail() {
   switchMissile(CATEGORIES.MOLOTOV_COCKTAIL);
 }
 
 export default {
   cancelThrow,
+
   switchFragmentBomb,
   switchSmokeBomb,
   switchMolotovCocktail,
