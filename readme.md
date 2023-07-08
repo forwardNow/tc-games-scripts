@@ -52,16 +52,25 @@
 
 | 按键 | 说明 | 宏 |
 | --- | --- | --- |
-| Ctrl | 重置 准心、方向键 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.reset();`<br>`   });`<br>`} ());` |
-| F11 | 记录不准确的压枪参数 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.logErrorPressArgs();`<br>`   });`<br>`} ());` |
-| F12 | 启用/禁用 mapi.tip() | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.toggleEnableOfTip();`<br>`   });`<br>`} ());` |
-| Q | 切枪 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.switchGun();`<br>`   });`<br>`} ());` |
-| Tab | 收枪 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.hideGun();`<br>`   });`<br>`} ());` |
-| 上箭头 | 动态调整压枪参数, +1 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.addDelay();`<br>`   });`<br>`} ());` |
-| 下箭头 | 动态调整压枪参数, -1 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.subtractDelay();`<br>`   });`<br>`} ());` |
-| 鼠标右键 | 1. 取消投掷；<br>2. 丢弃背包中光标所指位置的配件；<br>3. 点击当前按键位置并设置压枪参数 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.handleMouseRight();`<br>`   });`<br>`} ());` |
-| 鼠标左键 | 开火 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.fire();`<br>`   });`<br>`} ());` |
-| 鼠标滚轮-滚上 | 调整 6 倍镜，并记录调整过 6 倍镜倍率的枪及倍率 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.toggleX6Sight();`<br>`   });`<br>`} ());` |
+| Ctrl | 重置 准心、方向键 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.reset();`<br>`   });`<br>`} ());` |
+| F11 | 记录不准确的压枪参数 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.logErrorPressArgs();`<br>`   });`<br>`} ());` |
+| F12 | 启用/禁用 mapi.tip() | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleEnableOfTip();`<br>`   });`<br>`} ());` |
+| Num1 | 吃 能量饮料 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatEnergyDrink();`<br>`   });`<br>`} ());` |
+| Num2 | 吃 止痛药 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatPainkiller();`<br>`   });`<br>`} ());` |
+| Num3 | 吃 肾上腺素注射剂 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatEpinephrineInjection();`<br>`   });`<br>`} ());` |
+| Num4 | 吃 绷带 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatBandage();`<br>`   });`<br>`} ());` |
+| Num5 | 吃 急救包 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatFirstAidKit();`<br>`   });`<br>`} ());` |
+| Num6 | 吃 医疗急救箱 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatMedicalFirstAidKit();`<br>`   });`<br>`} ());` |
+| Num7 | 切换 破片手榴弹 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.switchFragmentBomb();`<br>`   });`<br>`} ());` |
+| Num8 | 切换 烟雾弹 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.switchSmokeBomb();`<br>`   });`<br>`} ());` |
+| Num9 | 切换 燃烧瓶 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.switchMolotovCocktail();`<br>`   });`<br>`} ());` |
+| Q | 切枪 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.switchGun();`<br>`   });`<br>`} ());` |
+| Tab | 收枪 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.hideGun();`<br>`   });`<br>`} ());` |
+| 上箭头 | 动态调整压枪参数, +1 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.addDelay();`<br>`   });`<br>`} ());` |
+| 下箭头 | 动态调整压枪参数, -1 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.subtractDelay();`<br>`   });`<br>`} ());` |
+| 鼠标右键 | 1. 取消投掷；<br>2. 丢弃背包中光标所指位置的配件；<br>3. 点击当前按键位置并设置压枪参数 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.handleMouseRight();`<br>`   });`<br>`} ());` |
+| 鼠标左键 | 开火 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.fire();`<br>`   });`<br>`} ());` |
+| 鼠标滚轮-滚上 | 调整 6 倍镜，并记录调整过 6 倍镜倍率的枪及倍率 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleX6Sight();`<br>`   });`<br>`} ());` |
 
 <!--keymap-end-->
 
