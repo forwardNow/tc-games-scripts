@@ -2,6 +2,8 @@ import gunPressControl from 'gunPressControl';
 import Utils from 'utils';
 import Gun from 'gun';
 import Variable from 'variable';
+import Medicine from 'medicine';
+import Missile from 'missile';
 
 export default {
   /**
@@ -10,6 +12,14 @@ export default {
    */
   fire() {
     gunPressControl.fire();
+  },
+
+  /**
+   * @description 1. 取消投掷；<br>2. 丢弃背包中光标所指位置的配件；<br>3. 点击当前按键位置并设置压枪参数
+   * @bind 鼠标右键
+   */
+  handleMouseRight() {
+    gunPressControl.handleMouseRight();
   },
 
   /**
@@ -63,7 +73,6 @@ export default {
 
   /**
    * @description 记录不准确的压枪参数
-   *
    * @bind F11
    */
   logErrorPressArgs() {
@@ -72,10 +81,81 @@ export default {
 
   /**
    * @description 重置 准心、方向键
-   *
    * @bind Ctrl
    */
   reset() {
     Utils.reset();
+  },
+
+  /**
+   * @description 吃 能量饮料
+   * @bind Num1
+   */
+  eatEnergyDrink() {
+    Medicine.eatEnergyDrink();
+  },
+
+  /**
+   * @description 吃 止痛药
+   * @bind Num2
+   */
+  eatPainkiller() {
+    Medicine.eatPainkiller();
+  },
+
+  /**
+   * @description 吃 肾上腺素注射剂
+   * @bind Num3
+   */
+  eatEpinephrineInjection() {
+    Medicine.eatEpinephrineInjection();
+  },
+
+  /**
+   * @description 吃 绷带
+   * @bind Num4
+   */
+  eatBandage() {
+    Medicine.eatBandage();
+  },
+
+  /**
+   * @description 吃 急救包
+   * @bind Num5
+   */
+  eatFirstAidKit() {
+    Medicine.eatFirstAidKit();
+  },
+
+  /**
+   * @description 吃 医疗急救箱
+   * @bind Num6
+   */
+  eatMedicalFirstAidKit() {
+    Medicine.eatMedicalFirstAidKit();
+  },
+
+  /**
+   * @description 切换 破片手榴弹
+   * @bind Num7
+   */
+  switchFragmentBomb() {
+    Missile.switchFragmentBomb();
+  },
+
+  /**
+   * @description 切换 烟雾弹
+   * @bind Num8
+   */
+  switchSmokeBomb() {
+    Missile.switchSmokeBomb();
+  },
+
+  /**
+   * @description 切换 燃烧瓶
+   * @bind Num9
+   */
+  switchMolotovCocktail() {
+    Missile.switchMolotovCocktail();
   },
 }
