@@ -55,7 +55,11 @@ export default {
     return mapi.getglobalmap(KEYS.IS_TIP_ENABLED);
   },
 
-  set deltaDelay(delta) {
-    mapi.setglobalmap(KEYS.IS_TIP_ENABLED, this.deltaDelay + delta);
-  }
+  set deltaDelay(num) {
+    mapi.setglobalmap(KEYS.IS_TIP_ENABLED, num);
+  },
+
+  addDelay(num) {
+    this.deltaDelay = this.deltaDelay + num;
+  },
 }
