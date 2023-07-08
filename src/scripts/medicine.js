@@ -121,6 +121,7 @@ export default {
   eatEnergyDrink,
   eatPainkiller,
   eatEpinephrineInjection,
+
   eatBandage,
   eatFirstAidKit,
   eatMedicalFirstAidKit,
