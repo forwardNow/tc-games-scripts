@@ -44,7 +44,7 @@
 
 键位：
 
-* 位置：[./docs/键位配置/TG_Keys.zip](./docs/键位配置/TG_Keys_2023_07_06.zip)
+* 位置：[./docs/键位配置/TG_Keys.zip](./docs/键位配置/TG_Keys_2023_07_08.zip)
 
 宏按键绑定：
 
