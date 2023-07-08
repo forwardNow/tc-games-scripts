@@ -42,11 +42,6 @@ const gunPressControl = {
     Variable.setMirrorOfAdjustedGun(currGun, adjustedMirror)
   },
 
-  /**
-   * @description 1. 取消投掷；<br>2. 丢弃背包中光标所指位置的配件；<br>3. 点击当前按键位置并设置压枪参数
-   *
-   * @bind 鼠标右键
-   */
   handleMouseRight() {
     const isDiscardMaterials = Bag.discardMaterialsUnderCursor();
 
