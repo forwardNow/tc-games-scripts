@@ -135,6 +135,16 @@ const gunPressControl = {
     logerror(`${ gun }${ posture }${ mirror }: ${ JSON.stringify(args) }`)
   },
 
+  /**
+   * @description 重置 准心、方向键
+   *
+   * @bind Ctrl
+   */
+  reset() {
+    mapi.aimreset();
+    mapi.directionreset();
+  },
+
   run() {
     if (!Mirror.isOpen()) {
       this.pause();

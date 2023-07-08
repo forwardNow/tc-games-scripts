@@ -52,6 +52,7 @@
 
 | 按键 | 说明 | 宏 |
 | --- | --- | --- |
+| Ctrl | 重置 准心、方向键 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.reset();`<br>`   });`<br>`} ());` |
 | F11 | 记录不准确的压枪参数 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.logErrorPressArgs();`<br>`   });`<br>`} ());` |
 | F12 | 启用/禁用 mapi.tip() | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.toggleEnableOfTip();`<br>`   });`<br>`} ());` |
 | Q | 切枪 | `(function() {`<br>`  import('main')`<br>`    .then(({ default: main }) => {`<br>`       main.switchGun();`<br>`   });`<br>`} ());` |
