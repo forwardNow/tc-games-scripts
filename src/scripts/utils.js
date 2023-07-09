@@ -1,4 +1,4 @@
-import Variable from 'variable';
+import Store from 'store';
 
 /**
  * mapi.point 是否 存在
@@ -27,7 +27,7 @@ function isPointNotExist(point) {
  * @param duration {number} 存在时间，单位 秒，默认 1 秒
  */
 function showTip(content, duration = 1) {
-  if (!Variable.isTipEnabled) {
+  if (!Store.isTipEnabled) {
     return;
   }
   mapi.tip(content, duration);
@@ -37,7 +37,7 @@ function showTip(content, duration = 1) {
  * 切换 mapi.tip() 的启用和禁止
  */
 function toggleEnableOfTip() {
-  Variable.isTipEnabled = !Variable.isTipEnabled;
+  Store.isTipEnabled = !Store.isTipEnabled;
 }
 
 

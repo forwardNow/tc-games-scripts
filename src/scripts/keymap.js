@@ -1,7 +1,7 @@
 import gunPressControl from 'gunPressControl';
 import Utils from 'utils';
 import Gun from 'gun';
-import Variable from 'variable';
+import Store from 'store';
 import Medicine from 'medicine';
 import Missile from 'missile';
 import Bag from 'bag';
@@ -98,7 +98,7 @@ export default {
    * @bind 上箭头
    */
   addDelay() {
-    Variable.addDelay(1);
+    Store.addDelay(1);
   },
 
   /**
@@ -106,7 +106,7 @@ export default {
    * @bind 下箭头
    */
   subtractDelay() {
-    Variable.addDelay(-1);
+    Store.addDelay(-1);
   },
 
   /**

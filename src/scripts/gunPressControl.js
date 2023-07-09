@@ -4,7 +4,7 @@ import Mirror from 'mirror';
 import Utils from 'utils';
 import Config from 'config';
 import Missile from 'missile';
-import Variable from 'variable';
+import Store from 'store';
 import Bag from 'bag';
 
 const gunPressControl = {
@@ -44,7 +44,7 @@ const gunPressControl = {
       adjustedMirror = Mirror.adjustX6ToX3();
     }
 
-    Variable.setMirrorOfAdjustedGun(currGun, adjustedMirror)
+    Store.setMirrorOfAdjustedGun(currGun, adjustedMirror)
   },
 
   logErrorPressArgs() {
@@ -101,7 +101,7 @@ const gunPressControl = {
 
     const args = Config.getGunPressArgs(gun, posture, mirror);
 
-    args.delay += Variable.deltaDelay;
+    args.delay += Store.deltaDelay;
 
     Utils.showTip(`${ gun }${ posture }${ mirror }: ${ JSON.stringify(args) }`)
 
@@ -138,7 +138,7 @@ const gunPressControl = {
     let mirror = Mirror.getCurrentMirror();
 
     if (mirror === Mirror.CATEGORIES.X6_SIGHT) {
-      mirror = Variable.getMirrorOfAdjustedGun(gun) || Mirror.CATEGORIES.X6_SIGHT;
+      mirror = Store.getMirrorOfAdjustedGun(gun) || Mirror.CATEGORIES.X6_SIGHT;
     }
 
     return mirror;
