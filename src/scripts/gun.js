@@ -13,13 +13,11 @@ const CATEGORIES = {
   VECTOR: 'VECTOR',
   TANGMUXUN: 'TANGMUXUN', // 汤姆逊枪
 
-  PKM: 'PKM',
-
   AKM: 'AKM',
 
   ACVAL: 'ACVAL',
 
-  PMK: 'PKM',
+  PKM: 'PKM',
 
   VSS: 'VSS',
   MK20H: 'MK20H',
@@ -132,6 +130,48 @@ function getCurrentGun() {
   return currentGunName;
 }
 
+function identityDelicateGuns() {
+  let leftGuns = [];
+  let rightGuns = [];
+
+  Object.keys(CATEGORIES).forEach((cate) => {
+    const imageName = `大图${cate}`;
+
+    if( Utils.isImageExist(imageName, 0.85, 2, 2, 2, 1)) {
+      leftGuns.push(cate);
+    }
+    if( Utils.isImageExist(imageName, 0.85, 2, 2, 2, 2)) {
+      rightGuns.push(cate);
+    }
+  });
+
+  const result = { leftGuns, rightGuns };
+
+  loginfo(JSON.stringify(result));
+
+  return result;
+}
+
+function identityFlatGuns() {
+  let leftGuns = [];
+  let rightGuns = [];
+
+  Object.keys(CATEGORIES).forEach((cate) => {
+    if( Utils.isImageExist(cate, 0.85, 4, 4, 2, 4)) {
+      leftGuns.push(cate);
+    }
+    if( Utils.isImageExist(cate, 0.85, 4, 4, 3, 4)) {
+      rightGuns.push(cate);
+    }
+  });
+
+  const result = { leftGuns, rightGuns };
+
+  loginfo(JSON.stringify(result));
+
+  return result;
+}
+
 /**
  * 收枪
  */
@@ -176,4 +216,7 @@ export default {
   getCurrentGun,
   hideGun,
   switchGun,
+
+  identityFlatGuns,
+  identityDelicateGuns,
 }
