@@ -47,27 +47,6 @@ const gunPressControl = {
     Variable.setMirrorOfAdjustedGun(currGun, adjustedMirror)
   },
 
-  // TODO delete
-  handleMouseRight() {
-    const isDiscardMaterials = Bag.discardMaterialsUnderCursor();
-
-    if (isDiscardMaterials) {
-      return;
-    }
-
-    const isCancelThrow = Missile.cancelThrow();
-
-    if (isCancelThrow) {
-      return;
-    }
-
-    const currKeyPoint = mapi.getkeypos();
-
-    mapi.click(currKeyPoint);
-
-    this.updatePressArgs();
-  },
-
   logErrorPressArgs() {
     const { gun, posture, mirror } = this.getStatus();
     const args = Config.getGunPressArgs(gun, posture, mirror);
