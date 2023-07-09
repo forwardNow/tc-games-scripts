@@ -3,9 +3,7 @@ import Posture from 'posture';
 import Mirror from 'mirror';
 import Utils from 'utils';
 import Config from 'config';
-import Missile from 'missile';
 import Store from 'store';
-import Bag from 'bag';
 
 const gunPressControl = {
   currGun: '',
@@ -44,7 +42,7 @@ const gunPressControl = {
       adjustedMirror = Mirror.adjustX6ToX3();
     }
 
-    Store.setMirrorOfAdjustedGun(currGun, adjustedMirror)
+    Store.mutations.setMirrorOfAdjustedGun(currGun, adjustedMirror)
   },
 
   logErrorPressArgs() {
