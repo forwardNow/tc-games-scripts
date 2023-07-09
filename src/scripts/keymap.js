@@ -97,8 +97,8 @@ export default {
    * @description 动态调整压枪参数, +1
    * @bind 上箭头
    */
-  addDelay() {
-    Store.addDelay(1);
+  addDelayOfGunPressArgs() {
+    Store.addDelayOfGunPressArgs(1);
   },
 
   /**
@@ -106,7 +106,7 @@ export default {
    * @bind 下箭头
    */
   subtractDelay() {
-    Store.addDelay(-1);
+    Store.addDelayOfGunPressArgs(-1);
   },
 
   /**
