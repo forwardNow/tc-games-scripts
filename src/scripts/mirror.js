@@ -46,8 +46,8 @@ const IMAGE_NAMES = {
   FIRST_PERSON_ICON: '第一人称文本',
 
   CURRENT_MACHINE_SIGHT: '机瞄文本',
-  CURRENT_HOLOGRAPHIC_SIGHT: '全息文本',
   CURRENT_RED_DOT_SIGHT: '红点文本',
+  CURRENT_HOLOGRAPHIC_SIGHT: '全息文本',
 
   CURRENT_2X_SIGHT: '2倍镜文本',
   CURRENT_3X_SIGHT: '3倍镜文本',
@@ -60,6 +60,17 @@ const IMAGE_NAMES = {
   /** 6 倍镜缩放条 */
   X6_SIGHT_ZOOM_BAR: '6倍镜调距条',
 };
+
+const MIRROR_TEXT_IMAGE_NAMES = {
+  [CATEGORIES.MACHINE_SIGHT]: '机瞄文本',
+  [CATEGORIES.RED_DOT_SIGHT]: '红点文本',
+  [CATEGORIES.HOLOGRAPHIC_SIGHT]: '全息文本',
+  [CATEGORIES.X2_SIGHT]: '2倍镜文本',
+  [CATEGORIES.X3_SIGHT]: '3倍镜文本',
+  [CATEGORIES.X4_SIGHT]: '4倍镜文本',
+  [CATEGORIES.X6_SIGHT]: '6倍镜文本',
+  [CATEGORIES.X8_SIGHT]: '8倍镜文本',
+}
 
 /**
  * 是否开镜
@@ -74,111 +85,55 @@ function isOpen() {
   return !isExist;
 }
 
-const CURRENT_MIRROR_IMAGE_AREA = {
-  TOTAL_COLUMNS: 4,
-  TOTAL_ROWS: 4,
-  COLUMN_INDEX: 4,
-  ROW_INDEX: 2,
-};
-
-const MIRROR_IMAGE_ARGS = [
-  CURRENT_MIRROR_IMAGE_AREA.TOTAL_COLUMNS,
-  CURRENT_MIRROR_IMAGE_AREA.TOTAL_ROWS,
-  CURRENT_MIRROR_IMAGE_AREA.COLUMN_INDEX,
-  CURRENT_MIRROR_IMAGE_AREA.ROW_INDEX,
-];
-
-
 /**
  * 获取当前准镜名称
  *
  * @return { string }
  */
 function getCurrentMirror() {
-  if (isX8Sight()) {
-    return CATEGORIES.X8_SIGHT;
-  }
-
-  if (isX6Sight()) {
-    return CATEGORIES.X6_SIGHT;
-  }
-
-  if (isX4Sight()) {
-    return CATEGORIES.X4_SIGHT;
-  }
-
-  if (isX3Sight()) {
-    return CATEGORIES.X3_SIGHT;
-  }
-
-  if (isX2Sight()) {
-    return CATEGORIES.X2_SIGHT;
-  }
-
-  if (isMachineSight()) {
-    return CATEGORIES.MACHINE_SIGHT;
-  }
-  if (isHolographicSight()) {
-    return CATEGORIES.HOLOGRAPHIC_SIGHT;
-  }
-  if (isRedDotSight()) {
-    return CATEGORIES.RED_DOT_SIGHT;
-  }
-
-  return '';
+  return getCurrentBySightText();
 }
 
-/**
- * 当前是否为 6 倍镜
- * @return {boolean}
- */
+function getCurrentBySightText() {
+  const areaArgs = [4, 4, 4, 2];
+
+  const mirrors = [
+    CATEGORIES.X8_SIGHT,
+    CATEGORIES.X6_SIGHT,
+    CATEGORIES.X4_SIGHT,
+    CATEGORIES.X3_SIGHT,
+    CATEGORIES.X2_SIGHT,
+    CATEGORIES.RED_DOT_SIGHT,
+    CATEGORIES.HOLOGRAPHIC_SIGHT,
+    CATEGORIES.MACHINE_SIGHT,
+  ];
+
+
+  const mirrorArgsList = mirrors.map((mirror) => {
+    return [
+      MIRROR_TEXT_IMAGE_NAMES[mirror],
+      Constant.MIRROR_TEXT_IMAGE_SIM[mirror],
+      ...areaArgs,
+    ];
+  });
+
+  const targetIndex = mirrorArgsList.findIndex((mirrorArgs, index) => {
+    const point = mapi.findimage(...mirrorArgs);
+    return Utils.isPointExist(point);
+  })
+
+  if (targetIndex === -1) {
+    logerror('getCurrentBySightText() 未识别出倍镜');
+    return '';
+  }
+
+  return mirrors[targetIndex];
+}
+
 function isX6Sight() {
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_6X_SIGHT, Constant.CURRENT_MIRROR_SIM.X6_SIGHT, ...MIRROR_IMAGE_ARGS);
-  return Utils.isPointExist(point);
-}
+  const mirror = getCurrentMirror();
 
-/**
- * 当前是否为 4 倍镜
- * @return {boolean}
- */
-function isX4Sight() {
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_4X_SIGHT, Constant.CURRENT_MIRROR_SIM.X4_SIGHT, ...MIRROR_IMAGE_ARGS);
-  return Utils.isPointExist(point);
-}
-
-/**
- * 当前是否为 3 倍镜
- * @return {boolean}
- */
-function isX3Sight() {
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_3X_SIGHT, Constant.CURRENT_MIRROR_SIM.X3_SIGHT, ...MIRROR_IMAGE_ARGS);
-  return Utils.isPointExist(point);
-}
-
-/**
- * 当前是否为 2 倍镜
- * @return {boolean}
- */
-function isX2Sight() {
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_2X_SIGHT, Constant.CURRENT_MIRROR_SIM.X2_SIGHT, ...MIRROR_IMAGE_ARGS);
-  return Utils.isPointExist(point);
-}
-function isMachineSight() {
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_MACHINE_SIGHT, Constant.CURRENT_MIRROR_SIM.MACHINE_SIGHT, ...MIRROR_IMAGE_ARGS);
-  return Utils.isPointExist(point);
-}
-function isHolographicSight() {
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_HOLOGRAPHIC_SIGHT, Constant.CURRENT_MIRROR_SIM.HOLOGRAPHIC_SIGHT, ...MIRROR_IMAGE_ARGS);
-  return Utils.isPointExist(point);
-}
-function isRedDotSight() {
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_RED_DOT_SIGHT, Constant.CURRENT_MIRROR_SIM.RED_DOT_SIGHT, ...MIRROR_IMAGE_ARGS);
-  return Utils.isPointExist(point);
-}
-
-function isX8Sight() {
-  const point = mapi.findimage(IMAGE_NAMES.CURRENT_8X_SIGHT, Constant.CURRENT_MIRROR_SIM.X8_SIGHT, ...MIRROR_IMAGE_ARGS);
-  return Utils.isPointExist(point);
+  return mirror === CATEGORIES.X6_SIGHT;
 }
 
 
@@ -239,9 +194,6 @@ export default {
   isOpen,
   getCurrentMirror,
   isX6Sight,
-  isX4Sight,
-  isX3Sight,
-  isX2Sight,
   adjustX6ToX3,
   adjustX6ToX6,
 }
