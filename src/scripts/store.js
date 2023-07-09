@@ -7,6 +7,15 @@ const state = {
 
   // 动态调整压枪参数，存储差值
   deltaDelayOfGunPressArgs: 0,
+
+  currGun: '',
+  leftGun: '',
+  rightGun: '',
+
+  leftGunMirror: '',
+  rightGunMirror: '',
+
+  availMirrorList: [],
 };
 
 
@@ -71,6 +80,24 @@ store.state = new Proxy(state, {
     mapi.setglobalmap(propName, null);
     return true;
   }
+});
+
+// 更改 this 的指向
+Object.keys(store.mutations).forEach((methodName) => {
+  if (!store.mutations.hasOwnProperty(methodName)) {
+    return;
+  }
+
+  store.mutations[methodName] = store.mutations[methodName].bind(store);
+});
+
+// 更改 this 的指向
+Object.keys(store.getters).forEach((methodName) => {
+  if (!store.getters.hasOwnProperty(methodName)) {
+    return;
+  }
+
+  store.getters[methodName] = store.getters[methodName].bind(store);
 });
 
 
