@@ -47,7 +47,10 @@ const IMAGE_NAMES = {
   CANCEL_TAKE_MEDICINE_BUTTON: '取消吃药按钮',
 };
 
-// 取消吃药
+/**
+ * 取消吃药
+ * @returns {boolean} true - 执行成功
+ */
 function cancelTakeMedicine() {
   const point = mapi.findimage(IMAGE_NAMES.CANCEL_TAKE_MEDICINE_BUTTON, 0.75, 3, 4, 1, 3);
 
@@ -118,6 +121,8 @@ function eatMedicalFirstAidKit() {
 }
 
 export default {
+  cancelTakeMedicine,
+
   eatEnergyDrink,
   eatPainkiller,
   eatEpinephrineInjection,
