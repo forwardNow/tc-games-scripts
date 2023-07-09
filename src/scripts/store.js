@@ -1,6 +1,6 @@
 const state = {
   // 控制 mapi.tip() 是否 启用
-  isTipEnabled: false,
+  isTipEnabled: true,
 
   // 调整过 6 倍镜倍率 的 枪及倍率
   adjust6XSightGuns: {}, // { gun: sight, ... }
@@ -60,11 +60,11 @@ store.state = new Proxy(state, {
   get(target, propName) {
     const value = mapi.getglobalmap(propName);
 
-    loginfo(`${propName} = ${value}`);
+    // loginfo(`${propName} = ${value}`);
 
     if (value == null) {
       const defaultValue = Reflect.get(target, propName);
-      loginfo(`${propName} = ${defaultValue} (default)`);
+      // loginfo(`${propName} = ${defaultValue} (default)`);
       return defaultValue;
     }
 
