@@ -101,7 +101,7 @@ const gunPressControl = {
 
     const args = Config.getGunPressArgs(gun, posture, mirror);
 
-    args.delay += Store.deltaDelay;
+    args.delay += Store.state.deltaDelayOfGunPressArgs;
 
     Utils.showTip(`${ gun }${ posture }${ mirror }: ${ JSON.stringify(args) }`)
 
@@ -138,7 +138,7 @@ const gunPressControl = {
     let mirror = Mirror.getCurrentMirror();
 
     if (mirror === Mirror.CATEGORIES.X6_SIGHT) {
-      mirror = Store.getMirrorOfAdjustedGun(gun) || Mirror.CATEGORIES.X6_SIGHT;
+      mirror = Store.getters.getMirrorOfAdjustedGun(gun) || Mirror.CATEGORIES.X6_SIGHT;
     }
 
     return mirror;
