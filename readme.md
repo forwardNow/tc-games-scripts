@@ -53,6 +53,7 @@
 | 按键 | 说明 | 宏 |
 | --- | --- | --- |
 | Ctrl | 重置 准心、方向键 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.reset();`<br>`   });`<br>`} ());` |
+| F | 复合按键：<br>    1. 下车<br>    2. 上车 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.compositeKey_getOnCar();`<br>`   });`<br>`} ());` |
 | F11 | 记录不准确的压枪参数 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.logErrorPressArgs();`<br>`   });`<br>`} ());` |
 | F12 | 启用/禁用 mapi.tip() | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleEnableOfTip();`<br>`   });`<br>`} ());` |
 | Num1 | 吃 能量饮料 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatEnergyDrink();`<br>`   });`<br>`} ());` |
@@ -68,9 +69,9 @@
 | Tab | 收枪 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.hideGun();`<br>`   });`<br>`} ());` |
 | 上箭头 | 动态调整压枪参数, +1 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.addDelay();`<br>`   });`<br>`} ());` |
 | 下箭头 | 动态调整压枪参数, -1 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.subtractDelay();`<br>`   });`<br>`} ());` |
-| 鼠标右键 | 1. 取消投掷；<br>2. 丢弃背包中光标所指位置的配件；<br>3. 点击当前按键位置并设置压枪参数 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.handleMouseRight();`<br>`   });`<br>`} ());` |
+| 鼠标右键 | 复合按键：<br>    1. 丢弃背包中光标所指位置的配件<br>    2. 取消投掷<br>    3. 取消打药<br>    4. 开镜<br>    5. 更新压枪参数 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.compositeKey_openMirror();`<br>`   });`<br>`} ());` |
 | 鼠标左键 | 开火 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.fire();`<br>`   });`<br>`} ());` |
-| 鼠标滚轮-滚上 | 调整 6 倍镜 <br>并存储调整过 6 倍镜倍率的枪及倍率 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleX6Sight();`<br>`   });`<br>`} ());` |
+| 鼠标滚轮-滚上 | 调整 6 倍镜<br>  并存储调整过 6 倍镜倍率的枪及倍率 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleX6Sight();`<br>`   });`<br>`} ());` |
 
 <!--keymap-end-->
 
