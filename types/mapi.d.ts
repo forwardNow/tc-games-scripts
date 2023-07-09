@@ -163,13 +163,13 @@ declare namespace mapi {
    * @param key
    * @param value
    */
-  function setglobalmap(key: string, value: any);
+  function setglobalmap(key: string | Object, value: any);
 
   /**
-   * 获取全局缓存 map 指定 key 的值
+   * 获取全局缓存 map 指定 key 的值，没有则返回 null
    * @param key
    */
-  function getglobalmap(key: string): any;
+  function getglobalmap(key: string | Object): any;
 
   /**
    * 设置是否为射击模式。射击模式没有鼠标
