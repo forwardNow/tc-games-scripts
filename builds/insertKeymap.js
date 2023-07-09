@@ -8,7 +8,7 @@ const README_FILE_PATH = resolve(CTX_PATH, './readme.md');
 
 const DOC_COMMENTS_REGEX = /(\/\*\*\s*[\s\S]+?\*\/\s*\w+\(\)\s*{)/gm;
 
-const DESCRIPTION_REGEX = /@description\s([\s\S]*?)\s*\*/m;
+const DESCRIPTION_REGEX = /@description\s([\s\S]*?)@/m;
 
 const BIND_REGEX = /@bind\s([\s\S]*?)\s*\*/m;
 
@@ -34,7 +34,15 @@ function getComments() {
     const [ , bind ] = commentStr.match(BIND_REGEX);
     const [ , method ] = commentStr.match(METHOD_REGEX);
 
-    return { description, bind, method };
+
+    const desc = description.split(/[\n\r]/)
+      .map((item) => {
+        return item.trim().replace(/^\*/, '');
+      })
+      .filter(Boolean)
+      .join('<br>');
+
+    return { description: desc, bind, method };
   });
 
   comments.sort((prev, curr) => {
@@ -58,23 +66,20 @@ function writeToReadme(comments) {
   let tableRows = '';
 
   comments.forEach(({ description, bind, method }) => {
+    const macro =`
+(function() {
+  import('keymap')
+    .then(({ default: keymap }) => {
+       keymap.${method};
+   });
+} ());
+    `
+      .split(/[\n\r]/gm)
+      .filter((item) => Boolean(item.trim()))
+      .map((item) => (`\`${item}\``))
+      .join('<br>')
+    ;
 
-    /*
-    (function() {
-      import('main').then(({ default: main }) => {
-        main.handleMouseRight();
-      });
-    } ());
-     */
-
-    const macro = ``
-      + '`' + `(function() {` + '`<br>'
-      + '`' + `  import('keymap')` + '`<br>'
-      + '`' + `    .then(({ default: keymap }) => {` + '`<br>'
-      + '`' + `       keymap.${method};` + '`<br>'
-      + '`' + `   });` + '`<br>'
-      + '`'+ `} ());` + '`'
-;
     tableRows += `| ${bind} | ${description} | ${macro} |\n`
   });
 
