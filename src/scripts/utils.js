@@ -27,7 +27,7 @@ function isPointNotExist(point) {
  * @param duration {number} 存在时间，单位 秒，默认 1 秒
  */
 function showTip(content, duration = 1) {
-  if (!Store.isTipEnabled) {
+  if (!Store.state.isTipEnabled) {
     return;
   }
   mapi.tip(content, duration);
@@ -37,7 +37,7 @@ function showTip(content, duration = 1) {
  * 切换 mapi.tip() 的启用和禁止
  */
 function toggleEnableOfTip() {
-  Store.isTipEnabled = !Store.isTipEnabled;
+  Store.state.isTipEnabled = !Store.state.isTipEnabled;
 }
 
 
