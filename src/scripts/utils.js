@@ -20,6 +20,10 @@ function isPointNotExist(point) {
   return point.X === 0 || point.Y === 0;
 }
 
+function isImageExist(imgName, sim, setCol, setRow, selectCol, selectRow) {
+  return isPointExist(mapi.findimage(imgName, sim, setCol, setRow, selectCol, selectRow));
+}
+
 /**
  * 包装 mapi.tip(content)
  *
@@ -76,9 +80,19 @@ function series(funcList, interruptReturnValue = true) {
   });
 }
 
+function switchToShotMode() {
+  mapi.shotmode(true);
+}
+
+function switchToMouseMode() {
+  mapi.shotmode(true);
+}
+
 export default {
   isPointExist,
   isPointNotExist,
+
+  isImageExist,
 
   showTip,
   toggleEnableOfTip,
@@ -89,4 +103,7 @@ export default {
   reset,
 
   series,
+
+  switchToShotMode,
+  switchToMouseMode,
 }
