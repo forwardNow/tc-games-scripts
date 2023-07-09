@@ -89,8 +89,17 @@ export default {
    * @bind Tab
    */
   hideGun() {
-    mapi.shotmode(true);
+    Utils.switchToShotMode();
     Gun.hideGun();
+  },
+
+  /**
+   * TODO
+   * @description 左右枪互换
+   * @bind X
+   */
+  swapGuns() {
+
   },
 
   /**
