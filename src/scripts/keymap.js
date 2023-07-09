@@ -4,6 +4,8 @@ import Gun from 'gun';
 import Variable from 'variable';
 import Medicine from 'medicine';
 import Missile from 'missile';
+import Bag from 'bag';
+import GunPressControl from 'gunPressControl';
 
 export default {
   /**
@@ -15,11 +17,54 @@ export default {
   },
 
   /**
-   * @description 1. 取消投掷；<br>2. 丢弃背包中光标所指位置的配件；<br>3. 点击当前按键位置并设置压枪参数
+   * @description 1. 取消投掷；<br>2. 丢弃背包中光标所指位置的配件；<br>3. 开镜；
    * @bind 鼠标右键
    */
   handleMouseRight() {
     gunPressControl.handleMouseRight();
+  },
+
+  /**
+   * @description 复合按键：
+   *    1. 丢弃背包中光标所指位置的配件
+   *    2. 取消投掷
+   *    3. 取消打药
+   *    4. 开镜
+   *    5. 更新压枪参数
+   * @bind 鼠标右键
+   */
+  compositeKey_openMirror() {
+    Utils.series([
+      // 丢弃背包物资
+      Bag.discardMaterialsUnderCursor.bind(Bag),
+
+      // 取消投掷
+      Missile.cancelThrow.bind(Missile),
+
+      // 取消打药
+      Medicine.cancelTakeMedicine.bind(Medicine),
+
+      // 开镜（点击当前按键所在位置）
+      Utils.clickCurrentKey.bind(Utils),
+
+      // 更新压枪参数
+      GunPressControl.updatePressArgs.bind(GunPressControl),
+    ]);
+  },
+
+  /**
+   * @description 复合按键：
+   *    1. 下车
+   *    2. 上车
+   * @bind F
+   */
+  compositeKey_getOnCar() {
+    Utils.series([
+      // TODO 下车
+
+      // 上车（点击当前按键所在位置）
+      Utils.clickCurrentKey.bind(Utils),
+    ]);
   },
 
   /**
