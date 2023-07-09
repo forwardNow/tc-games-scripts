@@ -46,15 +46,34 @@ function clickImagePosition(imgName, sim, setCol, setRow, selectCol, selectRow) 
 
   if (isPointNotExist(point)) {
     showTip('未找到图片：' + imgName);
-    return;
+    return false;
   }
 
   mapi.click(point);
 }
 
+// 点击当前按键所在位置
+function clickCurrentKey() {
+  mapi.click();
+}
+
+// 重置 准心、方向键
 function reset() {
   mapi.aimreset();
   mapi.directionreset();
+}
+
+/**
+ * 顺序执行多个函数
+ * @param funcList { Function[] }
+ * @param interruptReturnValue { boolean } 如果函数返回这个值，则中断执行
+ */
+function series(funcList, interruptReturnValue = true) {
+  funcList.some((func) => {
+    const result = func();
+
+    return result === interruptReturnValue;
+  });
 }
 
 export default {
@@ -65,6 +84,9 @@ export default {
   toggleEnableOfTip,
 
   clickImagePosition,
+  clickCurrentKey,
 
   reset,
+
+  series,
 }
