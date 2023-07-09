@@ -96,10 +96,6 @@ const MIRROR_IMAGE_ARGS = [
  * @return { string }
  */
 function getCurrentMirror() {
-  if (isX8Sight()) {
-    return CATEGORIES.X8_SIGHT;
-  }
-
   if (isX6Sight()) {
     return CATEGORIES.X6_SIGHT;
   }
@@ -124,6 +120,10 @@ function getCurrentMirror() {
   }
   if (isRedDotSight()) {
     return CATEGORIES.RED_DOT_SIGHT;
+  }
+
+  if (isX8Sight()) {
+    return CATEGORIES.X8_SIGHT;
   }
 
   return '';
