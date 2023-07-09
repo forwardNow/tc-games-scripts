@@ -98,7 +98,7 @@ export default {
    * @bind 上箭头
    */
   addDelayOfGunPressArgs() {
-    Store.addDelayOfGunPressArgs(1);
+    Store.mutations.addDelayOfGunPressArgs(1);
   },
 
   /**
@@ -106,7 +106,7 @@ export default {
    * @bind 下箭头
    */
   subtractDelay() {
-    Store.addDelayOfGunPressArgs(-1);
+    Store.mutations.addDelayOfGunPressArgs(-1);
   },
 
   /**
