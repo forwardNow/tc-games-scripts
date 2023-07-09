@@ -17,14 +17,6 @@ export default {
   },
 
   /**
-   * @description 1. 取消投掷；<br>2. 丢弃背包中光标所指位置的配件；<br>3. 开镜；
-   * @bind 鼠标右键
-   */
-  handleMouseRight() {
-    gunPressControl.handleMouseRight();
-  },
-
-  /**
    * @description 复合按键：
    *    1. 丢弃背包中光标所指位置的配件
    *    2. 取消投掷
@@ -68,7 +60,8 @@ export default {
   },
 
   /**
-   * @description 调整 6 倍镜 <br>并存储调整过 6 倍镜倍率的枪及倍率
+   * @description 调整 6 倍镜
+   *  并存储调整过 6 倍镜倍率的枪及倍率
    * @bind 鼠标滚轮-滚上
    */
   toggleX6Sight() {
