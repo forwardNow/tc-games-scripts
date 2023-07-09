@@ -15,7 +15,12 @@ const gunPressControl = {
   fire() {
     mapi.holdpress();
 
-    this.run();
+    if (!Mirror.isOpen()) {
+      this.pause();
+      return;
+    }
+
+    this.start();
   },
 
   toggleX6Sight() {
@@ -42,6 +47,7 @@ const gunPressControl = {
     Variable.setMirrorOfAdjustedGun(currGun, adjustedMirror)
   },
 
+  // TODO delete
   handleMouseRight() {
     const isDiscardMaterials = Bag.discardMaterialsUnderCursor();
 
@@ -62,7 +68,6 @@ const gunPressControl = {
     this.updatePressArgs();
   },
 
-
   logErrorPressArgs() {
     const { gun, posture, mirror } = this.getStatus();
     const args = Config.getGunPressArgs(gun, posture, mirror);
@@ -70,13 +75,8 @@ const gunPressControl = {
     logerror(`${ gun }${ posture }${ mirror }: ${ JSON.stringify(args) }`)
   },
 
-  run() {
-    if (!Mirror.isOpen()) {
-      this.pause();
-      return;
-    }
-
-    this.start();
+  start() {
+    mapi.startcustomaimpar();
 
     const success = this.updatePressArgs();
 
@@ -88,10 +88,6 @@ const gunPressControl = {
     this.play();
   },
 
-  start() {
-    mapi.startcustomaimpar();
-  },
-
   play() {
     mapi.customaimpar(false);
   },
@@ -101,17 +97,21 @@ const gunPressControl = {
   },
 
   updatePressArgs() {
-    const args = this.getArgsOfCustomAimPar();
+    try {
+      const args = this.getArgsOfCustomAimPar();
 
-    if (!args) {
+      if (!args) {
+        return false;
+      }
+
+      const { x, y, delay } = args;
+
+      mapi.changecustomaimpar(x, y, delay);
+
+      return true;
+    } catch (e) {
       return false;
     }
-
-    const { x, y, delay } = args;
-
-    mapi.changecustomaimpar(x, y, delay);
-
-    return true;
   },
 
   /**
