@@ -43,18 +43,17 @@ const MAPPING = {
 /** 图片名称 */
 const IMAGE_NAMES = {
   /** 第一（三）人称图标 */
-  FIRST_PERSON_ICON: '第一人称切换按钮',
+  FIRST_PERSON_ICON: '第一人称文本',
 
-  CURRENT_MACHINE_SIGHT: '机瞄压枪',
-  CURRENT_HOLOGRAPHIC_SIGHT: '全息压枪',
-  CURRENT_RED_DOT_SIGHT: '红点压枪',
+  CURRENT_MACHINE_SIGHT: '机瞄文本',
+  CURRENT_HOLOGRAPHIC_SIGHT: '全息文本',
+  CURRENT_RED_DOT_SIGHT: '红点文本',
 
-  CURRENT_2X_SIGHT: '2倍压枪',
-  CURRENT_3X_SIGHT: '3倍压枪',
-  CURRENT_4X_SIGHT: '4倍压枪',
-  CURRENT_6X_SIGHT: '6倍压枪',
-  CURRENT_6X_3X_SIGHT: '6倍转3倍压枪',
-  CURRENT_8X_SIGHT: '8倍压枪',
+  CURRENT_2X_SIGHT: '2倍镜文本',
+  CURRENT_3X_SIGHT: '3倍镜文本',
+  CURRENT_4X_SIGHT: '4倍镜文本',
+  CURRENT_6X_SIGHT: '6倍镜文本',
+  CURRENT_8X_SIGHT: '8倍镜文本',
 
   /** 打开 6 倍镜缩放条 的按钮 */
   BUTTON_OF_X6_SIGHT_ZOOM_BAR: '6倍镜调距按钮',
@@ -96,6 +95,10 @@ const MIRROR_IMAGE_ARGS = [
  * @return { string }
  */
 function getCurrentMirror() {
+  if (isX8Sight()) {
+    return CATEGORIES.X8_SIGHT;
+  }
+
   if (isX6Sight()) {
     return CATEGORIES.X6_SIGHT;
   }
@@ -120,10 +123,6 @@ function getCurrentMirror() {
   }
   if (isRedDotSight()) {
     return CATEGORIES.RED_DOT_SIGHT;
-  }
-
-  if (isX8Sight()) {
-    return CATEGORIES.X8_SIGHT;
   }
 
   return '';
