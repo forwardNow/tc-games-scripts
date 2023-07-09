@@ -9,6 +9,7 @@ const state = {
   deltaDelayOfGunPressArgs: 0,
 
   currGun: '',
+
   leftGun: '',
   rightGun: '',
 

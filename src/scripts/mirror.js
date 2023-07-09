@@ -72,6 +72,16 @@ const MIRROR_TEXT_IMAGE_NAMES = {
   [CATEGORIES.X8_SIGHT]: '8倍镜文本',
 }
 
+const DELICATE_MIRROR_IMAGE_NAMES = {
+  [CATEGORIES.RED_DOT_SIGHT]: '大图红点',
+  [CATEGORIES.HOLOGRAPHIC_SIGHT]: '大图全息',
+  [CATEGORIES.X2_SIGHT]: '大图2倍镜',
+  [CATEGORIES.X3_SIGHT]: '大图3倍镜',
+  [CATEGORIES.X4_SIGHT]: '大图4倍镜',
+  [CATEGORIES.X6_SIGHT]: '大图6倍镜',
+  [CATEGORIES.X8_SIGHT]: '大图8倍镜',
+}
+
 /**
  * 是否开镜
  *
@@ -136,6 +146,52 @@ function isX6Sight() {
   return mirror === CATEGORIES.X6_SIGHT;
 }
 
+/**
+ * 识别出所有准镜
+ *
+ * @return {*[]}
+ */
+function identifyDelicateMirror() {
+  const result = [];
+
+  Object.keys(DELICATE_MIRROR_IMAGE_NAMES).forEach((mirror) => {
+    const imageName = DELICATE_MIRROR_IMAGE_NAMES[mirror];
+
+    if(Utils.isImageExist(imageName, 0.75, 4, 1, 4, 1)) {
+      result.push(mirror)
+    }
+  });
+
+  // loginfo(JSON.stringify(result));
+  return result;
+}
+
+function identityDelicateMirrorOfBag() {
+  let leftGunMirrors = [];
+  let rightGunMirrors = [];
+
+  Object.keys(DELICATE_MIRROR_IMAGE_NAMES).forEach((mirror) => {
+    const imageName = DELICATE_MIRROR_IMAGE_NAMES[mirror].replace('大图', '背包');
+
+    if( Utils.isImageExist(imageName, 0.75, 4, 4, 3, 1)) {
+      leftGunMirrors.push(mirror);
+    }
+    if( Utils.isImageExist(imageName, 0.75, 4, 3, 3, 2)) {
+      rightGunMirrors.push(mirror);
+    }
+  });
+
+  const result = { leftGunMirrors, rightGunMirrors };
+
+  // loginfo(JSON.stringify(result));
+
+  if (leftGunMirrors.length !== 1 || rightGunMirrors.length !== 1) {
+    logerror(JSON.stringify(result));
+  }
+
+  return result;
+}
+
 
 /**
  * 打开 6 倍瞄准镜的缩放栏
@@ -196,4 +252,7 @@ export default {
   isX6Sight,
   adjustX6ToX3,
   adjustX6ToX6,
+
+  identifyDelicateMirror,
+  identityDelicateMirrorOfBag,
 }
