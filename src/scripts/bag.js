@@ -13,6 +13,7 @@ function isBagOpen() {
 
 /**
  * 丢弃光标所指的物资
+ * @returns {boolean} true - 执行成功
  */
 function discardMaterialsUnderCursor() {
   if (!isBagOpen()) {
