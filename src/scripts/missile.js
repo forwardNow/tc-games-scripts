@@ -36,6 +36,7 @@ const IMAGE_NAMES = {
 
 /**
  * 取消投掷
+ * @returns {boolean} true - 执行成功
  */
 function cancelThrow() {
   const point = mapi.findimage(IMAGE_NAMES.CANCEL_THROW_BUTTON, 0.75, 3, 4, 1, 3);
