@@ -2,7 +2,7 @@ import Gun from 'gun';
 import Posture from 'posture';
 import Mirror from 'mirror';
 import Utils from 'utils';
-import Config from 'config';
+import PressArgs from 'pressArgs';
 import Store from 'store';
 
 const pressCtrl = {
@@ -47,7 +47,7 @@ const pressCtrl = {
 
   logErrorPressArgs() {
     const { gun, posture, mirror } = this.getStatus();
-    const args = Config.getGunPressArgs(gun, posture, mirror);
+    const args = PressArgs.getGunPressArgs(gun, posture, mirror);
 
     logerror(`${ gun }${ posture }${ mirror }: ${ JSON.stringify(args) }`)
   },
@@ -97,7 +97,7 @@ const pressCtrl = {
   getArgsOfCustomAimPar() {
     const { gun, posture, mirror } = this.getStatus();
 
-    const args = Config.getGunPressArgs(gun, posture, mirror);
+    const args = PressArgs.getGunPressArgs(gun, posture, mirror);
 
     args.delay += Store.state.deltaDelayOfGunPressArgs;
 
