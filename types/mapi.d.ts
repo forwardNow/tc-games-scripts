@@ -186,17 +186,17 @@ declare namespace mapi {
 
   /**
    * 点击操作
+   * @param point
+   */
+  function click(point: point);
+
+  /**
+   * 点击操作
    *
    * @param x {number}
    * @param y {number}
    */
   function click(x: number, y: number);
-
-  /**
-   * 点击操作
-   * @param point
-   */
-  function click(point: point);
 
   /**
    * 获取当前宏按键所指手机屏幕上的坐标
