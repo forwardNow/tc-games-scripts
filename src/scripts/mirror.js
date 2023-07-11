@@ -99,24 +99,24 @@ function isOpen() {
  *
  * @return { string }
  */
-function getCurrentMirror() {
-  return getCurrentBySightText();
+function getCurrentMirror(disabledMirrors = [CATEGORIES.X8_SIGHT] , availableMirrors = CATEGORIES) {
+  return getCurrentBySightText(disabledMirrors, availableMirrors);
 }
 
-function getCurrentBySightText() {
+function getCurrentBySightText(disabledMirrors, availableMirrors) {
   const areaArgs = [4, 4, 4, 2];
 
-  const mirrors = [
-    CATEGORIES.X8_SIGHT,
-    CATEGORIES.X6_SIGHT,
-    CATEGORIES.X4_SIGHT,
-    CATEGORIES.X3_SIGHT,
-    CATEGORIES.X2_SIGHT,
-    CATEGORIES.RED_DOT_SIGHT,
-    CATEGORIES.HOLOGRAPHIC_SIGHT,
-    CATEGORIES.MACHINE_SIGHT,
-  ];
+  const mirrors = availableMirrors.keys().filter((mirror) => {
+    if (!MIRROR_TEXT_IMAGE_NAMES[mirror]) {
+      return false;
+    }
 
+    if (disabledMirrors.includes(mirror)) {
+      return false;
+    }
+
+    return true;
+  });
 
   const mirrorArgsList = mirrors.map((mirror) => {
     return [
@@ -126,10 +126,7 @@ function getCurrentBySightText() {
     ];
   });
 
-  const targetIndex = mirrorArgsList.findIndex((mirrorArgs, index) => {
-    const point = mapi.findimage(...mirrorArgs);
-    return Utils.isPointExist(point);
-  })
+  const targetIndex = mirrorArgsList.findIndex((args, index) => Utils.isImageExist(...args))
 
   if (targetIndex === -1) {
     logerror('getCurrentBySightText() 未识别出倍镜');
