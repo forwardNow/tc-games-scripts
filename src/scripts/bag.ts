@@ -1,5 +1,5 @@
-import Utils from 'utils';
-import Constant, { BIND_KEYS } from 'constant';
+import Utils from './utils';
+import Constant, { BIND_KEYS } from './constant';
 
 const IMAGE_NAMES = {
   BAG_OPEN: '背包已打开的标志',

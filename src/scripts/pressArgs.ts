@@ -1,10 +1,11 @@
+import { T_Gun, T_Mirror, T_OfficialMirror, T_OfficialPosture, T_Posture, T_PressConfig } from '../../types';
 
 /**
  * 压枪参数
  *
  * changecustomaimpar(x: number, y: number, delay: number)
  */
-const NOVA_9 = {
+const NOVA_9: T_PressConfig = {
   'M4': {
     'M4蹲6倍6': [0, 1, 5],
     'M4蹲6倍3': [0, 1, 10],
@@ -45,26 +46,6 @@ const NOVA_9 = {
     'AKM站2倍': [0, 1, 7],
     'AKM站': [0, 1, 13],
   },
-  'QBZ': {
-    'QBZ蹲6倍6': [0, 1, 4],
-    'QBZ蹲6倍3': [0, 1, 8],
-    'QBZ蹲4倍': [0, 1, 5],
-    'QBZ蹲3倍': [0, 1, 8],
-    'QBZ蹲2倍': [0, 1, 13],
-    'QBZ蹲': [0, 1, 22],
-    'QBZ趴6倍6': [0, 1, 6],
-    'QBZ趴6倍3': [0, 1, 11],
-    'QBZ趴4倍': [0, 1, 8],
-    'QBZ趴3倍': [0, 1, 11],
-    'QBZ趴2倍': [0, 1, 17],
-    'QBZ趴': [0, 1, 29],
-    'QBZ站6倍6': [0, 1, 3],
-    'QBZ站6倍3': [0, 1, 7],
-    'QBZ站4倍': [0, 1, 4],
-    'QBZ站3倍': [0, 1, 7],
-    'QBZ站2倍': [0, 1, 10],
-    'QBZ站': [0, 1, 17],
-  },
   'AUG': {
     'AUG蹲6倍6': [0, 1, 5],
     'AUG蹲6倍3': [0, 1, 10],
@@ -104,26 +85,6 @@ const NOVA_9 = {
     'ACVAL站3倍': [0, 1, 10],
     'ACVAL站2倍': [0, 1, 13],
     'ACVAL站': [0, 1, 24],
-  },
-  'G36C': {
-    'G36C蹲6倍6': [0, 1, 4],
-    'G36C蹲6倍3': [0, 1, 9],
-    'G36C蹲4倍': [0, 1, 5],
-    'G36C蹲3倍': [0, 1, 9],
-    'G36C蹲2倍': [0, 1, 12],
-    'G36C蹲': [0, 1, 21],
-    'G36C趴6倍6': [0, 1, 6],
-    'G36C趴6倍3': [0, 1, 12],
-    'G36C趴4倍': [0, 1, 8],
-    'G36C趴3倍': [0, 1, 12],
-    'G36C趴2倍': [0, 1, 16],
-    'G36C趴': [0, 1, 28],
-    'G36C站6倍6': [0, 1, 3],
-    'G36C站6倍3': [0, 1, 7],
-    'G36C站4倍': [0, 1, 4],
-    'G36C站3倍': [0, 1, 7],
-    'G36C站2倍': [0, 1, 10],
-    'G36C站': [0, 1, 18],
   },
   'SCARL': {
     'SCARL蹲6倍6': [0, 1, 5],
@@ -204,26 +165,6 @@ const NOVA_9 = {
     'MIGUAN站3倍': [0, 1, 4],
     'MIGUAN站2倍': [0, 1, 6],
     'MIGUAN站': [0, 1, 11],
-  },
-  'MP5K': {
-    'MP5K蹲6倍6': [0, 1, 5],
-    'MP5K蹲6倍3': [0, 1, 8],
-    'MP5K蹲4倍': [0, 1, 6],
-    'MP5K蹲3倍': [0, 1, 8],
-    'MP5K蹲2倍': [0, 1, 14],
-    'MP5K蹲': [0, 1, 23],
-    'MP5K趴6倍6': [0, 1, 6],
-    'MP5K趴6倍3': [0, 1, 12],
-    'MP5K趴4倍': [0, 1, 7],
-    'MP5K趴3倍': [0, 1, 12],
-    'MP5K趴2倍': [0, 1, 17],
-    'MP5K趴': [0, 1, 26],
-    'MP5K站6倍6': [0, 1, 4],
-    'MP5K站6倍3': [0, 1, 7],
-    'MP5K站4倍': [0, 1, 5],
-    'MP5K站3倍': [0, 1, 7],
-    'MP5K站2倍': [0, 1, 10],
-    'MP5K站': [0, 1, 18],
   },
   'YENIU': {
     'YENIU蹲6倍6': [0, 1, 7],
@@ -405,10 +346,11 @@ const NOVA_9 = {
     'DP28站2倍': [0, 1, 17],
     'DP28站': [0, 1, 28],
   },
+  PKM: {}, VSS: {}, MK20H: {}, M417: {}
 }
 
 // 比 nova9 , 第三个参数 除以 1.4
-const MATE_PAD_11 = {
+const MATE_PAD_11: T_PressConfig = {
   'M4': {
     'M4蹲6倍6': [0, 1, 4],
     'M4蹲6倍3': [0, 1, 8],
@@ -833,11 +775,11 @@ const gunPressArgs =/* replace start */ MATE_PAD_11 /* replace end */
  * @param mirror
  * @return {{ x: number, y: number, delay: number}|null}
  */
-function getGunPressArgs(gunName, posture, mirror) {
+function getGunPressArgs(gunName: T_Gun, posture: T_OfficialPosture, mirror: T_OfficialMirror) {
   const argsMap = gunPressArgs[gunName];
 
   if (!argsMap) {
-    logerror(`${gunName} 没有相应配置。`)
+    logerror(`getGunPressArgs: ${gunName} 没有相应配置。`)
     return null;
   }
 
@@ -846,7 +788,6 @@ function getGunPressArgs(gunName, posture, mirror) {
   const args = argsMap[key];
 
   if (!args) {
-    logerror(`${key} 没有相应配置。`)
     return null;
   }
 

@@ -1,9 +1,11 @@
+import { IGetters, IMutations } from '../../types';
+
 const state = {
   // 控制 mapi.tip() 是否 启用
   isTipEnabled: true,
 
   // 调整过 6 倍镜倍率 的 枪及倍率
-  adjust6XSightGuns: {}, // { gun: sight, ... }
+  adjust6XSightGuns: {} as Record<string, string>, // { gun: sight, ... }
 
   // 动态调整压枪参数，存储差值
   deltaDelayOfGunPressArgs: 0,
@@ -20,25 +22,25 @@ const state = {
 };
 
 
-const getters = {
+const getters: IGetters = {
   /**
    * 获取调整过 6 倍镜倍率的枪的准镜
    * @param gun {string} Gun.CATEGORIES 的值
    * @return {string} Mirror.CATEGORIES 的值
    */
-  getMirrorOfAdjustedGun(gun) {
+  getMirrorOfAdjustedGun(this: typeof store, gun: string) {
     const adjustedX6SightsGuns = this.state.adjust6XSightGuns || {}
     return adjustedX6SightsGuns[gun];
   }
 };
 
-const mutations = {
+const mutations: IMutations = {
   /**
    * 设置调整过 6 倍镜倍率的枪及准镜
    * @param gun {string} Gun.CATEGORIES 的值
    * @param mirror {string} Mirror.CATEGORIES 的值
    */
-  setMirrorOfAdjustedGun(gun, mirror) {
+  setMirrorOfAdjustedGun(this: typeof store, gun: string, mirror: string) {
     const adjustedX6SightsGuns = this.state.adjust6XSightGuns;
 
     adjustedX6SightsGuns[gun] = mirror;
@@ -46,13 +48,13 @@ const mutations = {
     this.state.adjust6XSightGuns = adjustedX6SightsGuns;
   },
 
-  addDelayOfGunPressArgs(num) {
+  addDelayOfGunPressArgs(this: typeof store, num: number) {
     this.state.deltaDelayOfGunPressArgs = this.state.deltaDelayOfGunPressArgs + num;
   },
 }
 
 const store = {
-  state: {},
+  state,
   getters,
   mutations,
 };

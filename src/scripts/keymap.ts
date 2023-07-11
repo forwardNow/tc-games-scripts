@@ -1,10 +1,10 @@
-import Utils from 'utils';
-import Gun from 'gun';
-import Store from 'store';
-import Medicine from 'medicine';
-import Missile from 'missile';
-import Bag from 'bag';
-import PressCtrl from 'pressCtrl';
+import Utils from './utils';
+import Gun from './gun';
+import Store from './store';
+import Medicine from './medicine';
+import Missile from './missile';
+import Bag from './bag';
+import PressCtrl from './pressCtrl';
 
 export default {
   /**

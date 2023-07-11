@@ -1,8 +1,9 @@
-import Utils from 'utils';
-import Constant from 'constant';
+import Utils from './utils';
+import Constant from './constant';
+import { T_Gun, T_GunPosition, ImageAreaArgs } from '../../types';
 
 /** 枪的类型 */
-const CATEGORIES = {
+const CATEGORIES: { [key in T_Gun]: T_Gun } = {
   M4: 'M4',
   SCARL: 'SCARL',
   DP28: 'DP28',
@@ -36,7 +37,7 @@ const CATEGORIES = {
 };
 
 /** 持枪位置 */
-const GUN_POSITION = {
+const GUN_POSITION: { [key in T_GunPosition]: T_GunPosition }  = {
   /** 左边枪 */
   LEFT: 'LEFT',
   /** 右边枪 */
@@ -45,9 +46,9 @@ const GUN_POSITION = {
 
 
 /** 持枪位置-图片区域 */
-const GUN_POSITION_IMAGE_AREA = {
-  [GUN_POSITION.LEFT]: [ 0.85, 4, 4, 2, 4  ],
-  [GUN_POSITION.RIGHT]: [ 0.85, 4, 4, 3, 4  ],
+const GUN_POSITION_IMAGE_AREA: { [key in T_GunPosition]: ImageAreaArgs } = {
+  LEFT: [ 0.85, 4, 4, 2, 4  ],
+  RIGHT: [ 0.85, 4, 4, 3, 4  ],
 }
 
 /**
@@ -68,11 +69,13 @@ export function getGunPosition() {
 }
 
 function isLeftGun() {
-  return Utils.isColorExist(...Constant.GUN_POSITION_LEFT_COLOR_POINT);
+  const [color, posList] = Constant.GUN_POSITION_LEFT_COLOR_POINT;
+  return Utils.isColorExist(color, posList);
 }
 
 function isRightGun() {
-  return Utils.isColorExist(...Constant.GUN_POSITION_RIGHT_COLOR_POINT);
+  const [color, posList] = Constant.GUN_POSITION_RIGHT_COLOR_POINT;
+  return Utils.isColorExist(color, posList);
 }
 
 
@@ -84,26 +87,21 @@ function isRightGun() {
 function getCurrentGun() {
   const gunPosition = getGunPosition();
 
-  const imageArgs = GUN_POSITION_IMAGE_AREA[gunPosition];
+  if (!gunPosition) {
+    return;
+  }
 
-  let currentGunName = null;
+  const imageArgs: ImageAreaArgs = GUN_POSITION_IMAGE_AREA[gunPosition];
 
-  Object.keys(CATEGORIES).some((gunName) => {
-    const isExist = Utils.isImageExist(gunName, ...imageArgs);
+  const guns = Object.keys(CATEGORIES) as T_Gun[];
 
-    if (isExist) {
-      currentGunName = gunName;
-    }
+  return guns.find((gun) => Utils.isImageExist(gun, ...imageArgs));
 
-    return isExist;
-  })
-
-  return currentGunName;
 }
 
 function identityGunsInBag() {
-  let leftGuns = [];
-  let rightGuns = [];
+  let leftGuns: string[] = [];
+  let rightGuns: string[] = [];
 
   Object.keys(CATEGORIES).forEach((cate) => {
     const imageName = `大图${cate}`;
@@ -124,8 +122,8 @@ function identityGunsInBag() {
 }
 
 function identityFlatGuns() {
-  let leftGuns = [];
-  let rightGuns = [];
+  let leftGuns: string[] = [];
+  let rightGuns: string[] = [];
 
   Object.keys(CATEGORIES).forEach((cate) => {
     if( Utils.isImageExist(cate, 0.85, 4, 4, 2, 4)) {

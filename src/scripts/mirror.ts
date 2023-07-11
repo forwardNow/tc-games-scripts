@@ -1,12 +1,13 @@
 import Utils from './utils';
 import Constant from './constant';
+import { ImageArgs, T_Mirror, T_OfficialMirror } from '../../types';
 
 const X6_SIGHT_ZOOM_BAR_POINT = Constant.X6_SIGHT_ZOOM_BAR_POINT;
 const X6_TO_X3_POINT = Constant.X6_TO_X3_POINT;
 const X6_TO_X6_POINT = Constant.X6_TO_X6_POINT;
 
 /** 准镜类型 */
-const CATEGORIES = {
+const CATEGORIES: { [key in T_Mirror | 'X6_X3_SIGHT']: T_Mirror | 'X6_X3_SIGHT'; } = {
   /** 机瞄 */
   MACHINE_SIGHT: 'MACHINE_SIGHT',
   /** 红点 */
@@ -21,27 +22,25 @@ const CATEGORIES = {
   X4_SIGHT: 'X4_SIGHT',
   /** 6倍镜，未调整过的 */
   X6_SIGHT: 'X6_SIGHT',
+
   /** 6倍镜，3倍率 */
   X6_X3_SIGHT: 'X6_X3_SIGHT',
 
   X8_SIGHT: 'X8_SIGHT',
 }
 
-/** 准镜类型 */
-type Mirror = Exclude<'X6_X3_SIGHT', (keyof (typeof CATEGORIES))>;
-
 
 /** 准镜映射，对应官方名称 */
-const MAPPING = {
-  [CATEGORIES.MACHINE_SIGHT]: '',
-  [CATEGORIES.RED_DOT_SIGHT]: '',
-  [CATEGORIES.HOLOGRAPHIC_SIGHT]: '',
-  [CATEGORIES.X2_SIGHT]: '2倍',
-  [CATEGORIES.X3_SIGHT]: '3倍',
-  [CATEGORIES.X4_SIGHT]: '4倍',
-  [CATEGORIES.X6_SIGHT]: '6倍6',
-  [CATEGORIES.X6_X3_SIGHT]: '6倍3',
-  [CATEGORIES.X8_SIGHT]: '8倍',
+const MAPPING: { [key in (keyof (typeof CATEGORIES))]: T_OfficialMirror } = {
+  MACHINE_SIGHT: '',
+  RED_DOT_SIGHT: '',
+  HOLOGRAPHIC_SIGHT: '',
+  X2_SIGHT: '2倍',
+  X3_SIGHT: '3倍',
+  X4_SIGHT: '4倍',
+  X6_SIGHT: '6倍6',
+  X6_X3_SIGHT: '6倍3',
+  X8_SIGHT: '8倍',
 };
 
 /** 图片名称 */
@@ -65,25 +64,27 @@ const IMAGE_NAMES = {
   X6_SIGHT_ZOOM_BAR: '6倍镜调距条',
 };
 
-const MIRROR_TEXT_IMAGE_NAMES = {
-  [CATEGORIES.MACHINE_SIGHT]: '机瞄文本',
-  [CATEGORIES.RED_DOT_SIGHT]: '红点文本',
-  [CATEGORIES.HOLOGRAPHIC_SIGHT]: '全息文本',
-  [CATEGORIES.X2_SIGHT]: '2倍镜文本',
-  [CATEGORIES.X3_SIGHT]: '3倍镜文本',
-  [CATEGORIES.X4_SIGHT]: '4倍镜文本',
-  [CATEGORIES.X6_SIGHT]: '6倍镜文本',
-  [CATEGORIES.X8_SIGHT]: '8倍镜文本',
+const MIRROR_TEXT_IMAGE_NAMES: { [key in T_Mirror]: string } = {
+  MACHINE_SIGHT: '机瞄文本',
+  RED_DOT_SIGHT: '红点文本',
+  HOLOGRAPHIC_SIGHT: '全息文本',
+  X2_SIGHT: '2倍镜文本',
+  X3_SIGHT: '3倍镜文本',
+  X4_SIGHT: '4倍镜文本',
+  X6_SIGHT: '6倍镜文本',
+  X8_SIGHT: '8倍镜文本',
 }
 
-const DELICATE_MIRROR_IMAGE_NAMES = {
-  [CATEGORIES.RED_DOT_SIGHT]: '大图红点',
-  [CATEGORIES.HOLOGRAPHIC_SIGHT]: '大图全息',
-  [CATEGORIES.X2_SIGHT]: '大图2倍镜',
-  [CATEGORIES.X3_SIGHT]: '大图3倍镜',
-  [CATEGORIES.X4_SIGHT]: '大图4倍镜',
-  [CATEGORIES.X6_SIGHT]: '大图6倍镜',
-  [CATEGORIES.X8_SIGHT]: '大图8倍镜',
+type DelicateMirror = Exclude<T_Mirror, 'MACHINE_SIGHT'>;
+
+const DELICATE_MIRROR_IMAGE_NAMES: { [key in DelicateMirror ]: string } = {
+  RED_DOT_SIGHT: '大图红点',
+  HOLOGRAPHIC_SIGHT: '大图全息',
+  X2_SIGHT: '大图2倍镜',
+  X3_SIGHT: '大图3倍镜',
+  X4_SIGHT: '大图4倍镜',
+  X6_SIGHT: '大图6倍镜',
+  X8_SIGHT: '大图8倍镜',
 }
 
 /**
@@ -98,19 +99,19 @@ function isOpen() {
   return !isExist;
 }
 
-const MIRRORS = Object.keys(CATEGORIES) as Mirror[];
+const MIRRORS: T_Mirror[] = Object.keys(CATEGORIES) as T_Mirror[];
 
 /**
  * 获取当前准镜名称
  *
  * @return { string }
  */
-function getCurrentMirror(disabledMirrors = [CATEGORIES.X8_SIGHT as Mirror] , availableMirrors = MIRRORS) {
+function getCurrentMirror(disabledMirrors = ['X8_SIGHT' as T_Mirror] , availableMirrors = MIRRORS) {
   return getCurrentBySightText(disabledMirrors, availableMirrors);
 }
 
-function getCurrentBySightText(disabledMirrors: Mirror[], availableMirrors: Mirror[]) {
-  const areaArgs = [4, 4, 4, 2];
+function getCurrentBySightText(disabledMirrors: T_Mirror[], availableMirrors: T_Mirror[]) {
+  const areaArgs: [number, number, number, number] = [4, 4, 4, 2];
 
   const mirrors = availableMirrors.filter((mirror) => {
     if (!MIRROR_TEXT_IMAGE_NAMES[mirror]) {
@@ -125,18 +126,16 @@ function getCurrentBySightText(disabledMirrors: Mirror[], availableMirrors: Mirr
   });
 
   const mirrorArgsList = mirrors.map((mirror) => {
-    return [
-      MIRROR_TEXT_IMAGE_NAMES[mirror],
-      Constant.MIRROR_TEXT_IMAGE_SIM[mirror],
-      ...areaArgs,
-    ];
+    const imageName = MIRROR_TEXT_IMAGE_NAMES[mirror];
+    const sim = Constant.MIRROR_TEXT_IMAGE_SIM[mirror];
+
+    return [imageName, sim, ...areaArgs ] as ImageArgs;
   });
 
-  const targetIndex = mirrorArgsList.findIndex((args, index) => Utils.isImageExist(...args))
+  const targetIndex = mirrorArgsList.findIndex((args: ImageArgs) => Utils.isImageExist(...args))
 
   if (targetIndex === -1) {
-    logerror('getCurrentBySightText() 未识别出倍镜');
-    return '';
+    return null;
   }
 
   return mirrors[targetIndex];
@@ -156,7 +155,9 @@ function isX6Sight() {
 function identityAvailableMirror() {
   const result: string[] = [];
 
-  Object.keys(DELICATE_MIRROR_IMAGE_NAMES).forEach((mirror) => {
+  const delicateMirrors = Object.keys(DELICATE_MIRROR_IMAGE_NAMES) as DelicateMirror[];
+
+  delicateMirrors.forEach((mirror) => {
     const imageName = DELICATE_MIRROR_IMAGE_NAMES[mirror];
 
     if(Utils.isImageExist(imageName, 0.75, 4, 1, 4, 1)) {
@@ -170,10 +171,12 @@ function identityAvailableMirror() {
 
 /** 识别背包中的准镜 */
 function identityMirrorOfBag() {
-  let leftGunMirrors: string[] = [];
-  let rightGunMirrors: string[] = [];
+  let leftGunMirrors: DelicateMirror[] = [];
+  let rightGunMirrors: DelicateMirror[] = [];
 
-  Object.keys(DELICATE_MIRROR_IMAGE_NAMES).forEach((mirror) => {
+  const delicateMirrors = Object.keys(DELICATE_MIRROR_IMAGE_NAMES) as DelicateMirror[];
+
+  delicateMirrors.forEach((mirror) => {
     const imageName = DELICATE_MIRROR_IMAGE_NAMES[mirror].replace('大图', '背包');
 
     if( Utils.isImageExist(imageName, 0.75, 4, 4, 3, 1)) {
@@ -210,7 +213,7 @@ function openZoomBarOf6XSight() {
   const buttonPoint = mapi.findimage(IMAGE_NAMES.BUTTON_OF_X6_SIGHT_ZOOM_BAR, 0.75, 4, 3, 2, 1);
 
   if (!Utils.isPointExist(buttonPoint)) {
-    loginfo('未找到图片：' + IMAGE_NAMES.BUTTON_OF_X6_SIGHT_ZOOM_BAR);
+    loginfo('openZoomBarOf6XSight(): 未找到图片 - ' + IMAGE_NAMES.BUTTON_OF_X6_SIGHT_ZOOM_BAR);
     return;
   }
 

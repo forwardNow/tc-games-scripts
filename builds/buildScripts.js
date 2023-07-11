@@ -16,7 +16,7 @@ function build() {
     .pipe(tsProject()).js
 
     // import x from './x' --> import x from 'x'
-    .pipe(replace(/(from\s+['"])(\.\/)(\w+)'/gm, '$1$3'))
+    .pipe(replace(/(from\s+['"])(\.\/)(\w+')/gm, '$1$3'))
 
     .pipe(dest(TCG_SCRIPTS_DIR))
     .pipe(dest(DIST_PATH));

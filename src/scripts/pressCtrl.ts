@@ -1,14 +1,15 @@
-import Gun from 'gun';
-import Posture from 'posture';
-import Mirror from 'mirror';
-import Utils from 'utils';
-import PressArgs from 'pressArgs';
-import Store from 'store';
+import Gun from './gun';
+import Posture from './posture';
+import Mirror from './mirror';
+import Utils from './utils';
+import PressArgs from './pressArgs';
+import Store from './store';
+import { T_Gun, T_Mirror, T_Posture } from '../../types';
 
 const pressCtrl = {
-  currGun: '',
-  currPosture: '',
-  currMirror: '',
+  currGun: null as ( null | T_Gun ),
+  currPosture: null as ( null | T_Posture ),
+  currMirror: null as ( null | T_Mirror ),
 
   fire() {
     mapi.holdpress();
@@ -32,6 +33,11 @@ const pressCtrl = {
 
     const currGun = Gun.getCurrentGun();
 
+    if (!currGun) {
+      logerror('toggleX6Sight: 未识别到枪械');
+      return;
+    }
+
     const currMirror = this.getCurrentMirrorByGun(currGun);
 
     let adjustedMirror = null;
@@ -46,10 +52,17 @@ const pressCtrl = {
   },
 
   logErrorPressArgs() {
-    const { gun, posture, mirror } = this.getStatus();
+    const status = this.getStatus();
+
+    if (!status) {
+      logerror(`logErrorPressArgs(): status 为 None`)
+      return;
+    }
+
+    const { gun, posture, mirror } = status;
     const args = PressArgs.getGunPressArgs(gun, posture, mirror);
 
-    logerror(`${ gun }${ posture }${ mirror }: ${ JSON.stringify(args) }`)
+    logerror(`logErrorPressArgs: ${ gun }${ posture }${ mirror }: ${ JSON.stringify(args) }`)
   },
 
   start() {
@@ -95,9 +108,21 @@ const pressCtrl = {
    * @return {{ x: number, y: number, delay: number} | null}
    */
   getArgsOfCustomAimPar() {
-    const { gun, posture, mirror } = this.getStatus();
+    const status = this.getStatus();
+
+    if (!status) {
+      logerror(`logErrorPressArgs(): status 为 None`)
+      return;
+    }
+
+    const { gun, posture, mirror } = status;
 
     const args = PressArgs.getGunPressArgs(gun, posture, mirror);
+
+    if (!args) {
+      logerror(`getArgsOfCustomAimPar: ${ gun }${ posture }${ mirror }: 没有对应的配置`)
+      return;
+    }
 
     args.delay += Store.state.deltaDelayOfGunPressArgs;
 
@@ -118,21 +143,45 @@ const pressCtrl = {
       currMirror: lastMirror
     } = this;
 
-    const gun = Gun.getCurrentGun()  || lastGun;
-    const posture = Posture.getCurrentPosture()  || lastPosture;
-    const mirror = this.getCurrentMirrorByGun(gun)  || lastMirror;
+    let gun = Gun.getCurrentGun();
+
+    if (!gun) {
+      logwarning('getStatus: 未识别出当前枪械！尝试使用上次识别出来的枪械');
+
+      if (!lastGun) {
+        logwarning('getStatus: 上次识别出来的枪械为 None');
+        return;
+      }
+
+      gun = lastGun;
+    }
+
+    let posture = Posture.getCurrentPosture();
+
+    let mirror = this.getCurrentMirrorByGun(gun);
+
+    if (!mirror) {
+      logwarning('getStatus: 未识别出当前准镜！尝试使用上次识别出来的准镜！');
+
+      if (!lastMirror) {
+        logwarning('getStatus: 上次识别出来的准镜为 None');
+        return;
+      }
+
+      mirror = lastMirror;
+    }
 
     this.currGun = gun;
     this.currPosture = posture;
     this.currMirror = mirror;
 
     const officialPostureName = Posture.MAPPING[posture];
-    const officialMirrorName = Mirror.MAPPING[mirror] || '';
+    const officialMirrorName = Mirror.MAPPING[mirror];
 
     return { gun, posture: officialPostureName, mirror: officialMirrorName };
   },
 
-  getCurrentMirrorByGun(gun) {
+  getCurrentMirrorByGun(gun: T_Gun) {
     let mirror = Mirror.getCurrentMirror();
 
     if (mirror === Mirror.CATEGORIES.X6_SIGHT) {

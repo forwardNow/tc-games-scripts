@@ -1,9 +1,10 @@
-import Utils from 'utils';
+import Utils from './utils';
+import { T_Missile } from '../../types';
 
 /**
  * 投掷物类别
  */
-const CATEGORIES = {
+const CATEGORIES: { [key in T_Missile]: T_Missile } = {
   // 破片手榴弹
   FRAGMENT_BOMB: 'FRAGMENT_BOMB',
 
@@ -52,7 +53,7 @@ function cancelThrow() {
   return true;
 }
 
-function switchMissile(category) {
+function switchMissile(category: T_Missile) {
   expandList();
 
   mapi.delay(100);

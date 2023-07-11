@@ -1,4 +1,5 @@
-import Store from 'store';
+import Store from './store';
+import { Point } from '../../types';
 
 /**
  * mapi.point 是否 存在
@@ -6,7 +7,7 @@ import Store from 'store';
  * @param point { mapi.point }
  * @returns {boolean}
  */
-function isPointExist(point) {
+function isPointExist(point: Point) {
   return point.X !== 0 || point.Y !== 0;
 }
 
@@ -16,11 +17,11 @@ function isPointExist(point) {
  * @param point { mapi.point }
  * @returns {boolean}
  */
-function isPointNotExist(point) {
+function isPointNotExist(point: Point) {
   return point.X === 0 || point.Y === 0;
 }
 
-function isImageExist(imgName, sim, setCol, setRow, selectCol, selectRow) {
+function isImageExist(imgName: string, sim: number, setCol: number, setRow: number, selectCol: number, selectRow: number) {
   return isPointExist(mapi.findimage(imgName, sim, setCol, setRow, selectCol, selectRow));
 }
 
@@ -29,7 +30,7 @@ function isImageExist(imgName, sim, setCol, setRow, selectCol, selectRow) {
  * @param posList {string}
  * @return {boolean}
  */
-function isColorExist(color, posList) {
+function isColorExist(color: string, posList: string) {
   return isPointExist(mapi.findcolor(color, posList))
 }
 
@@ -39,7 +40,7 @@ function isColorExist(color, posList) {
  * @param content {string} 显式的内容
  * @param duration {number} 存在时间，单位 秒，默认 1 秒
  */
-function showTip(content, duration = 1) {
+function showTip(content: string, duration = 1) {
   if (!Store.state.isTipEnabled) {
     return;
   }
@@ -54,7 +55,7 @@ function toggleEnableOfTip() {
 }
 
 
-function clickImagePosition(imgName, sim, setCol, setRow, selectCol, selectRow) {
+function clickImagePosition(imgName: string, sim: number, setCol: number, setRow: number, selectCol: number, selectRow: number) {
   const point = mapi.findimage(imgName, sim, setCol, setRow, selectCol, selectRow);
 
   if (isPointNotExist(point)) {
@@ -81,7 +82,7 @@ function reset() {
  * @param funcList { Function[] }
  * @param interruptReturnValue { boolean } 如果函数返回这个值，则中断执行
  */
-function series(funcList, interruptReturnValue = true) {
+function series(funcList: Function[], interruptReturnValue = true) {
   funcList.some((func) => {
     const result = func();
 
