@@ -11,8 +11,11 @@ const TCG_IMAGES_DIR = resolve(USER_HOME, 'AppData\\Roaming\\Sigma-RT\\TC Games\
 
 const CTX_PATH = resolve(__dirname, '../');
 
+const DIST_PATH = resolve(__dirname, '../dist');
+
 module.exports = {
   TCG_SCRIPTS_DIR,
   TCG_IMAGES_DIR,
   CTX_PATH,
+  DIST_PATH,
 }
