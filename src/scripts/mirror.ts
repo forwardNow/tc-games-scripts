@@ -1,5 +1,5 @@
-import Utils from 'utils';
-import Constant from 'constant';
+import Utils from './utils';
+import Constant from './constant';
 
 const X6_SIGHT_ZOOM_BAR_POINT = Constant.X6_SIGHT_ZOOM_BAR_POINT;
 const X6_TO_X3_POINT = Constant.X6_TO_X3_POINT;
@@ -26,6 +26,10 @@ const CATEGORIES = {
 
   X8_SIGHT: 'X8_SIGHT',
 }
+
+/** 准镜类型 */
+type Mirror = Exclude<'X6_X3_SIGHT', (keyof (typeof CATEGORIES))>;
+
 
 /** 准镜映射，对应官方名称 */
 const MAPPING = {
@@ -94,19 +98,21 @@ function isOpen() {
   return !isExist;
 }
 
+const MIRRORS = Object.keys(CATEGORIES) as Mirror[];
+
 /**
  * 获取当前准镜名称
  *
  * @return { string }
  */
-function getCurrentMirror(disabledMirrors = [CATEGORIES.X8_SIGHT] , availableMirrors = CATEGORIES) {
+function getCurrentMirror(disabledMirrors = [CATEGORIES.X8_SIGHT as Mirror] , availableMirrors = MIRRORS) {
   return getCurrentBySightText(disabledMirrors, availableMirrors);
 }
 
-function getCurrentBySightText(disabledMirrors, availableMirrors) {
+function getCurrentBySightText(disabledMirrors: Mirror[], availableMirrors: Mirror[]) {
   const areaArgs = [4, 4, 4, 2];
 
-  const mirrors = Object.keys(availableMirrors).filter((mirror) => {
+  const mirrors = availableMirrors.filter((mirror) => {
     if (!MIRROR_TEXT_IMAGE_NAMES[mirror]) {
       return false;
     }
@@ -148,7 +154,7 @@ function isX6Sight() {
  * @return {*[]}
  */
 function identityAvailableMirror() {
-  const result = [];
+  const result: string[] = [];
 
   Object.keys(DELICATE_MIRROR_IMAGE_NAMES).forEach((mirror) => {
     const imageName = DELICATE_MIRROR_IMAGE_NAMES[mirror];
@@ -164,8 +170,8 @@ function identityAvailableMirror() {
 
 /** 识别背包中的准镜 */
 function identityMirrorOfBag() {
-  let leftGunMirrors = [];
-  let rightGunMirrors = [];
+  let leftGunMirrors: string[] = [];
+  let rightGunMirrors: string[] = [];
 
   Object.keys(DELICATE_MIRROR_IMAGE_NAMES).forEach((mirror) => {
     const imageName = DELICATE_MIRROR_IMAGE_NAMES[mirror].replace('大图', '背包');
