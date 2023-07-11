@@ -143,11 +143,11 @@ function isX6Sight() {
 }
 
 /**
- * 识别出所有准镜
+ * 识别出所有可用准镜
  *
  * @return {*[]}
  */
-function identifyDelicateMirror() {
+function identityAvailableMirror() {
   const result = [];
 
   Object.keys(DELICATE_MIRROR_IMAGE_NAMES).forEach((mirror) => {
@@ -162,7 +162,8 @@ function identifyDelicateMirror() {
   return result;
 }
 
-function identityDelicateMirrorOfBag() {
+/** 识别背包中的准镜 */
+function identityMirrorOfBag() {
   let leftGunMirrors = [];
   let rightGunMirrors = [];
 
@@ -249,6 +250,6 @@ export default {
   adjustX6ToX3,
   adjustX6ToX6,
 
-  identifyDelicateMirror,
-  identityDelicateMirrorOfBag,
+  identityAvailableMirror,
+  identityMirrorOfBag,
 }
