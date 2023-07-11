@@ -1,5 +1,7 @@
 export const BIND_KEYS = {
+  /** 背包 */
   BAG: 'B',
+
 };
 
 // 华为 nova9， 2430 × 1080
@@ -29,6 +31,9 @@ const NOVA_9 = {
   },
 
   BAG_DUSTBIN_X: 2350,
+
+  RESCUE_BUTTON_POSITION: { x: 1, y: 1 },
+  GET_OFF_CAR_BUTTON_POSITION: { x: 1, y: 1 },
 };
 
 
@@ -59,6 +64,9 @@ const MATE_PAD_11 = {
   },
 
   BAG_DUSTBIN_X: 2500,
+
+  RESCUE_BUTTON_POSITION: { x: 1282, y: 1070 },
+  GET_OFF_CAR_BUTTON_POSITION: { x: 2341, y: 760 },
 };
 
 export default /* replace start */ MATE_PAD_11 /* replace end */;
