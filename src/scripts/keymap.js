@@ -46,7 +46,7 @@ export default {
   /**
    * @description 复合按键：
    *    1. 下车
-   *    2. 上车
+   *    2. 上车 (TODO)
    * @bind F
    */
   compositeKey_getOnCar() {
@@ -93,8 +93,7 @@ export default {
   },
 
   /**
-   * TODO
-   * @description 左右枪互换
+   * @description 左右枪互换 (TODO)
    * @bind X
    */
   swapGuns() {
@@ -134,7 +133,7 @@ export default {
   },
 
   /**
-   * @description 吃 能量饮料
+   * @description 吃 能量饮料 (TODO)
    * @bind Num1
    */
   eatEnergyDrink() {
@@ -142,7 +141,7 @@ export default {
   },
 
   /**
-   * @description 吃 止痛药
+   * @description 吃 止痛药 (TODO)
    * @bind Num2
    */
   eatPainkiller() {
@@ -150,7 +149,7 @@ export default {
   },
 
   /**
-   * @description 吃 肾上腺素注射剂
+   * @description 吃 肾上腺素注射剂 (TODO)
    * @bind Num3
    */
   eatEpinephrineInjection() {
@@ -158,7 +157,7 @@ export default {
   },
 
   /**
-   * @description 吃 绷带
+   * @description 吃 绷带 (TODO)
    * @bind Num4
    */
   eatBandage() {
@@ -166,7 +165,7 @@ export default {
   },
 
   /**
-   * @description 吃 急救包
+   * @description 吃 急救包 (TODO)
    * @bind Num5
    */
   eatFirstAidKit() {
@@ -174,7 +173,7 @@ export default {
   },
 
   /**
-   * @description 吃 医疗急救箱
+   * @description 吃 医疗急救箱 (TODO)
    * @bind Num6
    */
   eatMedicalFirstAidKit() {
@@ -182,7 +181,7 @@ export default {
   },
 
   /**
-   * @description 切换 破片手榴弹
+   * @description 切换 破片手榴弹 (TODO)
    * @bind Num7
    */
   switchFragmentBomb() {
@@ -190,7 +189,7 @@ export default {
   },
 
   /**
-   * @description 切换 烟雾弹
+   * @description 切换 烟雾弹 (TODO)
    * @bind Num8
    */
   switchSmokeBomb() {
@@ -198,7 +197,7 @@ export default {
   },
 
   /**
-   * @description 切换 燃烧瓶
+   * @description 切换 燃烧瓶 (TODO)
    * @bind Num9
    */
   switchMolotovCocktail() {
