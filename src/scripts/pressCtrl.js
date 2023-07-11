@@ -5,7 +5,7 @@ import Utils from 'utils';
 import Config from 'config';
 import Store from 'store';
 
-const gunPressControl = {
+const pressCtrl = {
   currGun: '',
   currPosture: '',
   currMirror: '',
@@ -144,4 +144,4 @@ const gunPressControl = {
 
 };
 
-export default gunPressControl;
+export default pressCtrl;

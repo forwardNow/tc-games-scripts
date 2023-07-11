@@ -1,11 +1,10 @@
-import gunPressControl from 'gunPressControl';
 import Utils from 'utils';
 import Gun from 'gun';
 import Store from 'store';
 import Medicine from 'medicine';
 import Missile from 'missile';
 import Bag from 'bag';
-import GunPressControl from 'gunPressControl';
+import PressCtrl from 'pressCtrl';
 
 export default {
   /**
@@ -13,7 +12,7 @@ export default {
    * @bind 鼠标左键
    */
   fire() {
-    gunPressControl.fire();
+    PressCtrl.fire();
   },
 
   /**
@@ -40,7 +39,7 @@ export default {
       Utils.clickCurrentKey.bind(Utils),
 
       // 更新压枪参数
-      GunPressControl.updatePressArgs.bind(GunPressControl),
+      PressCtrl.updatePressArgs.bind(PressCtrl),
     ]);
   },
 
@@ -65,7 +64,7 @@ export default {
    * @bind 鼠标滚轮-滚上
    */
   toggleX6Sight() {
-    gunPressControl.toggleX6Sight();
+    PressCtrl.toggleX6Sight();
   },
 
   /**
@@ -123,7 +122,7 @@ export default {
    * @bind F11
    */
   logErrorPressArgs() {
-    gunPressControl.logErrorPressArgs();
+    PressCtrl.logErrorPressArgs();
   },
 
   /**
