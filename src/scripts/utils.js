@@ -25,6 +25,15 @@ function isImageExist(imgName, sim, setCol, setRow, selectCol, selectRow) {
 }
 
 /**
+ * @param color {string}
+ * @param posList {string}
+ * @return {boolean}
+ */
+function isColorExist(color, posList) {
+  return isPointExist(mapi.findcolor(color, posList))
+}
+
+/**
  * 包装 mapi.tip(content)
  *
  * @param content {string} 显式的内容
@@ -93,6 +102,7 @@ export default {
   isPointNotExist,
 
   isImageExist,
+  isColorExist,
 
   showTip,
   toggleEnableOfTip,
