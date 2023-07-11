@@ -106,7 +106,7 @@ function getCurrentMirror(disabledMirrors = [CATEGORIES.X8_SIGHT] , availableMir
 function getCurrentBySightText(disabledMirrors, availableMirrors) {
   const areaArgs = [4, 4, 4, 2];
 
-  const mirrors = availableMirrors.keys().filter((mirror) => {
+  const mirrors = Object.keys(availableMirrors).filter((mirror) => {
     if (!MIRROR_TEXT_IMAGE_NAMES[mirror]) {
       return false;
     }
