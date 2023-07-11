@@ -1,14 +1,18 @@
 import Utils from 'utils';
-import Constant from 'constant';
+import Constant, { BIND_KEYS } from 'constant';
 
 const IMAGE_NAMES = {
   BAG_OPEN: '背包已打开的标志',
 };
 
+function openBag() {
+  mapi.key(BIND_KEYS.BAG);
+}
+
 function isBagOpen() {
   const point = mapi.findimage(IMAGE_NAMES.BAG_OPEN, 0.75, 4, 4, 4, 1);
 
-  return Utils.isPointExist(point)
+  return Utils.isPointExist(point);
 }
 
 /**
@@ -38,5 +42,6 @@ function discardMaterialsUnderCursor() {
 
 export default {
   isBagOpen,
+  openBag,
   discardMaterialsUnderCursor,
 }
