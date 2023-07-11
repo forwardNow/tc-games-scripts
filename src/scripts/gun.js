@@ -60,7 +60,6 @@ export function getGunPosition() {
     return GUN_POSITION.LEFT;
   }
 
-
   if (isRightGun()) {
     return GUN_POSITION.RIGHT;
   }
@@ -90,9 +89,7 @@ function getCurrentGun() {
   let currentGunName = null;
 
   Object.keys(CATEGORIES).some((gunName) => {
-    const point = mapi.findimage(gunName, ...imageArgs);
-
-    const isExist = Utils.isPointExist(point);
+    const isExist = Utils.isImageExist(gunName, ...imageArgs);
 
     if (isExist) {
       currentGunName = gunName;
@@ -104,17 +101,17 @@ function getCurrentGun() {
   return currentGunName;
 }
 
-function identityDelicateGuns() {
+function identityGunsInBag() {
   let leftGuns = [];
   let rightGuns = [];
 
   Object.keys(CATEGORIES).forEach((cate) => {
     const imageName = `大图${cate}`;
 
-    if( Utils.isImageExist(imageName, 0.85, 2, 2, 2, 1)) {
+    if(Utils.isImageExist(imageName, 0.85, 2, 2, 2, 1)) {
       leftGuns.push(cate);
     }
-    if( Utils.isImageExist(imageName, 0.85, 2, 2, 2, 2)) {
+    if(Utils.isImageExist(imageName, 0.85, 2, 2, 2, 2)) {
       rightGuns.push(cate);
     }
   });
@@ -157,11 +154,12 @@ function hideGun() {
   }
 
   if (gunPosition === GUN_POSITION.LEFT) {
-    mapi.click(...Constant.GUN_POSITION_LEFT_POINT);
+    clickLeftGun();
+    return;
   }
 
   if (gunPosition === GUN_POSITION.RIGHT) {
-    mapi.click(...Constant.GUN_POSITION_RIGHT_POINT);
+    clickRightGun();
   }
 }
 
@@ -172,17 +170,28 @@ function switchGun() {
   const gunPosition = getGunPosition();
 
   if (!gunPosition) {
-    mapi.click(...Constant.GUN_POSITION_LEFT_POINT);
+    clickLeftGun();
     return;
   }
 
   if (gunPosition === GUN_POSITION.LEFT) {
-    mapi.click(...Constant.GUN_POSITION_RIGHT_POINT);
+    clickRightGun();
+    return;
   }
 
   if (gunPosition === GUN_POSITION.RIGHT) {
-    mapi.click(...Constant.GUN_POSITION_LEFT_POINT);
+    clickLeftGun();
   }
+}
+
+function clickLeftGun() {
+  const [ x, y ] = Constant.GUN_POSITION_LEFT_POINT
+  mapi.click(x, y);
+}
+
+function clickRightGun() {
+  const [ x, y ] = Constant.GUN_POSITION_RIGHT_POINT
+  mapi.click(x, y);
 }
 
 export default {
@@ -192,5 +201,5 @@ export default {
   switchGun,
 
   identityFlatGuns,
-  identityDelicateGuns,
+  identityGunsInBag,
 }
