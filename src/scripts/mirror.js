@@ -89,8 +89,7 @@ const DELICATE_MIRROR_IMAGE_NAMES = {
  */
 function isOpen() {
   // 第一（三）人称图标 如果存在 则说明未开镜
-  const point = mapi.findimage(IMAGE_NAMES.FIRST_PERSON_ICON, 0.65, 4, 4, 1, 4);
-  const isExist = Utils.isPointExist(point)
+  const isExist = Utils.isImageExist(IMAGE_NAMES.FIRST_PERSON_ICON, 0.65, 4, 4, 1, 4)
 
   return !isExist;
 }
