@@ -73,7 +73,7 @@ function cancelTakeMedicine() {
 function takeMedicine(medicine: T_Medicine) {
   expandList();
 
-  mapi.delay(100);
+  mapi.delay(200);
 
   const point = mapi.findimage(...IMAGE_ARGS[medicine]);
 
