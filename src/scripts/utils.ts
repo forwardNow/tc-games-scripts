@@ -1,5 +1,6 @@
 import Store from './store';
 import { Point } from '../../types';
+import {BIND_KEYS} from "./constant";
 
 /**
  * mapi.point 是否 存在
@@ -70,6 +71,11 @@ function clickCurrentKey() {
   mapi.click();
 }
 
+/** 按 key 按键 pressDuration 毫秒 */
+function clickKey(key: string, pressDuration: number = 300) {
+  mapi.key(key, pressDuration);
+}
+
 // 重置 准心、方向键
 function reset() {
   mapi.aimreset();
@@ -109,6 +115,7 @@ export default {
 
   clickImagePosition,
   clickCurrentKey,
+  clickKey,
 
   reset,
 
