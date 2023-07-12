@@ -10,6 +10,8 @@ export type ImageAreaArgs = [ number, number, number, number, number ];
 
 export type ColorArgs = [ string, string ];
 
+export type PointArgs = [ number, number ];
+
 export interface IState {
   [prop: string]: any,
 }
