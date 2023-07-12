@@ -24,7 +24,7 @@ function closeBag() {
     return;
   }
 
-  mapi.key(BIND_KEYS.BAG, 300);
+  Utils.clickKey(BIND_KEYS.BAG)
 }
 
 function isBagOpen() {
