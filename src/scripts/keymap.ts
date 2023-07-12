@@ -20,7 +20,7 @@ export default {
    * @description 复合按键：
    *    1. 丢弃背包中光标所指位置的配件
    *    2. 取消投掷
-   *    3. 取消打药
+   *    3. 取消打药 (TODO)
    *    4. 开镜
    *    5. 更新压枪参数
    * @bind 鼠标右键
@@ -34,7 +34,7 @@ export default {
       Missile.cancelThrow.bind(Missile),
 
       // 取消打药
-      Medicine.cancelTakeMedicine.bind(Medicine),
+      // Medicine.cancelTakeMedicine.bind(Medicine),
 
       // 开镜（点击当前按键所在位置）
       Utils.clickCurrentKey.bind(Utils),
@@ -47,7 +47,7 @@ export default {
   /**
    * @description 复合按键：
    *    1. 下车
-   *    2. 上车 (TODO)
+   *    2. 上车
    * @bind F
    */
   compositeKey_getOnCar() {
@@ -94,11 +94,11 @@ export default {
   },
 
   /**
-   * @description 左右枪互换 (TODO)
-   * @bind X
+   * @description 左右枪互换
+   * @bind F5
    */
   swapGuns() {
-
+    Bag.swapGuns();
   },
 
   /**
