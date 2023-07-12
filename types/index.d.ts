@@ -1,5 +1,8 @@
 import point = mapi.point;
 
+/** mapi.point */
+export type Point = point
+
 export type ImageArgs = [ string, number, number, number, number, number ]
 
 /** [sim, setCol, setRow, selectCol, selectRow] */
@@ -7,8 +10,6 @@ export type ImageAreaArgs = [ number, number, number, number, number ];
 
 export type ColorArgs = [ string, string ];
 
-/** mapi.point */
-export type Point = point
 
 
 export interface IState {
