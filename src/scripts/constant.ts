@@ -4,6 +4,11 @@ export const BIND_KEYS = {
   /** 背包 */
   BAG: 'B',
 
+  /** 上车，驾驶*/
+  GET_ON_DRIVER: 'F',
+
+  /** 上车，乘坐*/
+  GET_ON_PASSENGER: 'G',
 };
 
 // 华为 nova9， 2430 × 1080
