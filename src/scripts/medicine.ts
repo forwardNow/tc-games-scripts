@@ -1,6 +1,6 @@
 import Utils from './utils';
-import {ImageArgs, T_Medicine} from "../../types";
-import {BIND_KEYS} from "./constant";
+import { ImageArgs, T_Medicine } from '../../types';
+import { BIND_KEYS } from './constant';
 
 /**
  * 药物类别
@@ -41,15 +41,14 @@ const MEDICINE_IMAGE_NAMES: { [key in T_Medicine]: string } = {
 };
 
 const IMAGE_ARGS: { [name: string]: ImageArgs } = {
-  CANCEL_TAKE_MEDICINE_BUTTON: ['取消打药按钮', 0.75, 4, 4, 3, 4],
+  CANCEL_TAKE_MEDICINE_BUTTON: [ '取消打药按钮', 0.75, 4, 4, 3, 4 ],
 
-  EXPAND_LIST_BUTTON: ['投掷物展开按钮', 0.75, 4, 4, 2, 4],
-  COLLAPSE_LIST_BUTTON: ['投掷物折叠按钮', 0.75, 4, 2, 2, 2],
-  ENERGY_DRINK: ['能量饮料', 0.75, 4, 2, 2, 2],
-  PAINKILLER: ['止痛药', 0.75, 4, 2, 2, 2],
-  FIRST_AID_KIT: ['急救包', 0.75, 4, 2, 2, 2],
+  EXPAND_LIST_BUTTON: [ '投掷物展开按钮', 0.75, 4, 4, 2, 4 ],
+  COLLAPSE_LIST_BUTTON: [ '投掷物折叠按钮', 0.75, 4, 2, 2, 2 ],
+  ENERGY_DRINK: [ '能量饮料', 0.75, 4, 2, 2, 2 ],
+  PAINKILLER: [ '止痛药', 0.75, 4, 2, 2, 2 ],
+  FIRST_AID_KIT: [ '急救包', 0.75, 4, 2, 2, 2 ],
 };
-
 
 
 /**
