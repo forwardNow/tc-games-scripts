@@ -1,12 +1,30 @@
 import Utils from './utils';
 import Constant, { BIND_KEYS } from './constant';
+import { PointArgs } from '../../types';
 
 const IMAGE_NAMES = {
   BAG_OPEN: '背包已打开的标志',
 };
 
+const POINT: { [prop: string]: PointArgs } = {
+  LEFT_GUN_POINT: [1788, 325],
+  RIGHT_GUN_POINT: [1788, 973],
+};
+
 function openBag() {
-  mapi.key(BIND_KEYS.BAG);
+  if (isBagOpen()) {
+    return;
+  }
+
+  mapi.key(BIND_KEYS.BAG, 300);
+}
+
+function closeBag() {
+  if (!isBagOpen()) {
+    return;
+  }
+
+  mapi.key(BIND_KEYS.BAG, 300);
 }
 
 function isBagOpen() {
@@ -40,8 +58,28 @@ function discardMaterialsUnderCursor() {
   return true;
 }
 
+function swapGuns() {
+  openBag();
+
+  mapi.delay(100);
+
+  const {
+    LEFT_GUN_POINT: [ startX, startY ],
+    RIGHT_GUN_POINT: [ endX, endY ],
+  } = POINT;
+
+  const total = 300;
+  const pointNum = 20;
+  const interval = total / pointNum;
+
+  mapi.slide(startX, startY, endX, endY, interval, pointNum);
+
+  closeBag();
+}
+
 export default {
   isBagOpen,
   openBag,
+  swapGuns,
   discardMaterialsUnderCursor,
 }
