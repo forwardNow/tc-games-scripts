@@ -2,7 +2,7 @@ const { CTX_PATH } = require('./utils');
 const { readFileSync, writeFileSync } = require('fs');
 const { resolve } = require('path')
 
-const KEYMAP_SCRIPT_FILE_PATH = resolve(CTX_PATH, './src/scripts/keymap.js');
+const KEYMAP_SCRIPT_FILE_PATH = resolve(CTX_PATH, './src/scripts/keymap.ts');
 
 const README_FILE_PATH = resolve(CTX_PATH, './readme.md');
 
