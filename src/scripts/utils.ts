@@ -59,7 +59,6 @@ function clickImagePosition(imgName: string, sim: number, setCol: number, setRow
   const point = mapi.findimage(imgName, sim, setCol, setRow, selectCol, selectRow);
 
   if (isPointNotExist(point)) {
-    showTip('未找到图片：' + imgName);
     return false;
   }
 
