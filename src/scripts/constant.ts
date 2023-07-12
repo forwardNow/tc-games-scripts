@@ -9,6 +9,9 @@ export const BIND_KEYS = {
 
   /** 上车，乘坐*/
   GET_ON_PASSENGER: 'G',
+
+  /** 打药 */
+  TAKE_MEDICINE: '5',
 };
 
 // 华为 nova9， 2430 × 1080
