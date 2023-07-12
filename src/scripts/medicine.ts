@@ -1,9 +1,11 @@
 import Utils from './utils';
+import {ImageArgs, T_Medicine} from "../../types";
+import {BIND_KEYS} from "./constant";
 
 /**
  * 药物类别
  */
-const CATEGORIES = {
+const CATEGORIES: { [key in T_Medicine]: T_Medicine } = {
   // 能量饮料
   ENERGY_DRINK: 'ENERGY_DRINK',
 
@@ -23,36 +25,39 @@ const CATEGORIES = {
   MEDICAL_FIRST_AID_KIT: 'MEDICAL_FIRST_AID_KIT',
 };
 
-const IMAGE_NAMES = {
+const MEDICINE_IMAGE_NAMES: { [key in T_Medicine]: string } = {
   // 能量饮料
-  [CATEGORIES.ENERGY_DRINK]: '能量饮料',
+  ENERGY_DRINK: '能量饮料',
   // 止痛药
-  [CATEGORIES.PAINKILLER]: '止痛药',
+  PAINKILLER: '止痛药',
   // 肾上腺素注射剂
-  [CATEGORIES.EPINEPHRINE_INJECTION]: '肾上腺素注射剂',
+  EPINEPHRINE_INJECTION: '肾上腺素注射剂',
   // 绷带
-  [CATEGORIES.BANDAGE]: '绷带',
+  BANDAGE: '绷带',
   // 急救包
-  [CATEGORIES.FIRST_AID_KIT]: '急救包',
+  FIRST_AID_KIT: '急救包',
   // 医疗急救箱
-  [CATEGORIES.MEDICAL_FIRST_AID_KIT]: '医疗急救箱',
-
-  // 药品列表-展开按钮
-  EXPAND_LIST_BUTTON: '药品列表展开按钮',
-
-  // 药品列表-折叠按钮
-  COLLAPSE_LIST_BUTTON: '药品列表折叠按钮',
-
-  // 取消吃药按钮
-  CANCEL_TAKE_MEDICINE_BUTTON: '取消吃药按钮',
+  MEDICAL_FIRST_AID_KIT: '医疗急救箱',
 };
+
+const IMAGE_ARGS: { [name: string]: ImageArgs } = {
+  CANCEL_TAKE_MEDICINE_BUTTON: ['取消打药按钮', 0.75, 4, 4, 3, 4],
+
+  EXPAND_LIST_BUTTON: ['投掷物展开按钮', 0.75, 4, 4, 2, 4],
+  COLLAPSE_LIST_BUTTON: ['投掷物折叠按钮', 0.75, 4, 2, 2, 2],
+  ENERGY_DRINK: ['能量饮料', 0.75, 4, 2, 2, 2],
+  PAINKILLER: ['止痛药', 0.75, 4, 2, 2, 2],
+  FIRST_AID_KIT: ['急救包', 0.75, 4, 2, 2, 2],
+};
+
+
 
 /**
  * 取消吃药
  * @returns {boolean} true - 执行成功
  */
 function cancelTakeMedicine() {
-  const point = mapi.findimage(IMAGE_NAMES.CANCEL_TAKE_MEDICINE_BUTTON, 0.75, 3, 4, 1, 3);
+  const point = mapi.findimage(...IMAGE_ARGS.CANCEL_TAKE_MEDICINE_BUTTON);
 
   if (Utils.isPointNotExist(point)) {
     return false;
@@ -66,28 +71,32 @@ function cancelTakeMedicine() {
 }
 
 // 吃药
-function takeMedicine(category) {
+function takeMedicine(medicine: T_Medicine) {
   expandList();
 
   mapi.delay(100);
 
-  const point = mapi.findimage(IMAGE_NAMES[category], 0.75, 4, 4, 4, 4);
+  const point = mapi.findimage(...IMAGE_ARGS[medicine]);
 
   if (Utils.isPointNotExist(point)) {
-    Utils.showTip('未找到药品：' + IMAGE_NAMES[category]);
+    Utils.showTip('未找到药品：' + MEDICINE_IMAGE_NAMES[medicine]);
     collapseList();
     return;
   }
 
   mapi.click(point);
+
+  mapi.delay(100);
+
+  Utils.clickKey(BIND_KEYS.TAKE_MEDICINE)
 }
 
 function expandList() {
-  Utils.clickImagePosition(IMAGE_NAMES.EXPAND_LIST_BUTTON, 0.75, 4, 4, 4, 4);
+  Utils.clickImagePosition(...IMAGE_ARGS.EXPAND_LIST_BUTTON);
 }
 
 function collapseList() {
-  Utils.clickImagePosition(IMAGE_NAMES.COLLAPSE_LIST_BUTTON, 0.75, 4, 4, 4, 4);
+  Utils.clickImagePosition(...IMAGE_ARGS.COLLAPSE_LIST_BUTTON);
 }
 
 // 吃 能量饮料
