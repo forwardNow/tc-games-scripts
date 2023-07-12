@@ -5,6 +5,7 @@ import Medicine from './medicine';
 import Missile from './missile';
 import Bag from './bag';
 import PressCtrl from './pressCtrl';
+import Car from './car';
 
 export default {
   /**
@@ -51,10 +52,10 @@ export default {
    */
   compositeKey_getOnCar() {
     Utils.series([
-      // TODO 下车
+      Car.getOff,
 
       // 上车（点击当前按键所在位置）
-      Utils.clickCurrentKey.bind(Utils),
+      Utils.clickCurrentKey,
     ]);
   },
 
