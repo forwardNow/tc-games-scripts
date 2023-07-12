@@ -182,7 +182,7 @@ export default {
   },
 
   /**
-   * @description 切换 破片手榴弹 (TODO)
+   * @description 切换 破片手榴弹
    * @bind Num7
    */
   switchFragmentBomb() {
