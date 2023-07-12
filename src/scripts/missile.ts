@@ -15,15 +15,15 @@ const CATEGORIES: { [key in T_Missile]: T_Missile } = {
   MOLOTOV_COCKTAIL: 'MOLOTOV_COCKTAIL',
 };
 
-const IMAGE_NAMES = {
+const MISSILE_IMAGE_NAMES: { [key in T_Missile]: string } = {
   // 碎片手榴弹
-  [CATEGORIES.FRAGMENT_BOMB]: '碎片手榴弹',
+  FRAGMENT_BOMB: '碎片手榴弹',
 
   // 烟雾弹
-  [CATEGORIES.SMOKE_BOMB]: '烟雾弹',
+  SMOKE_BOMB: '烟雾弹',
 
   // 燃烧瓶
-  [CATEGORIES.MOLOTOV_COCKTAIL]: '燃烧瓶',
+  MOLOTOV_COCKTAIL: '燃烧瓶',
 };
 
 const IMAGE_ARGS: { [name: string]: ImageArgs } = {
@@ -31,7 +31,7 @@ const IMAGE_ARGS: { [name: string]: ImageArgs } = {
 
   EXPAND_LIST_BUTTON: ['投掷物展开按钮', 0.75, 4, 4, 3, 4],
   COLLAPSE_LIST_BUTTON: ['投掷物折叠按钮', 0.75, 4, 2, 3, 2],
-  FRAGMENT_BOMB: ['碎片手榴弹', 0.75, 4, 2, 3, 2],
+  FRAGMENT_BOMB: [MISSILE_IMAGE_NAMES.FRAGMENT_BOMB, 0.75, 4, 2, 3, 2],
 };
 
 /**
@@ -52,15 +52,15 @@ function cancelThrow() {
   return true;
 }
 
-function switchMissile(category: T_Missile) {
+function switchMissile(missile: T_Missile) {
   expandList();
 
   mapi.delay(200);
 
-  const point = mapi.findimage(...IMAGE_ARGS[category]);
+  const point = mapi.findimage(...IMAGE_ARGS[missile]);
 
   if (Utils.isPointNotExist(point)) {
-    Utils.showTip('未找到投掷物：' + IMAGE_NAMES[category]);
+    Utils.showTip('未找到投掷物：' + MISSILE_IMAGE_NAMES[missile]);
     collapseList();
     return;
   }
