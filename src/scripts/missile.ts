@@ -1,11 +1,11 @@
 import Utils from './utils';
-import { T_Missile } from '../../types';
+import { ImageArgs, T_Missile } from '../../types';
 
 /**
  * 投掷物类别
  */
 const CATEGORIES: { [key in T_Missile]: T_Missile } = {
-  // 破片手榴弹
+  // 碎片手榴弹
   FRAGMENT_BOMB: 'FRAGMENT_BOMB',
 
   // 烟雾弹
@@ -16,23 +16,22 @@ const CATEGORIES: { [key in T_Missile]: T_Missile } = {
 };
 
 const IMAGE_NAMES = {
-  // 破片手榴弹
-  [CATEGORIES.FRAGMENT_BOMB]: '破片手榴弹',
+  // 碎片手榴弹
+  [CATEGORIES.FRAGMENT_BOMB]: '碎片手榴弹',
 
   // 烟雾弹
   [CATEGORIES.SMOKE_BOMB]: '烟雾弹',
 
   // 燃烧瓶
   [CATEGORIES.MOLOTOV_COCKTAIL]: '燃烧瓶',
+};
 
-  CANCEL_THROW_BUTTON: '取消投掷按钮',
+const IMAGE_ARGS: { [name: string]: ImageArgs } = {
+  CANCEL_THROW_BUTTON: ['取消投掷按钮', 0.75, 3, 4, 1, 3],
 
-  // 投掷物列表-展开按钮
-  EXPAND_LIST_BUTTON: '药品列表展开按钮',
-
-  // 投掷物列表-折叠按钮
-  COLLAPSE_LIST_BUTTON: '药品列表折叠按钮',
-
+  EXPAND_LIST_BUTTON: ['投掷物展开按钮', 0.75, 4, 4, 3, 4],
+  COLLAPSE_LIST_BUTTON: ['投掷物折叠按钮', 0.75, 4, 2, 3, 2],
+  FRAGMENT_BOMB: ['碎片手榴弹', 0.75, 4, 2, 3, 2],
 };
 
 /**
@@ -40,7 +39,7 @@ const IMAGE_NAMES = {
  * @returns {boolean} true - 执行成功
  */
 function cancelThrow() {
-  const point = mapi.findimage(IMAGE_NAMES.CANCEL_THROW_BUTTON, 0.75, 3, 4, 1, 3);
+  const point = mapi.findimage(...IMAGE_ARGS.CANCEL_THROW_BUTTON);
 
   if (Utils.isPointNotExist(point)) {
     return false;
@@ -56,9 +55,9 @@ function cancelThrow() {
 function switchMissile(category: T_Missile) {
   expandList();
 
-  mapi.delay(100);
+  mapi.delay(200);
 
-  const point = mapi.findimage(IMAGE_NAMES[category], 0.75, 4, 4, 4, 4);
+  const point = mapi.findimage(...IMAGE_ARGS[category]);
 
   if (Utils.isPointNotExist(point)) {
     Utils.showTip('未找到投掷物：' + IMAGE_NAMES[category]);
@@ -70,14 +69,14 @@ function switchMissile(category: T_Missile) {
 }
 
 function expandList() {
-  Utils.clickImagePosition(IMAGE_NAMES.EXPAND_LIST_BUTTON, 0.75, 4, 4, 4, 4);
+  Utils.clickImagePosition(...IMAGE_ARGS.EXPAND_LIST_BUTTON);
 }
 
 function collapseList() {
-  Utils.clickImagePosition(IMAGE_NAMES.COLLAPSE_LIST_BUTTON, 0.75, 4, 4, 4, 4);
+  Utils.clickImagePosition(...IMAGE_ARGS.COLLAPSE_LIST_BUTTON);
 }
 
-// 切换 破片手榴弹
+// 切换 碎片手榴弹
 function switchFragmentBomb() {
   switchMissile(CATEGORIES.FRAGMENT_BOMB);
 }
