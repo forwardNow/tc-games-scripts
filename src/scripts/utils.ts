@@ -72,7 +72,7 @@ function clickCurrentKey() {
 }
 
 /** 按 key 按键 pressDuration 毫秒 */
-function clickKey(key: string, pressDuration: number = 300) {
+function clickKey(key: string, pressDuration: number = 100) {
   mapi.key(key, pressDuration);
 }
 
