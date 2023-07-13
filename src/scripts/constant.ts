@@ -51,6 +51,8 @@ const NOVA_9 = {
   GET_OFF_CAR_BUTTON_POSITION: { x: 1, y: 1 },
 
   OPEN_MIRROR_BUTTON_POSITION: { x: 1, y: 1 },
+
+  SQUAT_BUTTON_POSITION: { x: 1, y: 1 },
 };
 
 
@@ -86,6 +88,8 @@ const MATE_PAD_11 = {
   GET_OFF_CAR_BUTTON_POSITION: { x: 2341, y: 760 },
 
   OPEN_MIRROR_BUTTON_POSITION: { x: 2465, y: 954 },
+
+  SQUAT_BUTTON_POSITION: { x: 2200, y: 1500 },
 };
 
 export default /* replace start */ MATE_PAD_11 /* replace end */;

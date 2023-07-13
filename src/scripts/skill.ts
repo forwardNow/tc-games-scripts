@@ -30,6 +30,10 @@ export default {
       this.clickOpenMirrorButton();
 
       mapi.delay(INTERVAL);
+
+      if (i % 3 === 0) {
+        this.nodHead();
+      }
     }
 
     return true;
@@ -41,6 +45,16 @@ export default {
 
   clickOpenMirrorButton() {
     const { x, y } = Constant.OPEN_MIRROR_BUTTON_POSITION;
+    mapi.click(x, y);
+  },
+
+  nodHead() {
+    if (!mapi.keyispress('shift')) {
+      return;
+    }
+
+    const { x, y } = Constant.SQUAT_BUTTON_POSITION;
+
     mapi.click(x, y);
   },
 }
