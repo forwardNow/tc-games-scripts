@@ -5,6 +5,7 @@ import Utils from './utils';
 import PressArgs from './pressArgs';
 import Store from './store';
 import { T_Gun, T_Mirror, T_Posture } from '../../types';
+import Skill from './skill';
 
 const pressCtrl = {
   currGun: null as ( null | T_Gun ),
@@ -13,6 +14,11 @@ const pressCtrl = {
 
   fire() {
     mapi.holdpress();
+
+    if (Skill.flashMirror()) {
+      this.pause();
+      return;
+    }
 
     if (!Mirror.isOpen()) {
       this.pause();

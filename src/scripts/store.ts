@@ -19,6 +19,8 @@ const state = {
   rightGunMirror: '',
 
   availMirrorList: [],
+
+  enabledOfFlashMirror: true,
 };
 
 

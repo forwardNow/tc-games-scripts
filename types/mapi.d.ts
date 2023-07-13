@@ -159,6 +159,17 @@ declare namespace mapi {
   function key(keyName: string, releaseTime: number);
 
   /**
+   * 当前按键按键是否被按下
+   */
+  function keyispress(): boolean;
+
+  /**
+   * 获取 指定的按键是否被按下
+   * @param keyName
+   */
+  function keyispress(keyName: string): boolean;
+
+  /**
    * 设置全局缓存 map 的键值对
    * @param key
    * @param value

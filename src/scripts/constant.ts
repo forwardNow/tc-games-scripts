@@ -14,6 +14,11 @@ export const BIND_KEYS = {
   TAKE_MEDICINE: '5',
 };
 
+export const FLASH_MIRROR = {
+  INTERVAL: 100,
+  MAX_DURATION: 3000,
+};
+
 // 华为 nova9， 2430 × 1080
 const NOVA_9 = {
   SQUAT_COLOR_POINT: [ '255:255:241:119', '1305:653+1307:658+1307:665+1312:672+1313:681+1313:684' ],
@@ -44,6 +49,8 @@ const NOVA_9 = {
 
   RESCUE_BUTTON_POSITION: { x: 1, y: 1 },
   GET_OFF_CAR_BUTTON_POSITION: { x: 1, y: 1 },
+
+  OPEN_MIRROR_BUTTON_POSITION: { x: 1, y: 1 },
 };
 
 
@@ -77,6 +84,8 @@ const MATE_PAD_11 = {
 
   RESCUE_BUTTON_POSITION: { x: 1282, y: 1070 },
   GET_OFF_CAR_BUTTON_POSITION: { x: 2341, y: 760 },
+
+  OPEN_MIRROR_BUTTON_POSITION: { x: 2465, y: 954 },
 };
 
 export default /* replace start */ MATE_PAD_11 /* replace end */;

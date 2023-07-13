@@ -6,6 +6,7 @@ import Missile from './missile';
 import Bag from './bag';
 import PressCtrl from './pressCtrl';
 import Car from './car';
+import Skill from './skill';
 
 export default {
   /**
@@ -42,6 +43,14 @@ export default {
       // 更新压枪参数
       PressCtrl.updatePressArgs.bind(PressCtrl),
     ]);
+  },
+
+  /**
+   * @description 腰射闪镜
+   * @bind F9
+   */
+  toggleFlashMirror() {
+    Store.state.enabledOfFlashMirror = !Store.state.enabledOfFlashMirror;
   },
 
   /**

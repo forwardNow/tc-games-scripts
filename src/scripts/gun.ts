@@ -78,6 +78,10 @@ function isRightGun() {
   return Utils.isColorExist(color, posList);
 }
 
+function isHoldGun() {
+  return Boolean(getGunPosition());
+}
+
 
 /**
  * 获取当前枪械的名称
@@ -197,6 +201,8 @@ export default {
   getCurrentGun,
   hideGun,
   switchGun,
+
+  isHoldGun,
 
   identityFlatGuns,
   identityGunsInBag,
