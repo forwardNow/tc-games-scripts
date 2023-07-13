@@ -57,13 +57,14 @@
 | F11 | 记录不准确的压枪参数 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.logErrorPressArgs();`<br>`   });`<br>`} ());` |
 | F12 | 启用/禁用 mapi.tip() | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleEnableOfTip();`<br>`   });`<br>`} ());` |
 | F5 | 左右枪互换 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.swapGuns();`<br>`   });`<br>`} ());` |
+| F9 | 腰射闪镜 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleFlashMirror();`<br>`   });`<br>`} ());` |
 | Num1 | 吃 能量饮料 (TODO) | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatEnergyDrink();`<br>`   });`<br>`} ());` |
 | Num2 | 吃 止痛药 (TODO) | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatPainkiller();`<br>`   });`<br>`} ());` |
 | Num3 | 吃 肾上腺素注射剂 (TODO) | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatEpinephrineInjection();`<br>`   });`<br>`} ());` |
 | Num4 | 吃 绷带 (TODO) | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatBandage();`<br>`   });`<br>`} ());` |
 | Num5 | 吃 急救包 (TODO) | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatFirstAidKit();`<br>`   });`<br>`} ());` |
 | Num6 | 吃 医疗急救箱 (TODO) | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatMedicalFirstAidKit();`<br>`   });`<br>`} ());` |
-| Num7 | 切换 破片手榴弹 (TODO) | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.switchFragmentBomb();`<br>`   });`<br>`} ());` |
+| Num7 | 切换 破片手榴弹 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.switchFragmentBomb();`<br>`   });`<br>`} ());` |
 | Num8 | 切换 烟雾弹 (TODO) | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.switchSmokeBomb();`<br>`   });`<br>`} ());` |
 | Num9 | 切换 燃烧瓶 (TODO) | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.switchMolotovCocktail();`<br>`   });`<br>`} ());` |
 | Q | 切枪 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.switchGun();`<br>`   });`<br>`} ());` |

@@ -99,14 +99,23 @@ function isOpen() {
   return !isExist;
 }
 
-const MIRRORS: T_Mirror[] = Object.keys(CATEGORIES) as T_Mirror[];
+const AVAILABLE_MIRRORS: T_Mirror[] = [
+  'RED_DOT_SIGHT',
+  'HOLOGRAPHIC_SIGHT',
+  'X8_SIGHT',
+  'X6_SIGHT',
+  'X3_SIGHT',
+  'X4_SIGHT',
+  'X2_SIGHT',
+  'MACHINE_SIGHT',
+];
 
 /**
  * 获取当前准镜名称
  *
  * @return { string }
  */
-function getCurrentMirror(disabledMirrors = ['X8_SIGHT' as T_Mirror] , availableMirrors = MIRRORS) {
+function getCurrentMirror(disabledMirrors = ['X8_SIGHT' as T_Mirror] , availableMirrors = AVAILABLE_MIRRORS) {
   return getCurrentBySightText(disabledMirrors, availableMirrors);
 }
 

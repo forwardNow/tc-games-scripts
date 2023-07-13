@@ -36,6 +36,8 @@ const CATEGORIES: { [key in T_Gun]: T_Gun } = {
   MIGUAN: 'MIGUAN', // 蜜罐
 };
 
+export const X8_SIGHT_GUNS: T_Gun[] = [ 'M417', 'MK20H' ];
+
 /** 持枪位置 */
 const GUN_POSITION: { [key in T_GunPosition]: T_GunPosition }  = {
   /** 左边枪 */

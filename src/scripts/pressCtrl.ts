@@ -1,4 +1,4 @@
-import Gun from './gun';
+import Gun, { X8_SIGHT_GUNS } from './gun';
 import Posture from './posture';
 import Mirror from './mirror';
 import Utils from './utils';
@@ -188,7 +188,13 @@ const pressCtrl = {
   },
 
   getCurrentMirrorByGun(gun: T_Gun) {
-    let mirror = Mirror.getCurrentMirror();
+    let disabledMirrors: T_Mirror[] = ['X8_SIGHT'];
+
+    if (X8_SIGHT_GUNS.includes(gun)) {
+      disabledMirrors = ['X2_SIGHT', 'RED_DOT_SIGHT', 'HOLOGRAPHIC_SIGHT', 'MACHINE_SIGHT']
+    }
+
+    let mirror = Mirror.getCurrentMirror(disabledMirrors);
 
     if (mirror === Mirror.CATEGORIES.X6_SIGHT) {
       mirror = Store.getters.getMirrorOfAdjustedGun(gun) || Mirror.CATEGORIES.X6_SIGHT;

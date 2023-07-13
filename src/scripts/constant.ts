@@ -16,7 +16,7 @@ export const BIND_KEYS = {
 
 export const FLASH_MIRROR = {
   INTERVAL: 100,
-  MAX_DURATION: 3000,
+  MAX_DURATION: 6000,
 };
 
 // 华为 nova9， 2430 × 1080
