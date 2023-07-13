@@ -10,7 +10,7 @@ export default {
       return false;
     }
 
-    if (!Gun.isHoldGun()) {
+    if (!Gun.isHoldValidGun()) {
       return false;
     }
 

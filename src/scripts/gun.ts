@@ -80,7 +80,7 @@ function isRightGun() {
   return Utils.isColorExist(color, posList);
 }
 
-function isHoldGun() {
+function isHoldValidGun() {
   return Boolean(getGunPosition());
 }
 
@@ -102,7 +102,6 @@ function getCurrentGun() {
   const guns = Object.keys(CATEGORIES) as T_Gun[];
 
   return guns.find((gun) => Utils.isImageExist(gun, ...imageArgs));
-
 }
 
 function identityGunsInBag() {
@@ -204,7 +203,7 @@ export default {
   hideGun,
   switchGun,
 
-  isHoldGun,
+  isHoldValidGun,
 
   identityFlatGuns,
   identityGunsInBag,
