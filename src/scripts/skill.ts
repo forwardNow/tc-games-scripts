@@ -27,7 +27,7 @@ export default {
         break;
       }
 
-      this.clickOpenMirrorButton();
+      // this.clickOpenMirrorButton();
 
       mapi.delay(INTERVAL);
 
