@@ -15,13 +15,15 @@ export class PressCtrl {
   fire() {
     mapi.holdpress();
 
-    if (skill.nodHead()) {
-      this.pause();
-      return;
+    if (!gun.isHoldConfiguredGun()) {
+      return false;
     }
 
     if (!mirror.isOpen()) {
       this.pause();
+
+      skill.nodHead({ isCheckMirrorOpen: false, isCheckHoldGun: false });
+
       return;
     }
 

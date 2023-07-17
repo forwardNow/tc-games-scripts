@@ -1,8 +1,8 @@
 import { IGetters, IMutations } from '../../types';
 
 const state = {
-  // 控制 mapi.tip() 是否 启用
-  isTipEnabled: true,
+  /** 控制 utils.showTip */
+  toast: true,
 
   // 调整过 6 倍镜倍率 的 枪及倍率
   adjust6XSightGuns: {} as Record<string, string>, // { gun: sight, ... }
@@ -59,7 +59,7 @@ const mutations: IMutations = {
    * 切换 mapi.tip() 的启用和禁止
    */
   toggleEnableOfTip(this: typeof store, ) {
-    this.state.isTipEnabled = !this.state.isTipEnabled;
+    this.state.toast = !this.state.toast;
   },
 }
 

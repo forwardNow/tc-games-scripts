@@ -42,7 +42,7 @@ export class Utils {
    * @param duration {number} 存在时间，单位 秒，默认 1 秒
    */
   showTip(content: string, duration = 1) {
-    if (!Store.state.isTipEnabled) {
+    if (!Store.state.toast) {
       return;
     }
     mapi.tip(content, duration);

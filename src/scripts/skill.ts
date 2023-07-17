@@ -5,16 +5,16 @@ import constant, { NOD_HEAD } from './constant';
 import { posture } from './posture';
 
 export class Skill {
-  nodHead() {
-    if (!this.isNodHead()) {
+  nodHead({ isCheckMirrorOpen = true, isCheckHoldGun = true } = {}) {
+    if (!this.isEnableOfNodHead()) {
       return false;
     }
 
-    if (!gun.isHoldConfiguredGun()) {
+    if (isCheckHoldGun && !gun.isHoldConfiguredGun()) {
       return false;
     }
 
-    if (mirror.isOpen()) {
+    if (isCheckMirrorOpen && mirror.isOpen()) {
       return false;
     }
 
@@ -35,7 +35,7 @@ export class Skill {
     return true;
   }
 
-  isNodHead() {
+  isEnableOfNodHead() {
     return Store.state.nodHead;
   }
 

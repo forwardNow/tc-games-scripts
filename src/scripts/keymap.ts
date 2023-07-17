@@ -38,7 +38,7 @@ export default {
       // medicine.cancelTakeMedicine.bind(medicine),
 
       // 开镜（点击当前按键所在位置）
-      utils.clickCurrentKey.bind(utils),
+      utils.clickCurrentKey,
 
       // 更新压枪参数
       pressCtrl.updatePressArgs,
@@ -82,7 +82,7 @@ export default {
    * @bind F12
    */
   toggleEnableOfTip() {
-    Store.toggleEnableOfTip();
+    Store.mutations.toggleEnableOfTip();
   },
 
   /**
