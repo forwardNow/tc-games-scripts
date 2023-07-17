@@ -145,7 +145,6 @@ export class PressCtrl {
   getStatus() {
     const {
       currGun: lastGunCategory,
-      currPosture: lastPostureCategory,
       currMirror: lastMirrorCategory
     } = this;
 

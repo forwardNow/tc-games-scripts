@@ -1,7 +1,7 @@
 import Utils from './utils';
 import { gun } from './gun';
 import Store from './store';
-import Medicine from './medicine';
+import { medicine } from './medicine';
 import Missile from './missile';
 import { bag } from './bag';
 import { pressCtrl } from './pressCtrl';
@@ -35,7 +35,7 @@ export default {
       Missile.cancelThrow.bind(Missile),
 
       // 取消打药
-      // Medicine.cancelTakeMedicine.bind(Medicine),
+      // medicine.cancelTakeMedicine.bind(medicine),
 
       // 开镜（点击当前按键所在位置）
       Utils.clickCurrentKey.bind(Utils),
@@ -147,7 +147,7 @@ export default {
    * @bind Num1
    */
   eatEnergyDrink() {
-    Medicine.eatEnergyDrink();
+    medicine.eatEnergyDrink();
   },
 
   /**
@@ -155,7 +155,7 @@ export default {
    * @bind Num2
    */
   eatPainkiller() {
-    Medicine.eatPainkiller();
+    medicine.eatPainkiller();
   },
 
   /**
@@ -163,7 +163,7 @@ export default {
    * @bind Num3
    */
   eatEpinephrineInjection() {
-    Medicine.eatEpinephrineInjection();
+    medicine.eatEpinephrineInjection();
   },
 
   /**
@@ -171,7 +171,7 @@ export default {
    * @bind Num4
    */
   eatBandage() {
-    Medicine.eatBandage();
+    medicine.eatBandage();
   },
 
   /**
@@ -179,7 +179,7 @@ export default {
    * @bind Num5
    */
   eatFirstAidKit() {
-    Medicine.eatFirstAidKit();
+    medicine.eatFirstAidKit();
   },
 
   /**
@@ -187,7 +187,7 @@ export default {
    * @bind Num6
    */
   eatMedicalFirstAidKit() {
-    Medicine.eatMedicalFirstAidKit();
+    medicine.eatMedicalFirstAidKit();
   },
 
   /**
