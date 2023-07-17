@@ -57,7 +57,7 @@
 | F11 | 记录不准确的压枪参数 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.logErrorPressArgs();`<br>`   });`<br>`} ());` |
 | F12 | 启用/禁用 mapi.tip() | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleEnableOfTip();`<br>`   });`<br>`} ());` |
 | F5 | 左右枪互换 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.swapGuns();`<br>`   });`<br>`} ());` |
-| F9 | 腰射闪镜 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleFlashMirror();`<br>`   });`<br>`} ());` |
+| F9 | 腰射点头 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleNodHead();`<br>`   });`<br>`} ());` |
 | Num1 | 吃 能量饮料 (TODO) | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatEnergyDrink();`<br>`   });`<br>`} ());` |
 | Num2 | 吃 止痛药 (TODO) | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatPainkiller();`<br>`   });`<br>`} ());` |
 | Num3 | 吃 肾上腺素注射剂 (TODO) | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatEpinephrineInjection();`<br>`   });`<br>`} ());` |
