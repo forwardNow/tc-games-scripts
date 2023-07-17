@@ -1,5 +1,5 @@
 import { ImageArgs, T_Missile } from '../../types';
-import Utils from './utils';
+import { utils } from './utils';
 
 export class Missile {
   /**
@@ -42,7 +42,7 @@ export class Missile {
   cancelThrow = () => {
     const point = mapi.findimage(...Missile.IMAGE_ARGS.CANCEL_THROW_BUTTON);
 
-    if (Utils.isPointNotExist(point)) {
+    if (utils.isPointNotExist(point)) {
       return false;
     }
 
@@ -60,8 +60,8 @@ export class Missile {
 
     const point = mapi.findimage(...Missile.IMAGE_ARGS[missile]);
 
-    if (Utils.isPointNotExist(point)) {
-      Utils.showTip('未找到投掷物：' + Missile.MISSILE_IMAGE_NAMES[missile]);
+    if (utils.isPointNotExist(point)) {
+      utils.showTip('未找到投掷物：' + Missile.MISSILE_IMAGE_NAMES[missile]);
       this.collapseList();
       return;
     }
@@ -70,11 +70,11 @@ export class Missile {
   }
 
   expandList() {
-    Utils.clickImagePosition(...Missile.IMAGE_ARGS.EXPAND_LIST_BUTTON);
+    utils.clickImagePosition(...Missile.IMAGE_ARGS.EXPAND_LIST_BUTTON);
   }
 
   collapseList() {
-    Utils.clickImagePosition(...Missile.IMAGE_ARGS.COLLAPSE_LIST_BUTTON);
+    utils.clickImagePosition(...Missile.IMAGE_ARGS.COLLAPSE_LIST_BUTTON);
   }
 
   /**切换 碎片手榴弹*/

@@ -1,5 +1,5 @@
 import { GunCategory, T_GunPosition, ImageAreaArgs } from '../../types';
-import Utils from './utils';
+import { utils } from './utils';
 import constant from './constant';
 
 export class Gun {
@@ -73,13 +73,13 @@ export class Gun {
   /** 是否持 左 枪 */
   isLeftGun() {
     const [ color, posList ] = constant.GUN_POSITION_LEFT_COLOR_POINT;
-    return Utils.isColorExist(color, posList);
+    return utils.isColorExist(color, posList);
   }
 
   /** 是否持 右 枪 */
   isRightGun() {
     const [ color, posList ] = constant.GUN_POSITION_RIGHT_COLOR_POINT;
-    return Utils.isColorExist(color, posList);
+    return utils.isColorExist(color, posList);
   }
 
   /** 是否 持枪 */
@@ -109,7 +109,7 @@ export class Gun {
 
     const guns = Object.keys(Gun.CATEGORIES) as GunCategory[];
 
-    return guns.find((gun) => Utils.isImageExist(gun, ...imageArgs));
+    return guns.find((gun) => utils.isImageExist(gun, ...imageArgs));
   }
 
   identityGunsInBag() {
@@ -119,10 +119,10 @@ export class Gun {
     Object.keys(Gun.CATEGORIES).forEach((cate) => {
       const imageName = `大图${ cate }`;
 
-      if (Utils.isImageExist(imageName, 0.85, 2, 2, 2, 1)) {
+      if (utils.isImageExist(imageName, 0.85, 2, 2, 2, 1)) {
         leftGuns.push(cate);
       }
-      if (Utils.isImageExist(imageName, 0.85, 2, 2, 2, 2)) {
+      if (utils.isImageExist(imageName, 0.85, 2, 2, 2, 2)) {
         rightGuns.push(cate);
       }
     });
@@ -139,10 +139,10 @@ export class Gun {
     let rightGuns: string[] = [];
 
     Object.keys(Gun.CATEGORIES).forEach((cate) => {
-      if (Utils.isImageExist(cate, 0.85, 4, 4, 2, 4)) {
+      if (utils.isImageExist(cate, 0.85, 4, 4, 2, 4)) {
         leftGuns.push(cate);
       }
-      if (Utils.isImageExist(cate, 0.85, 4, 4, 3, 4)) {
+      if (utils.isImageExist(cate, 0.85, 4, 4, 3, 4)) {
         rightGuns.push(cate);
       }
     });

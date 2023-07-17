@@ -1,4 +1,4 @@
-import Utils from './utils';
+import { utils } from './utils';
 import { ImageArgs, T_Medicine } from '../../types';
 import { BIND_KEYS } from './constant';
 
@@ -59,7 +59,7 @@ export class Medicine {
   cancelTakeMedicine() {
     const point = mapi.findimage(...Medicine.IMAGE_ARGS.CANCEL_TAKE_MEDICINE_BUTTON);
 
-    if (Utils.isPointNotExist(point)) {
+    if (utils.isPointNotExist(point)) {
       return false;
     }
 
@@ -78,8 +78,8 @@ export class Medicine {
 
     const point = mapi.findimage(...Medicine.IMAGE_ARGS[medicine]);
 
-    if (Utils.isPointNotExist(point)) {
-      Utils.showTip('未找到药品：' + Medicine.MEDICINE_IMAGE_NAMES[medicine]);
+    if (utils.isPointNotExist(point)) {
+      utils.showTip('未找到药品：' + Medicine.MEDICINE_IMAGE_NAMES[medicine]);
       this.collapseList();
       return;
     }
@@ -88,15 +88,15 @@ export class Medicine {
 
     mapi.delay(100);
 
-    Utils.clickKey(BIND_KEYS.TAKE_MEDICINE)
+    utils.clickKey(BIND_KEYS.TAKE_MEDICINE)
   }
 
   expandList() {
-    Utils.clickImagePosition(...Medicine.IMAGE_ARGS.EXPAND_LIST_BUTTON);
+    utils.clickImagePosition(...Medicine.IMAGE_ARGS.EXPAND_LIST_BUTTON);
   }
 
   collapseList() {
-    Utils.clickImagePosition(...Medicine.IMAGE_ARGS.COLLAPSE_LIST_BUTTON);
+    utils.clickImagePosition(...Medicine.IMAGE_ARGS.COLLAPSE_LIST_BUTTON);
   }
 
   /** 吃 能量饮料  */

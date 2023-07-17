@@ -1,10 +1,10 @@
+import { GunCategory, T_Mirror, T_Posture } from '../../types';
 import { gun, Gun } from './gun';
 import { Posture, posture } from './posture';
 import { mirror, Mirror } from './mirror';
-import Utils from './utils';
+import { utils } from './utils';
 import { pressArgs } from './pressArgs';
 import Store from './store';
-import { GunCategory, T_Mirror, T_Posture } from '../../types';
 import { skill } from './skill';
 
 export class PressCtrl {
@@ -134,7 +134,7 @@ export class PressCtrl {
 
     args.delay += Store.state.deltaDelayOfGunPressArgs;
 
-    Utils.showTip(`${argsFullKey}: ${ JSON.stringify(args) }`)
+    utils.showTip(`${argsFullKey}: ${ JSON.stringify(args) }`)
 
     return args;
   }

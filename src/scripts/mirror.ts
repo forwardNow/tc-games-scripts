@@ -1,5 +1,5 @@
 import { ImageArgs, T_Mirror, T_OfficialMirror } from '../../types';
-import Utils from './utils';
+import { utils } from './utils';
 import constant from './constant';
 
 type DelicateMirror = Exclude<T_Mirror, 'MACHINE_SIGHT'>;
@@ -106,7 +106,7 @@ export class Mirror {
    */
   isOpen() {
     // 第一（三）人称图标 如果存在 则说明未开镜
-    const isExist = Utils.isImageExist(Mirror.IMAGE_NAMES.FIRST_PERSON_ICON, 0.65, 4, 4, 1, 4)
+    const isExist = utils.isImageExist(Mirror.IMAGE_NAMES.FIRST_PERSON_ICON, 0.65, 4, 4, 1, 4)
 
     return !isExist;
   }
@@ -143,7 +143,7 @@ export class Mirror {
       return [ imageName, sim, ...areaArgs ] as ImageArgs;
     });
 
-    const targetIndex = mirrorArgsList.findIndex((args: ImageArgs) => Utils.isImageExist(...args))
+    const targetIndex = mirrorArgsList.findIndex((args: ImageArgs) => utils.isImageExist(...args))
 
     if (targetIndex === -1) {
       return null;
@@ -171,7 +171,7 @@ export class Mirror {
     delicateMirrors.forEach((mirror) => {
       const imageName = Mirror.DELICATE_MIRROR_IMAGE_NAMES[mirror];
 
-      if (Utils.isImageExist(imageName, 0.75, 4, 1, 4, 1)) {
+      if (utils.isImageExist(imageName, 0.75, 4, 1, 4, 1)) {
         result.push(mirror)
       }
     });
@@ -190,10 +190,10 @@ export class Mirror {
     delicateMirrors.forEach((mirror) => {
       const imageName = Mirror.DELICATE_MIRROR_IMAGE_NAMES[mirror].replace('大图', '背包');
 
-      if (Utils.isImageExist(imageName, 0.75, 4, 4, 3, 1)) {
+      if (utils.isImageExist(imageName, 0.75, 4, 4, 3, 1)) {
         leftGunMirrors.push(mirror);
       }
-      if (Utils.isImageExist(imageName, 0.75, 4, 3, 3, 2)) {
+      if (utils.isImageExist(imageName, 0.75, 4, 3, 3, 2)) {
         rightGunMirrors.push(mirror);
       }
     });
@@ -216,14 +216,14 @@ export class Mirror {
   openZoomBarOf6XSight() {
     const zoomBarPoint = mapi.findimage(Mirror.IMAGE_NAMES.X6_SIGHT_ZOOM_BAR, 0.75, 4, 1, 2, 1);
 
-    if (Utils.isPointExist(zoomBarPoint)) {
+    if (utils.isPointExist(zoomBarPoint)) {
       return;
     }
 
     // TODO 平板，图片寻找区域调整，手机可能也需要调整
     const buttonPoint = mapi.findimage(Mirror.IMAGE_NAMES.BUTTON_OF_X6_SIGHT_ZOOM_BAR, 0.75, 4, 3, 2, 1);
 
-    if (!Utils.isPointExist(buttonPoint)) {
+    if (!utils.isPointExist(buttonPoint)) {
       loginfo('openZoomBarOf6XSight(): 未找到图片 - ' + Mirror.IMAGE_NAMES.BUTTON_OF_X6_SIGHT_ZOOM_BAR);
       return;
     }

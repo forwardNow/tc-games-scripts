@@ -1,5 +1,5 @@
 import { ImageArgs } from '../../types';
-import Utils from './utils';
+import { utils } from './utils';
 import { BIND_KEYS } from './constant';
 
 export class Car {
@@ -14,7 +14,7 @@ export class Car {
   isOnCar() {
     const point = mapi.findimage(...Car.IMAGE_ARGS.GET_OFF_BUTTON);
 
-    const result = Utils.isPointExist(point);
+    const result = utils.isPointExist(point);
 
     return { point, result };
   }

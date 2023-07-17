@@ -54,6 +54,13 @@ const mutations: IMutations = {
   addDelayOfGunPressArgs(this: typeof store, num: number) {
     this.state.deltaDelayOfGunPressArgs = this.state.deltaDelayOfGunPressArgs + num;
   },
+
+  /**
+   * 切换 mapi.tip() 的启用和禁止
+   */
+  toggleEnableOfTip(this: typeof store, ) {
+    this.state.isTipEnabled = !this.state.isTipEnabled;
+  },
 }
 
 const store = {

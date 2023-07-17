@@ -1,4 +1,4 @@
-import Utils from './utils';
+import { utils } from './utils';
 import constant from './constant'
 import { ColorArgs, T_OfficialPosture, T_Posture } from '../../types';
 
@@ -47,12 +47,12 @@ export class Posture {
 
   isSquat() {
     const [ color, posList ] = Posture.COLOR_POINT.SQUAT;
-    return Utils.isColorExist(color, posList);
+    return utils.isColorExist(color, posList);
   }
 
   isProstrate() {
     const [ color, posList ] = Posture.COLOR_POINT.PROSTRATE;
-    return Utils.isColorExist(color, posList);
+    return utils.isColorExist(color, posList);
   }
 
   clickSquatKey() {

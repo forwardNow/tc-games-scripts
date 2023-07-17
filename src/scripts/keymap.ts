@@ -1,4 +1,4 @@
-import Utils from './utils';
+import { utils } from './utils';
 import { gun } from './gun';
 import Store from './store';
 import { medicine } from './medicine';
@@ -27,7 +27,7 @@ export default {
    * @bind 鼠标右键
    */
   compositeKey_openMirror() {
-    Utils.series([
+    utils.series([
       // 丢弃背包物资
       bag.discardMaterialsUnderCursor,
 
@@ -38,7 +38,7 @@ export default {
       // medicine.cancelTakeMedicine.bind(medicine),
 
       // 开镜（点击当前按键所在位置）
-      Utils.clickCurrentKey.bind(Utils),
+      utils.clickCurrentKey.bind(utils),
 
       // 更新压枪参数
       pressCtrl.updatePressArgs,
@@ -60,11 +60,11 @@ export default {
    * @bind F
    */
   compositeKey_getOnCar() {
-    Utils.series([
+    utils.series([
       car.getOff,
 
       // 上车（点击当前按键所在位置）
-      Utils.clickCurrentKey,
+      utils.clickCurrentKey,
     ]);
   },
 
@@ -82,7 +82,7 @@ export default {
    * @bind F12
    */
   toggleEnableOfTip() {
-    Utils.toggleEnableOfTip();
+    Store.toggleEnableOfTip();
   },
 
   /**
@@ -98,7 +98,7 @@ export default {
    * @bind Tab
    */
   hideGun() {
-    Utils.switchToShotMode();
+    utils.switchToShotMode();
     gun.hideGun();
   },
 
@@ -139,7 +139,7 @@ export default {
    * @bind Ctrl
    */
   reset() {
-    Utils.reset();
+    utils.reset();
   },
 
   /**

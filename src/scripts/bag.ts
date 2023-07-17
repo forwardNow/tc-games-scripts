@@ -1,4 +1,4 @@
-import Utils from './utils';
+import { utils } from './utils';
 import constant, { BIND_KEYS } from './constant';
 import { PointArgs } from '../../types';
 
@@ -26,13 +26,13 @@ export class Bag {
       return;
     }
 
-    Utils.clickKey(BIND_KEYS.BAG)
+    utils.clickKey(BIND_KEYS.BAG)
   }
 
   isBagOpen() {
     const point = mapi.findimage(Bag.IMAGE_NAMES.BAG_OPEN, 0.75, 4, 4, 4, 1);
 
-    return Utils.isPointExist(point);
+    return utils.isPointExist(point);
   }
 
   /**
