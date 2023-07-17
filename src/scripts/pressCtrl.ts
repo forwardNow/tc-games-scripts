@@ -1,4 +1,4 @@
-import Gun, { X8_SIGHT_GUNS } from './gun';
+import { gun, Gun } from './gun';
 import { Posture, posture } from './posture';
 import Mirror from './mirror';
 import Utils from './utils';
@@ -37,7 +37,7 @@ export class PressCtrl {
       return;
     }
 
-    const currGun = Gun.getCurrentGun();
+    const currGun = gun.getCurrentGun();
 
     if (!currGun) {
       logerror('toggleX6Sight: 未识别到枪械');
@@ -149,7 +149,7 @@ export class PressCtrl {
       currMirror: lastMirrorCategory
     } = this;
 
-    let gunCategory = Gun.getCurrentGun();
+    let gunCategory = gun.getCurrentGun();
 
     if (!gunCategory) {
       logwarning('getStatus: 未识别出当前枪械！尝试使用上次识别出来的枪械');
@@ -190,7 +190,7 @@ export class PressCtrl {
   getCurrentMirrorByGun(gun: T_Gun) {
     let disabledMirrors: T_Mirror[] = ['X8_SIGHT'];
 
-    if (X8_SIGHT_GUNS.includes(gun)) {
+    if (Gun.X8_SIGHT_GUNS.includes(gun)) {
       disabledMirrors = ['X2_SIGHT', 'RED_DOT_SIGHT', 'HOLOGRAPHIC_SIGHT', 'MACHINE_SIGHT']
     }
 

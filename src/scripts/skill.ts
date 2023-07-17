@@ -1,6 +1,6 @@
 import Store from './store';
 import Mirror from './mirror';
-import Gun from './gun';
+import { gun } from './gun';
 import constant, { NOD_HEAD } from './constant';
 import { posture } from './posture';
 
@@ -10,7 +10,7 @@ export class Skill {
       return false;
     }
 
-    if (!Gun.isHoldConfiguredGun()) {
+    if (!gun.isHoldConfiguredGun()) {
       return false;
     }
 

@@ -1,5 +1,5 @@
 import Utils from './utils';
-import Gun from './gun';
+import { gun } from './gun';
 import Store from './store';
 import Medicine from './medicine';
 import Missile from './missile';
@@ -90,7 +90,7 @@ export default {
    * @bind Q
    */
   switchGun() {
-    Gun.switchGun();
+    gun.switchGun();
   },
 
   /**
@@ -99,7 +99,7 @@ export default {
    */
   hideGun() {
     Utils.switchToShotMode();
-    Gun.hideGun();
+    gun.hideGun();
   },
 
   /**

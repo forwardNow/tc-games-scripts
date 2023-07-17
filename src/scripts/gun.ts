@@ -1,218 +1,210 @@
+import { T_Gun, T_GunPosition, ImageAreaArgs } from '../../types';
 import Utils from './utils';
 import constant from './constant';
-import { T_Gun, T_GunPosition, ImageAreaArgs } from '../../types';
 
-/** 枪的类型 */
-const CATEGORIES: { [key in T_Gun]: T_Gun } = {
-  M4: 'M4',
-  SCARL: 'SCARL',
-  DP28: 'DP28',
+export class Gun {
+  /** 枪的类型 */
+  static CATEGORIES: { [key in T_Gun]: T_Gun } = {
+    M4: 'M4',
+    SCARL: 'SCARL',
+    DP28: 'DP28',
 
-  UMP45: 'UMP45',
-  YENIU: 'YENIU',
-  UZI: 'UZI',
-  VECTOR: 'VECTOR',
-  TANGMUXUN: 'TANGMUXUN', // 汤姆逊枪
+    UMP45: 'UMP45',
+    YENIU: 'YENIU',
+    UZI: 'UZI',
+    VECTOR: 'VECTOR',
+    TANGMUXUN: 'TANGMUXUN', // 汤姆逊枪
 
-  AKM: 'AKM',
+    AKM: 'AKM',
 
-  ACVAL: 'ACVAL',
+    ACVAL: 'ACVAL',
 
-  PKM: 'PKM',
+    PKM: 'PKM',
 
-  VSS: 'VSS',
-  MK20H: 'MK20H',
-  M417: 'M417',
+    VSS: 'VSS',
+    MK20H: 'MK20H',
+    M417: 'M417',
 
-  M249: 'M249',
+    M249: 'M249',
 
-  M762: 'M762',
+    M762: 'M762',
 
-  AUG: 'AUG',
-  GROZA: 'GROZA',
-  MG3: 'MG3',
-  P90: 'P90',
+    AUG: 'AUG',
+    GROZA: 'GROZA',
+    MG3: 'MG3',
+    P90: 'P90',
 
-  MIGUAN: 'MIGUAN', // 蜜罐
-};
+    MIGUAN: 'MIGUAN', // 蜜罐
+  };
 
-export const X8_SIGHT_GUNS: T_Gun[] = [ 'M417', 'MK20H' ];
+  static X8_SIGHT_GUNS: T_Gun[] = [ 'M417', 'MK20H' ];
 
-/** 持枪位置 */
-const GUN_POSITION: { [key in T_GunPosition]: T_GunPosition }  = {
-  /** 左边枪 */
-  LEFT: 'LEFT',
-  /** 右边枪 */
-  RIGHT: 'RIGHT',
-}
-
-
-/** 持枪位置-图片区域 */
-const GUN_POSITION_IMAGE_AREA: { [key in T_GunPosition]: ImageAreaArgs } = {
-  LEFT: [ 0.85, 4, 4, 2, 4  ],
-  RIGHT: [ 0.85, 4, 4, 3, 4  ],
-}
-
-/**
- * 获取当前持枪的位置
- * @return { string | null }
- */
-export function getGunPosition() {
-  if (isLeftGun()) {
-    return GUN_POSITION.LEFT;
+  /** 持枪位置 */
+  static GUN_POSITION: { [key in T_GunPosition]: T_GunPosition } = {
+    /** 左边枪 */
+    LEFT: 'LEFT',
+    /** 右边枪 */
+    RIGHT: 'RIGHT',
   }
 
-  if (isRightGun()) {
-    return GUN_POSITION.RIGHT;
+
+  /** 持枪位置-图片区域 */
+  static GUN_POSITION_IMAGE_AREA: { [key in T_GunPosition]: ImageAreaArgs } = {
+    LEFT: [ 0.85, 4, 4, 2, 4 ],
+    RIGHT: [ 0.85, 4, 4, 3, 4 ],
   }
 
-  return null;
-}
-
-/** 是否持 左 枪 */
-function isLeftGun() {
-  const [color, posList] = constant.GUN_POSITION_LEFT_COLOR_POINT;
-  return Utils.isColorExist(color, posList);
-}
-
-/** 是否持 右 枪 */
-function isRightGun() {
-  const [color, posList] = constant.GUN_POSITION_RIGHT_COLOR_POINT;
-  return Utils.isColorExist(color, posList);
-}
-
-/** 是否 持枪 */
-function isHoldGun() {
-  return Boolean(getGunPosition());
-}
-
-/** 是否持有已配置的枪 */
-function isHoldConfiguredGun() {
-  return Boolean(getGunPosition());
-}
-
-
-/**
- * 获取当前枪械的名称
- *
- * @return {string | null}
- */
-function getCurrentGun() {
-  const gunPosition = getGunPosition();
-
-  if (!gunPosition) {
-    return;
-  }
-
-  const imageArgs: ImageAreaArgs = GUN_POSITION_IMAGE_AREA[gunPosition];
-
-  const guns = Object.keys(CATEGORIES) as T_Gun[];
-
-  return guns.find((gun) => Utils.isImageExist(gun, ...imageArgs));
-}
-
-function identityGunsInBag() {
-  let leftGuns: string[] = [];
-  let rightGuns: string[] = [];
-
-  Object.keys(CATEGORIES).forEach((cate) => {
-    const imageName = `大图${cate}`;
-
-    if(Utils.isImageExist(imageName, 0.85, 2, 2, 2, 1)) {
-      leftGuns.push(cate);
+  /**
+   * 获取当前持枪的位置
+   * @return { string | null }
+   */
+  getGunPosition() {
+    if (this.isLeftGun()) {
+      return Gun.GUN_POSITION.LEFT;
     }
-    if(Utils.isImageExist(imageName, 0.85, 2, 2, 2, 2)) {
-      rightGuns.push(cate);
+
+    if (this.isRightGun()) {
+      return Gun.GUN_POSITION.RIGHT;
     }
-  });
 
-  const result = { leftGuns, rightGuns };
+    return null;
+  }
 
-  loginfo(JSON.stringify(result));
+  /** 是否持 左 枪 */
+  isLeftGun() {
+    const [ color, posList ] = constant.GUN_POSITION_LEFT_COLOR_POINT;
+    return Utils.isColorExist(color, posList);
+  }
 
-  return result;
-}
+  /** 是否持 右 枪 */
+  isRightGun() {
+    const [ color, posList ] = constant.GUN_POSITION_RIGHT_COLOR_POINT;
+    return Utils.isColorExist(color, posList);
+  }
 
-function identityFlatGuns() {
-  let leftGuns: string[] = [];
-  let rightGuns: string[] = [];
+  /** 是否 持枪 */
+  isHoldGun() {
+    return Boolean(this.getGunPosition());
+  }
 
-  Object.keys(CATEGORIES).forEach((cate) => {
-    if( Utils.isImageExist(cate, 0.85, 4, 4, 2, 4)) {
-      leftGuns.push(cate);
+  /** 是否持有已配置的枪 */
+  isHoldConfiguredGun() {
+    return Boolean(this.getCurrentGun());
+  }
+
+
+  /**
+   * 获取当前枪械的名称
+   *
+   * @return {string | null}
+   */
+  getCurrentGun() {
+    const gunPosition = this.getGunPosition();
+
+    if (!gunPosition) {
+      return;
     }
-    if( Utils.isImageExist(cate, 0.85, 4, 4, 3, 4)) {
-      rightGuns.push(cate);
+
+    const imageArgs: ImageAreaArgs = Gun.GUN_POSITION_IMAGE_AREA[gunPosition];
+
+    const guns = Object.keys(Gun.CATEGORIES) as T_Gun[];
+
+    return guns.find((gun) => Utils.isImageExist(gun, ...imageArgs));
+  }
+
+  identityGunsInBag() {
+    let leftGuns: string[] = [];
+    let rightGuns: string[] = [];
+
+    Object.keys(Gun.CATEGORIES).forEach((cate) => {
+      const imageName = `大图${ cate }`;
+
+      if (Utils.isImageExist(imageName, 0.85, 2, 2, 2, 1)) {
+        leftGuns.push(cate);
+      }
+      if (Utils.isImageExist(imageName, 0.85, 2, 2, 2, 2)) {
+        rightGuns.push(cate);
+      }
+    });
+
+    const result = { leftGuns, rightGuns };
+
+    loginfo(JSON.stringify(result));
+
+    return result;
+  }
+
+  identityFlatGuns() {
+    let leftGuns: string[] = [];
+    let rightGuns: string[] = [];
+
+    Object.keys(Gun.CATEGORIES).forEach((cate) => {
+      if (Utils.isImageExist(cate, 0.85, 4, 4, 2, 4)) {
+        leftGuns.push(cate);
+      }
+      if (Utils.isImageExist(cate, 0.85, 4, 4, 3, 4)) {
+        rightGuns.push(cate);
+      }
+    });
+
+    const result = { leftGuns, rightGuns };
+
+    loginfo(JSON.stringify(result));
+
+    return result;
+  }
+
+  /**
+   * 收枪
+   */
+  hideGun() {
+    const gunPosition = this.getGunPosition();
+
+    if (!gunPosition) {
+      return;
     }
-  });
 
-  const result = { leftGuns, rightGuns };
+    if (gunPosition === Gun.GUN_POSITION.LEFT) {
+      this.clickLeftGun();
+      return;
+    }
 
-  loginfo(JSON.stringify(result));
-
-  return result;
-}
-
-/**
- * 收枪
- */
-function hideGun() {
-  const gunPosition = getGunPosition();
-
-  if (!gunPosition) {
-    return;
+    if (gunPosition === Gun.GUN_POSITION.RIGHT) {
+      this.clickRightGun();
+    }
   }
 
-  if (gunPosition === GUN_POSITION.LEFT) {
-    clickLeftGun();
-    return;
+  /**
+   * 切枪
+   */
+  switchGun() {
+    const gunPosition = this.getGunPosition();
+
+    if (!gunPosition) {
+      this.clickLeftGun();
+      return;
+    }
+
+    if (gunPosition === Gun.GUN_POSITION.LEFT) {
+      this.clickRightGun();
+      return;
+    }
+
+    if (gunPosition === Gun.GUN_POSITION.RIGHT) {
+      this.clickLeftGun();
+    }
   }
 
-  if (gunPosition === GUN_POSITION.RIGHT) {
-    clickRightGun();
-  }
-}
-
-/**
- * 切枪
- */
-function switchGun() {
-  const gunPosition = getGunPosition();
-
-  if (!gunPosition) {
-    clickLeftGun();
-    return;
+  clickLeftGun() {
+    const [ x, y ] = constant.GUN_POSITION_LEFT_POINT
+    mapi.click(x, y);
   }
 
-  if (gunPosition === GUN_POSITION.LEFT) {
-    clickRightGun();
-    return;
+  clickRightGun() {
+    const [ x, y ] = constant.GUN_POSITION_RIGHT_POINT
+    mapi.click(x, y);
   }
 
-  if (gunPosition === GUN_POSITION.RIGHT) {
-    clickLeftGun();
-  }
 }
 
-function clickLeftGun() {
-  const [ x, y ] = constant.GUN_POSITION_LEFT_POINT
-  mapi.click(x, y);
-}
-
-function clickRightGun() {
-  const [ x, y ] = constant.GUN_POSITION_RIGHT_POINT
-  mapi.click(x, y);
-}
-
-export default {
-  CATEGORIES,
-  getCurrentGun,
-  hideGun,
-  switchGun,
-
-  isHoldGun,
-  isHoldConfiguredGun,
-
-  identityFlatGuns,
-  identityGunsInBag,
-}
+export const gun = new Gun();
