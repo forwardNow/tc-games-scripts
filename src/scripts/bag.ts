@@ -80,3 +80,4 @@ export class Bag {
   }
 }
 
+export const bag = new Bag();
