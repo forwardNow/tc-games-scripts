@@ -1,5 +1,5 @@
 import Utils from './utils';
-import Constant from './constant';
+import constant from './constant';
 import { T_Gun, T_GunPosition, ImageAreaArgs } from '../../types';
 
 /** 枪的类型 */
@@ -71,13 +71,13 @@ export function getGunPosition() {
 
 /** 是否持 左 枪 */
 function isLeftGun() {
-  const [color, posList] = Constant.GUN_POSITION_LEFT_COLOR_POINT;
+  const [color, posList] = constant.GUN_POSITION_LEFT_COLOR_POINT;
   return Utils.isColorExist(color, posList);
 }
 
 /** 是否持 右 枪 */
 function isRightGun() {
-  const [color, posList] = Constant.GUN_POSITION_RIGHT_COLOR_POINT;
+  const [color, posList] = constant.GUN_POSITION_RIGHT_COLOR_POINT;
   return Utils.isColorExist(color, posList);
 }
 
@@ -195,12 +195,12 @@ function switchGun() {
 }
 
 function clickLeftGun() {
-  const [ x, y ] = Constant.GUN_POSITION_LEFT_POINT
+  const [ x, y ] = constant.GUN_POSITION_LEFT_POINT
   mapi.click(x, y);
 }
 
 function clickRightGun() {
-  const [ x, y ] = Constant.GUN_POSITION_RIGHT_POINT
+  const [ x, y ] = constant.GUN_POSITION_RIGHT_POINT
   mapi.click(x, y);
 }
 

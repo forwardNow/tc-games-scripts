@@ -1,5 +1,5 @@
 import Utils from './utils';
-import Constant from './constant'
+import constant from './constant'
 import { ColorArgs, T_OfficialPosture, T_Posture } from '../../types';
 
 export class Posture {
@@ -24,8 +24,8 @@ export class Posture {
    * 姿势类别-颜色点
    */
   static COLOR_POINT: { [key in Exclude<T_Posture, 'STAND'>]: ColorArgs } = {
-    SQUAT: Constant.SQUAT_COLOR_POINT,
-    PROSTRATE: Constant.PROSTRATE_COLOR_POINT,
+    SQUAT: constant.SQUAT_COLOR_POINT,
+    PROSTRATE: constant.PROSTRATE_COLOR_POINT,
   }
 
   /**
@@ -56,7 +56,7 @@ export class Posture {
   }
 
   clickSquatKey() {
-    const { x, y } = Constant.SQUAT_BUTTON_POSITION;
+    const { x, y } = constant.SQUAT_BUTTON_POSITION;
 
     mapi.click(x, y);
   }

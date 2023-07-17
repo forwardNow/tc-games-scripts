@@ -1,10 +1,10 @@
 import Utils from './utils';
-import Constant from './constant';
+import constant from './constant';
 import { ImageArgs, T_Mirror, T_OfficialMirror } from '../../types';
 
-const X6_SIGHT_ZOOM_BAR_POINT = Constant.X6_SIGHT_ZOOM_BAR_POINT;
-const X6_TO_X3_POINT = Constant.X6_TO_X3_POINT;
-const X6_TO_X6_POINT = Constant.X6_TO_X6_POINT;
+const X6_SIGHT_ZOOM_BAR_POINT = constant.X6_SIGHT_ZOOM_BAR_POINT;
+const X6_TO_X3_POINT = constant.X6_TO_X3_POINT;
+const X6_TO_X6_POINT = constant.X6_TO_X6_POINT;
 
 /** 准镜类型 */
 const CATEGORIES: { [key in T_Mirror | 'X6_X3_SIGHT']: T_Mirror | 'X6_X3_SIGHT'; } = {
@@ -136,7 +136,7 @@ function getCurrentBySightText(disabledMirrors: T_Mirror[], availableMirrors: T_
 
   const mirrorArgsList = mirrors.map((mirror) => {
     const imageName = MIRROR_TEXT_IMAGE_NAMES[mirror];
-    const sim = Constant.MIRROR_TEXT_IMAGE_SIM[mirror];
+    const sim = constant.MIRROR_TEXT_IMAGE_SIM[mirror];
 
     return [imageName, sim, ...areaArgs ] as ImageArgs;
   });

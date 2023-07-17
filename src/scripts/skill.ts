@@ -1,7 +1,7 @@
 import Store from './store';
 import Mirror from './mirror';
 import Gun from './gun';
-import Constant, { NOD_HEAD } from './constant';
+import constant, { NOD_HEAD } from './constant';
 import { posture } from './posture';
 
 export class Skill {
@@ -40,7 +40,7 @@ export class Skill {
   }
 
   clickOpenMirrorButton() {
-    const { x, y } = Constant.OPEN_MIRROR_BUTTON_POSITION;
+    const { x, y } = constant.OPEN_MIRROR_BUTTON_POSITION;
     mapi.click(x, y);
   }
 

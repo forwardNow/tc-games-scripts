@@ -1,5 +1,5 @@
 import Utils from './utils';
-import Constant, { BIND_KEYS } from './constant';
+import constant, { BIND_KEYS } from './constant';
 import { PointArgs } from '../../types';
 
 export class Bag {
@@ -48,7 +48,7 @@ export class Bag {
 
     const startX = startPoint.X;
     const startY = startPoint.Y;
-    const endX = Constant.BAG_DUSTBIN_X;
+    const endX = constant.BAG_DUSTBIN_X;
     const endY = startPoint.Y;
 
     const total = 200;
