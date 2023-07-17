@@ -1,11 +1,11 @@
-import { GunCategory, T_Mirror, T_OfficialMirror, T_OfficialPosture, T_Posture, T_PressConfig } from '../../types';
+import { GunCategory, T_Mirror, T_OfficialMirror, T_OfficialPosture, T_Posture, PressConfig } from '../../types';
 
 /**
  * 压枪参数
  *
  * changecustomaimpar(x: number, y: number, delay: number)
  */
-const NOVA_9: T_PressConfig = {
+const NOVA_9: PressConfig = {
   'M4': {
     'M4蹲6倍6': [0, 1, 5],
     'M4蹲6倍3': [0, 1, 10],
@@ -350,7 +350,7 @@ const NOVA_9: T_PressConfig = {
 }
 
 // 比 nova9 , 第三个参数 除以 1.4
-const MATE_PAD_11: T_PressConfig = {
+const MATE_PAD_11: PressConfig = {
   'M4': {
     'M4蹲6倍6': [0, 1, 4],
     'M4蹲6倍3': [0, 1, 8],
@@ -765,38 +765,37 @@ const MATE_PAD_11: T_PressConfig = {
   },
 }
 
-const gunPressArgs =/* replace start */ MATE_PAD_11 /* replace end */
+export class PressArgs {
+  static PRESS_CONFIG =/* replace start */ MATE_PAD_11 /* replace end */
 
-/**
- * 获取压强配置
- *
- * @param gunName
- * @param posture
- * @param mirror
- * @return {{ x: number, y: number, delay: number}|null}
- */
-function getGunPressArgs(gunName: GunCategory, posture: T_OfficialPosture, mirror: T_OfficialMirror) {
-  const argsMap = gunPressArgs[gunName];
+  /**
+   * 获取压强配置
+   *
+   * @param gunName
+   * @param posture
+   * @param mirror
+   * @return {{ x: number, y: number, delay: number}|null}
+   */
+  getGunPressArgs(gunName: GunCategory, posture: T_OfficialPosture, mirror: T_OfficialMirror) {
+    const argsMap = PressArgs.PRESS_CONFIG[gunName];
 
-  if (!argsMap) {
-    logerror(`getGunPressArgs: ${gunName} 没有相应配置。`)
-    return null;
+    if (!argsMap) {
+      logerror(`getGunPressArgs: ${gunName} 没有相应配置。`)
+      return null;
+    }
+
+    const key = gunName + posture + mirror;
+
+    const args = argsMap[key];
+
+    if (!args) {
+      return null;
+    }
+
+    const [ x, y, delay ] = args;
+
+    return { x, y, delay };
   }
-
-  const key = gunName + posture + mirror;
-
-  const args = argsMap[key];
-
-  if (!args) {
-    return null;
-  }
-
-  const [ x, y, delay ] = args;
-
-  return { x, y, delay };
 }
 
-export default {
-  getGunPressArgs,
-  gunPressArgs,
-}
+export const pressArgs = new PressArgs();

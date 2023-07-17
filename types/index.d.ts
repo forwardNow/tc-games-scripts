@@ -93,7 +93,7 @@ export type T_OfficialPosture =
   | '蹲'
   | '趴'
 
-export type T_PressConfig = {
+export type PressConfig = {
   [key in GunCategory]: IMirrorPressArgs
 }
 

@@ -2,7 +2,7 @@ import { gun, Gun } from './gun';
 import { Posture, posture } from './posture';
 import { mirror, Mirror } from './mirror';
 import Utils from './utils';
-import PressArgs from './pressArgs';
+import { pressArgs } from './pressArgs';
 import Store from './store';
 import { GunCategory, T_Mirror, T_Posture } from '../../types';
 import { skill } from './skill';
@@ -66,7 +66,7 @@ export class PressCtrl {
     }
 
     const { gunCategory, officialPostureName, officialMirrorName } = status;
-    const args = PressArgs.getGunPressArgs(gunCategory, officialPostureName, officialMirrorName);
+    const args = pressArgs.getGunPressArgs(gunCategory, officialPostureName, officialMirrorName);
 
     logerror(`logErrorPressArgs: ${ gunCategory }${ officialPostureName }${ officialMirrorName }: ${ JSON.stringify(args) }`)
   }
@@ -123,7 +123,7 @@ export class PressCtrl {
 
     const { gunCategory, officialPostureName, officialMirrorName } = status;
 
-    const args = PressArgs.getGunPressArgs(gunCategory, officialPostureName, officialMirrorName);
+    const args = pressArgs.getGunPressArgs(gunCategory, officialPostureName, officialMirrorName);
 
     const argsFullKey = `${ gunCategory }${ officialPostureName }${ officialMirrorName }`;
 
