@@ -51,7 +51,7 @@ export type GunCategory =
 
 export type T_GunPosition = 'LEFT' | 'RIGHT';
 
-export type T_Mirror =
+export type MirrorCategory =
   'MACHINE_SIGHT'
   | 'RED_DOT_SIGHT'
   | 'HOLOGRAPHIC_SIGHT'

@@ -1,4 +1,4 @@
-import { GunCategory, T_Mirror, T_OfficialMirror, T_OfficialPosture, T_Posture, PressConfig } from '../../types';
+import { GunCategory, MirrorCategory, T_OfficialMirror, T_OfficialPosture, T_Posture, PressConfig } from '../../types';
 
 /**
  * 压枪参数

@@ -1,4 +1,4 @@
-import { GunCategory, T_Mirror, T_Posture } from '../../types';
+import { GunCategory, MirrorCategory, T_Posture } from '../../types';
 import { gun, Gun } from './gun';
 import { Posture, posture } from './posture';
 import { mirror, Mirror } from './mirror';
@@ -10,7 +10,7 @@ import { skill } from './skill';
 export class PressCtrl {
   currGunCategory = null as ( null | GunCategory )
   currPostureCategory = null as ( null | T_Posture )
-  currMirrorCategory = null as ( null | T_Mirror )
+  currMirrorCategory = null as ( null | MirrorCategory )
 
   fire() {
     mapi.holdpress();
@@ -119,7 +119,7 @@ export class PressCtrl {
     const status = this.getStatus();
 
     if (!status) {
-      logerror(`logErrorPressArgs(): status 为 None`)
+      logerror(`getArgsOfCustomAimPar(): status 为 None`)
       return;
     }
 
@@ -191,7 +191,7 @@ export class PressCtrl {
   }
 
   getCurrentMirrorByGun(gunCategory: GunCategory) {
-    let disabledMirrors: T_Mirror[] = ['X8_SIGHT'];
+    let disabledMirrors: MirrorCategory[] = ['X8_SIGHT'];
 
     if (Gun.X8_SIGHT_GUNS.includes(gunCategory)) {
       disabledMirrors = ['X2_SIGHT', 'RED_DOT_SIGHT', 'HOLOGRAPHIC_SIGHT', 'MACHINE_SIGHT']

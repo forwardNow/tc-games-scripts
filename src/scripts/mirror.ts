@@ -1,8 +1,8 @@
-import { ImageArgs, T_Mirror, T_OfficialMirror } from '../../types';
+import { ImageArgs, MirrorCategory, T_OfficialMirror } from '../../types';
 import { utils } from './utils';
 import constant from './constant';
 
-type DelicateMirror = Exclude<T_Mirror, 'MACHINE_SIGHT'>;
+type DelicateMirror = Exclude<MirrorCategory, 'MACHINE_SIGHT'>;
 
 export class Mirror {
   static X6_SIGHT_ZOOM_BAR_POINT = constant.X6_SIGHT_ZOOM_BAR_POINT;
@@ -10,7 +10,7 @@ export class Mirror {
   static X6_TO_X6_POINT = constant.X6_TO_X6_POINT;
 
   /** 准镜类型 */
-  static CATEGORIES: { [key in T_Mirror | 'X6_X3_SIGHT']: T_Mirror | 'X6_X3_SIGHT'; } = {
+  static CATEGORIES: { [key in MirrorCategory | 'X6_X3_SIGHT']: MirrorCategory | 'X6_X3_SIGHT'; } = {
     /** 机瞄 */
     MACHINE_SIGHT: 'MACHINE_SIGHT',
     /** 红点 */
@@ -67,7 +67,7 @@ export class Mirror {
     X6_SIGHT_ZOOM_BAR: '6倍镜调距条',
   };
 
-  static MIRROR_TEXT_IMAGE_NAMES: { [key in T_Mirror]: string } = {
+  static MIRROR_TEXT_IMAGE_NAMES: { [key in MirrorCategory]: string } = {
     MACHINE_SIGHT: '机瞄文本',
     RED_DOT_SIGHT: '红点文本',
     HOLOGRAPHIC_SIGHT: '全息文本',
@@ -88,7 +88,7 @@ export class Mirror {
     X8_SIGHT: '大图8倍镜',
   }
 
-  static AVAILABLE_MIRRORS: T_Mirror[] = [
+  static AVAILABLE_MIRRORS: MirrorCategory[] = [
     'RED_DOT_SIGHT',
     'HOLOGRAPHIC_SIGHT',
     'X8_SIGHT',
@@ -117,11 +117,11 @@ export class Mirror {
    *
    * @return { string }
    */
-  getCurrentMirror(disabledMirrors = [ 'X8_SIGHT' as T_Mirror ], availableMirrors = Mirror.AVAILABLE_MIRRORS) {
+  getCurrentMirror(disabledMirrors = [ 'X8_SIGHT' as MirrorCategory ], availableMirrors = Mirror.AVAILABLE_MIRRORS) {
     return this.getCurrentBySightText(disabledMirrors, availableMirrors);
   }
 
-  getCurrentBySightText(disabledMirrors: T_Mirror[], availableMirrors: T_Mirror[]) {
+  getCurrentBySightText(disabledMirrors: MirrorCategory[], availableMirrors: MirrorCategory[]) {
     const areaArgs: [ number, number, number, number ] = [ 4, 4, 4, 2 ];
 
     const mirrors = availableMirrors.filter((mirror) => {
@@ -146,6 +146,7 @@ export class Mirror {
     const targetIndex = mirrorArgsList.findIndex((args: ImageArgs) => utils.isImageExist(...args))
 
     if (targetIndex === -1) {
+      // TODO 一个准镜都没有的情况，没有“机瞄”文本
       return null;
     }
 
