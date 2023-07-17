@@ -262,6 +262,7 @@ JS 宏日志：
 
 * 作用：JS 代码报错都会记录在日志文件
 * 位置：`C:\Users\abc\AppData\Roaming\Sigma-RT\TC Games\log\macro_javascript.log`
+* 查看：`tail -f ~/AppData/Roaming/Sigma-RT/TC\ Games/log/macro_javascript.log`
 
 ## 5. 图片
 
