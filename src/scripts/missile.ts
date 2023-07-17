@@ -46,9 +46,9 @@ export class Missile {
       return false;
     }
 
-    mapi.click(point);
+    utils.clickPoint(point);
 
-    mapi.aimreset();
+    utils.resetAim();
 
     return true;
   }
@@ -66,7 +66,7 @@ export class Missile {
       return;
     }
 
-    mapi.click(point);
+    utils.clickPoint(point);
   }
 
   expandList() {

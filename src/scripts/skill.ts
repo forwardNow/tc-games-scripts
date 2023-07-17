@@ -3,6 +3,7 @@ import { mirror } from './mirror';
 import { gun } from './gun';
 import constant, { NOD_HEAD } from './constant';
 import { posture } from './posture';
+import { utils } from './utils';
 
 export class Skill {
   nodHead({ isCheckMirrorOpen = true, isCheckHoldGun = true } = {}) {
@@ -40,8 +41,7 @@ export class Skill {
   }
 
   clickOpenMirrorButton() {
-    const { x, y } = constant.OPEN_MIRROR_BUTTON_POSITION;
-    mapi.click(x, y);
+    utils.clickPoint(constant.OPEN_MIRROR_BUTTON_POSITION)
   }
 
   isPressShift() {

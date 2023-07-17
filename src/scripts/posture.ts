@@ -46,19 +46,15 @@ export class Posture {
   }
 
   isSquat() {
-    const [ color, posList ] = Posture.COLOR_POINT.SQUAT;
-    return utils.isColorExist(color, posList);
+    return utils.isColorExist(...Posture.COLOR_POINT.SQUAT);
   }
 
   isProstrate() {
-    const [ color, posList ] = Posture.COLOR_POINT.PROSTRATE;
-    return utils.isColorExist(color, posList);
+    return utils.isColorExist(...Posture.COLOR_POINT.PROSTRATE);
   }
 
   clickSquatKey() {
-    const { x, y } = constant.SQUAT_BUTTON_POSITION;
-
-    mapi.click(x, y);
+    utils.clickPoint(constant.SQUAT_BUTTON_POSITION);
   }
 
 }

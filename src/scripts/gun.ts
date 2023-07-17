@@ -72,14 +72,12 @@ export class Gun {
 
   /** 是否持 左 枪 */
   isLeftGun() {
-    const [ color, posList ] = constant.GUN_POSITION_LEFT_COLOR_POINT;
-    return utils.isColorExist(color, posList);
+    return utils.isColorExist(...constant.GUN_POSITION_LEFT_COLOR_POINT);
   }
 
   /** 是否持 右 枪 */
   isRightGun() {
-    const [ color, posList ] = constant.GUN_POSITION_RIGHT_COLOR_POINT;
-    return utils.isColorExist(color, posList);
+    return utils.isColorExist(...constant.GUN_POSITION_RIGHT_COLOR_POINT);
   }
 
   /** 是否 持枪 */
@@ -196,13 +194,11 @@ export class Gun {
   }
 
   clickLeftGun() {
-    const [ x, y ] = constant.GUN_POSITION_LEFT_POINT
-    mapi.click(x, y);
+    utils.clickPoint(constant.GUN_POSITION_LEFT_POINT);
   }
 
   clickRightGun() {
-    const [ x, y ] = constant.GUN_POSITION_RIGHT_POINT
-    mapi.click(x, y);
+    utils.clickPoint(constant.GUN_POSITION_RIGHT_POINT)
   }
 
 }

@@ -63,9 +63,9 @@ export class Medicine {
       return false;
     }
 
-    mapi.click(point);
+    utils.clickPoint(point);
 
-    mapi.aimreset();
+    utils.resetAim();
 
     return true;
   }
@@ -84,7 +84,7 @@ export class Medicine {
       return;
     }
 
-    mapi.click(point);
+    utils.clickPoint(point);
 
     mapi.delay(100);
 

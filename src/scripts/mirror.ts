@@ -30,7 +30,7 @@ export class Mirror {
     X6_X3_SIGHT: 'X6_X3_SIGHT',
 
     X8_SIGHT: 'X8_SIGHT',
-  }
+  };
 
 
   /** 准镜映射，对应官方名称 */
@@ -76,7 +76,7 @@ export class Mirror {
     X4_SIGHT: '4倍镜文本',
     X6_SIGHT: '6倍镜文本',
     X8_SIGHT: '8倍镜文本',
-  }
+  };
 
   static DELICATE_MIRROR_IMAGE_NAMES: { [key in DelicateMirror]: string } = {
     RED_DOT_SIGHT: '大图红点',
@@ -86,7 +86,7 @@ export class Mirror {
     X4_SIGHT: '大图4倍镜',
     X6_SIGHT: '大图6倍镜',
     X8_SIGHT: '大图8倍镜',
-  }
+  };
 
   static AVAILABLE_MIRRORS: MirrorCategory[] = [
     'RED_DOT_SIGHT',
@@ -106,7 +106,7 @@ export class Mirror {
    */
   isOpen() {
     // 第一（三）人称图标 如果存在 则说明未开镜
-    const isExist = utils.isImageExist(Mirror.IMAGE_NAMES.FIRST_PERSON_ICON, 0.65, 4, 4, 1, 4)
+    const isExist = utils.isImageExist(Mirror.IMAGE_NAMES.FIRST_PERSON_ICON, 0.65, 4, 4, 1, 4);
 
     return !isExist;
   }
@@ -143,7 +143,7 @@ export class Mirror {
       return [ imageName, sim, ...areaArgs ] as ImageArgs;
     });
 
-    const targetIndex = mirrorArgsList.findIndex((args: ImageArgs) => utils.isImageExist(...args))
+    const targetIndex = mirrorArgsList.findIndex((args: ImageArgs) => utils.isImageExist(...args));
 
     if (targetIndex === -1) {
       // TODO 一个准镜都没有的情况，没有“机瞄”文本
@@ -173,7 +173,7 @@ export class Mirror {
       const imageName = Mirror.DELICATE_MIRROR_IMAGE_NAMES[mirror];
 
       if (utils.isImageExist(imageName, 0.75, 4, 1, 4, 1)) {
-        result.push(mirror)
+        result.push(mirror);
       }
     });
 
@@ -229,7 +229,7 @@ export class Mirror {
       return;
     }
 
-    mapi.click(Mirror.X6_SIGHT_ZOOM_BAR_POINT.x, Mirror.X6_SIGHT_ZOOM_BAR_POINT.y);
+    utils.clickPoint(Mirror.X6_SIGHT_ZOOM_BAR_POINT);
 
     return true;
   }
@@ -243,7 +243,7 @@ export class Mirror {
       mapi.delay(100);
     }
 
-    mapi.click(Mirror.X6_TO_X3_POINT.x, Mirror.X6_TO_X3_POINT.y);
+    utils.clickPoint(Mirror.X6_TO_X3_POINT);
 
     return Mirror.CATEGORIES.X6_X3_SIGHT;
   }
@@ -257,7 +257,7 @@ export class Mirror {
       mapi.delay(100);
     }
 
-    mapi.click(Mirror.X6_TO_X6_POINT.x, Mirror.X6_TO_X6_POINT.y);
+    utils.clickPoint(Mirror.X6_TO_X6_POINT);
 
     return Mirror.CATEGORIES.X6_SIGHT;
   }

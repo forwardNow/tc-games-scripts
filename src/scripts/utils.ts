@@ -8,7 +8,7 @@ export class Utils {
    * @param point { mapi.point }
    * @returns {boolean}
    */
-  isPointExist(point: Point) {
+  isPointExist(point: mapi.point) {
     return point.X !== 0 || point.Y !== 0;
   }
 
@@ -18,7 +18,7 @@ export class Utils {
    * @param point { mapi.point }
    * @returns {boolean}
    */
-  isPointNotExist(point: Point) {
+  isPointNotExist(point: mapi.point) {
     return point.X === 0 || point.Y === 0;
   }
 
@@ -32,7 +32,7 @@ export class Utils {
    * @return {boolean}
    */
   isColorExist(color: string, posList: string) {
-    return this.isPointExist(mapi.findcolor(color, posList))
+    return this.isPointExist(mapi.findcolor(color, posList));
   }
 
   /**
@@ -58,6 +58,19 @@ export class Utils {
     mapi.click(point);
   }
 
+  clickPoint(point: mapi.point | Point) {
+    let x: number;
+    let y: number;
+
+    if ('x' in point) {
+      ({ x, y } = point);
+    } else {
+      ({ X: x, Y: y } = point);
+    }
+
+    mapi.click(x, y);
+  }
+
   /** 点击当前按键所在位置 */
   clickCurrentKey() {
     mapi.click();
@@ -72,6 +85,10 @@ export class Utils {
   resetAimAndDirection() {
     mapi.aimreset();
     mapi.directionreset();
+  }
+
+  resetAim() {
+    mapi.aimreset();
   }
 
   /**
