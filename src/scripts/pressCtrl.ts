@@ -92,7 +92,7 @@ export class PressCtrl {
     mapi.customaimpar(true);
   }
 
-  updatePressArgs() {
+  updatePressArgs = () => {
     try {
       const args = this.getArgsOfCustomAimPar();
 

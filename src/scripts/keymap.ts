@@ -2,7 +2,7 @@ import Utils from './utils';
 import { gun } from './gun';
 import Store from './store';
 import { medicine } from './medicine';
-import Missile from './missile';
+import { missile } from './missile';
 import { bag } from './bag';
 import { pressCtrl } from './pressCtrl';
 import { car } from './car';
@@ -32,7 +32,7 @@ export default {
       bag.discardMaterialsUnderCursor,
 
       // 取消投掷
-      Missile.cancelThrow.bind(Missile),
+      missile.cancelThrow,
 
       // 取消打药
       // medicine.cancelTakeMedicine.bind(medicine),
@@ -41,7 +41,7 @@ export default {
       Utils.clickCurrentKey.bind(Utils),
 
       // 更新压枪参数
-      pressCtrl.updatePressArgs.bind(pressCtrl),
+      pressCtrl.updatePressArgs,
     ]);
   },
 
@@ -195,7 +195,7 @@ export default {
    * @bind Num7
    */
   switchFragmentBomb() {
-    Missile.switchFragmentBomb();
+    missile.switchFragmentBomb();
   },
 
   /**
@@ -203,7 +203,7 @@ export default {
    * @bind Num8
    */
   switchSmokeBomb() {
-    Missile.switchSmokeBomb();
+    missile.switchSmokeBomb();
   },
 
   /**
@@ -211,6 +211,6 @@ export default {
    * @bind Num9
    */
   switchMolotovCocktail() {
-    Missile.switchMolotovCocktail();
+    missile.switchMolotovCocktail();
   },
 }
