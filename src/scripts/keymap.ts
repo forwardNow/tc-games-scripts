@@ -139,7 +139,7 @@ export default {
    * @bind Ctrl
    */
   reset() {
-    utils.reset();
+    utils.resetAimAndDirection();
   },
 
   /**

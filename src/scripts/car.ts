@@ -36,6 +36,8 @@ export class Car {
 
     mapi.click(point);
 
+    utils.resetAimAndDirection();
+
     return true;
   }
 }

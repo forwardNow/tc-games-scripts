@@ -69,7 +69,7 @@ export class Utils {
   }
 
   /** 重置 准心、方向键 */
-  reset() {
+  resetAimAndDirection() {
     mapi.aimreset();
     mapi.directionreset();
   }
