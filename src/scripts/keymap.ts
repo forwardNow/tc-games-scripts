@@ -1,6 +1,6 @@
 import { utils } from './utils';
 import { gun } from './gun';
-import Store from './store';
+import store from './store';
 import { medicine } from './medicine';
 import { missile } from './missile';
 import { bag } from './bag';
@@ -82,7 +82,7 @@ export default {
    * @bind F12
    */
   toggleEnableOfTip() {
-    Store.mutations.toggleEnableOfTip();
+    store.mutations.toggleEnableOfTip();
   },
 
   /**
@@ -115,7 +115,7 @@ export default {
    * @bind 上箭头
    */
   addDelayOfGunPressArgs() {
-    Store.mutations.addDelayOfGunPressArgs(1);
+    store.mutations.addDelayOfGunPressArgs(1);
   },
 
   /**
@@ -123,7 +123,7 @@ export default {
    * @bind 下箭头
    */
   subtractDelay() {
-    Store.mutations.addDelayOfGunPressArgs(-1);
+    store.mutations.addDelayOfGunPressArgs(-1);
   },
 
   /**

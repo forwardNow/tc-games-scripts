@@ -1,5 +1,5 @@
 import { Point } from '../../types';
-import Store from './store';
+import store from './store';
 
 export class Utils {
   /**
@@ -42,7 +42,7 @@ export class Utils {
    * @param duration {number} 存在时间，单位 秒，默认 1 秒
    */
   showTip(content: string, duration = 1) {
-    if (!Store.state.toast) {
+    if (!store.state.toast) {
       return;
     }
     mapi.tip(content, duration);

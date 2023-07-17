@@ -4,7 +4,7 @@ import { Posture, posture } from './posture';
 import { mirror, Mirror } from './mirror';
 import { utils } from './utils';
 import { pressArgs } from './pressArgs';
-import Store from './store';
+import store from './store';
 import { skill } from './skill';
 
 export class PressCtrl {
@@ -56,7 +56,7 @@ export class PressCtrl {
       adjustedMirror = mirror.adjustX6ToX3();
     }
 
-    Store.mutations.setMirrorOfAdjustedGun(currGunCategory, adjustedMirror)
+    store.mutations.setMirrorOfAdjustedGun(currGunCategory, adjustedMirror)
   }
 
   logErrorPressArgs() {
@@ -134,7 +134,7 @@ export class PressCtrl {
       return;
     }
 
-    args.delay += Store.state.deltaDelayOfGunPressArgs;
+    args.delay += store.state.deltaDelayOfGunPressArgs;
 
     utils.showTip(`${argsFullKey}: ${ JSON.stringify(args) }`)
 
@@ -200,7 +200,7 @@ export class PressCtrl {
     let mirrorCategory = mirror.getCurrentMirror(disabledMirrors);
 
     if (mirrorCategory === Mirror.CATEGORIES.X6_SIGHT) {
-      mirrorCategory = Store.getters.getMirrorOfAdjustedGun(gunCategory) || Mirror.CATEGORIES.X6_SIGHT;
+      mirrorCategory = store.getters.getMirrorOfAdjustedGun(gunCategory) || Mirror.CATEGORIES.X6_SIGHT;
     }
 
     return mirrorCategory;

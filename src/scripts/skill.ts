@@ -1,4 +1,4 @@
-import Store from './store';
+import store from './store';
 import { mirror } from './mirror';
 import { gun } from './gun';
 import constant, { NOD_HEAD } from './constant';
@@ -36,7 +36,7 @@ export class Skill {
   }
 
   isEnableOfNodHead() {
-    return Store.state.nodHead;
+    return store.state.nodHead;
   }
 
   clickOpenMirrorButton() {
@@ -49,7 +49,7 @@ export class Skill {
   }
 
   toggleNodHead() {
-    Store.state.nodHead = !Store.state.nodHead;
+    store.state.nodHead = !store.state.nodHead;
   }
 }
 
