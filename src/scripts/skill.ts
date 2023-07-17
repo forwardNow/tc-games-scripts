@@ -1,16 +1,16 @@
 import Store from './store';
 import Mirror from './mirror';
 import Gun from './gun';
-import Constant, { FLASH_MIRROR } from './constant';
+import Constant, { NOD_HEAD } from './constant';
+import { posture } from './posture';
 
-
-export default {
+export class Skill {
   flashMirror() {
-    if (!this.isEnabledOfFlashMirror()) {
+    if (!this.isNodHead()) {
       return false;
     }
 
-    if (!Gun.isHoldValidGun()) {
+    if (!Gun.isHoldConfiguredGun()) {
       return false;
     }
 
@@ -18,43 +18,39 @@ export default {
       return false;
     }
 
-    const { INTERVAL, MAX_DURATION } = FLASH_MIRROR
+    const { INTERVAL, MAX_DURATION } = NOD_HEAD
 
     const maxTimes = MAX_DURATION / INTERVAL;
 
     for (let i = 0; i < maxTimes; i++) {
-      if (!mapi.keyispress()) {
+      if (!this.isPressShift()) {
         break;
       }
 
-      // this.clickOpenMirrorButton();
-
       mapi.delay(INTERVAL);
 
-      if (i % 3 === 0) {
-        this.nodHead();
-      }
+      posture.clickSquatKey();
     }
 
     return true;
-  },
+  }
 
-  isEnabledOfFlashMirror() {
-    return Store.state.enabledOfFlashMirror;
-  },
+  isNodHead() {
+    return Store.state.nodHead;
+  }
 
   clickOpenMirrorButton() {
     const { x, y } = Constant.OPEN_MIRROR_BUTTON_POSITION;
     mapi.click(x, y);
-  },
+  }
 
-  nodHead() {
-    if (!mapi.keyispress('shift')) {
-      return;
-    }
+  isPressShift() {
+    return mapi.keyispress('shift');
+  }
 
-    const { x, y } = Constant.SQUAT_BUTTON_POSITION;
-
-    mapi.click(x, y);
-  },
+  toggleNodHead() {
+    Store.state.nodHead = !Store.state.nodHead;
+  }
 }
+
+export const skill = new Skill();

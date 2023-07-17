@@ -3,10 +3,10 @@ import Gun from './gun';
 import Store from './store';
 import Medicine from './medicine';
 import Missile from './missile';
-import Bag from './bag';
-import PressCtrl from './pressCtrl';
+import { bag } from './bag';
+import { pressCtrl } from './pressCtrl';
 import Car from './car';
-import Skill from './skill';
+import { skill } from './skill';
 
 export default {
   /**
@@ -14,7 +14,7 @@ export default {
    * @bind 鼠标左键
    */
   fire() {
-    PressCtrl.fire();
+    pressCtrl.fire();
   },
 
   /**
@@ -29,7 +29,7 @@ export default {
   compositeKey_openMirror() {
     Utils.series([
       // 丢弃背包物资
-      Bag.discardMaterialsUnderCursor.bind(Bag),
+      bag.discardMaterialsUnderCursor,
 
       // 取消投掷
       Missile.cancelThrow.bind(Missile),
@@ -41,16 +41,16 @@ export default {
       Utils.clickCurrentKey.bind(Utils),
 
       // 更新压枪参数
-      PressCtrl.updatePressArgs.bind(PressCtrl),
+      pressCtrl.updatePressArgs.bind(pressCtrl),
     ]);
   },
 
   /**
-   * @description 腰射闪镜
+   * @description 腰射点头
    * @bind F9
    */
-  toggleFlashMirror() {
-    Store.state.enabledOfFlashMirror = !Store.state.enabledOfFlashMirror;
+  toggleNodHead() {
+    skill.toggleNodHead();
   },
 
   /**
@@ -74,7 +74,7 @@ export default {
    * @bind 鼠标滚轮-滚上
    */
   toggleX6Sight() {
-    PressCtrl.toggleX6Sight();
+    pressCtrl.toggleX6Sight();
   },
 
   /**
@@ -107,7 +107,7 @@ export default {
    * @bind F5
    */
   swapGuns() {
-    Bag.swapGuns();
+    bag.swapGuns();
   },
 
   /**
@@ -131,7 +131,7 @@ export default {
    * @bind F11
    */
   logErrorPressArgs() {
-    PressCtrl.logErrorPressArgs();
+    pressCtrl.logErrorPressArgs();
   },
 
   /**

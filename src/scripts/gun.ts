@@ -55,7 +55,6 @@ const GUN_POSITION_IMAGE_AREA: { [key in T_GunPosition]: ImageAreaArgs } = {
 
 /**
  * 获取当前持枪的位置
- *
  * @return { string | null }
  */
 export function getGunPosition() {
@@ -70,17 +69,25 @@ export function getGunPosition() {
   return null;
 }
 
+/** 是否持 左 枪 */
 function isLeftGun() {
   const [color, posList] = Constant.GUN_POSITION_LEFT_COLOR_POINT;
   return Utils.isColorExist(color, posList);
 }
 
+/** 是否持 右 枪 */
 function isRightGun() {
   const [color, posList] = Constant.GUN_POSITION_RIGHT_COLOR_POINT;
   return Utils.isColorExist(color, posList);
 }
 
-function isHoldValidGun() {
+/** 是否 持枪 */
+function isHoldGun() {
+  return Boolean(getGunPosition());
+}
+
+/** 是否持有已配置的枪 */
+function isHoldConfiguredGun() {
   return Boolean(getGunPosition());
 }
 
@@ -203,7 +210,8 @@ export default {
   hideGun,
   switchGun,
 
-  isHoldValidGun,
+  isHoldGun,
+  isHoldConfiguredGun,
 
   identityFlatGuns,
   identityGunsInBag,

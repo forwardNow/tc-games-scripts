@@ -1,21 +1,21 @@
 import Gun, { X8_SIGHT_GUNS } from './gun';
-import Posture from './posture';
+import { Posture, posture } from './posture';
 import Mirror from './mirror';
 import Utils from './utils';
 import PressArgs from './pressArgs';
 import Store from './store';
 import { T_Gun, T_Mirror, T_Posture } from '../../types';
-import Skill from './skill';
+import { skill } from './skill';
 
-const pressCtrl = {
-  currGun: null as ( null | T_Gun ),
-  currPosture: null as ( null | T_Posture ),
-  currMirror: null as ( null | T_Mirror ),
+export class PressCtrl {
+  currGun = null as ( null | T_Gun )
+  currPosture = null as ( null | T_Posture )
+  currMirror = null as ( null | T_Mirror )
 
   fire() {
     mapi.holdpress();
 
-    if (Skill.flashMirror()) {
+    if (skill.flashMirror()) {
       this.pause();
       return;
     }
@@ -26,7 +26,7 @@ const pressCtrl = {
     }
 
     this.start();
-  },
+  }
 
   toggleX6Sight() {
     if (!Mirror.isOpen()) {
@@ -55,7 +55,7 @@ const pressCtrl = {
     }
 
     Store.mutations.setMirrorOfAdjustedGun(currGun, adjustedMirror)
-  },
+  }
 
   logErrorPressArgs() {
     const status = this.getStatus();
@@ -69,7 +69,7 @@ const pressCtrl = {
     const args = PressArgs.getGunPressArgs(gun, posture, mirror);
 
     logerror(`logErrorPressArgs: ${ gun }${ posture }${ mirror }: ${ JSON.stringify(args) }`)
-  },
+  }
 
   start() {
     mapi.startcustomaimpar();
@@ -82,15 +82,15 @@ const pressCtrl = {
     }
 
     this.play();
-  },
+  }
 
   play() {
     mapi.customaimpar(false);
-  },
+  }
 
   pause() {
     mapi.customaimpar(true);
-  },
+  }
 
   updatePressArgs() {
     try {
@@ -108,7 +108,7 @@ const pressCtrl = {
     } catch (e) {
       return false;
     }
-  },
+  }
 
   /**
    * @return {{ x: number, y: number, delay: number} | null}
@@ -135,7 +135,7 @@ const pressCtrl = {
     Utils.showTip(`${ gun }${ posture }${ mirror }: ${ JSON.stringify(args) }`)
 
     return args;
-  },
+  }
 
   /**
    * 此方法在开镜后执行，
@@ -144,48 +144,48 @@ const pressCtrl = {
    */
   getStatus() {
     const {
-      currGun: lastGun,
-      currPosture: lastPosture,
-      currMirror: lastMirror
+      currGun: lastGunCategory,
+      currPosture: lastPostureCategory,
+      currMirror: lastMirrorCategory
     } = this;
 
-    let gun = Gun.getCurrentGun();
+    let gunCategory = Gun.getCurrentGun();
 
-    if (!gun) {
+    if (!gunCategory) {
       logwarning('getStatus: 未识别出当前枪械！尝试使用上次识别出来的枪械');
 
-      if (!lastGun) {
+      if (!lastGunCategory) {
         logwarning('getStatus: 上次识别出来的枪械为 None');
         return;
       }
 
-      gun = lastGun;
+      gunCategory = lastGunCategory;
     }
 
-    let posture = Posture.getCurrentPosture();
+    let postureCategory = posture.getCurrentPostureCategory();
 
-    let mirror = this.getCurrentMirrorByGun(gun);
+    let mirrorCategory = this.getCurrentMirrorByGun(gunCategory);
 
-    if (!mirror) {
+    if (!mirrorCategory) {
       logwarning('getStatus: 未识别出当前准镜！尝试使用上次识别出来的准镜！');
 
-      if (!lastMirror) {
+      if (!lastMirrorCategory) {
         logwarning('getStatus: 上次识别出来的准镜为 None');
         return;
       }
 
-      mirror = lastMirror;
+      mirrorCategory = lastMirrorCategory;
     }
 
-    this.currGun = gun;
-    this.currPosture = posture;
-    this.currMirror = mirror;
+    this.currGun = gunCategory;
+    this.currPosture = postureCategory;
+    this.currMirror = mirrorCategory;
 
-    const officialPostureName = Posture.MAPPING[posture];
-    const officialMirrorName = Mirror.MAPPING[mirror];
+    const officialPostureName = Posture.MAPPING[postureCategory];
+    const officialMirrorName = Mirror.MAPPING[mirrorCategory];
 
-    return { gun, posture: officialPostureName, mirror: officialMirrorName };
-  },
+    return { gun: gunCategory, posture: officialPostureName, mirror: officialMirrorName };
+  }
 
   getCurrentMirrorByGun(gun: T_Gun) {
     let disabledMirrors: T_Mirror[] = ['X8_SIGHT'];
@@ -201,8 +201,8 @@ const pressCtrl = {
     }
 
     return mirror;
-  },
+  }
 
-};
+}
 
-export default pressCtrl;
+export const pressCtrl = new PressCtrl();

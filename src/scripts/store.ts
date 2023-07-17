@@ -20,7 +20,8 @@ const state = {
 
   availMirrorList: [],
 
-  enabledOfFlashMirror: true,
+  /** 腰射点头 */
+  nodHead: true,
 };
 
 
