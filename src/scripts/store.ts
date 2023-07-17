@@ -4,10 +4,13 @@ const state = {
   /** 控制 utils.showTip */
   toast: true,
 
-  // 调整过 6 倍镜倍率 的 枪及倍率
+  /** 腰射点头 */
+  nodHead: true,
+
+  /** 调整过 6 倍镜倍率 的 枪及倍率 */
   adjust6XSightGuns: {} as Record<string, string>, // { gun: sight, ... }
 
-  // 动态调整压枪参数，存储差值
+  /** 动态调整压枪参数，存储差值 */
   deltaDelayOfGunPressArgs: 0,
 
   currGun: '',
@@ -20,8 +23,6 @@ const state = {
 
   availMirrorList: [],
 
-  /** 腰射点头 */
-  nodHead: true,
 };
 
 
