@@ -1,11 +1,11 @@
 import Store from './store';
-import Mirror from './mirror';
+import { mirror } from './mirror';
 import { gun } from './gun';
 import constant, { NOD_HEAD } from './constant';
 import { posture } from './posture';
 
 export class Skill {
-  flashMirror() {
+  nodHead() {
     if (!this.isNodHead()) {
       return false;
     }
@@ -14,7 +14,7 @@ export class Skill {
       return false;
     }
 
-    if (Mirror.isOpen()) {
+    if (mirror.isOpen()) {
       return false;
     }
 

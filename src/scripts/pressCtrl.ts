@@ -1,26 +1,26 @@
 import { gun, Gun } from './gun';
 import { Posture, posture } from './posture';
-import Mirror from './mirror';
+import { mirror, Mirror } from './mirror';
 import Utils from './utils';
 import PressArgs from './pressArgs';
 import Store from './store';
-import { T_Gun, T_Mirror, T_Posture } from '../../types';
+import { GunCategory, T_Mirror, T_Posture } from '../../types';
 import { skill } from './skill';
 
 export class PressCtrl {
-  currGun = null as ( null | T_Gun )
-  currPosture = null as ( null | T_Posture )
-  currMirror = null as ( null | T_Mirror )
+  currGunCategory = null as ( null | GunCategory )
+  currPostureCategory = null as ( null | T_Posture )
+  currMirrorCategory = null as ( null | T_Mirror )
 
   fire() {
     mapi.holdpress();
 
-    if (skill.flashMirror()) {
+    if (skill.nodHead()) {
       this.pause();
       return;
     }
 
-    if (!Mirror.isOpen()) {
+    if (!mirror.isOpen()) {
       this.pause();
       return;
     }
@@ -29,32 +29,32 @@ export class PressCtrl {
   }
 
   toggleX6Sight() {
-    if (!Mirror.isOpen()) {
+    if (!mirror.isOpen()) {
       return;
     }
 
-    if (!Mirror.isX6Sight()) {
+    if (!mirror.isX6Sight()) {
       return;
     }
 
-    const currGun = gun.getCurrentGun();
+    const currGunCategory = gun.getCurrentGun();
 
-    if (!currGun) {
+    if (!currGunCategory) {
       logerror('toggleX6Sight: 未识别到枪械');
       return;
     }
 
-    const currMirror = this.getCurrentMirrorByGun(currGun);
+    const currMirrorCategory = this.getCurrentMirrorByGun(currGunCategory);
 
     let adjustedMirror = null;
 
-    if (currMirror === Mirror.CATEGORIES.X6_X3_SIGHT) {
-      adjustedMirror = Mirror.adjustX6ToX6();
+    if (currMirrorCategory === Mirror.CATEGORIES.X6_X3_SIGHT) {
+      adjustedMirror = mirror.adjustX6ToX6();
     } else {
-      adjustedMirror = Mirror.adjustX6ToX3();
+      adjustedMirror = mirror.adjustX6ToX3();
     }
 
-    Store.mutations.setMirrorOfAdjustedGun(currGun, adjustedMirror)
+    Store.mutations.setMirrorOfAdjustedGun(currGunCategory, adjustedMirror)
   }
 
   logErrorPressArgs() {
@@ -65,10 +65,10 @@ export class PressCtrl {
       return;
     }
 
-    const { gun, posture, mirror } = status;
-    const args = PressArgs.getGunPressArgs(gun, posture, mirror);
+    const { gunCategory, officialPostureName, officialMirrorName } = status;
+    const args = PressArgs.getGunPressArgs(gunCategory, officialPostureName, officialMirrorName);
 
-    logerror(`logErrorPressArgs: ${ gun }${ posture }${ mirror }: ${ JSON.stringify(args) }`)
+    logerror(`logErrorPressArgs: ${ gunCategory }${ officialPostureName }${ officialMirrorName }: ${ JSON.stringify(args) }`)
   }
 
   start() {
@@ -121,18 +121,20 @@ export class PressCtrl {
       return;
     }
 
-    const { gun, posture, mirror } = status;
+    const { gunCategory, officialPostureName, officialMirrorName } = status;
 
-    const args = PressArgs.getGunPressArgs(gun, posture, mirror);
+    const args = PressArgs.getGunPressArgs(gunCategory, officialPostureName, officialMirrorName);
+
+    const argsFullKey = `${ gunCategory }${ officialPostureName }${ officialMirrorName }`;
 
     if (!args) {
-      logerror(`getArgsOfCustomAimPar: ${ gun }${ posture }${ mirror }: 没有对应的配置`)
+      logerror(`getArgsOfCustomAimPar: ${argsFullKey}: 没有对应的配置`)
       return;
     }
 
     args.delay += Store.state.deltaDelayOfGunPressArgs;
 
-    Utils.showTip(`${ gun }${ posture }${ mirror }: ${ JSON.stringify(args) }`)
+    Utils.showTip(`${argsFullKey}: ${ JSON.stringify(args) }`)
 
     return args;
   }
@@ -144,8 +146,8 @@ export class PressCtrl {
    */
   getStatus() {
     const {
-      currGun: lastGunCategory,
-      currMirror: lastMirrorCategory
+      currGunCategory: lastGunCategory,
+      currMirrorCategory: lastMirrorCategory
     } = this;
 
     let gunCategory = gun.getCurrentGun();
@@ -176,30 +178,30 @@ export class PressCtrl {
       mirrorCategory = lastMirrorCategory;
     }
 
-    this.currGun = gunCategory;
-    this.currPosture = postureCategory;
-    this.currMirror = mirrorCategory;
+    this.currGunCategory = gunCategory;
+    this.currPostureCategory = postureCategory;
+    this.currMirrorCategory = mirrorCategory;
 
     const officialPostureName = Posture.MAPPING[postureCategory];
     const officialMirrorName = Mirror.MAPPING[mirrorCategory];
 
-    return { gun: gunCategory, posture: officialPostureName, mirror: officialMirrorName };
+    return { gunCategory, officialPostureName, officialMirrorName };
   }
 
-  getCurrentMirrorByGun(gun: T_Gun) {
+  getCurrentMirrorByGun(gunCategory: GunCategory) {
     let disabledMirrors: T_Mirror[] = ['X8_SIGHT'];
 
-    if (Gun.X8_SIGHT_GUNS.includes(gun)) {
+    if (Gun.X8_SIGHT_GUNS.includes(gunCategory)) {
       disabledMirrors = ['X2_SIGHT', 'RED_DOT_SIGHT', 'HOLOGRAPHIC_SIGHT', 'MACHINE_SIGHT']
     }
 
-    let mirror = Mirror.getCurrentMirror(disabledMirrors);
+    let mirrorCategory = mirror.getCurrentMirror(disabledMirrors);
 
-    if (mirror === Mirror.CATEGORIES.X6_SIGHT) {
-      mirror = Store.getters.getMirrorOfAdjustedGun(gun) || Mirror.CATEGORIES.X6_SIGHT;
+    if (mirrorCategory === Mirror.CATEGORIES.X6_SIGHT) {
+      mirrorCategory = Store.getters.getMirrorOfAdjustedGun(gunCategory) || Mirror.CATEGORIES.X6_SIGHT;
     }
 
-    return mirror;
+    return mirrorCategory;
   }
 
 }

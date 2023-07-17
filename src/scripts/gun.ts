@@ -1,10 +1,10 @@
-import { T_Gun, T_GunPosition, ImageAreaArgs } from '../../types';
+import { GunCategory, T_GunPosition, ImageAreaArgs } from '../../types';
 import Utils from './utils';
 import constant from './constant';
 
 export class Gun {
   /** 枪的类型 */
-  static CATEGORIES: { [key in T_Gun]: T_Gun } = {
+  static CATEGORIES: { [key in GunCategory]: GunCategory } = {
     M4: 'M4',
     SCARL: 'SCARL',
     DP28: 'DP28',
@@ -37,7 +37,7 @@ export class Gun {
     MIGUAN: 'MIGUAN', // 蜜罐
   };
 
-  static X8_SIGHT_GUNS: T_Gun[] = [ 'M417', 'MK20H' ];
+  static X8_SIGHT_GUNS: GunCategory[] = [ 'M417', 'MK20H' ];
 
   /** 持枪位置 */
   static GUN_POSITION: { [key in T_GunPosition]: T_GunPosition } = {
@@ -107,7 +107,7 @@ export class Gun {
 
     const imageArgs: ImageAreaArgs = Gun.GUN_POSITION_IMAGE_AREA[gunPosition];
 
-    const guns = Object.keys(Gun.CATEGORIES) as T_Gun[];
+    const guns = Object.keys(Gun.CATEGORIES) as GunCategory[];
 
     return guns.find((gun) => Utils.isImageExist(gun, ...imageArgs));
   }

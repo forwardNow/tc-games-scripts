@@ -1,4 +1,4 @@
-import { T_Gun, T_Mirror, T_OfficialMirror, T_OfficialPosture, T_Posture, T_PressConfig } from '../../types';
+import { GunCategory, T_Mirror, T_OfficialMirror, T_OfficialPosture, T_Posture, T_PressConfig } from '../../types';
 
 /**
  * 压枪参数
@@ -775,7 +775,7 @@ const gunPressArgs =/* replace start */ MATE_PAD_11 /* replace end */
  * @param mirror
  * @return {{ x: number, y: number, delay: number}|null}
  */
-function getGunPressArgs(gunName: T_Gun, posture: T_OfficialPosture, mirror: T_OfficialMirror) {
+function getGunPressArgs(gunName: GunCategory, posture: T_OfficialPosture, mirror: T_OfficialMirror) {
   const argsMap = gunPressArgs[gunName];
 
   if (!argsMap) {

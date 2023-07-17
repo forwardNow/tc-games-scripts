@@ -25,7 +25,7 @@ export interface IMutations {
 }
 
 
-export type T_Gun =
+export type GunCategory =
   'M4'
   | 'SCARL'
   | 'DP28'
@@ -94,7 +94,7 @@ export type T_OfficialPosture =
   | '趴'
 
 export type T_PressConfig = {
-  [key in T_Gun]: IMirrorPressArgs
+  [key in GunCategory]: IMirrorPressArgs
 }
 
 export interface IMirrorPressArgs {
