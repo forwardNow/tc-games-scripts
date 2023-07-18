@@ -176,7 +176,7 @@ export class PressCtrl {
     this.currPostureCategory = postureCategory;
     this.currMirrorCategory = mirrorCategory;
 
-    const cnPostureCategory = Posture.MAPPING[postureCategory];
+    const cnPostureCategory = Posture.Mapping[postureCategory];
     const cnMirrorCategory = Mirror.Mapping[mirrorCategory];
 
     return { gunCategory, cnPostureCategory, cnMirrorCategory };

@@ -82,9 +82,9 @@ export type MedicineCategory =
   | 'MedicalFirstAidKit'
 
 export type PostureCategory =
-  'STAND'
-  | 'SQUAT'
-  | 'PROSTRATE'
+  'Stand'
+  | 'Squat'
+  | 'Prostrate'
 
 export type CnPostureCategory =
   '站'

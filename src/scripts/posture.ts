@@ -4,28 +4,28 @@ import { ColorArgs, CnPostureCategory, PostureCategory } from '../../types';
 
 export class Posture {
   /** 姿势类别 */
-  static CATEGORIES: { [key in PostureCategory]: PostureCategory } = {
+  static Categories: { [key in PostureCategory]: PostureCategory } = {
     /** 站 */
-    STAND: 'STAND',
+    Stand: 'Stand',
     /** 蹲 */
-    SQUAT: 'SQUAT',
+    Squat: 'Squat',
     /** 趴 */
-    PROSTRATE: 'PROSTRATE'
+    Prostrate: 'Prostrate'
   };
 
   /** 姿势映射，对应官方名称 */
-  static MAPPING: { [key in PostureCategory]: CnPostureCategory } = {
-    STAND: '站',
-    SQUAT: '蹲',
-    PROSTRATE: '趴',
+  static Mapping: { [key in PostureCategory]: CnPostureCategory } = {
+    Stand: '站',
+    Squat: '蹲',
+    Prostrate: '趴',
   };
 
   /**
    * 姿势类别-颜色点
    */
-  static COLOR_POINT: { [key in Exclude<PostureCategory, 'STAND'>]: ColorArgs } = {
-    SQUAT: constant.SquatColorPoint,
-    PROSTRATE: constant.ProstrateColorPoint,
+  static ColorPoint: { [key in Exclude<PostureCategory, 'Stand'>]: ColorArgs } = {
+    Squat: constant.SquatColorPoint,
+    Prostrate: constant.ProstrateColorPoint,
   }
 
   /**
@@ -35,22 +35,22 @@ export class Posture {
    */
   getCurrentPostureCategory() {
     if (this.isSquat()) {
-      return Posture.CATEGORIES.SQUAT;
+      return Posture.Categories.Squat;
     }
 
     if (this.isProstrate()) {
-      return Posture.CATEGORIES.PROSTRATE;
+      return Posture.Categories.Prostrate;
     }
 
-    return Posture.CATEGORIES.STAND;
+    return Posture.Categories.Stand;
   }
 
   isSquat() {
-    return utils.isColorExist(...Posture.COLOR_POINT.SQUAT);
+    return utils.isColorExist(...Posture.ColorPoint.Squat);
   }
 
   isProstrate() {
-    return utils.isColorExist(...Posture.COLOR_POINT.PROSTRATE);
+    return utils.isColorExist(...Posture.ColorPoint.Prostrate);
   }
 
   clickSquatKey() {
