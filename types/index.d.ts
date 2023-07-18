@@ -71,7 +71,7 @@ export type CnMirrorCategory =
   ;
 
 
-export type MissileCategory = 'FRAGMENT_BOMB' | 'SMOKE_BOMB' | 'MOLOTOV_COCKTAIL';
+export type MissileCategory = 'FragmentBomb' | 'SmokeBomb' | 'MolotovCocktail';
 
 export type MedicineCategory =
   'EnergyDrink'
