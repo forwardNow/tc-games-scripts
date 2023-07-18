@@ -74,12 +74,12 @@ export type CnMirrorCategory =
 export type MissileCategory = 'FRAGMENT_BOMB' | 'SMOKE_BOMB' | 'MOLOTOV_COCKTAIL';
 
 export type MedicineCategory =
-  'ENERGY_DRINK'
-  | 'PAINKILLER'
-  | 'EPINEPHRINE_INJECTION'
-  | 'BANDAGE'
-  | 'FIRST_AID_KIT'
-  | 'MEDICAL_FIRST_AID_KIT'
+  'EnergyDrink'
+  | 'Painkiller'
+  | 'EpinephrineInjection'
+  | 'Bandage'
+  | 'FirstAidKit'
+  | 'MedicalFirstAidKit'
 
 export type PostureCategory =
   'STAND'

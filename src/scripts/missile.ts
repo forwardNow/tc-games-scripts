@@ -30,8 +30,8 @@ export class Missile {
   static IMAGE_ARGS: { [name: string]: ImageArgs } = {
     CANCEL_THROW_BUTTON: [ '取消投掷按钮', 0.75, 3, 4, 1, 3 ],
 
-    EXPAND_LIST_BUTTON: [ '投掷物展开按钮', 0.75, 4, 4, 3, 4 ],
-    COLLAPSE_LIST_BUTTON: [ '投掷物折叠按钮', 0.75, 4, 2, 3, 2 ],
+    ExpandListButton: [ '投掷物展开按钮', 0.75, 4, 4, 3, 4 ],
+    CollapseListButton: [ '投掷物折叠按钮', 0.75, 4, 2, 3, 2 ],
     FRAGMENT_BOMB: [ Missile.MISSILE_IMAGE_NAMES.FRAGMENT_BOMB, 0.75, 4, 2, 3, 2 ],
   };
 
@@ -70,11 +70,11 @@ export class Missile {
   }
 
   expandList() {
-    utils.clickImagePosition(...Missile.IMAGE_ARGS.EXPAND_LIST_BUTTON);
+    utils.clickImagePosition(...Missile.IMAGE_ARGS.ExpandListButton);
   }
 
   collapseList() {
-    utils.clickImagePosition(...Missile.IMAGE_ARGS.COLLAPSE_LIST_BUTTON);
+    utils.clickImagePosition(...Missile.IMAGE_ARGS.CollapseListButton);
   }
 
   /**切换 碎片手榴弹*/

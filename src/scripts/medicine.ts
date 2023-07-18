@@ -6,49 +6,49 @@ export class Medicine {
   /**
    * 药物类别
    */
-  static CATEGORIES: { [key in MedicineCategory]: MedicineCategory } = {
+  static Categories: { [key in MedicineCategory]: MedicineCategory } = {
     // 能量饮料
-    ENERGY_DRINK: 'ENERGY_DRINK',
+    EnergyDrink: 'EnergyDrink',
 
     // 止痛药
-    PAINKILLER: 'PAINKILLER',
+    Painkiller: 'Painkiller',
 
     // 肾上腺素注射剂
-    EPINEPHRINE_INJECTION: 'EPINEPHRINE_INJECTION',
+    EpinephrineInjection: 'EpinephrineInjection',
 
     // 绷带
-    BANDAGE: 'BANDAGE',
+    Bandage: 'Bandage',
 
     // 急救包
-    FIRST_AID_KIT: 'FIRST_AID_KIT',
+    FirstAidKit: 'FirstAidKit',
 
     // 医疗急救箱
-    MEDICAL_FIRST_AID_KIT: 'MEDICAL_FIRST_AID_KIT',
+    MedicalFirstAidKit: 'MedicalFirstAidKit',
   };
 
-  static MEDICINE_IMAGE_NAMES: { [key in MedicineCategory]: string } = {
+  static MedicineImageNames: { [key in MedicineCategory]: string } = {
     // 能量饮料
-    ENERGY_DRINK: '能量饮料',
+    EnergyDrink: '能量饮料',
     // 止痛药
-    PAINKILLER: '止痛药',
+    Painkiller: '止痛药',
     // 肾上腺素注射剂
-    EPINEPHRINE_INJECTION: '肾上腺素注射剂',
+    EpinephrineInjection: '肾上腺素注射剂',
     // 绷带
-    BANDAGE: '绷带',
+    Bandage: '绷带',
     // 急救包
-    FIRST_AID_KIT: '急救包',
+    FirstAidKit: '急救包',
     // 医疗急救箱
-    MEDICAL_FIRST_AID_KIT: '医疗急救箱',
+    MedicalFirstAidKit: '医疗急救箱',
   };
 
-  static IMAGE_ARGS: { [name: string]: ImageArgs } = {
-    CANCEL_TAKE_MEDICINE_BUTTON: [ '取消打药按钮', 0.75, 4, 4, 3, 4 ],
+  static ImageArgs: { [name: string]: ImageArgs } = {
+    CancelTakeMedicineButton: [ '取消打药按钮', 0.75, 4, 4, 3, 4 ],
 
-    EXPAND_LIST_BUTTON: [ '投掷物展开按钮', 0.75, 4, 4, 2, 4 ],
-    COLLAPSE_LIST_BUTTON: [ '投掷物折叠按钮', 0.75, 4, 2, 2, 2 ],
-    ENERGY_DRINK: [ '能量饮料', 0.75, 4, 2, 2, 2 ],
-    PAINKILLER: [ '止痛药', 0.75, 4, 2, 2, 2 ],
-    FIRST_AID_KIT: [ '急救包', 0.75, 4, 2, 2, 2 ],
+    ExpandListButton: [ '投掷物展开按钮', 0.75, 4, 4, 2, 4 ],
+    CollapseListButton: [ '投掷物折叠按钮', 0.75, 4, 2, 2, 2 ],
+    EnergyDrink: [ '能量饮料', 0.75, 4, 2, 2, 2 ],
+    Painkiller: [ '止痛药', 0.75, 4, 2, 2, 2 ],
+    FirstAidKit: [ '急救包', 0.75, 4, 2, 2, 2 ],
   };
 
 
@@ -57,7 +57,7 @@ export class Medicine {
    * @returns {boolean} true - 执行成功
    */
   cancelTakeMedicine() {
-    const point = utils.findImage(...Medicine.IMAGE_ARGS.CANCEL_TAKE_MEDICINE_BUTTON);
+    const point = utils.findImage(...Medicine.ImageArgs.CancelTakeMedicineButton);
 
     if (utils.isPointNotExist(point)) {
       return false;
@@ -76,10 +76,10 @@ export class Medicine {
 
     utils.delay(200);
 
-    const point = utils.findImage(...Medicine.IMAGE_ARGS[medicine]);
+    const point = utils.findImage(...Medicine.ImageArgs[medicine]);
 
     if (utils.isPointNotExist(point)) {
-      utils.showTip('未找到药品：' + Medicine.MEDICINE_IMAGE_NAMES[medicine]);
+      utils.showTip('未找到药品：' + Medicine.MedicineImageNames[medicine]);
       this.collapseList();
       return;
     }
@@ -92,41 +92,41 @@ export class Medicine {
   }
 
   expandList() {
-    utils.clickImagePosition(...Medicine.IMAGE_ARGS.EXPAND_LIST_BUTTON);
+    utils.clickImagePosition(...Medicine.ImageArgs.ExpandListButton);
   }
 
   collapseList() {
-    utils.clickImagePosition(...Medicine.IMAGE_ARGS.COLLAPSE_LIST_BUTTON);
+    utils.clickImagePosition(...Medicine.ImageArgs.CollapseListButton);
   }
 
   /** 吃 能量饮料  */
   eatEnergyDrink() {
-    this.takeMedicine(Medicine.CATEGORIES.ENERGY_DRINK);
+    this.takeMedicine(Medicine.Categories.EnergyDrink);
   }
 
   /** 吃 止痛药  */
   eatPainkiller() {
-    this.takeMedicine(Medicine.CATEGORIES.PAINKILLER);
+    this.takeMedicine(Medicine.Categories.Painkiller);
   }
 
   /** 吃 肾上腺素注射剂  */
   eatEpinephrineInjection() {
-    this.takeMedicine(Medicine.CATEGORIES.EPINEPHRINE_INJECTION);
+    this.takeMedicine(Medicine.Categories.EpinephrineInjection);
   }
 
   /** 吃 绷带  */
   eatBandage() {
-    this.takeMedicine(Medicine.CATEGORIES.BANDAGE);
+    this.takeMedicine(Medicine.Categories.Bandage);
   }
 
   /** 吃 急救包  */
   eatFirstAidKit() {
-    this.takeMedicine(Medicine.CATEGORIES.FIRST_AID_KIT);
+    this.takeMedicine(Medicine.Categories.FirstAidKit);
   }
 
   /** 吃 医疗急救箱  */
   eatMedicalFirstAidKit() {
-    this.takeMedicine(Medicine.CATEGORIES.MEDICAL_FIRST_AID_KIT);
+    this.takeMedicine(Medicine.Categories.MedicalFirstAidKit);
   }
 }
 
