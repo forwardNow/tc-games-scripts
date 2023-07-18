@@ -50,7 +50,7 @@ export class PressCtrl {
 
     let adjustedMirror = null;
 
-    if (currMirrorCategory === Mirror.Categories.X6_X3_SIGHT) {
+    if (currMirrorCategory === Mirror.Categories.X6X3Sight) {
       adjustedMirror = mirror.adjustX6ToX6();
     } else {
       adjustedMirror = mirror.adjustX6ToX3();
@@ -183,16 +183,16 @@ export class PressCtrl {
   }
 
   getCurrentMirrorByGun(gunCategory: GunCategory) {
-    let disabledMirrors: MirrorCategory[] = ['X8_SIGHT'];
+    let disabledMirrors: MirrorCategory[] = ['X8Sight'];
 
     if (Gun.X8_SIGHT_GUNS.includes(gunCategory)) {
-      disabledMirrors = ['X2_SIGHT', 'RED_DOT_SIGHT', 'HOLOGRAPHIC_SIGHT', 'MACHINE_SIGHT']
+      disabledMirrors = ['X2Sight', 'RedDotSight', 'HolographicSight', 'MachineSight']
     }
 
     let mirrorCategory = mirror.getCurrentMirror(disabledMirrors);
 
-    if (mirrorCategory === Mirror.Categories.X6_SIGHT) {
-      mirrorCategory = store.getters.getMirrorOfAdjustedGun(gunCategory) || Mirror.Categories.X6_SIGHT;
+    if (mirrorCategory === Mirror.Categories.X6Sight) {
+      mirrorCategory = store.getters.getMirrorOfAdjustedGun(gunCategory) || Mirror.Categories.X6Sight;
     }
 
     return mirrorCategory;

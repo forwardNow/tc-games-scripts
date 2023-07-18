@@ -50,14 +50,14 @@ export type GunCategory =
 export type GunPosition = 'LEFT' | 'RIGHT';
 
 export type MirrorCategory =
-  'MACHINE_SIGHT'
-  | 'RED_DOT_SIGHT'
-  | 'HOLOGRAPHIC_SIGHT'
-  | 'X2_SIGHT'
-  | 'X3_SIGHT'
-  | 'X4_SIGHT'
-  | 'X6_SIGHT'
-  | 'X8_SIGHT'
+  'MachineSight'
+  | 'RedDotSight'
+  | 'HolographicSight'
+  | 'X2Sight'
+  | 'X3Sight'
+  | 'X4Sight'
+  | 'X6Sight'
+  | 'X8Sight'
   ;
 
 export type CnMirrorCategory =
