@@ -78,7 +78,7 @@ export default {
   },
 
   /**
-   * @description 启用/禁用 mapi.tip()
+   * @description 启用/禁用 utils.showTip()
    * @bind F12
    */
   toggleEnableOfTip() {

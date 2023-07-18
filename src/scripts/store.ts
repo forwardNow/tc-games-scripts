@@ -3,7 +3,7 @@ import { utils } from './utils';
 
 const state = {
   /** 控制 utils.showTip */
-  toast: true,
+  tip: true,
 
   /** 腰射点头 */
   nodHead: true,
@@ -58,10 +58,10 @@ const mutations: IMutations = {
   },
 
   /**
-   * 切换 mapi.tip() 的启用和禁止
+   * 切换 utils.showTip() 的启用和禁止
    */
   toggleEnableOfTip(this: typeof store, ) {
-    this.state.toast = !this.state.toast;
+    this.state.tip = !this.state.tip;
   },
 }
 
