@@ -185,7 +185,7 @@ export class PressCtrl {
   getCurrentMirrorByGun(gunCategory: GunCategory) {
     let disabledMirrors: MirrorCategory[] = ['X8Sight'];
 
-    if (Gun.X8_SIGHT_GUNS.includes(gunCategory)) {
+    if (Gun.X8SightGuns.includes(gunCategory)) {
       disabledMirrors = ['X2Sight', 'RedDotSight', 'HolographicSight', 'MachineSight']
     }
 

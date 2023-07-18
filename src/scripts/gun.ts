@@ -4,7 +4,7 @@ import constant from './constant';
 
 export class Gun {
   /** 枪的类型 */
-  static CATEGORIES: { [key in GunCategory]: GunCategory } = {
+  static Categories: { [key in GunCategory]: GunCategory } = {
     M4: 'M4',
     SCARL: 'SCARL',
     DP28: 'DP28',
@@ -37,21 +37,21 @@ export class Gun {
     MIGUAN: 'MIGUAN', // 蜜罐
   };
 
-  static X8_SIGHT_GUNS: GunCategory[] = [ 'M417', 'MK20H' ];
+  static X8SightGuns: GunCategory[] = [ 'M417', 'MK20H' ];
 
   /** 持枪位置 */
-  static GUN_POSITION: { [key in GunPosition]: GunPosition } = {
+  static GunPosition: { [key in GunPosition]: GunPosition } = {
     /** 左边枪 */
-    LEFT: 'LEFT',
+    Left: 'Left',
     /** 右边枪 */
-    RIGHT: 'RIGHT',
+    Right: 'Right',
   }
 
 
   /** 持枪位置-图片区域 */
-  static GUN_POSITION_IMAGE_AREA: { [key in GunPosition]: ImageAreaArgs } = {
-    LEFT: [ 0.85, 4, 4, 2, 4 ],
-    RIGHT: [ 0.85, 4, 4, 3, 4 ],
+  static GunPositionImageArea: { [key in GunPosition]: ImageAreaArgs } = {
+    Left: [ 0.85, 4, 4, 2, 4 ],
+    Right: [ 0.85, 4, 4, 3, 4 ],
   }
 
   /**
@@ -60,11 +60,11 @@ export class Gun {
    */
   getGunPosition() {
     if (this.isLeftGun()) {
-      return Gun.GUN_POSITION.LEFT;
+      return Gun.GunPosition.Left;
     }
 
     if (this.isRightGun()) {
-      return Gun.GUN_POSITION.RIGHT;
+      return Gun.GunPosition.Right;
     }
 
     return null;
@@ -103,9 +103,9 @@ export class Gun {
       return;
     }
 
-    const imageArgs: ImageAreaArgs = Gun.GUN_POSITION_IMAGE_AREA[gunPosition];
+    const imageArgs: ImageAreaArgs = Gun.GunPositionImageArea[gunPosition];
 
-    const guns = Object.keys(Gun.CATEGORIES) as GunCategory[];
+    const guns = Object.keys(Gun.Categories) as GunCategory[];
 
     return guns.find((gun) => utils.isImageExist(gun, ...imageArgs));
   }
@@ -114,7 +114,7 @@ export class Gun {
     let leftGuns: string[] = [];
     let rightGuns: string[] = [];
 
-    Object.keys(Gun.CATEGORIES).forEach((cate) => {
+    Object.keys(Gun.Categories).forEach((cate) => {
       const imageName = `大图${ cate }`;
 
       if (utils.isImageExist(imageName, 0.85, 2, 2, 2, 1)) {
@@ -136,7 +136,7 @@ export class Gun {
     let leftGuns: string[] = [];
     let rightGuns: string[] = [];
 
-    Object.keys(Gun.CATEGORIES).forEach((cate) => {
+    Object.keys(Gun.Categories).forEach((cate) => {
       if (utils.isImageExist(cate, 0.85, 4, 4, 2, 4)) {
         leftGuns.push(cate);
       }
@@ -162,12 +162,12 @@ export class Gun {
       return;
     }
 
-    if (gunPosition === Gun.GUN_POSITION.LEFT) {
+    if (gunPosition === Gun.GunPosition.Left) {
       this.clickLeftGun();
       return;
     }
 
-    if (gunPosition === Gun.GUN_POSITION.RIGHT) {
+    if (gunPosition === Gun.GunPosition.Right) {
       this.clickRightGun();
     }
   }
@@ -183,12 +183,12 @@ export class Gun {
       return;
     }
 
-    if (gunPosition === Gun.GUN_POSITION.LEFT) {
+    if (gunPosition === Gun.GunPosition.Left) {
       this.clickRightGun();
       return;
     }
 
-    if (gunPosition === Gun.GUN_POSITION.RIGHT) {
+    if (gunPosition === Gun.GunPosition.Right) {
       this.clickLeftGun();
     }
   }

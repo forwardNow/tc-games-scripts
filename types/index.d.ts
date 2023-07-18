@@ -47,7 +47,7 @@ export type GunCategory =
   | 'MIGUAN'
 ;
 
-export type GunPosition = 'LEFT' | 'RIGHT';
+export type GunPosition = 'Left' | 'Right';
 
 export type MirrorCategory =
   'MachineSight'
