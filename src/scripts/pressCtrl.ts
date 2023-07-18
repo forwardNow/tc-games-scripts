@@ -1,4 +1,4 @@
-import { GunCategory, MirrorCategory, T_Posture } from '../../types';
+import { GunCategory, MirrorCategory, PostureCategory } from '../../types';
 import { gun, Gun } from './gun';
 import { Posture, posture } from './posture';
 import { mirror, Mirror } from './mirror';
@@ -9,7 +9,7 @@ import { skill } from './skill';
 
 export class PressCtrl {
   currGunCategory = null as ( null | GunCategory )
-  currPostureCategory = null as ( null | T_Posture )
+  currPostureCategory = null as ( null | PostureCategory )
   currMirrorCategory = null as ( null | MirrorCategory )
 
   fire() {

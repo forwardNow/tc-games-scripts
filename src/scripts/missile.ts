@@ -1,11 +1,11 @@
-import { ImageArgs, T_Missile } from '../../types';
+import { ImageArgs, MissileCategory } from '../../types';
 import { utils } from './utils';
 
 export class Missile {
   /**
    * 投掷物类别
    */
-  static CATEGORIES: { [key in T_Missile]: T_Missile } = {
+  static CATEGORIES: { [key in MissileCategory]: MissileCategory } = {
     // 碎片手榴弹
     FRAGMENT_BOMB: 'FRAGMENT_BOMB',
 
@@ -16,7 +16,7 @@ export class Missile {
     MOLOTOV_COCKTAIL: 'MOLOTOV_COCKTAIL',
   };
 
-  static MISSILE_IMAGE_NAMES: { [key in T_Missile]: string } = {
+  static MISSILE_IMAGE_NAMES: { [key in MissileCategory]: string } = {
     // 碎片手榴弹
     FRAGMENT_BOMB: '碎片手榴弹',
 
@@ -53,7 +53,7 @@ export class Missile {
     return true;
   }
 
-  switchMissile(missile: T_Missile) {
+  switchMissile(missile: MissileCategory) {
     this.expandList();
 
     mapi.delay(200);

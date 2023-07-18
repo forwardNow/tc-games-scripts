@@ -1,4 +1,4 @@
-import { GunCategory, T_GunPosition, ImageAreaArgs } from '../../types';
+import { GunCategory, GunPosition, ImageAreaArgs } from '../../types';
 import { utils } from './utils';
 import constant from './constant';
 
@@ -40,7 +40,7 @@ export class Gun {
   static X8_SIGHT_GUNS: GunCategory[] = [ 'M417', 'MK20H' ];
 
   /** 持枪位置 */
-  static GUN_POSITION: { [key in T_GunPosition]: T_GunPosition } = {
+  static GUN_POSITION: { [key in GunPosition]: GunPosition } = {
     /** 左边枪 */
     LEFT: 'LEFT',
     /** 右边枪 */
@@ -49,7 +49,7 @@ export class Gun {
 
 
   /** 持枪位置-图片区域 */
-  static GUN_POSITION_IMAGE_AREA: { [key in T_GunPosition]: ImageAreaArgs } = {
+  static GUN_POSITION_IMAGE_AREA: { [key in GunPosition]: ImageAreaArgs } = {
     LEFT: [ 0.85, 4, 4, 2, 4 ],
     RIGHT: [ 0.85, 4, 4, 3, 4 ],
   }

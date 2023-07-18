@@ -1,10 +1,10 @@
 import { utils } from './utils';
 import constant from './constant'
-import { ColorArgs, CnPostureCategory, T_Posture } from '../../types';
+import { ColorArgs, CnPostureCategory, PostureCategory } from '../../types';
 
 export class Posture {
   /** 姿势类别 */
-  static CATEGORIES: { [key in T_Posture]: T_Posture } = {
+  static CATEGORIES: { [key in PostureCategory]: PostureCategory } = {
     /** 站 */
     STAND: 'STAND',
     /** 蹲 */
@@ -14,7 +14,7 @@ export class Posture {
   };
 
   /** 姿势映射，对应官方名称 */
-  static MAPPING: { [key in T_Posture]: CnPostureCategory } = {
+  static MAPPING: { [key in PostureCategory]: CnPostureCategory } = {
     STAND: '站',
     SQUAT: '蹲',
     PROSTRATE: '趴',
@@ -23,7 +23,7 @@ export class Posture {
   /**
    * 姿势类别-颜色点
    */
-  static COLOR_POINT: { [key in Exclude<T_Posture, 'STAND'>]: ColorArgs } = {
+  static COLOR_POINT: { [key in Exclude<PostureCategory, 'STAND'>]: ColorArgs } = {
     SQUAT: constant.SQUAT_COLOR_POINT,
     PROSTRATE: constant.PROSTRATE_COLOR_POINT,
   }

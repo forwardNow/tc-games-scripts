@@ -1,12 +1,12 @@
 import { utils } from './utils';
-import { ImageArgs, T_Medicine } from '../../types';
+import { ImageArgs, MedicineCategory } from '../../types';
 import { BIND_KEYS } from './constant';
 
 export class Medicine {
   /**
    * 药物类别
    */
-  static CATEGORIES: { [key in T_Medicine]: T_Medicine } = {
+  static CATEGORIES: { [key in MedicineCategory]: MedicineCategory } = {
     // 能量饮料
     ENERGY_DRINK: 'ENERGY_DRINK',
 
@@ -26,7 +26,7 @@ export class Medicine {
     MEDICAL_FIRST_AID_KIT: 'MEDICAL_FIRST_AID_KIT',
   };
 
-  static MEDICINE_IMAGE_NAMES: { [key in T_Medicine]: string } = {
+  static MEDICINE_IMAGE_NAMES: { [key in MedicineCategory]: string } = {
     // 能量饮料
     ENERGY_DRINK: '能量饮料',
     // 止痛药
@@ -71,7 +71,7 @@ export class Medicine {
   }
 
 // 吃药
-  takeMedicine(medicine: T_Medicine) {
+  takeMedicine(medicine: MedicineCategory) {
     this.expandList();
 
     mapi.delay(200);

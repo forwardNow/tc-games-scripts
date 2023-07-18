@@ -47,7 +47,7 @@ export type GunCategory =
   | 'MIGUAN'
 ;
 
-export type T_GunPosition = 'LEFT' | 'RIGHT';
+export type GunPosition = 'LEFT' | 'RIGHT';
 
 export type MirrorCategory =
   'MACHINE_SIGHT'
@@ -71,9 +71,9 @@ export type CnMirrorCategory =
   ;
 
 
-export type T_Missile = 'FRAGMENT_BOMB' | 'SMOKE_BOMB' | 'MOLOTOV_COCKTAIL';
+export type MissileCategory = 'FRAGMENT_BOMB' | 'SMOKE_BOMB' | 'MOLOTOV_COCKTAIL';
 
-export type T_Medicine =
+export type MedicineCategory =
   'ENERGY_DRINK'
   | 'PAINKILLER'
   | 'EPINEPHRINE_INJECTION'
@@ -81,7 +81,7 @@ export type T_Medicine =
   | 'FIRST_AID_KIT'
   | 'MEDICAL_FIRST_AID_KIT'
 
-export type T_Posture =
+export type PostureCategory =
   'STAND'
   | 'SQUAT'
   | 'PROSTRATE'
