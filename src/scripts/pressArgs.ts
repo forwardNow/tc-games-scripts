@@ -766,13 +766,13 @@ const MatePad11: PressConfig = {
 }
 
 export class PressArgs {
-  static PRESS_CONFIG =/* replace start */ MatePad11 /* replace end */
+  static PressConfig =/* replace start */ MatePad11 /* replace end */
 
   /**
    * 获取压强配置
    */
   getGunPressArgs(gunCategory: GunCategory, cnPostureCategory: CnPostureCategory, cnMirrorCategory: CnMirrorCategory) {
-    const argsMap = PressArgs.PRESS_CONFIG[gunCategory];
+    const argsMap = PressArgs.PressConfig[gunCategory];
 
     if (!argsMap) {
       logerror(`getGunPressArgs: ${gunCategory} 没有相应配置。`)
