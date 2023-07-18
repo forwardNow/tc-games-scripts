@@ -1,4 +1,4 @@
-import { ImageArgs, MirrorCategory, T_OfficialMirror } from '../../types';
+import { ImageArgs, MirrorCategory, CnMirrorCategory } from '../../types';
 import { utils } from './utils';
 import constant from './constant';
 
@@ -34,7 +34,7 @@ export class Mirror {
 
 
   /** 准镜映射，对应官方名称 */
-  static MAPPING: { [key in (keyof (typeof Mirror.CATEGORIES))]: T_OfficialMirror } = {
+  static MAPPING: { [key in (keyof (typeof Mirror.CATEGORIES))]: CnMirrorCategory } = {
     MACHINE_SIGHT: '',
     RED_DOT_SIGHT: '',
     HOLOGRAPHIC_SIGHT: '',
@@ -111,6 +111,10 @@ export class Mirror {
     return !isExist;
   }
 
+  /** 是否有可用准镜 */
+  hasAvailableMirror() {
+
+  }
 
   /**
    * 获取当前准镜名称
@@ -146,7 +150,6 @@ export class Mirror {
     const targetIndex = mirrorArgsList.findIndex((args: ImageArgs) => utils.isImageExist(...args));
 
     if (targetIndex === -1) {
-      // TODO 一个准镜都没有的情况，没有“机瞄”文本
       return null;
     }
 

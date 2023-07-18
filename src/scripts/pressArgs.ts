@@ -1,4 +1,4 @@
-import { GunCategory, MirrorCategory, T_OfficialMirror, T_OfficialPosture, T_Posture, PressConfig } from '../../types';
+import { GunCategory, CnMirrorCategory, CnPostureCategory, PressConfig } from '../../types';
 
 /**
  * 压枪参数
@@ -770,21 +770,16 @@ export class PressArgs {
 
   /**
    * 获取压强配置
-   *
-   * @param gunName
-   * @param posture
-   * @param mirror
-   * @return {{ x: number, y: number, delay: number}|null}
    */
-  getGunPressArgs(gunName: GunCategory, posture: T_OfficialPosture, mirror: T_OfficialMirror) {
-    const argsMap = PressArgs.PRESS_CONFIG[gunName];
+  getGunPressArgs(gunCategory: GunCategory, cnPostureCategory: CnPostureCategory, cnMirrorCategory: CnMirrorCategory) {
+    const argsMap = PressArgs.PRESS_CONFIG[gunCategory];
 
     if (!argsMap) {
-      logerror(`getGunPressArgs: ${gunName} 没有相应配置。`)
+      logerror(`getGunPressArgs: ${gunCategory} 没有相应配置。`)
       return null;
     }
 
-    const key = gunName + posture + mirror;
+    const key = gunCategory + cnPostureCategory + cnMirrorCategory;
 
     const args = argsMap[key];
 

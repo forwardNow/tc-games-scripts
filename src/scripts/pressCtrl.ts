@@ -67,10 +67,10 @@ export class PressCtrl {
       return;
     }
 
-    const { gunCategory, officialPostureName, officialMirrorName } = status;
-    const args = pressArgs.getGunPressArgs(gunCategory, officialPostureName, officialMirrorName);
+    const { gunCategory, cnPostureCategory, cnMirrorCategory } = status;
+    const args = pressArgs.getGunPressArgs(gunCategory, cnPostureCategory, cnMirrorCategory);
 
-    logerror(`logErrorPressArgs: ${ gunCategory }${ officialPostureName }${ officialMirrorName }: ${ JSON.stringify(args) }`)
+    logerror(`logErrorPressArgs: ${ gunCategory }${ cnPostureCategory }${ cnMirrorCategory }: ${ JSON.stringify(args) }`)
   }
 
   start() {
@@ -123,11 +123,11 @@ export class PressCtrl {
       return;
     }
 
-    const { gunCategory, officialPostureName, officialMirrorName } = status;
+    const { gunCategory, cnPostureCategory, cnMirrorCategory } = status;
 
-    const args = pressArgs.getGunPressArgs(gunCategory, officialPostureName, officialMirrorName);
+    const args = pressArgs.getGunPressArgs(gunCategory, cnPostureCategory, cnMirrorCategory);
 
-    const argsFullKey = `${ gunCategory }${ officialPostureName }${ officialMirrorName }`;
+    const argsFullKey = `${ gunCategory }${ cnPostureCategory }${ cnMirrorCategory }`;
 
     if (!args) {
       logerror(`getArgsOfCustomAimPar: ${argsFullKey}: 没有对应的配置`)
@@ -184,10 +184,10 @@ export class PressCtrl {
     this.currPostureCategory = postureCategory;
     this.currMirrorCategory = mirrorCategory;
 
-    const officialPostureName = Posture.MAPPING[postureCategory];
-    const officialMirrorName = Mirror.MAPPING[mirrorCategory];
+    const cnPostureCategory = Posture.MAPPING[postureCategory];
+    const cnMirrorCategory = Mirror.MAPPING[mirrorCategory];
 
-    return { gunCategory, officialPostureName, officialMirrorName };
+    return { gunCategory, cnPostureCategory, cnMirrorCategory };
   }
 
   getCurrentMirrorByGun(gunCategory: GunCategory) {

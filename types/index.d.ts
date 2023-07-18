@@ -60,7 +60,7 @@ export type MirrorCategory =
   | 'X8_SIGHT'
   ;
 
-export type T_OfficialMirror =
+export type CnMirrorCategory =
   ''
   | '2倍'
   | '3倍'
@@ -86,7 +86,7 @@ export type T_Posture =
   | 'SQUAT'
   | 'PROSTRATE'
 
-export type T_OfficialPosture =
+export type CnPostureCategory =
   '站'
   | '蹲'
   | '趴'
