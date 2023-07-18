@@ -13,21 +13,21 @@ export class PressCtrl {
   currMirrorCategory = null as ( null | MirrorCategory )
 
   fire() {
-    mapi.holdpress();
+    utils.holdPressCurrentKey();
 
     if (!gun.isHoldConfiguredGun()) {
       return false;
     }
 
     if (!mirror.isOpen()) {
-      this.pause();
+      utils.pauseCustomAim();
 
       skill.nodHead({ isCheckMirrorOpen: false, isCheckHoldGun: false });
 
       return;
     }
 
-    this.start();
+    this.doCustomAim();
   }
 
   toggleX6Sight() {
@@ -73,25 +73,17 @@ export class PressCtrl {
     logerror(`logErrorPressArgs: ${ gunCategory }${ cnPostureCategory }${ cnMirrorCategory }: ${ JSON.stringify(args) }`)
   }
 
-  start() {
-    mapi.startcustomaimpar();
+  doCustomAim() {
+    utils.startCustomAim();
 
     const success = this.updatePressArgs();
 
     if (!success) {
-      this.pause();
+      utils.pauseCustomAim();
       return;
     }
 
-    this.play();
-  }
-
-  play() {
-    mapi.customaimpar(false);
-  }
-
-  pause() {
-    mapi.customaimpar(true);
+    utils.playCustomAim();
   }
 
   updatePressArgs = () => {
@@ -104,7 +96,7 @@ export class PressCtrl {
 
       const { x, y, delay } = args;
 
-      mapi.changecustomaimpar(x, y, delay);
+      utils.updateCustomAim(x, y, delay);
 
       return true;
     } catch (e) {

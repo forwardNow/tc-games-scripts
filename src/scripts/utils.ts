@@ -111,6 +111,29 @@ export class Utils {
   switchToMouseMode() {
     mapi.shotmode(true);
   }
+
+  /** 按住当前按键，松开后释放 */
+  holdPressCurrentKey() {
+    mapi.holdpress();
+  }
+
+  /** 启动 自定义准心调节 */
+  startCustomAim() {
+    mapi.startcustomaimpar();
+  }
+
+  playCustomAim() {
+    mapi.customaimpar(false);
+  }
+
+  pauseCustomAim() {
+    mapi.customaimpar(true);
+  }
+
+  updateCustomAim(x: number, y: number, delay: number) {
+    mapi.changecustomaimpar(x, y, delay);
+  }
+
 }
 
 export const utils = new Utils();
