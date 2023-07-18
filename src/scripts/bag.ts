@@ -3,14 +3,13 @@ import constant, { BindKeys } from './constant';
 import { PointArgs } from '../../types';
 
 export class Bag {
-
-  static IMAGE_NAMES = {
-    BAG_OPEN: '背包已打开的标志',
+  static ImageNames = {
+    BagOpenFlagIcon: '背包已打开的标志',
   };
 
-  static POINT: { [prop: string]: PointArgs } = {
-    LEFT_GUN_POINT: [ 1788, 325 ],
-    RIGHT_GUN_POINT: [ 1788, 973 ],
+  static Point: { [prop: string]: PointArgs } = {
+    LeftGunPoint: [ 1788, 325 ],
+    RightGunPoint: [ 1788, 973 ],
   };
 
   openBag() {
@@ -30,7 +29,7 @@ export class Bag {
   }
 
   isBagOpen() {
-    const point = utils.findImage(Bag.IMAGE_NAMES.BAG_OPEN, 0.75, 4, 4, 4, 1);
+    const point = utils.findImage(Bag.ImageNames.BagOpenFlagIcon, 0.75, 4, 4, 4, 1);
 
     return utils.isPointExist(point);
   }
@@ -66,9 +65,9 @@ export class Bag {
     utils.delay();
 
     const {
-      LEFT_GUN_POINT: [ startX, startY ],
-      RIGHT_GUN_POINT: [ endX, endY ],
-    } = Bag.POINT;
+      LeftGunPoint: [ startX, startY ],
+      RightGunPoint: [ endX, endY ],
+    } = Bag.Point;
 
     const total = 300;
     const pointNum = 20;
