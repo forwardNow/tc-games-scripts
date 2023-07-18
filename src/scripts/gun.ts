@@ -72,12 +72,12 @@ export class Gun {
 
   /** 是否持 左 枪 */
   isLeftGun() {
-    return utils.isColorExist(...constant.GUN_POSITION_LEFT_COLOR_POINT);
+    return utils.isColorExist(...constant.CurrLeftGunColorPoint);
   }
 
   /** 是否持 右 枪 */
   isRightGun() {
-    return utils.isColorExist(...constant.GUN_POSITION_RIGHT_COLOR_POINT);
+    return utils.isColorExist(...constant.CurrRightGunColorPoint);
   }
 
   /** 是否 持枪 */
@@ -194,11 +194,11 @@ export class Gun {
   }
 
   clickLeftGun() {
-    utils.clickPoint(constant.GUN_POSITION_LEFT_POINT);
+    utils.clickPoint(constant.LeftGunPositionPoint);
   }
 
   clickRightGun() {
-    utils.clickPoint(constant.GUN_POSITION_RIGHT_POINT)
+    utils.clickPoint(constant.RightGunPositionPoint)
   }
 
 }

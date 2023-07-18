@@ -1,6 +1,6 @@
 import { ImageArgs } from '../../types';
 import { utils } from './utils';
-import { BIND_KEYS } from './constant';
+import { BindKeys } from './constant';
 
 export class Car {
   static IMAGE_ARGS: { [name: string]: ImageArgs } = {
@@ -21,7 +21,7 @@ export class Car {
 
   /** 上车 */
   getOn() {
-    utils.clickKey(BIND_KEYS.GET_ON_DRIVER);
+    utils.clickKey(BindKeys.GetOnDriver);
 
     return true;
   }

@@ -50,7 +50,7 @@ export class PressCtrl {
 
     let adjustedMirror = null;
 
-    if (currMirrorCategory === Mirror.CATEGORIES.X6_X3_SIGHT) {
+    if (currMirrorCategory === Mirror.Categories.X6_X3_SIGHT) {
       adjustedMirror = mirror.adjustX6ToX6();
     } else {
       adjustedMirror = mirror.adjustX6ToX3();
@@ -177,7 +177,7 @@ export class PressCtrl {
     this.currMirrorCategory = mirrorCategory;
 
     const cnPostureCategory = Posture.MAPPING[postureCategory];
-    const cnMirrorCategory = Mirror.MAPPING[mirrorCategory];
+    const cnMirrorCategory = Mirror.Mapping[mirrorCategory];
 
     return { gunCategory, cnPostureCategory, cnMirrorCategory };
   }
@@ -191,8 +191,8 @@ export class PressCtrl {
 
     let mirrorCategory = mirror.getCurrentMirror(disabledMirrors);
 
-    if (mirrorCategory === Mirror.CATEGORIES.X6_SIGHT) {
-      mirrorCategory = store.getters.getMirrorOfAdjustedGun(gunCategory) || Mirror.CATEGORIES.X6_SIGHT;
+    if (mirrorCategory === Mirror.Categories.X6_SIGHT) {
+      mirrorCategory = store.getters.getMirrorOfAdjustedGun(gunCategory) || Mirror.Categories.X6_SIGHT;
     }
 
     return mirrorCategory;

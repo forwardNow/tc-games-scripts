@@ -5,7 +5,7 @@ import { GunCategory, CnMirrorCategory, CnPostureCategory, PressConfig } from '.
  *
  * changecustomaimpar(x: number, y: number, delay: number)
  */
-const NOVA_9: PressConfig = {
+const Nova9: PressConfig = {
   'M4': {
     'M4蹲6倍6': [0, 1, 5],
     'M4蹲6倍3': [0, 1, 10],
@@ -350,7 +350,7 @@ const NOVA_9: PressConfig = {
 }
 
 // 比 nova9 , 第三个参数 除以 1.4
-const MATE_PAD_11: PressConfig = {
+const MatePad11: PressConfig = {
   'M4': {
     'M4蹲6倍6': [0, 1, 4],
     'M4蹲6倍3': [0, 1, 8],
@@ -766,7 +766,7 @@ const MATE_PAD_11: PressConfig = {
 }
 
 export class PressArgs {
-  static PRESS_CONFIG =/* replace start */ MATE_PAD_11 /* replace end */
+  static PRESS_CONFIG =/* replace start */ MatePad11 /* replace end */
 
   /**
    * 获取压强配置

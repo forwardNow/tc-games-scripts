@@ -1,6 +1,6 @@
 import { utils } from './utils';
 import { ImageArgs, MedicineCategory } from '../../types';
-import { BIND_KEYS } from './constant';
+import { BindKeys } from './constant';
 
 export class Medicine {
   /**
@@ -88,7 +88,7 @@ export class Medicine {
 
     utils.delay();
 
-    utils.clickKey(BIND_KEYS.TAKE_MEDICINE)
+    utils.clickKey(BindKeys.TakeMedicine)
   }
 
   expandList() {

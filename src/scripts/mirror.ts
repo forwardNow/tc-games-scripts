@@ -5,12 +5,12 @@ import constant from './constant';
 type DelicateMirror = Exclude<MirrorCategory, 'MACHINE_SIGHT'>;
 
 export class Mirror {
-  static X6_SIGHT_ZOOM_BAR_POINT = constant.X6_SIGHT_ZOOM_BAR_POINT;
-  static X6_TO_X3_POINT = constant.X6_TO_X3_POINT;
-  static X6_TO_X6_POINT = constant.X6_TO_X6_POINT;
+  static X6SightZoomBarPoint = constant.X6SightZoomBarPoint;
+  static X6ToX3Point = constant.X6ToX3Point;
+  static X6ToX6Point = constant.X6ToX6Point;
 
   /** 准镜类型 */
-  static CATEGORIES: { [key in MirrorCategory | 'X6_X3_SIGHT']: MirrorCategory | 'X6_X3_SIGHT'; } = {
+  static Categories: { [key in MirrorCategory | 'X6_X3_SIGHT']: MirrorCategory | 'X6_X3_SIGHT'; } = {
     /** 机瞄 */
     MACHINE_SIGHT: 'MACHINE_SIGHT',
     /** 红点 */
@@ -34,7 +34,7 @@ export class Mirror {
 
 
   /** 准镜映射，对应官方名称 */
-  static MAPPING: { [key in (keyof (typeof Mirror.CATEGORIES))]: CnMirrorCategory } = {
+  static Mapping: { [key in (keyof (typeof Mirror.Categories))]: CnMirrorCategory } = {
     MACHINE_SIGHT: '',
     RED_DOT_SIGHT: '',
     HOLOGRAPHIC_SIGHT: '',
@@ -47,7 +47,7 @@ export class Mirror {
   };
 
   /** 图片名称 */
-  static IMAGE_NAMES = {
+  static ImageNames = {
     /** 第一（三）人称图标 */
     FIRST_PERSON_ICON: '第一人称文本',
 
@@ -67,7 +67,7 @@ export class Mirror {
     X6_SIGHT_ZOOM_BAR: '6倍镜调距条',
   };
 
-  static MIRROR_TEXT_IMAGE_NAMES: { [key in MirrorCategory]: string } = {
+  static MirrorTextImageNames: { [key in MirrorCategory]: string } = {
     MACHINE_SIGHT: '机瞄文本',
     RED_DOT_SIGHT: '红点文本',
     HOLOGRAPHIC_SIGHT: '全息文本',
@@ -78,7 +78,7 @@ export class Mirror {
     X8_SIGHT: '8倍镜文本',
   };
 
-  static DELICATE_MIRROR_IMAGE_NAMES: { [key in DelicateMirror]: string } = {
+  static DelicateMirrorImageNames: { [key in DelicateMirror]: string } = {
     RED_DOT_SIGHT: '大图红点',
     HOLOGRAPHIC_SIGHT: '大图全息',
     X2_SIGHT: '大图2倍镜',
@@ -88,7 +88,7 @@ export class Mirror {
     X8_SIGHT: '大图8倍镜',
   };
 
-  static AVAILABLE_MIRRORS: MirrorCategory[] = [
+  static AvailableMirrors: MirrorCategory[] = [
     'RED_DOT_SIGHT',
     'HOLOGRAPHIC_SIGHT',
     'X8_SIGHT',
@@ -106,7 +106,7 @@ export class Mirror {
    */
   isOpen() {
     // 第一（三）人称图标 如果存在 则说明未开镜
-    const isExist = utils.isImageExist(Mirror.IMAGE_NAMES.FIRST_PERSON_ICON, 0.65, 4, 4, 1, 4);
+    const isExist = utils.isImageExist(Mirror.ImageNames.FIRST_PERSON_ICON, 0.65, 4, 4, 1, 4);
 
     return !isExist;
   }
@@ -121,7 +121,7 @@ export class Mirror {
    *
    * @return { string }
    */
-  getCurrentMirror(disabledMirrors = [ 'X8_SIGHT' as MirrorCategory ], availableMirrors = Mirror.AVAILABLE_MIRRORS) {
+  getCurrentMirror(disabledMirrors = [ 'X8_SIGHT' as MirrorCategory ], availableMirrors = Mirror.AvailableMirrors) {
     return this.getCurrentBySightText(disabledMirrors, availableMirrors);
   }
 
@@ -129,7 +129,7 @@ export class Mirror {
     const areaArgs: [ number, number, number, number ] = [ 4, 4, 4, 2 ];
 
     const mirrors = availableMirrors.filter((mirror) => {
-      if (!Mirror.MIRROR_TEXT_IMAGE_NAMES[mirror]) {
+      if (!Mirror.MirrorTextImageNames[mirror]) {
         return false;
       }
 
@@ -141,8 +141,8 @@ export class Mirror {
     });
 
     const mirrorArgsList = mirrors.map((mirror) => {
-      const imageName = Mirror.MIRROR_TEXT_IMAGE_NAMES[mirror];
-      const sim = constant.MIRROR_TEXT_IMAGE_SIM[mirror];
+      const imageName = Mirror.MirrorTextImageNames[mirror];
+      const sim = constant.MirrorTextImageSim[mirror];
 
       return [ imageName, sim, ...areaArgs ] as ImageArgs;
     });
@@ -159,7 +159,7 @@ export class Mirror {
   isX6Sight() {
     const mirror = this.getCurrentMirror();
 
-    return mirror === Mirror.CATEGORIES.X6_SIGHT;
+    return mirror === Mirror.Categories.X6_SIGHT;
   }
 
   /**
@@ -170,10 +170,10 @@ export class Mirror {
   identityAvailableMirror() {
     const result: string[] = [];
 
-    const delicateMirrors = Object.keys(Mirror.DELICATE_MIRROR_IMAGE_NAMES) as DelicateMirror[];
+    const delicateMirrors = Object.keys(Mirror.DelicateMirrorImageNames) as DelicateMirror[];
 
     delicateMirrors.forEach((mirror) => {
-      const imageName = Mirror.DELICATE_MIRROR_IMAGE_NAMES[mirror];
+      const imageName = Mirror.DelicateMirrorImageNames[mirror];
 
       if (utils.isImageExist(imageName, 0.75, 4, 1, 4, 1)) {
         result.push(mirror);
@@ -189,10 +189,10 @@ export class Mirror {
     let leftGunMirrors: DelicateMirror[] = [];
     let rightGunMirrors: DelicateMirror[] = [];
 
-    const delicateMirrors = Object.keys(Mirror.DELICATE_MIRROR_IMAGE_NAMES) as DelicateMirror[];
+    const delicateMirrors = Object.keys(Mirror.DelicateMirrorImageNames) as DelicateMirror[];
 
     delicateMirrors.forEach((mirror) => {
-      const imageName = Mirror.DELICATE_MIRROR_IMAGE_NAMES[mirror].replace('大图', '背包');
+      const imageName = Mirror.DelicateMirrorImageNames[mirror].replace('大图', '背包');
 
       if (utils.isImageExist(imageName, 0.75, 4, 4, 3, 1)) {
         leftGunMirrors.push(mirror);
@@ -218,21 +218,21 @@ export class Mirror {
    * 打开 6 倍瞄准镜的缩放栏
    */
   openZoomBarOf6XSight() {
-    const zoomBarPoint = utils.findImage(Mirror.IMAGE_NAMES.X6_SIGHT_ZOOM_BAR, 0.75, 4, 1, 2, 1);
+    const zoomBarPoint = utils.findImage(Mirror.ImageNames.X6_SIGHT_ZOOM_BAR, 0.75, 4, 1, 2, 1);
 
     if (utils.isPointExist(zoomBarPoint)) {
       return;
     }
 
     // TODO 平板，图片寻找区域调整，手机可能也需要调整
-    const buttonPoint = utils.findImage(Mirror.IMAGE_NAMES.BUTTON_OF_X6_SIGHT_ZOOM_BAR, 0.75, 4, 3, 2, 1);
+    const buttonPoint = utils.findImage(Mirror.ImageNames.BUTTON_OF_X6_SIGHT_ZOOM_BAR, 0.75, 4, 3, 2, 1);
 
     if (!utils.isPointExist(buttonPoint)) {
-      loginfo('openZoomBarOf6XSight(): 未找到图片 - ' + Mirror.IMAGE_NAMES.BUTTON_OF_X6_SIGHT_ZOOM_BAR);
+      loginfo('openZoomBarOf6XSight(): 未找到图片 - ' + Mirror.ImageNames.BUTTON_OF_X6_SIGHT_ZOOM_BAR);
       return;
     }
 
-    utils.clickPoint(Mirror.X6_SIGHT_ZOOM_BAR_POINT);
+    utils.clickPoint(Mirror.X6SightZoomBarPoint);
 
     return true;
   }
@@ -246,9 +246,9 @@ export class Mirror {
       utils.delay();
     }
 
-    utils.clickPoint(Mirror.X6_TO_X3_POINT);
+    utils.clickPoint(Mirror.X6ToX3Point);
 
-    return Mirror.CATEGORIES.X6_X3_SIGHT;
+    return Mirror.Categories.X6_X3_SIGHT;
   }
 
   /**
@@ -260,9 +260,9 @@ export class Mirror {
       utils.delay();
     }
 
-    utils.clickPoint(Mirror.X6_TO_X6_POINT);
+    utils.clickPoint(Mirror.X6ToX6Point);
 
-    return Mirror.CATEGORIES.X6_SIGHT;
+    return Mirror.Categories.X6_SIGHT;
   }
 }
 

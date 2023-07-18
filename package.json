@@ -9,8 +9,8 @@
   },
   "scripts": {
     "build:image": "gulp buildImages",
-    "build:script:nova9": "cross-env DEVICE=NOVA_9 gulp buildScripts",
-    "build:script:matepad11": "cross-env DEVICE=MATE_PAD_11 gulp buildScripts",
+    "build:script:nova9": "cross-env DEVICE=Nova9 gulp buildScripts",
+    "build:script:matepad11": "cross-env DEVICE=MatePad11 gulp buildScripts",
     "insert-keymap": "gulp insertKeymap"
   },
   "repository": {

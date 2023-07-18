@@ -1,6 +1,6 @@
 import { Point } from '../../types';
 import store from './store';
-import { BIND_KEYS } from './constant';
+import { BindKeys } from './constant';
 
 export class Utils {
   /**

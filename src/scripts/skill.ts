@@ -1,7 +1,7 @@
 import store from './store';
 import { mirror } from './mirror';
 import { gun } from './gun';
-import constant, { KEYBOARD, NOD_HEAD } from './constant';
+import constant, { Keyboard, NodHeadConfig } from './constant';
 import { posture } from './posture';
 import { utils } from './utils';
 
@@ -19,16 +19,16 @@ export class Skill {
       return false;
     }
 
-    const { INTERVAL, MAX_DURATION } = NOD_HEAD
+    const { Interval, MaxDuration } = NodHeadConfig
 
-    const maxTimes = MAX_DURATION / INTERVAL;
+    const maxTimes = MaxDuration / Interval;
 
     for (let i = 0; i < maxTimes; i++) {
       if (!this.isPressShift()) {
         break;
       }
 
-      utils.delay(INTERVAL);
+      utils.delay(Interval);
 
       posture.clickSquatKey();
     }
@@ -41,11 +41,11 @@ export class Skill {
   }
 
   clickOpenMirrorButton() {
-    utils.clickPoint(constant.OPEN_MIRROR_BUTTON_POSITION)
+    utils.clickPoint(constant.OpenMirrorButtonPosition)
   }
 
   isPressShift() {
-    return utils.isPressingKey(KEYBOARD.Shift);
+    return utils.isPressingKey(Keyboard.Shift);
   }
 
   toggleNodHead() {

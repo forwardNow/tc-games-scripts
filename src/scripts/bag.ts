@@ -1,5 +1,5 @@
 import { utils } from './utils';
-import constant, { BIND_KEYS } from './constant';
+import constant, { BindKeys } from './constant';
 import { PointArgs } from '../../types';
 
 export class Bag {
@@ -18,7 +18,7 @@ export class Bag {
       return;
     }
 
-    utils.clickKey(BIND_KEYS.BAG);
+    utils.clickKey(BindKeys.Bag);
   }
 
   closeBag() {
@@ -26,7 +26,7 @@ export class Bag {
       return;
     }
 
-    utils.clickKey(BIND_KEYS.BAG)
+    utils.clickKey(BindKeys.Bag)
   }
 
   isBagOpen() {
@@ -48,7 +48,7 @@ export class Bag {
 
     const startX = startPoint.X;
     const startY = startPoint.Y;
-    const endX = constant.BAG_DUSTBIN_X;
+    const endX = constant.BagDustbinX;
     const endY = startPoint.Y;
 
     const total = 200;
