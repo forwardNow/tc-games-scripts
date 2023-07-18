@@ -1,7 +1,7 @@
 import store from './store';
 import { mirror } from './mirror';
 import { gun } from './gun';
-import constant, { NOD_HEAD } from './constant';
+import constant, { KEYBOARD, NOD_HEAD } from './constant';
 import { posture } from './posture';
 import { utils } from './utils';
 
@@ -28,7 +28,7 @@ export class Skill {
         break;
       }
 
-      mapi.delay(INTERVAL);
+      utils.delay(INTERVAL);
 
       posture.clickSquatKey();
     }
@@ -45,7 +45,7 @@ export class Skill {
   }
 
   isPressShift() {
-    return mapi.keyispress('shift');
+    return utils.isPressingKey(KEYBOARD.Shift);
   }
 
   toggleNodHead() {

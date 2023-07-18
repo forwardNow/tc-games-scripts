@@ -1,4 +1,5 @@
 import { IGetters, IMutations } from '../../types';
+import { utils } from './utils';
 
 const state = {
   /** 控制 utils.showTip */
@@ -72,7 +73,7 @@ const store = {
 
 store.state = new Proxy(state, {
   get(target, propName) {
-    const value = mapi.getglobalmap(propName);
+    const value = utils.getValueFromGlobalMap(propName);
 
     // loginfo(`${propName} = ${value}`);
 
@@ -86,12 +87,12 @@ store.state = new Proxy(state, {
   },
 
   set(target, propName, value) {
-    mapi.setglobalmap(propName, value);
+    utils.setValueToGlobalMap(propName, value);
     return true;
   },
 
   deleteProperty(target, propName) {
-    mapi.setglobalmap(propName, null);
+    utils.setValueToGlobalMap(propName, null);
     return true;
   }
 });

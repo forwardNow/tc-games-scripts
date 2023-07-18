@@ -230,14 +230,8 @@ declare namespace mapi {
    * 从 (startX, startY) 滑动到 (endX, endY)，
    * 这段距离总共有 pointNum 个点，
    * 两点间所需时间为 interval
-   * @param startX
-   * @param startY
-   * @param endX
-   * @param endY
-   * @param interval
-   * @param pointNum
    */
-  function slide(startX, startY, endX, endY, interval, pointNum);
+  function slide(startX: number, startY: number, endX: number, endY: number, interval: number, pointNum: number);
 
   /**
    * WASD方向键重置

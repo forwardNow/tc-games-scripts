@@ -1,5 +1,6 @@
 import { Point } from '../../types';
 import store from './store';
+import { BIND_KEYS } from './constant';
 
 export class Utils {
   /**
@@ -23,7 +24,7 @@ export class Utils {
   }
 
   isImageExist(imgName: string, sim: number, setCol: number, setRow: number, selectCol: number, selectRow: number) {
-    return this.isPointExist(mapi.findimage(imgName, sim, setCol, setRow, selectCol, selectRow));
+    return this.isPointExist(this.findImage(imgName, sim, setCol, setRow, selectCol, selectRow));
   }
 
   /**
@@ -48,8 +49,12 @@ export class Utils {
     mapi.tip(content, duration);
   }
 
-  clickImagePosition(imgName: string, sim: number, setCol: number, setRow: number, selectCol: number, selectRow: number) {
-    const point = mapi.findimage(imgName, sim, setCol, setRow, selectCol, selectRow);
+  findImage(imgName: string, sim: number, columnTotal: number, rowTotal: number, selectCol: number, selectRow: number) {
+    return mapi.findimage(imgName, sim, columnTotal, rowTotal, selectCol, selectRow);
+  }
+
+  clickImagePosition(imgName: string, sim: number, columnTotal: number, rowTotal: number, selectCol: number, selectRow: number) {
+    const point = this.findImage(imgName, sim, columnTotal, rowTotal, selectCol, selectRow);
 
     if (this.isPointNotExist(point)) {
       return false;
@@ -122,18 +127,51 @@ export class Utils {
     mapi.startcustomaimpar();
   }
 
+  /** 运行 自定义准心调节 */
   playCustomAim() {
     mapi.customaimpar(false);
   }
 
+  /** 暂停 自定义准心调节 */
   pauseCustomAim() {
     mapi.customaimpar(true);
   }
 
+  /** 更新 自定义准心调节 参数 */
   updateCustomAim(x: number, y: number, delay: number) {
     mapi.changecustomaimpar(x, y, delay);
   }
 
+  /** 获取光标的位置 */
+  getMousePosition() {
+    return mapi.getmousepos()
+  }
+
+  /** 滑动操作 */
+  slide(startX: number, startY: number, endX: number, endY: number, interval: number, pointNum: number) {
+    mapi.slide(startX, startY, endX, endY, interval, pointNum);
+  }
+
+  /** 延迟 */
+  delay(milliseconds: number = 100) {
+    mapi.delay(milliseconds)
+  }
+
+  isPressingKey(keyName: string): boolean {
+    return mapi.keyispress(keyName)
+  }
+
+  isPressingCurrentKey() {
+    return mapi.keyispress();
+  }
+
+  getValueFromGlobalMap(key: string | Object): any {
+    return mapi.getglobalmap(key);
+  }
+
+  setValueToGlobalMap(key: string | Object, value: any) {
+    mapi.setglobalmap(key, value)
+  }
 }
 
 export const utils = new Utils();

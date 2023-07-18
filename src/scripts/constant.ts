@@ -14,6 +14,10 @@ export const BIND_KEYS = {
   TAKE_MEDICINE: '5',
 };
 
+export const KEYBOARD = {
+  Shift: 'shift',
+}
+
 export const NOD_HEAD = {
   INTERVAL: 300,
   MAX_DURATION: 6000,

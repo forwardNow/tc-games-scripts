@@ -18,7 +18,7 @@ export class Bag {
       return;
     }
 
-    mapi.key(BIND_KEYS.BAG, 300);
+    utils.clickKey(BIND_KEYS.BAG);
   }
 
   closeBag() {
@@ -30,7 +30,7 @@ export class Bag {
   }
 
   isBagOpen() {
-    const point = mapi.findimage(Bag.IMAGE_NAMES.BAG_OPEN, 0.75, 4, 4, 4, 1);
+    const point = utils.findImage(Bag.IMAGE_NAMES.BAG_OPEN, 0.75, 4, 4, 4, 1);
 
     return utils.isPointExist(point);
   }
@@ -44,7 +44,7 @@ export class Bag {
       return false;
     }
 
-    const startPoint = mapi.getmousepos();
+    const startPoint = utils.getMousePosition();
 
     const startX = startPoint.X;
     const startY = startPoint.Y;
@@ -55,7 +55,7 @@ export class Bag {
     const pointNum = 10;
     const interval = total / pointNum;
 
-    mapi.slide(startX, startY, endX, endY, interval, pointNum);
+    utils.slide(startX, startY, endX, endY, interval, pointNum);
 
     return true;
   }
@@ -63,7 +63,7 @@ export class Bag {
   swapGuns() {
     this.openBag();
 
-    mapi.delay(100);
+    utils.delay();
 
     const {
       LEFT_GUN_POINT: [ startX, startY ],
@@ -74,7 +74,7 @@ export class Bag {
     const pointNum = 20;
     const interval = total / pointNum;
 
-    mapi.slide(startX, startY, endX, endY, interval, pointNum);
+    utils.slide(startX, startY, endX, endY, interval, pointNum);
 
     this.closeBag();
   }

@@ -40,7 +40,7 @@ export class Missile {
    * @returns {boolean} true - 执行成功
    */
   cancelThrow = () => {
-    const point = mapi.findimage(...Missile.IMAGE_ARGS.CANCEL_THROW_BUTTON);
+    const point = utils.findImage(...Missile.IMAGE_ARGS.CANCEL_THROW_BUTTON);
 
     if (utils.isPointNotExist(point)) {
       return false;
@@ -56,9 +56,9 @@ export class Missile {
   switchMissile(missile: MissileCategory) {
     this.expandList();
 
-    mapi.delay(200);
+    utils.delay(200);
 
-    const point = mapi.findimage(...Missile.IMAGE_ARGS[missile]);
+    const point = utils.findImage(...Missile.IMAGE_ARGS[missile]);
 
     if (utils.isPointNotExist(point)) {
       utils.showTip('未找到投掷物：' + Missile.MISSILE_IMAGE_NAMES[missile]);

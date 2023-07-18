@@ -12,7 +12,7 @@ export class Car {
 
   /** 是否在车上 */
   isOnCar() {
-    const point = mapi.findimage(...Car.IMAGE_ARGS.GET_OFF_BUTTON);
+    const point = utils.findImage(...Car.IMAGE_ARGS.GET_OFF_BUTTON);
 
     const result = utils.isPointExist(point);
 
@@ -21,7 +21,7 @@ export class Car {
 
   /** 上车 */
   getOn() {
-    mapi.key(BIND_KEYS.GET_ON_DRIVER);
+    utils.clickKey(BIND_KEYS.GET_ON_DRIVER);
 
     return true;
   }

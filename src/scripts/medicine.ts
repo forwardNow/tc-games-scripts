@@ -57,7 +57,7 @@ export class Medicine {
    * @returns {boolean} true - 执行成功
    */
   cancelTakeMedicine() {
-    const point = mapi.findimage(...Medicine.IMAGE_ARGS.CANCEL_TAKE_MEDICINE_BUTTON);
+    const point = utils.findImage(...Medicine.IMAGE_ARGS.CANCEL_TAKE_MEDICINE_BUTTON);
 
     if (utils.isPointNotExist(point)) {
       return false;
@@ -74,9 +74,9 @@ export class Medicine {
   takeMedicine(medicine: MedicineCategory) {
     this.expandList();
 
-    mapi.delay(200);
+    utils.delay(200);
 
-    const point = mapi.findimage(...Medicine.IMAGE_ARGS[medicine]);
+    const point = utils.findImage(...Medicine.IMAGE_ARGS[medicine]);
 
     if (utils.isPointNotExist(point)) {
       utils.showTip('未找到药品：' + Medicine.MEDICINE_IMAGE_NAMES[medicine]);
@@ -86,7 +86,7 @@ export class Medicine {
 
     utils.clickPoint(point);
 
-    mapi.delay(100);
+    utils.delay();
 
     utils.clickKey(BIND_KEYS.TAKE_MEDICINE)
   }

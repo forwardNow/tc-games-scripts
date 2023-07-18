@@ -218,14 +218,14 @@ export class Mirror {
    * 打开 6 倍瞄准镜的缩放栏
    */
   openZoomBarOf6XSight() {
-    const zoomBarPoint = mapi.findimage(Mirror.IMAGE_NAMES.X6_SIGHT_ZOOM_BAR, 0.75, 4, 1, 2, 1);
+    const zoomBarPoint = utils.findImage(Mirror.IMAGE_NAMES.X6_SIGHT_ZOOM_BAR, 0.75, 4, 1, 2, 1);
 
     if (utils.isPointExist(zoomBarPoint)) {
       return;
     }
 
     // TODO 平板，图片寻找区域调整，手机可能也需要调整
-    const buttonPoint = mapi.findimage(Mirror.IMAGE_NAMES.BUTTON_OF_X6_SIGHT_ZOOM_BAR, 0.75, 4, 3, 2, 1);
+    const buttonPoint = utils.findImage(Mirror.IMAGE_NAMES.BUTTON_OF_X6_SIGHT_ZOOM_BAR, 0.75, 4, 3, 2, 1);
 
     if (!utils.isPointExist(buttonPoint)) {
       loginfo('openZoomBarOf6XSight(): 未找到图片 - ' + Mirror.IMAGE_NAMES.BUTTON_OF_X6_SIGHT_ZOOM_BAR);
@@ -243,7 +243,7 @@ export class Mirror {
    */
   adjustX6ToX3() {
     if (this.openZoomBarOf6XSight()) {
-      mapi.delay(100);
+      utils.delay();
     }
 
     utils.clickPoint(Mirror.X6_TO_X3_POINT);
@@ -257,7 +257,7 @@ export class Mirror {
    */
   adjustX6ToX6() {
     if (this.openZoomBarOf6XSight()) {
-      mapi.delay(100);
+      utils.delay();
     }
 
     utils.clickPoint(Mirror.X6_TO_X6_POINT);
