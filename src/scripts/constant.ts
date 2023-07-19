@@ -28,7 +28,7 @@ export const BindKeys = {
 
 export const NodHeadConfig = {
   Interval: 300,
-  MaxDuration: 6000,
+  MaxDuration: 2000,
 };
 
 // 华为 nova9， 2430 × 1080
