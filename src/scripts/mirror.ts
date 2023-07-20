@@ -42,16 +42,16 @@ export class Mirror {
     X8Sight: '8倍',
   };
 
-  /** 图片名称 */
-  static ImageNames = {
+  static ImageArgs: { [name: string]: ImageArgs } = {
     /** 第一（三）人称图标 */
-    FirstPersonIcon: '第一人称文本',
+    FirstPersonIcon: [ '第一人称文本', 0.65, 4, 4, 1, 4 ],
 
     /** 打开 6 倍镜缩放条 的按钮 */
-    ButtonOfX6SightZoomBar: '6倍镜调距按钮',
+    OpenX6MirrorZoomBarIcon: [ '6倍镜调距按钮', 0.75, 4, 3, 2, 1 ],
+
     /** 6 倍镜缩放条 */
-    X6SightZoomBar: '6倍镜调距条',
-  };
+    X6SightZoomBar: [ '6倍镜调距条', 0.75, 4, 1, 2, 1 ],
+  }
 
   static MirrorTextImageNames: { [key in MirrorCategory]: string } = {
     MachineSight: '机瞄文本',
@@ -92,9 +92,7 @@ export class Mirror {
    */
   isOpen() {
     // 第一（三）人称图标 如果存在 则说明未开镜
-    const isExist = utils.isImageExist(Mirror.ImageNames.FirstPersonIcon, 0.65, 4, 4, 1, 4);
-
-    return !isExist;
+    return !utils.isImageExist(...Mirror.ImageArgs.FirstPersonIcon);
   }
 
   /** 是否有可用准镜 */
@@ -204,17 +202,17 @@ export class Mirror {
    * 打开 6 倍瞄准镜的缩放栏
    */
   openZoomBarOf6XSight() {
-    const zoomBarPoint = utils.findImage(Mirror.ImageNames.X6SightZoomBar, 0.75, 4, 1, 2, 1);
+    const zoomBarPoint = utils.findImage(...Mirror.ImageArgs.X6SightZoomBar);
 
     if (utils.isPointExist(zoomBarPoint)) {
       return;
     }
 
     // TODO 平板，图片寻找区域调整，手机可能也需要调整
-    const buttonPoint = utils.findImage(Mirror.ImageNames.ButtonOfX6SightZoomBar, 0.75, 4, 3, 2, 1);
+    const buttonPoint = utils.findImage(...Mirror.ImageArgs.OpenX6MirrorZoomBarIcon);
 
     if (!utils.isPointExist(buttonPoint)) {
-      loginfo('openZoomBarOf6XSight(): 未找到图片 - ' + Mirror.ImageNames.ButtonOfX6SightZoomBar);
+      loginfo('openZoomBarOf6XSight(): 未找到图片 - ' + Mirror.ImageArgs.OpenX6MirrorZoomBarIcon[0]);
       return;
     }
 
