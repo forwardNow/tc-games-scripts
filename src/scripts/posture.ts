@@ -22,8 +22,8 @@ export class Posture {
 
   /** 姿势类别-颜色点 */
   static ColorPoint: { [key in Exclude<PostureCategory, 'Stand'>]: ColorArgs } = {
-    Squat: constant.SquatColorPoint,
-    Prostrate: constant.ProstrateColorPoint,
+    Squat: constant.SquatIconColorArgs,
+    Prostrate: constant.ProstrateIconColorArgs,
   }
 
   /** 获取姿势 */
@@ -48,7 +48,7 @@ export class Posture {
   }
 
   clickSquatKey() {
-    utils.clickPoint(constant.SquatButtonPosition);
+    utils.clickPoint(constant.SquatIconPoint);
   }
 
 }

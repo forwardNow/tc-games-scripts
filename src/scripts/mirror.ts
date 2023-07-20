@@ -5,10 +5,6 @@ import constant from './constant';
 type DelicateMirror = Exclude<MirrorCategory, 'MachineSight'>;
 
 export class Mirror {
-  static X6SightZoomBarPoint = constant.X6SightZoomBarPoint;
-  static X6ToX3Point = constant.X6ToX3Point;
-  static X6ToX6Point = constant.X6ToX6Point;
-
   /** 准镜类型 */
   static Categories: { [key in MirrorCategory | 'X6X3Sight']: MirrorCategory | 'X6X3Sight'; } = {
     /** 机瞄 */
@@ -222,7 +218,7 @@ export class Mirror {
       return;
     }
 
-    utils.clickPoint(Mirror.X6SightZoomBarPoint);
+    utils.clickPoint(constant.X6MirrorOpenZoomBarIconPoint);
 
     return true;
   }
@@ -236,7 +232,7 @@ export class Mirror {
       utils.delay();
     }
 
-    utils.clickPoint(Mirror.X6ToX3Point);
+    utils.clickPoint(constant.X6MirrorToX3PositionPoint);
 
     return Mirror.Categories.X6X3Sight;
   }
@@ -250,7 +246,7 @@ export class Mirror {
       utils.delay();
     }
 
-    utils.clickPoint(Mirror.X6ToX6Point);
+    utils.clickPoint(constant.X6MirrorToX6PositionPoint);
 
     return Mirror.Categories.X6Sight;
   }

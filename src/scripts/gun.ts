@@ -72,12 +72,12 @@ export class Gun {
 
   /** 是否持 左 枪 */
   isLeftGun() {
-    return utils.isColorExist(...constant.CurrLeftGunColorPoint);
+    return utils.isColorExist(...constant.LeftGunHighlightColorArgs);
   }
 
   /** 是否持 右 枪 */
   isRightGun() {
-    return utils.isColorExist(...constant.CurrRightGunColorPoint);
+    return utils.isColorExist(...constant.RightGunHighlightColorArgs);
   }
 
   /** 是否 持枪 */

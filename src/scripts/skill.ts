@@ -41,7 +41,7 @@ export class Skill {
   }
 
   clickOpenMirrorButton() {
-    utils.clickPoint(constant.OpenMirrorButtonPosition)
+    utils.clickPoint(constant.OpenMirrorButtonPoint)
   }
 
   isPressShift() {
