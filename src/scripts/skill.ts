@@ -24,6 +24,7 @@ export class Skill {
     const maxTimes = MaxDuration / Interval;
 
     for (let i = 0; i < maxTimes; i++) {
+      // 松开 Shift 才会停止，会导致一直开枪
       if (!this.isPressShift()) {
         break;
       }
