@@ -1,4 +1,3 @@
-/** mapi.point */
 export type Point = { x: number, y: number };
 
 export type ImageArgs = [ string, number, number, number, number, number ]
