@@ -42,9 +42,8 @@ const Nova9 = {
   LeftGunPositionPoint: { x: 1036, y: 946 }  as Point,
   RightGunPositionPoint: { x: 1263, y: 961 } as Point,
 
-  X6MirrorOpenZoomBarIconPoint: { x: 678, y: 222 } as Point,
-  X6MirrorToX3PositionPoint: { x: 678, y: 597 } as Point,
-  X6MirrorToX6PositionPoint: { x: 678, y: 346 } as Point,
+  X6MirrorZoomBarX3PositionPoint: { x: 678, y: 597 } as Point,
+  X6MirrorZoomBarX6PositionPoint: { x: 678, y: 346 } as Point,
 
   MirrorTextImageSim: {
     X8Sight: 0.65,
@@ -78,9 +77,8 @@ const MatePad11 = {
   LeftGunPositionPoint: { x: 1125, y: 1450 }  as Point,
   RightGunPositionPoint: { x: 1430, y: 1450 } as Point,
 
-  X6MirrorOpenZoomBarIconPoint: { x: 738, y: 388 } as Point,
-  X6MirrorToX3PositionPoint: { x: 746, y: 882 } as Point,
-  X6MirrorToX6PositionPoint: { x: 748, y: 538 } as Point,
+  X6MirrorZoomBarX3PositionPoint: { x: 746, y: 882 } as Point,
+  X6MirrorZoomBarX6PositionPoint: { x: 748, y: 538 } as Point,
 
   MirrorTextImageSim: {
     X8Sight: 0.75,

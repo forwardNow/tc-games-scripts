@@ -100,11 +100,7 @@ export class Mirror {
     // TODO
   }
 
-  /**
-   * 获取当前准镜名称
-   *
-   * @return { string }
-   */
+  /** 获取当前准镜名称 */
   getCurrentMirror(disabledMirrors = [ 'X8Sight' as MirrorCategory ], availableMirrors = Mirror.AvailableMirrors) {
     return this.getCurrentBySightText(disabledMirrors, availableMirrors);
   }
@@ -146,11 +142,7 @@ export class Mirror {
     return mirror === Mirror.Categories.X6Sight;
   }
 
-  /**
-   * 识别出所有可用准镜
-   *
-   * @return {*[]}
-   */
+  /** 识别出所有可用准镜 */
   identityAvailableMirror() {
     const result: string[] = [];
 
@@ -197,10 +189,7 @@ export class Mirror {
     return result;
   }
 
-
-  /**
-   * 打开 6 倍瞄准镜的缩放栏
-   */
+  /** 打开 6 倍瞄准镜的缩放栏 */
   openZoomBarOf6XSight() {
     const zoomBarPoint = utils.findImage(...Mirror.ImageArgs.X6SightZoomBar);
 
@@ -209,42 +198,36 @@ export class Mirror {
     }
 
     // TODO 平板，图片寻找区域调整，手机可能也需要调整
-    const buttonPoint = utils.findImage(...Mirror.ImageArgs.OpenX6MirrorZoomBarIcon);
+    const openX6MirrorZoomBarIconPoint = utils.findImage(...Mirror.ImageArgs.OpenX6MirrorZoomBarIcon);
 
-    if (!utils.isPointExist(buttonPoint)) {
+    if (!utils.isPointExist(openX6MirrorZoomBarIconPoint)) {
       loginfo('openZoomBarOf6XSight(): 未找到图片 - ' + Mirror.ImageArgs.OpenX6MirrorZoomBarIcon[0]);
       return;
     }
 
-    utils.clickPoint(constant.X6MirrorOpenZoomBarIconPoint);
+    utils.clickPoint(openX6MirrorZoomBarIconPoint);
 
     return true;
   }
 
-  /**
-   * 调整六倍镜，设置为 3 倍率
-   * @return {string} Mirror.CATEGORIES.X6X3Sight
-   */
+  /** 调整六倍镜，设置为 3 倍率 */
   adjustX6ToX3() {
     if (this.openZoomBarOf6XSight()) {
       utils.delay();
     }
 
-    utils.clickPoint(constant.X6MirrorToX3PositionPoint);
+    utils.clickPoint(constant.X6MirrorZoomBarX3PositionPoint);
 
     return Mirror.Categories.X6X3Sight;
   }
 
-  /**
-   * 调整六倍镜，设置为 6 倍率
-   * @return {string} Mirror.CATEGORIES.X6_TO_X6_SIGHT
-   */
+  /** 调整六倍镜，设置为 6 倍率 */
   adjustX6ToX6() {
     if (this.openZoomBarOf6XSight()) {
       utils.delay();
     }
 
-    utils.clickPoint(constant.X6MirrorToX6PositionPoint);
+    utils.clickPoint(constant.X6MirrorZoomBarX6PositionPoint);
 
     return Mirror.Categories.X6Sight;
   }
