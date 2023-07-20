@@ -20,19 +20,13 @@ export class Posture {
     Prostrate: '趴',
   };
 
-  /**
-   * 姿势类别-颜色点
-   */
+  /** 姿势类别-颜色点 */
   static ColorPoint: { [key in Exclude<PostureCategory, 'Stand'>]: ColorArgs } = {
     Squat: constant.SquatColorPoint,
     Prostrate: constant.ProstrateColorPoint,
   }
 
-  /**
-   * 获取姿势
-   *
-   * @return {string}
-   */
+  /** 获取姿势 */
   getCurrentPostureCategory() {
     if (this.isSquat()) {
       return Posture.Categories.Squat;
