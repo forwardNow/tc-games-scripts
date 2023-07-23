@@ -86,12 +86,18 @@ export class Utils {
   }
 
   /** 重置 准心、方向键 */
-  resetAimAndDirection() {
+  resetAimAndDirection(delay?: number) {
+    if (delay) {
+      mapi.delay(delay)
+    }
     mapi.aimreset();
     mapi.directionreset();
   }
 
-  resetAim() {
+  resetAim(delay?: number) {
+    if (delay) {
+      mapi.delay(delay)
+    }
     mapi.aimreset();
   }
 
