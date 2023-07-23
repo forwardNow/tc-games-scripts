@@ -20,6 +20,8 @@ export class Car {
   getOn() {
     utils.clickKey(BindKeys.GetOnDriver);
 
+    utils.resetAimAndDirection(100);
+
     return true;
   }
 
@@ -33,7 +35,7 @@ export class Car {
 
     utils.clickPoint(point);
 
-    utils.resetAimAndDirection();
+    utils.resetAimAndDirection(100);
 
     return true;
   }
