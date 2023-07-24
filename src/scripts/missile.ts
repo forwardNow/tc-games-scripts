@@ -32,7 +32,10 @@ export class Missile {
 
     ExpandListButton: [ '投掷物展开按钮', 0.75, 4, 4, 3, 4 ],
     CollapseListButton: [ '投掷物折叠按钮', 0.75, 4, 2, 3, 2 ],
+
     FragmentBomb: [ Missile.ImageNames.FragmentBomb, 0.75, 4, 2, 3, 2 ],
+    SmokeBomb: [ Missile.ImageNames.SmokeBomb, 0.75, 4, 2, 3, 2 ],
+    MolotovCocktail: [ Missile.ImageNames.MolotovCocktail, 0.75, 4, 2, 3, 2 ],
   };
 
   /**
