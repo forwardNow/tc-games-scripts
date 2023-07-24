@@ -54,21 +54,6 @@ export default {
   },
 
   /**
-   * @description 复合按键：
-   *    1. 下车
-   *    2. 上车
-   * @bind F
-   */
-  compositeKey_getOnCar() {
-    utils.series([
-      car.getOff,
-
-      // 上车（点击当前按键所在位置）
-      utils.clickCurrentKey,
-    ]);
-  },
-
-  /**
    * @description 调整 6 倍镜
    *  并存储调整过 6 倍镜倍率的枪及倍率
    * @bind 鼠标滚轮-滚上
