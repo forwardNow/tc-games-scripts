@@ -26,7 +26,7 @@ export class Medicine {
     MedicalFirstAidKit: 'MedicalFirstAidKit',
   };
 
-  static MedicineImageNames: { [key in MedicineCategory]: string } = {
+  static ImageNames: { [key in MedicineCategory]: string } = {
     // 能量饮料
     EnergyDrink: '能量饮料',
     // 止痛药
@@ -46,9 +46,14 @@ export class Medicine {
 
     ExpandListButton: [ '投掷物展开按钮', 0.75, 4, 4, 2, 4 ],
     CollapseListButton: [ '投掷物折叠按钮', 0.75, 4, 2, 2, 2 ],
-    EnergyDrink: [ '能量饮料', 0.75, 4, 2, 2, 2 ],
-    Painkiller: [ '止痛药', 0.75, 4, 2, 2, 2 ],
-    FirstAidKit: [ '急救包', 0.75, 4, 2, 2, 2 ],
+
+    EnergyDrink: [ Medicine.ImageNames.EnergyDrink, 0.75, 4, 2, 2, 2 ],
+    Painkiller: [ Medicine.ImageNames.Painkiller, 0.75, 4, 2, 2, 2 ],
+    EpinephrineInjection: [ Medicine.ImageNames.EpinephrineInjection, 0.75, 4, 2, 2, 2 ],
+
+    Bandage: [ Medicine.ImageNames.Bandage, 0.75, 4, 2, 2, 2 ],
+    FirstAidKit: [ Medicine.ImageNames.FirstAidKit, 0.75, 4, 2, 2, 2 ],
+    MedicalFirstAidKit: [ Medicine.ImageNames.MedicalFirstAidKit, 0.75, 4, 2, 2, 2 ],
   };
 
 
@@ -79,7 +84,7 @@ export class Medicine {
     const point = utils.findImage(...Medicine.ImageArgs[medicine]);
 
     if (utils.isPointNotExist(point)) {
-      utils.showTip('未找到药品：' + Medicine.MedicineImageNames[medicine]);
+      utils.showTip('未找到药品：' + Medicine.ImageNames[medicine]);
       this.collapseList();
       return;
     }
