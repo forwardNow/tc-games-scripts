@@ -13,21 +13,23 @@ export class PressCtrl {
   currMirrorCategory = null as ( null | MirrorCategory )
 
   fire() {
-    utils.holdPressCurrentKey();
-
     if (!gun.isHoldConfiguredGun()) {
+      utils.holdPressCurrentKey();
       return false;
     }
 
     if (!mirror.isOpen()) {
+      utils.holdPressCurrentKey();
+
       utils.pauseCustomAim();
 
       skill.nodHead({ isCheckMirrorOpen: false, isCheckHoldGun: false });
 
       return;
     }
-
+``
     this.doCustomAim();
+    utils.holdPressCurrentKey();
   }
 
   toggleX6Sight() {
