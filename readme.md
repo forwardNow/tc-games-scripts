@@ -52,9 +52,12 @@
 
 | 按键 | 说明 | 宏 |
 | --- | --- | --- |
-| Ctrl | 重置 准心、方向键 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.reset();`<br>`   });`<br>`} ());` |
+| Ctrl |   1. 重置 准心<br>  2. 重置 方向键<br>  3. 重置点头操作 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.reset();`<br>`   });`<br>`} ());` |
+| F1 |   1. 拾取<br>  2. 切 雷 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.bindKeyF1();`<br>`   });`<br>`} ());` |
 | F11 | 记录不准确的压枪参数 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.logErrorPressArgs();`<br>`   });`<br>`} ());` |
 | F12 | 启用/禁用 utils.showTip() | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleEnableOfTip();`<br>`   });`<br>`} ());` |
+| F2 |   1. 拾取<br>  2. 切 烟 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.bindKeyF2();`<br>`   });`<br>`} ());` |
+| F3 |   1. 拾取<br>  2. 切 火 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.bindKeyF3();`<br>`   });`<br>`} ());` |
 | F5 | 左右枪互换 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.swapGuns();`<br>`   });`<br>`} ());` |
 | F9 | 开启/关闭 腰射点头，默认开启 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleNodHead();`<br>`   });`<br>`} ());` |
 | Num1 | 吃 能量饮料 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatEnergyDrink();`<br>`   });`<br>`} ());` |
