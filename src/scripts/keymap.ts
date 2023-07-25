@@ -46,7 +46,7 @@ export default {
   },
 
   /**
-   * @description 腰射点头
+   * @description 开启/关闭 腰射点头，默认开启
    * @bind F9
    */
   toggleNodHead() {
@@ -128,7 +128,7 @@ export default {
   },
 
   /**
-   * @description 吃 能量饮料 (TODO)
+   * @description 吃 能量饮料
    * @bind Num1
    */
   eatEnergyDrink() {
@@ -136,7 +136,7 @@ export default {
   },
 
   /**
-   * @description 吃 止痛药 (TODO)
+   * @description 吃 止痛药
    * @bind Num2
    */
   eatPainkiller() {
@@ -144,7 +144,7 @@ export default {
   },
 
   /**
-   * @description 吃 肾上腺素注射剂 (TODO)
+   * @description 吃 肾上腺素注射剂
    * @bind Num3
    */
   eatEpinephrineInjection() {
@@ -152,7 +152,7 @@ export default {
   },
 
   /**
-   * @description 吃 绷带 (TODO)
+   * @description 吃 绷带
    * @bind Num4
    */
   eatBandage() {
@@ -160,7 +160,7 @@ export default {
   },
 
   /**
-   * @description 吃 急救包 (TODO)
+   * @description 吃 急救包
    * @bind Num5
    */
   eatFirstAidKit() {
@@ -168,7 +168,7 @@ export default {
   },
 
   /**
-   * @description 吃 医疗急救箱 (TODO)
+   * @description 吃 医疗急救箱
    * @bind Num6
    */
   eatMedicalFirstAidKit() {
@@ -184,7 +184,7 @@ export default {
   },
 
   /**
-   * @description 切换 烟雾弹 (TODO)
+   * @description 切换 烟雾弹
    * @bind Num8
    */
   switchSmokeBomb() {
@@ -192,7 +192,7 @@ export default {
   },
 
   /**
-   * @description 切换 燃烧瓶 (TODO)
+   * @description 切换 燃烧瓶
    * @bind Num9
    */
   switchMolotovCocktail() {
