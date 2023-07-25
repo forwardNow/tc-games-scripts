@@ -64,7 +64,7 @@ export class Skill {
   }
 
   /** 重置腰射点头，两次切换状态，中间间隔 600 毫秒 */
-  resetNodHead() {
+  resetNodHead = () => {
     if (!this.isEnableOfNodHead()) {
       return;
     }

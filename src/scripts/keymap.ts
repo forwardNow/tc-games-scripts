@@ -19,14 +19,15 @@ export default {
 
   /**
    * @description 复合按键：
-   *    1. 丢弃背包中光标所指位置的配件
-   *    2. 取消投掷
+   *    1. 丢弃背包中光标所指位置的配件 (一旦执行，后续操作都取消)
+   *    2. 取消投掷 (一旦执行，后续操作都取消)
    *    3. 取消打药 (TODO)
    *    4. 开镜
    *    5. 更新压枪参数
+   *    5. 取消腰射点头
    * @bind 鼠标右键
    */
-  compositeKey_openMirror() {
+  bindKeyMouseRight() {
     utils.series([
       // 丢弃背包物资
       bag.discardMaterialsUnderCursor,
@@ -42,6 +43,9 @@ export default {
 
       // 更新压枪参数
       pressCtrl.updatePressArgs,
+
+      // 取消腰射点头
+      skill.resetNodHead,
     ]);
   },
 
