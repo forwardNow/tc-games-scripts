@@ -23,19 +23,25 @@ export class Skill {
 
     const maxTimes = MaxDuration / Interval;
 
+    let count = 0;
+
     for (let i = 0; i < maxTimes; i++) {
       // 松开 Shift 才会停止，会导致一直开枪
       if (!this.isPressShift()) {
+        this.handleStopNodHead(count);
         break;
       }
 
       if (!this.isEnableOfNodHead()) {
+        this.handleStopNodHead(count);
         break;
       }
 
       utils.delay(Interval);
 
       posture.clickSquatKey();
+
+      count += 1;
     }
 
     return true;
@@ -68,6 +74,15 @@ export class Skill {
     utils.delay(600);
 
     this.toggleNodHead();
+  }
+
+  /** 点头奇数次，则再点一次 */
+  handleStopNodHead(nodCount: number) {
+    if (nodCount % 2 === 0) {
+      return;
+    }
+
+    posture.clickSquatKey();
   }
 
 }
