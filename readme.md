@@ -73,7 +73,7 @@
 | Tab | 收枪 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.hideGun();`<br>`   });`<br>`} ());` |
 | 上箭头 | 动态调整压枪参数, +1 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.addDelayOfGunPressArgs();`<br>`   });`<br>`} ());` |
 | 下箭头 | 动态调整压枪参数, -1 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.subtractDelay();`<br>`   });`<br>`} ());` |
-| 鼠标右键 | 复合按键：<br>    1. 丢弃背包中光标所指位置的配件<br>    2. 取消投掷<br>    3. 取消打药 (TODO)<br>    4. 开镜<br>    5. 更新压枪参数 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.compositeKey_openMirror();`<br>`   });`<br>`} ());` |
+| 鼠标右键 | 复合按键：<br>    1. 丢弃背包中光标所指位置的配件 (一旦执行，后续操作都取消)<br>    2. 取消投掷 (一旦执行，后续操作都取消)<br>    3. 取消打药 (TODO)<br>    4. 开镜<br>    5. 更新压枪参数<br>    5. 取消腰射点头 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.bindKeyMouseRight();`<br>`   });`<br>`} ());` |
 | 鼠标左键 | 开火 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.fire();`<br>`   });`<br>`} ());` |
 | 鼠标滚轮-滚上 | 调整 6 倍镜<br>  并存储调整过 6 倍镜倍率的枪及倍率 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleX6Sight();`<br>`   });`<br>`} ());` |
 
