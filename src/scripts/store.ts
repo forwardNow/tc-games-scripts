@@ -6,7 +6,7 @@ const state = {
   tip: true,
 
   /** 腰射点头 */
-  nodHead: false,
+  nodHead: true,
 
   /** 调整过 6 倍镜倍率 的 枪及倍率 */
   adjust6XSightGuns: {} as Record<string, string>, // { gun: sight, ... }
