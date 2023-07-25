@@ -29,6 +29,10 @@ export class Skill {
         break;
       }
 
+      if (!this.isEnableOfNodHead()) {
+        break;
+      }
+
       utils.delay(Interval);
 
       posture.clickSquatKey();
@@ -52,6 +56,20 @@ export class Skill {
   toggleNodHead() {
     store.state.nodHead = !store.state.nodHead;
   }
+
+  /** 重置腰射点头，两次切换状态，中间间隔 600 毫秒 */
+  resetNodHead() {
+    if (!this.isEnableOfNodHead()) {
+      return;
+    }
+
+    this.toggleNodHead();
+
+    utils.delay(600);
+
+    this.toggleNodHead();
+  }
+
 }
 
 export const skill = new Skill();

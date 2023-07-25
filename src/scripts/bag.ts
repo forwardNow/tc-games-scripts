@@ -5,6 +5,7 @@ import { ImageArgs, Point, PointArgs } from '../../types';
 export class Bag {
   static ImageArgs: { [name: string]: ImageArgs } = {
     BagOpenFlagIcon: ['背包已打开的标志', 0.75, 4, 4, 4, 1],
+    PickupCloseIcon: ['拾取列表关闭按钮', 0.75, 4, 4, 3, 1],
   }
 
   static Points: { [prop: string]: Point } = {
@@ -74,6 +75,11 @@ export class Bag {
     utils.slide(startX, startY, endX, endY, interval, pointNum);
 
     this.closeBag();
+  }
+
+  /** 是否可以拾取东西 */
+  canPickUp() {
+    return utils.isImageExist(...Bag.ImageArgs.PickupCloseIcon)
   }
 }
 

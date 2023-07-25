@@ -88,6 +88,51 @@ export default {
   },
 
   /**
+   * @description
+   *  1. 拾取
+   *  2. 切 雷
+   * @bind F1
+   */
+  bindKeyF1() {
+    if (bag.canPickUp()) {
+      utils.clickCurrentKey();
+      return;
+    }
+
+    missile.switchFragmentBomb()
+  },
+
+  /**
+   * @description
+   *  1. 拾取
+   *  2. 切 烟
+   * @bind F2
+   */
+  bindKeyF2() {
+    if (bag.canPickUp()) {
+      utils.clickCurrentKey();
+      return;
+    }
+
+    missile.switchSmokeBomb();
+  },
+
+  /**
+   * @description
+   *  1. 拾取
+   *  2. 切 火
+   * @bind F3
+   */
+  bindKeyF3() {
+    if (bag.canPickUp()) {
+      utils.clickCurrentKey();
+      return;
+    }
+
+    missile.switchMolotovCocktail();
+  },
+
+  /**
    * @description 左右枪互换
    * @bind F5
    */
@@ -120,11 +165,15 @@ export default {
   },
 
   /**
-   * @description 重置 准心、方向键
+   * @description
+   *  1. 重置 准心
+   *  2. 重置 方向键
+   *  3. 重置点头操作
    * @bind Ctrl
    */
   reset() {
     utils.resetAimAndDirection();
+    skill.resetNodHead();
   },
 
   /**
