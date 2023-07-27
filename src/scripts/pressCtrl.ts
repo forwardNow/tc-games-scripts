@@ -27,10 +27,25 @@ export class PressCtrl {
 
       return;
     }
-``
+
     this.doCustomAim();
+
     utils.holdPressCurrentKey();
   }
+
+  doCustomAim() {
+    utils.startCustomAim();
+
+    const success = this.updatePressArgs();
+
+    if (!success) {
+      utils.pauseCustomAim();
+      return;
+    }
+
+    utils.playCustomAim();
+  }
+
 
   toggleX6Sight() {
     if (!mirror.isOpen()) {
@@ -75,19 +90,6 @@ export class PressCtrl {
     logerror(`logErrorPressArgs: ${ gunCategory }${ cnPostureCategory }${ cnMirrorCategory }: ${ JSON.stringify(args) }`)
   }
 
-  doCustomAim() {
-    utils.startCustomAim();
-
-    const success = this.updatePressArgs();
-
-    if (!success) {
-      utils.pauseCustomAim();
-      return;
-    }
-
-    utils.playCustomAim();
-  }
-
   updatePressArgs = () => {
     try {
       const args = this.getArgsOfCustomAimPar();
@@ -106,9 +108,6 @@ export class PressCtrl {
     }
   }
 
-  /**
-   * @return {{ x: number, y: number, delay: number} | null}
-   */
   getArgsOfCustomAimPar() {
     const status = this.getStatus();
 
