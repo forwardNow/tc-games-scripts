@@ -50,14 +50,6 @@ export default {
     ]);
   },
 
-  /**
-   * @description 重置 腰射点头
-   * @bind Space
-   */
-  bindKeySpace() {
-    utils.clickCurrentKey();
-  },
-
 
   /**
    * @description 调整 6 倍镜
