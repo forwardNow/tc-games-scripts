@@ -59,7 +59,6 @@
 | F2 |   1. 拾取<br>  2. 切 烟 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.bindKeyF2();`<br>`   });`<br>`} ());` |
 | F3 |   1. 拾取<br>  2. 切 火 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.bindKeyF3();`<br>`   });`<br>`} ());` |
 | F5 | 左右枪互换 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.swapGuns();`<br>`   });`<br>`} ());` |
-| F9 | 开启/关闭 腰射点头，默认开启 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleNodHead();`<br>`   });`<br>`} ());` |
 | Num1 | 吃 能量饮料 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatEnergyDrink();`<br>`   });`<br>`} ());` |
 | Num2 | 吃 止痛药 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatPainkiller();`<br>`   });`<br>`} ());` |
 | Num3 | 吃 肾上腺素注射剂 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.eatEpinephrineInjection();`<br>`   });`<br>`} ());` |
@@ -70,11 +69,10 @@
 | Num8 | 切换 烟雾弹 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.switchSmokeBomb();`<br>`   });`<br>`} ());` |
 | Num9 | 切换 燃烧瓶 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.switchMolotovCocktail();`<br>`   });`<br>`} ());` |
 | Q | 切枪 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.switchGun();`<br>`   });`<br>`} ());` |
-| Space | 重置 腰射点头 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.bindKeySpace();`<br>`   });`<br>`} ());` |
 | Tab | 收枪 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.hideGun();`<br>`   });`<br>`} ());` |
 | 上箭头 | 动态调整压枪参数, +1 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.addDelayOfGunPressArgs();`<br>`   });`<br>`} ());` |
 | 下箭头 | 动态调整压枪参数, -1 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.subtractDelay();`<br>`   });`<br>`} ());` |
-| 鼠标右键 | 复合按键：<br>    1. 丢弃背包中光标所指位置的配件 (一旦执行，后续操作都取消)<br>    2. 取消投掷 (一旦执行，后续操作都取消)<br>    3. 取消打药 (TODO)<br>    4. 开镜<br>    5. 更新压枪参数<br>    5. 取消腰射点头 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.bindKeyMouseRight();`<br>`   });`<br>`} ());` |
+| 鼠标右键 | 复合按键：<br>    1. 丢弃背包中光标所指位置的配件 (一旦执行，后续操作都取消)<br>    2. 取消投掷 (一旦执行，后续操作都取消)<br>    3. 取消打药 (TODO)<br>    4. 开镜<br>    5. 更新压枪参数 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.bindKeyMouseRight();`<br>`   });`<br>`} ());` |
 | 鼠标左键 | 开火 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.fire();`<br>`   });`<br>`} ());` |
 | 鼠标滚轮-滚上 | 调整 6 倍镜<br>  并存储调整过 6 倍镜倍率的枪及倍率 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleX6Sight();`<br>`   });`<br>`} ());` |
 
