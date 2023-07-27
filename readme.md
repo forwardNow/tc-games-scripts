@@ -70,6 +70,7 @@
 | Num8 | 切换 烟雾弹 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.switchSmokeBomb();`<br>`   });`<br>`} ());` |
 | Num9 | 切换 燃烧瓶 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.switchMolotovCocktail();`<br>`   });`<br>`} ());` |
 | Q | 切枪 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.switchGun();`<br>`   });`<br>`} ());` |
+| Space | 重置 腰射点头 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.bindKeySpace();`<br>`   });`<br>`} ());` |
 | Tab | 收枪 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.hideGun();`<br>`   });`<br>`} ());` |
 | 上箭头 | 动态调整压枪参数, +1 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.addDelayOfGunPressArgs();`<br>`   });`<br>`} ());` |
 | 下箭头 | 动态调整压枪参数, -1 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.subtractDelay();`<br>`   });`<br>`} ());` |
