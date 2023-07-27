@@ -34,18 +34,18 @@ export class PressCtrl {
 
   toggleX6Sight() {
     if (!mirror.isOpen()) {
-      return;
+      return false;
     }
 
     if (!mirror.isX6Sight()) {
-      return;
+      return false;
     }
 
     const currGunCategory = gun.getCurrentGun();
 
     if (!currGunCategory) {
       // logerror('toggleX6Sight: 未识别到枪械');
-      return;
+      return false;
     }
 
     const currMirrorCategory = this.getCurrentMirrorByGun(currGunCategory);
@@ -59,6 +59,8 @@ export class PressCtrl {
     }
 
     store.mutations.setMirrorOfAdjustedGun(currGunCategory, adjustedMirror)
+
+    return true;
   }
 
   logErrorPressArgs() {

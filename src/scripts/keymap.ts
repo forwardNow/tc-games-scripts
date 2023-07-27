@@ -57,7 +57,11 @@ export default {
    * @bind 鼠标滚轮-滚上
    */
   toggleX6Sight() {
-    pressCtrl.toggleX6Sight();
+    const result = pressCtrl.toggleX6Sight();
+
+    if (!result) {
+      utils.clickCurrentKey();
+    }
   },
 
   /**
