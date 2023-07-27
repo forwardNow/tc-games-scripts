@@ -5,8 +5,8 @@ import { medicine } from './medicine';
 import { missile } from './missile';
 import { bag } from './bag';
 import { pressCtrl } from './pressCtrl';
-import { car } from './car';
 import { skill } from './skill';
+import { mirror } from './mirror';
 
 export default {
   /**
@@ -24,7 +24,6 @@ export default {
    *    3. 取消打药 (TODO)
    *    4. 开镜
    *    5. 更新压枪参数
-   *    5. 取消腰射点头
    * @bind 鼠标右键
    */
   bindKeyMouseRight() {
@@ -38,24 +37,27 @@ export default {
       // 取消打药
       // medicine.cancelTakeMedicine.bind(medicine),
 
-      // 开镜（点击当前按键所在位置）
       utils.clickCurrentKey,
 
       // 更新压枪参数
-      pressCtrl.updatePressArgs,
-
-      // 取消腰射点头
-      skill.resetNodHead,
+      () => {
+        // 点击当前按键后，准镜不会马上打开
+        if (mirror.isOpen()) {
+          return;
+        }
+        pressCtrl.updatePressArgs();
+      },
     ]);
   },
 
   /**
-   * @description 开启/关闭 腰射点头，默认开启
-   * @bind F9
+   * @description 重置 腰射点头
+   * @bind Space
    */
-  toggleNodHead() {
-    skill.toggleNodHead();
+  bindKeySpace() {
+    utils.clickCurrentKey();
   },
+
 
   /**
    * @description 调整 6 倍镜
@@ -177,7 +179,6 @@ export default {
    */
   reset() {
     utils.resetAimAndDirection();
-    skill.resetNodHead();
   },
 
   /**

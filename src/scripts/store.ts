@@ -5,9 +5,6 @@ const state = {
   /** 控制 utils.showTip */
   tip: true,
 
-  /** 腰射点头 */
-  nodHead: true,
-
   /** 调整过 6 倍镜倍率 的 枪及倍率 */
   adjust6XSightGuns: {} as Record<string, string>, // { gun: sight, ... }
 
@@ -30,8 +27,6 @@ const state = {
 const getters: IGetters = {
   /**
    * 获取调整过 6 倍镜倍率的枪的准镜
-   * @param gun {string} Gun.CATEGORIES 的值
-   * @return {string} Mirror.CATEGORIES 的值
    */
   getMirrorOfAdjustedGun(this: typeof store, gun: string) {
     const adjustedX6SightsGuns = this.state.adjust6XSightGuns || {}
@@ -42,8 +37,6 @@ const getters: IGetters = {
 const mutations: IMutations = {
   /**
    * 设置调整过 6 倍镜倍率的枪及准镜
-   * @param gun {string} Gun.CATEGORIES 的值
-   * @param mirror {string} Mirror.CATEGORIES 的值
    */
   setMirrorOfAdjustedGun(this: typeof store, gun: string, mirror: string) {
     const adjustedX6SightsGuns = this.state.adjust6XSightGuns;

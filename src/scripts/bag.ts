@@ -1,6 +1,6 @@
 import { utils } from './utils';
 import constant, { BindKeys } from './constant';
-import { ImageArgs, Point, PointArgs } from '../../types';
+import { ImageArgs, Point } from '../../types';
 
 export class Bag {
   static ImageArgs: { [name: string]: ImageArgs } = {

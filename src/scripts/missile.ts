@@ -40,7 +40,6 @@ export class Missile {
 
   /**
    * 取消投掷
-   * @returns {boolean} true - 执行成功
    */
   cancelThrow = () => {
     const point = utils.findImage(...Missile.ImageArgs.CancelThrowButton);

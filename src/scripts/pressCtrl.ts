@@ -13,39 +13,24 @@ export class PressCtrl {
   currMirrorCategory = null as ( null | MirrorCategory )
 
   fire() {
+    utils.holdPressCurrentKey();
+    utils.pauseCustomAim();
+
     if (!gun.isHoldConfiguredGun()) {
-      utils.holdPressCurrentKey();
-      return false;
+      return;
     }
 
     if (!mirror.isOpen()) {
-      utils.holdPressCurrentKey();
-
-      utils.pauseCustomAim();
-
-      skill.nodHead({ isCheckMirrorOpen: false, isCheckHoldGun: false });
-
       return;
     }
 
     this.doCustomAim();
-
-    utils.holdPressCurrentKey();
   }
 
   doCustomAim() {
     utils.startCustomAim();
-
-    const success = this.updatePressArgs();
-
-    if (!success) {
-      utils.pauseCustomAim();
-      return;
-    }
-
     utils.playCustomAim();
   }
-
 
   toggleX6Sight() {
     if (!mirror.isOpen()) {
@@ -59,13 +44,13 @@ export class PressCtrl {
     const currGunCategory = gun.getCurrentGun();
 
     if (!currGunCategory) {
-      logerror('toggleX6Sight: 未识别到枪械');
+      // logerror('toggleX6Sight: 未识别到枪械');
       return;
     }
 
     const currMirrorCategory = this.getCurrentMirrorByGun(currGunCategory);
 
-    let adjustedMirror = null;
+    let adjustedMirror;
 
     if (currMirrorCategory === Mirror.Categories.X6X3Sight) {
       adjustedMirror = mirror.adjustX6ToX6();
@@ -80,7 +65,7 @@ export class PressCtrl {
     const status = this.getStatus();
 
     if (!status) {
-      logerror(`logErrorPressArgs(): status 为 None`)
+      // logerror(`logErrorPressArgs(): status 为 None`)
       return;
     }
 
@@ -112,7 +97,7 @@ export class PressCtrl {
     const status = this.getStatus();
 
     if (!status) {
-      logerror(`getArgsOfCustomAimPar(): status 为 None`)
+      // logerror(`getArgsOfCustomAimPar(): status 为 None`)
       return;
     }
 
@@ -148,10 +133,10 @@ export class PressCtrl {
     let gunCategory = gun.getCurrentGun();
 
     if (!gunCategory) {
-      logwarning('getStatus: 未识别出当前枪械！尝试使用上次识别出来的枪械');
+      // logwarning('getStatus: 未识别出当前枪械！尝试使用上次识别出来的枪械');
 
       if (!lastGunCategory) {
-        logwarning('getStatus: 上次识别出来的枪械为 None');
+        // logwarning('getStatus: 上次识别出来的枪械为 None');
         return;
       }
 
@@ -163,10 +148,10 @@ export class PressCtrl {
     let mirrorCategory = this.getCurrentMirrorByGun(gunCategory);
 
     if (!mirrorCategory) {
-      logwarning('getStatus: 未识别出当前准镜！尝试使用上次识别出来的准镜！');
+      // logwarning('getStatus: 未识别出当前准镜！尝试使用上次识别出来的准镜！');
 
       if (!lastMirrorCategory) {
-        logwarning('getStatus: 上次识别出来的准镜为 None');
+        // logwarning('getStatus: 上次识别出来的准镜为 None');
         return;
       }
 
