@@ -91,11 +91,7 @@ export class Gun {
   }
 
 
-  /**
-   * 获取当前枪械的名称
-   *
-   * @return {string | null}
-   */
+  /** 获取当前枪械的名称 */
   getCurrentGun() {
     const gunPosition = this.getGunPosition();
 
