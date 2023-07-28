@@ -63,6 +63,9 @@ const Nova9 = {
   OpenMirrorButtonPoint: { x: 1, y: 1 } as Point,
 
   SquatIconPoint: { x: 1, y: 1 } as Point,
+
+  /** 超体主动技能 图标 */
+  HyperbodyActiveSkillPoint: { x: 1, y: 1 } as Point,
 };
 
 
@@ -97,7 +100,11 @@ const MatePad11 = {
 
   OpenMirrorButtonPoint: { x: 2465, y: 954 } as Point,
 
+  /** 蹲 */
   SquatIconPoint: { x: 2200, y: 1500 } as Point,
+
+  /** 超体主动技能 图标 */
+  HyperbodyActiveSkillPoint: { x: 1900, y: 1274 } as Point,
 };
 
 export default /* replace start */ MatePad11 /* replace end */;

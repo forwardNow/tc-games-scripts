@@ -5,8 +5,7 @@ import { medicine } from './medicine';
 import { missile } from './missile';
 import { bag } from './bag';
 import { pressCtrl } from './pressCtrl';
-import { skill } from './skill';
-import { mirror } from './mirror';
+import Constant from './constant';
 
 export default {
   /**
@@ -60,7 +59,7 @@ export default {
     const result = pressCtrl.toggleX6Sight();
 
     if (!result) {
-      utils.clickPoint({ x: 1900, y: 1274 });
+      utils.clickPoint(Constant.HyperbodyActiveSkillPoint);
     }
   },
 
