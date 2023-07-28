@@ -73,18 +73,18 @@ export default {
 
   /**
    * @description 切枪
-   * @bind Q
+   * @bind Tab
    */
   switchGun() {
+    utils.switchToShotMode();
     gun.switchGun();
   },
 
   /**
    * @description 收枪
-   * @bind Tab
+   * @bind F4
    */
   hideGun() {
-    utils.switchToShotMode();
     gun.hideGun();
   },
 
