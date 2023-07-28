@@ -42,9 +42,9 @@ export default {
       // 更新压枪参数
       () => {
         // 点击当前按键后，准镜不会马上打开
-        if (mirror.isOpen()) {
-          return;
-        }
+        // if (mirror.isOpen()) {
+        //   return;
+        // }
         pressCtrl.updatePressArgs();
       },
     ]);
@@ -60,7 +60,7 @@ export default {
     const result = pressCtrl.toggleX6Sight();
 
     if (!result) {
-      utils.clickCurrentKey();
+      utils.clickPoint({ x: 1900, y: 1274 });
     }
   },
 
