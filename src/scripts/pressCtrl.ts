@@ -16,20 +16,29 @@ export class PressCtrl {
     utils.holdPressCurrentKey();
     utils.pauseCustomAim();
 
-    if (!gun.isHoldConfiguredGun()) {
-      return;
-    }
-
-    if (!mirror.isOpen()) {
-      return;
-    }
-
     this.doCustomAim();
   }
 
   doCustomAim() {
+    if (!this.check()) {
+      return;
+    }
+
     utils.startCustomAim();
     utils.playCustomAim();
+  }
+
+  /** 检查准镜和枪械 */
+  check({ mirrorCategory = true, gunCategory = true } = {}) {
+    if (gunCategory && !gun.isHoldConfiguredGun()) {
+      return false;
+    }
+
+    if (mirrorCategory && !mirror.isOpen()) {
+      return false;
+    }
+
+    return true;
   }
 
   toggleX6Sight() {
@@ -44,7 +53,6 @@ export class PressCtrl {
     const currGunCategory = gun.getCurrentGun();
 
     if (!currGunCategory) {
-      // logerror('toggleX6Sight: 未识别到枪械');
       return false;
     }
 
