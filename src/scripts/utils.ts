@@ -25,21 +25,12 @@ export class Utils {
   isImageExist(imgName: string, sim: number, setCol: number, setRow: number, selectCol: number, selectRow: number) {
     return this.isPointExist(this.findImage(imgName, sim, setCol, setRow, selectCol, selectRow));
   }
-
-  /**
-   * @param color {string}
-   * @param posList {string}
-   * @return {boolean}
-   */
   isColorExist(color: string, posList: string) {
     return this.isPointExist(mapi.findcolor(color, posList));
   }
 
   /**
    * 包装 mapi.tip(content)
-   *
-   * @param content {string} 显式的内容
-   * @param duration {number} 存在时间，单位 秒，默认 1 秒
    */
   showTip(content: string, duration = 1) {
     if (!store.state.tip) {
@@ -103,8 +94,6 @@ export class Utils {
 
   /**
    * 顺序执行多个函数
-   * @param funcList { Function[] }
-   * @param interruptReturnValue { boolean } 如果函数返回这个值，则中断执行
    */
   series(funcList: Function[], interruptReturnValue = true) {
     funcList.some((func) => {
