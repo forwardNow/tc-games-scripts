@@ -74,6 +74,8 @@ export class Bag {
 
     utils.slide(startX, startY, endX, endY, interval, pointNum);
 
+    utils.delay(400);
+
     this.closeBag();
   }
 

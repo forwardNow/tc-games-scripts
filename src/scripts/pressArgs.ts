@@ -765,6 +765,8 @@ const MatePad11: PressConfig = {
   },
 }
 
+const Mi6ProMax = MatePad11;
+
 export class PressArgs {
   static PressConfig =/* replace start */ MatePad11 /* replace end */
 

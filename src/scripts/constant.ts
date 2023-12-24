@@ -107,4 +107,42 @@ const MatePad11 = {
   HyperbodyActiveSkillPoint: { x: 1900, y: 1274 } as Point,
 };
 
-export default /* replace start */ MatePad11 /* replace end */;
+// 小米 6 pro max， 2800 × 1800
+const Mi6ProMax = {
+  SquatIconColorArgs: [ '255:254:239:111', '983:694+984:682+993:690+992:691' ] as ColorArgs,
+  ProstrateIconColorArgs: [ '255:254:225:114', '1076:655+1100:661+1107:661+1112:659' ] as ColorArgs,
+
+  LeftGunHighlightColorArgs: [ '255:242:211:4', '437:629' ] as ColorArgs,
+  RightGunHighlightColorArgs: [ '255:255:222:0', '582:629' ] as ColorArgs,
+
+  LeftGunPositionPoint: { x: 1125, y: 1450 }  as Point,
+  RightGunPositionPoint: { x: 1430, y: 1450 } as Point,
+
+  X6MirrorZoomBarX3PositionPoint: { x: 746, y: 882 } as Point,
+  X6MirrorZoomBarX6PositionPoint: { x: 748, y: 538 } as Point,
+
+  MirrorTextImageSim: {
+    X8Sight: 0.75,
+    X6Sight: 0.85,
+    X4Sight: 0.75,
+    X3Sight: 0.75,
+    X2Sight: 0.75,
+    MachineSight: 0.65,
+    HolographicSight: 0.75,
+    RedDotSight: 0.75,
+  },
+
+  BagDustbinX: 2800,
+
+  RescueButtonPoint: { x: 1282, y: 1070 } as Point,
+
+  OpenMirrorButtonPoint: { x: 2465, y: 954 } as Point,
+
+  /** 蹲 */
+  SquatIconPoint: { x: 2200, y: 1500 } as Point,
+
+  /** 超体主动技能 图标 */
+  HyperbodyActiveSkillPoint: { x: 1900, y: 1274 } as Point,
+};
+
+export default /* replace start */ Mi6ProMax /* replace end */;
