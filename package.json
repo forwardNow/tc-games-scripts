@@ -11,7 +11,7 @@
     "build:image": "gulp buildImages",
     "build:script:nova9": "cross-env DEVICE=Nova9 gulp buildScripts",
     "build:script:matepad11": "cross-env DEVICE=MatePad11 gulp buildScripts",
-    "build:script:Mi6ProMax": "cross-env DEVICE=Mi6ProMax gulp buildScripts",
+    "build:script:XiaoMiPad6Max14": "cross-env DEVICE=XiaoMiPad6Max14 gulp buildScripts",
     "insert-keymap": "gulp insertKeymap"
   },
   "repository": {

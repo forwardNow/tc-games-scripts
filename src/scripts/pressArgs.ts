@@ -765,7 +765,7 @@ const MatePad11: PressConfig = {
   },
 }
 
-const Mi6ProMax = {
+const XiaoMiPad6Max14 = {
   'M4': {
     'M4蹲6倍6': [0, 1, 3],
     'M4蹲6倍3': [0, 1, 5],

@@ -102,7 +102,7 @@ const MatePad11 = {
 };
 
 // 小米 6 pro max， 2800 × 1800
-const Mi6ProMax = {
+const XiaoMiPad6Max14 = {
   SquatIconColorArgs: [ '255:254:239:111', '983:694+984:682+993:690+992:691' ] as ColorArgs,
   ProstrateIconColorArgs: [ '255:254:225:114', '1076:655+1100:661+1107:661+1112:659' ] as ColorArgs,
 
@@ -136,4 +136,4 @@ const Mi6ProMax = {
   SquatIconPoint: { x: 2200, y: 1500 } as Point,
 };
 
-export default /* replace start */ Mi6ProMax /* replace end */;
+export default /* replace start */ XiaoMiPad6Max14 /* replace end */;
