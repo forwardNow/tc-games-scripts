@@ -118,8 +118,8 @@ const Mi6ProMax = {
   LeftGunPositionPoint: { x: 1125, y: 1450 }  as Point,
   RightGunPositionPoint: { x: 1430, y: 1450 } as Point,
 
-  X6MirrorZoomBarX3PositionPoint: { x: 746, y: 882 } as Point,
-  X6MirrorZoomBarX6PositionPoint: { x: 748, y: 538 } as Point,
+  X6MirrorZoomBarX3PositionPoint: { x: 832, y: 986 } as Point,
+  X6MirrorZoomBarX6PositionPoint: { x: 832, y: 609 } as Point,
 
   MirrorTextImageSim: {
     X8Sight: 0.75,
