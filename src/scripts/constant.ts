@@ -63,9 +63,6 @@ const Nova9 = {
   OpenMirrorButtonPoint: { x: 1, y: 1 } as Point,
 
   SquatIconPoint: { x: 1, y: 1 } as Point,
-
-  /** 超体主动技能 图标 */
-  HyperbodyActiveSkillPoint: { x: 1, y: 1 } as Point,
 };
 
 
@@ -102,9 +99,6 @@ const MatePad11 = {
 
   /** 蹲 */
   SquatIconPoint: { x: 2200, y: 1500 } as Point,
-
-  /** 超体主动技能 图标 */
-  HyperbodyActiveSkillPoint: { x: 1900, y: 1274 } as Point,
 };
 
 // 小米 6 pro max， 2800 × 1800
@@ -140,9 +134,6 @@ const Mi6ProMax = {
 
   /** 蹲 */
   SquatIconPoint: { x: 2200, y: 1500 } as Point,
-
-  /** 超体主动技能 图标 */
-  HyperbodyActiveSkillPoint: { x: 1900, y: 1274 } as Point,
 };
 
 export default /* replace start */ Mi6ProMax /* replace end */;

@@ -58,9 +58,11 @@ export default {
   toggleX6Sight() {
     const result = pressCtrl.toggleX6Sight();
 
-    if (!result) {
-      utils.clickPoint(Constant.HyperbodyActiveSkillPoint);
+    if (result) {
+      return;
     }
+
+    utils.clickCurrentKey();
   },
 
   /**
