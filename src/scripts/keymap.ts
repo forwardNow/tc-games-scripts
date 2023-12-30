@@ -33,9 +33,6 @@ export default {
       // 取消投掷
       missile.cancelThrow,
 
-      // 取消打药
-      // medicine.cancelTakeMedicine.bind(medicine),
-
       utils.clickCurrentKey,
 
       // 更新压枪参数

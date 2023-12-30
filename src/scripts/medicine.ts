@@ -42,8 +42,6 @@ export class Medicine {
   };
 
   static ImageArgs: { [name: string]: ImageArgs } = {
-    CancelTakeMedicineButton: [ '取消打药按钮', 0.75, 4, 4, 3, 4 ],
-
     ExpandListButton: [ '投掷物展开按钮', 0.75, 4, 4, 2, 4 ],
     CollapseListButton: [ '投掷物折叠按钮', 0.75, 4, 2, 2, 2 ],
 
@@ -56,24 +54,6 @@ export class Medicine {
     MedicalFirstAidKit: [ Medicine.ImageNames.MedicalFirstAidKit, 0.75, 4, 2, 2, 2 ],
   };
 
-
-  /**
-   * 取消吃药
-   * @returns {boolean} true - 执行成功
-   */
-  cancelTakeMedicine() {
-    const point = utils.findImage(...Medicine.ImageArgs.CancelTakeMedicineButton);
-
-    if (utils.isPointNotExist(point)) {
-      return false;
-    }
-
-    utils.clickPoint(point);
-
-    utils.resetAim();
-
-    return true;
-  }
 
 // 吃药
   takeMedicine(medicine: MedicineCategory) {
