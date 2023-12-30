@@ -109,8 +109,8 @@ const Mi6ProMax = {
   LeftGunHighlightColorArgs: [ '255:242:211:4', '437:629' ] as ColorArgs,
   RightGunHighlightColorArgs: [ '255:255:222:0', '582:629' ] as ColorArgs,
 
-  LeftGunPositionPoint: { x: 1125, y: 1450 }  as Point,
-  RightGunPositionPoint: { x: 1430, y: 1450 } as Point,
+  LeftGunPositionPoint: { x: 1280, y: 1620 }  as Point,
+  RightGunPositionPoint: { x: 1620, y: 1620 } as Point,
 
   X6MirrorZoomBarX3PositionPoint: { x: 832, y: 986 } as Point,
   X6MirrorZoomBarX6PositionPoint: { x: 832, y: 609 } as Point,
