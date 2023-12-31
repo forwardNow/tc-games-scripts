@@ -80,23 +80,38 @@
 
 ## 2. 环境
 
-### 2.1. 移动设备
+### 2.1. 和平精英
 
-注意：目前主要使用 matepad11，nova9 没有做适配。
+说明：
 
-#### 2.1.1. nova9
+* 灵敏度 及 按键 都使用默认即可
+
+图示：
+
+![heping-settings.jpg](./docs/images/heping-settings.jpg)
+
+### 2.2. TC Games
+
+![tcg-settings.png](./docs/images/tcg-settings.png)
+
+### 2.3. 移动设备
+
+目前主要使用 
+
+* 小米 Pad 6 max 14
+* 华为 matepad11
+* 华为 nova9（没有做适配）
+
+#### 2.3.1. Mi6ProMax
 
 参数：
 
-| 类别     | 描述                  |
-|--------|---------------------|
-| 品牌     | 华为 nova9 (NAM-AL00) |
-| 分辨率    | 1080 × 2430         |
-| 刷新率    | 智能（最高 120 Hz）       |
-| 屏幕顶部显示 | 自动匹配                |
+| 类别  | 描述              |
+|-----|-----------------|
+| 品牌  | 小米 Pad 6 Max 14 |
+| 分辨率 | 2880 × 1800     |
 
-
-#### 2.1.2. matepad11
+#### 2.3.2. matepad11
 
 参数：
 
@@ -105,17 +120,21 @@
 | 品牌  | 华为 MatePad 11 |
 | 分辨率 | 2560 × 1600   |
 
-游戏画面设置：
+#### 2.3.3. nova9
 
-* ![./docs/images/04-game-settings-matepad11.jpg](./docs/images/04-game-settings-matepad11.jpg)
+参数：
 
-TC Games 设置：
+| 类别     | 描述                  |
+|--------|---------------------|
+| 品牌     | 华为 nova9 (NAM-AL00) |
+| 分辨率    | 2430 × 1080         |
+| 刷新率    | 智能（最高 120 Hz）       |
+| 屏幕顶部显示 | 自动匹配                |
 
-* ![./docs/images/03-tcg-settings-matepad11.png](./docs/images/03-tcg-settings-matepad11.png)
 
-### 2.2. 电脑
+### 2.4. 电脑
 
-#### 2.2.1. 笔记本
+#### 2.4.1. 笔记本
 
 参数：
 
@@ -126,7 +145,7 @@ TC Games 设置：
 | 分辨率 | 2560 × 1600          |
 
 
-#### 2.2.2. 一体机
+#### 2.4.2. 一体机
 
 参数：
 
