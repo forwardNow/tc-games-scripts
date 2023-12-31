@@ -4,8 +4,8 @@
 
 说明：
 
-* 用于 和平精英 中进行自动压枪操作
-* 此项目使用 node.js 编写， gulp 构建
+* [TC Games](http://www.tcgames.com.cn/) 和平精英 自动压枪 辅助脚本，其他辅助功能见“宏按键绑定”
+* TC Games: 将安卓移动设备投屏到电脑，用电脑操作安卓设备 的软件
 
 安装：
 
@@ -40,11 +40,14 @@
     
     # 构建 matepad11 可以使用的脚本（根据自己的设备选择，执行一个即可）
     W:\dev\tc-games-scripts> npm run build:script:matepad11
+    
+    # 构建 XiaoMiPad6Max14 可以使用的脚本（根据自己的设备选择，执行一个即可）
+    W:\dev\tc-games-scripts> npm run build:script:XiaoMiPad6Max14
     ```
 
 键位：
 
-* 位置：[./docs/键位配置/TG_Keys.zip](./docs/键位配置/TG_Keys_2023_07_08.zip)
+* 位置：[./docs/键位配置/2880x1800/TG_Keys_XiaoMiPad6Max14_2023-12-31.properties](./docs/键位配置/2880x1800/TG_Keys_XiaoMiPad6Max14_2023-12-31.properties)
 
 宏按键绑定：
 
@@ -72,7 +75,7 @@
 | Tab | 切枪 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.switchGun();`<br>`   });`<br>`} ());` |
 | 上箭头 | 动态调整压枪参数, +1 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.addDelayOfGunPressArgs();`<br>`   });`<br>`} ());` |
 | 下箭头 | 动态调整压枪参数, -1 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.subtractDelay();`<br>`   });`<br>`} ());` |
-| 鼠标右键 | 复合按键：<br>    1. 丢弃背包中光标所指位置的配件 (一旦执行，后续操作都取消)<br>    2. 取消投掷 (一旦执行，后续操作都取消)<br>    3. 取消打药 (TODO)<br>    4. 开镜<br>    5. 更新压枪参数 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.bindKeyMouseRight();`<br>`   });`<br>`} ());` |
+| 鼠标右键 | 复合按键：<br>    1. 丢弃背包中光标所指位置的配件 (一旦执行，后续操作都取消)<br>    2. 取消投掷 (一旦执行，后续操作都取消)<br>    3. 开镜<br>    4. 更新压枪参数 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.bindKeyMouseRight();`<br>`   });`<br>`} ());` |
 | 鼠标左键 | 开火 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.fire();`<br>`   });`<br>`} ());` |
 | 鼠标滚轮-滚上 | 调整 6 倍镜<br>  并存储调整过 6 倍镜倍率的枪及倍率 | `(function() {`<br>`  import('keymap')`<br>`    .then(({ default: keymap }) => {`<br>`       keymap.toggleX6Sight();`<br>`   });`<br>`} ());` |
 
