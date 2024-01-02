@@ -1,7 +1,7 @@
 {
   "name": "tc-games-scripts",
   "version": "1.0.0",
-  "description": "全局对象 mapi",
+  "description": "TC Games 压枪脚本",
   "main": "index.js",
   "directories": {
     "doc": "docs",
