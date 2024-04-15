@@ -5,7 +5,6 @@ import { medicine } from './medicine';
 import { missile } from './missile';
 import { bag } from './bag';
 import { pressCtrl } from './pressCtrl';
-import Constant from './constant';
 
 export default {
   /**

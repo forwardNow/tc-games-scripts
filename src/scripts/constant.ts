@@ -45,6 +45,8 @@ const Nova9 = {
   X6MirrorZoomBarX3PositionPoint: { x: 678, y: 597 } as Point,
   X6MirrorZoomBarX6PositionPoint: { x: 678, y: 346 } as Point,
 
+  MirrorHighlightColorArgs: [ '255:255:241:126', '1094:413+1109:408+1108:407+1108:408' ] as ColorArgs,
+
   MirrorTextImageSim: {
     X8Sight: 0.65,
     X6Sight: 0.60,
@@ -80,6 +82,8 @@ const MatePad11 = {
   X6MirrorZoomBarX3PositionPoint: { x: 746, y: 882 } as Point,
   X6MirrorZoomBarX6PositionPoint: { x: 748, y: 538 } as Point,
 
+  MirrorHighlightColorArgs: [ '255:255:241:126', '1094:413+1109:408+1108:407+1108:408' ] as ColorArgs,
+
   MirrorTextImageSim: {
     X8Sight: 0.75,
     X6Sight: 0.85,
@@ -114,6 +118,8 @@ const XiaoMiPad6Max14 = {
 
   X6MirrorZoomBarX3PositionPoint: { x: 832, y: 986 } as Point,
   X6MirrorZoomBarX6PositionPoint: { x: 832, y: 609 } as Point,
+
+  MirrorHighlightColorArgs: [ '255:255:241:126', '1094:413+1109:408+1108:407+1108:408' ] as ColorArgs,
 
   MirrorTextImageSim: {
     X8Sight: 0.75,

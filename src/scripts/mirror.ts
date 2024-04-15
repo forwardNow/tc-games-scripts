@@ -1,6 +1,7 @@
 import { ImageArgs, MirrorCategory, CnMirrorCategory } from '../../types';
 import { utils } from './utils';
 import constant from './constant';
+import Constant from './constant';
 
 type DelicateMirror = Exclude<MirrorCategory, 'MachineSight'>;
 
@@ -91,8 +92,10 @@ export class Mirror {
    * @return {boolean}
    */
   isOpen() {
+    return utils.isColorExist(...Constant.MirrorHighlightColorArgs);
+
     // 第一（三）人称图标 如果存在 则说明未开镜
-    return !utils.isImageExist(...Mirror.ImageArgs.FirstPersonIcon);
+    // return !utils.isImageExist(...Mirror.ImageArgs.FirstPersonIcon);
   }
 
   /** 是否有可用准镜 */
