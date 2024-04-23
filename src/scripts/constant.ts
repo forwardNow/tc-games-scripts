@@ -122,7 +122,7 @@ const XiaoMiPad6Max14 = {
   MirrorHighlightColorArgs: [ '255:255:241:126', '1094:413+1109:408+1108:407+1108:408' ] as ColorArgs,
 
   MirrorTextImageSim: {
-    X8Sight: 0.75,
+    X8Sight: 0.80,
     X6Sight: 0.85,
     X4Sight: 0.75,
     X3Sight: 0.75,
