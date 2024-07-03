@@ -35,6 +35,8 @@ export class Gun {
     P90: 'P90',
 
     MIGUAN: 'MIGUAN', // 蜜罐
+
+    MK14: 'MK14',
   };
 
   static X8SightGuns: GunCategory[] = [ 'M417', 'MK20H' ];

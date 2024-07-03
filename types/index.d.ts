@@ -44,6 +44,7 @@ export type GunCategory =
   | 'MG3'
   | 'P90'
   | 'MIGUAN'
+  | 'MK14'
 ;
 
 export type GunPosition = 'Left' | 'Right';
